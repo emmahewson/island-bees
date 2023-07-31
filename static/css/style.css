@@ -1,0 +1,273 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* Whole document margins & padding */
+
+
+
+/* Document Colours */
+
+:root {
+    --dark: #140C00;
+    --light: #FFFEFB;
+    --light-grey: #EAEAEA;
+    --mid-grey: #959595;
+    --dark-grey: #4D4D4D;
+    --yellow: #FFCD85;
+    --yellow-light: #FFE7C6;
+    --blue: #0F748A;
+    --blue-light: #BCE1E9;
+    --warning: #B25B76;
+    --warning-light: #FAE5EC;
+    --success: #419759;
+    --success-light: #E2F0E6;
+}
+
+/* Text Colour Classes */
+
+.text-light {
+    color: var(--light);
+}
+
+.text-dark {
+    color: var(--light);
+}
+
+.text-dark-grey {
+    color: var(--dark-grey);
+}
+
+.text-mid-grey {
+    color: var(--mid-grey);
+}
+
+.text-yellow {
+    color: var(--yellow);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+
+.text-success {
+    color: var(--success);
+}
+
+.text-warning {
+    color: var(--warning);
+}
+
+
+/* Background Colour Classes */
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-dark {
+    background-color: var(--dark);
+}
+
+.bg-light {
+    background-color: var(--light);
+}
+
+.bg-light-grey {
+    background-color: var(--light-grey);
+}
+
+.bg-mid-grey {
+    background-color: var(--mid-grey);
+}
+
+.bg-dark-grey {
+    background-color: var(--dark-grey);
+}
+
+.bg-yellow {
+    background-color: var(--yellow);
+}
+
+.bg-yellow-light {
+    background-color: var(--yellow-light);
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-blue-light {
+    background-color: var(--blue-light);
+}
+
+.bg-success {
+    background-color: var(--success);
+}
+
+.bg-success-light {
+    background-color: var(--success-light);
+}
+
+.bg-warning {
+    background-color: var(--warning);
+}
+
+.bg-warning-light {
+    background-color: var(--warning-light);
+}
+
+
+/* Fonts, Sizes & Weights */
+
+.font-title {
+    font-family: "Oxygen", sans-serif;
+}
+
+.font-body {
+    font-family: "Source Sans 3", sans-serif;
+}
+
+.weight-light {
+    font-weight: 300;
+}
+
+.weight-regular {
+    font-weight: 400;
+}
+
+.weight-medium {
+    font-weight: 500;
+}
+
+.weight-semibold {
+    font-weight: 600;
+}
+
+.weight-bold {
+    font-weight: 700;
+}
+
+
+/* icons */
+
+.icon-circle {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+}
+
+.icon-circle i {
+    padding: 5px;
+    font-size: 11px;
+}
+
+.icon-hex {
+    width: 20px;
+    height: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0F748A;
+}
+
+.icon-hex:before {
+    content: " ";
+    width: 0; height: 0;
+    border-right: 9px solid #0F748A;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    left: -9px;
+}
+
+.icon-hex::after {
+    content: " ";
+    width: 0; height: 0;
+    border-left: 9px solid #0F748A;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    right: -9px;
+}
+
+.icon-hex i {
+    font-size: 1.1em;
+}
+
+.bag-hex-link p {
+    position: relative;
+    left: -9px;
+}
+
+
+
+
+
+/* Nav */
+
+.logo-div * {
+    margin: 0;
+    padding: 0;
+}
+
+.logo-div h2 {
+    font-size: 1.67rem;
+}
+
+.logo-div p {
+    font-size: 0.8rem;
+}
+
+.logo-img {
+    width: 50px;
+}
+
+.logo-div a {
+    display: flex;
+}
+
+.nav-icon-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lower-nav-link-text {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.ib-search-box {
+    height: 42px;
+    border-radius: 2px;
+    background-color: var(--light);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.50) inset;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.ib-search-box input {
+    border: none;
+    background: none;
+    padding: 5px;
+    padding-left: 10px
+}
+
+.ib-search-box button {
+    background-color: var(--mid-grey);
+    border-radius: 0;
+}
+
+#delivery-banner h5 {
+    font-size: 18px;
+    letter-spacing: 1.8px;
+}
+
+
