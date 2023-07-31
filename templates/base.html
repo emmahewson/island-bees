@@ -5,19 +5,53 @@
 <html lang="en">
 
     <head>
+
+        <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
+
+        {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock %}
 
-        <title>Island Bees</title>
+        {% block extra_meta %}
+        {% endblock %}
 
+        <title>Island Bees - {% block extra_title %}{% endblock %}</title>
+
+        {% block corecss %}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        
+        {% endblock %}
+
+        {% block extra_css %}
+        {% endblock %}
+
+        {% block corejs %}
         <!-- Bootstrap JavaScript including Popper for popovers / tooltips -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
     </head>
 
     <body>
+        <header class="container-fluid fixed-top"></header>
+
+        {% if messages %}
+        <div class="message-container"></div>
+        {% endif %}
+
+        <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block postloadjs %}
+        {% endblock %}
 
 
         
