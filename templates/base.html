@@ -29,7 +29,7 @@
 
         {% block corejs %}
         <!-- Bootstrap JavaScript including Popper for popovers / tooltips -->
-        <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/75c900e0d1.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         {% endblock %}
 
@@ -40,84 +40,157 @@
 
     <body>
         <header class="container-fluid fixed-top">
-            <header class="container-fluid fixed-top">
-                <div id="uppernav" class="row bg-yellow pt-3 pb-2">
-                    <div class="logo-div font-title col-12 col-lg-4 my-auto">
-                        <a href="{% url 'home' %}" class="nav-link">
-                            <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img me-2">
-                            <div class="logo-text my-auto">
-                                <h2 class="font-title weight-bold">ISLAND BEES</h2>
-                                <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
-                            </div>  
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-4 my-auto">
-                        <form method="GET" action="">
-                            <div class="ib-search-box">
-                                <input class="" type="text" name="q" placeholder="Search our products">
-                                <button class="btn" type="submit">
-                                    <i class="fas fa-search text-light"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12 col-lg-4 my-auto">
-                        <ul class="list-inline list-unstyled text-end text-lg-right my-0">
-                            <li class="list-inline-item dropdown">
-                                <a class="text-dark-grey nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="text-center">
-                                        <div><i class="fas fa-user fa-lg"></i></div>
-                                        <p class="my-0 font-body">Account</p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                    {% if request.user.is_authenticated %}
-                                        {% if request.user.is_superuser %}
-                                            <a href="" class="dropdown-item">Product Management</a>
-                                        {% endif %}
-                                        <a href="" class="dropdown-item">My Profile</a>
-                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                    {% else %}
-                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                                    {% endif %}
-                                </div>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="nav-link" href="">
-                                    <div class="text-center bag-hex-link ms-2">
-                                        <div class="icon-hex bg-blue">
-                                            <i class="fas fa-shopping-bag fa-lg text-light"></i>
-                                        </div>
-                                        <p class="my-0 font-body weight-bold text-blue">
-                                            {% if grand_total %}
-                                                £{{ grand_total|floatformat:2 }}
-                                            {% else %}
-                                                £0.00
-                                            {% endif %}
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
+            <div id="uppernav" class="row bg-yellow pt-3 pb-2 d-none d-lg-flex">
+                <div class="logo-div font-title col-12 col-lg-4 my-auto">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img me-2">
+                        <div class="logo-text my-auto">
+                            <h2 class="font-title weight-bold">ISLAND BEES</h2>
+                            <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
+                        </div>  
+                    </a>
                 </div>
-                <div class="row bg-yellow">
-                    <nav class="navbar navbar-expand-lg py-0 pb-1">
+                <div class="col-12 col-lg-4 my-auto">
+                    <form method="GET" action="">
+                        <div class="ib-search-box">
+                            <input type="text" name="q" placeholder="Search our products">
+                            <button type="submit">
+                                <i class="fas fa-search text-light"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-4 my-auto">
+                    <ul class="list-inline list-unstyled text-end text-lg-right my-0">
+                        <li class="list-inline-item dropdown">
+                            <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="my-0 font-body">Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <a href="" class="dropdown-item">Product Management</a>
+                                    {% endif %}
+                                    <a href="" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link hex-nav-link" href="">
+                                <div class="text-center ms-2">
+                                    <div class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
+                                        <i class="fas fa-shopping-bag fa-lg text-light"></i>
+                                    </div>
+                                    <p class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
+                                        {% if grand_total %}
+                                            £{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            £0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
+            </div>
+            <div class="row bg-yellow">
+                <nav class="uppernav-mobile navbar navbar-expand-lg ps-3 pe-3">
+                    <div class="col-4">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        {% include 'includes/mobile-top-header.html' %}
-                        {% include 'includes/main-nav.html' %}
-                    </nav>
-                </div>
-                <div id="delivery-banner" class="row text-center">
-                    <div class="col bg-dark-grey text-light">
-                        <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>                
-                    </div>            
-                </div>
-            </header>
+                    </div>
+                
+
+                        <div class="logo-div-mobile col-4 font-title text-center">
+                            <a href="{% url 'home' %}" class="nav-link">
+                                <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img-mobile">
+                                <div class="logo-text-mobile">
+                                    <h2 class="font-title weight-bold">ISLAND BEES</h2>
+                                </div>  
+                            </a>
+                        </div>
+                        <div class="col-4 my-auto">
+                            <ul class="text-end my-0">
+                                <li class="list-inline-item">
+                                    <a class="text-dark-grey nav-link upper-nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="text-center">
+                                            <div><i class="fas fa-search fa-lg"></i></div>
+                                            <p class="my-0 font-body">Search</p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+                                        <form class="form" method="GET" action="">
+                                            <div class="input-group w-100">
+                                                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                                                <div class="input-group-append">
+                                                    <button class="form-control form-control btn btn-black border border-black rounded-0" type="submit">
+                                                        <span class="icon">
+                                                            <i class="fas fa-search"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item dropdown">
+                                    <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="text-center">
+                                            <div><i class="fas fa-user fa-lg"></i></div>
+                                            <p class="my-0 font-body">Account</p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                        {% if request.user.is_authenticated %}
+                                            {% if request.user.is_superuser %}
+                                                <a href="" class="dropdown-item">Product Management</a>
+                                            {% endif %}
+                                            <a href="" class="dropdown-item">My Profile</a>
+                                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                        {% else %}
+                                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="nav-link hex-nav-link" href="">
+                                        <div class="text-center ms-2">
+                                            <div class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
+                                                <i class="fas fa-shopping-bag fa-lg text-light"></i>
+                                            </div>
+                                            <p class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
+                                                {% if grand_total %}
+                                                    £{{ grand_total|floatformat:2 }}
+                                                {% else %}
+                                                    £0.00
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    {% include 'includes/lower-nav.html' %}
+                </nav>
+            </div>
+            <div id="delivery-banner" class="row text-center">
+                <div class="col bg-dark-grey text-light">
+                    <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>                
+                </div>            
+            </div>
         </header>
 
         
