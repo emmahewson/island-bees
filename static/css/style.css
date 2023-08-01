@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-/* Whole document margins & padding */
-
-
+body {
+    background-color: #0F748A;
+}
 
 /* Document Colours */
 
@@ -61,15 +61,15 @@
 
 /* Background Colour Classes */
 
-.bg-white {
+.bg-ib-white {
     background-color: white;
 }
 
-.bg-dark {
+.bg-ib-dark {
     background-color: var(--dark);
 }
 
-.bg-light {
+.bg-ib-light {
     background-color: var(--light);
 }
 
@@ -221,6 +221,11 @@
     line-height: unset;
 }
 
+.fa-lg {
+    font-size: 1.5em !important;
+    line-height: 0.5em !important;
+}
+
 .upper-nav-link:hover {
     color: var(--dark);
 }
@@ -231,8 +236,8 @@
 
 .account-dropdown {
     right: 0;
+    border-radius: 3px;
 }
-
 
 .icon-hex {
     width: 20px;
@@ -269,6 +274,8 @@
     -webkit-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
+
+
 
 .hex-nav-link:hover {
     .bag-empty {
@@ -385,6 +392,13 @@
 @media (max-width: 992px) {
     .lower-nav-link {
         padding: 0.25rem;
+    }
+}
+
+@media (max-width: 575px) {
+    #delivery-banner h5 {
+        font-size: 14px;
+        letter-spacing: 0.9px;
     }
 }
 
