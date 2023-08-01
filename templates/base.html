@@ -4,215 +4,288 @@
 
 <html lang="en">
 
-    <head>
+<head>
 
-        <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
+    <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
 
-        {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% endblock %}
+    {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
 
-        {% block extra_meta %}
-        {% endblock %}
+    {% block extra_meta %}
+    {% endblock %}
 
-        <title>Island Bees - {% block extra_title %}{% endblock %}</title>
+    <title>Island Bees - {% block extra_title %}{% endblock %}</title>
 
-        {% block corecss %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        {% endblock %}
+    {% block corecss %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
 
-        {% block extra_css %}
-        {% endblock %}
+    {% block extra_css %}
+    {% endblock %}
 
-        {% block corejs %}
-        <!-- Bootstrap JavaScript including Popper for popovers / tooltips -->
-        <script src="https://kit.fontawesome.com/75c900e0d1.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-        {% endblock %}
+    {% block corejs %}
+    <script src="https://kit.fontawesome.com/75c900e0d1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    {% endblock %}
 
-        {% block extra_js %}
-        {% endblock %}
+    {% block extra_js %}
+    {% endblock %}
 
-    </head>
+</head>
 
-    <body>
-        <header class="container-fluid fixed-top">
-            <div id="uppernav" class="row bg-yellow pt-3 pb-2 d-none d-lg-flex">
-                <div class="logo-div font-title col-12 col-lg-4 my-auto">
-                    <a href="{% url 'home' %}" class="nav-link">
-                        <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img me-2">
-                        <div class="logo-text my-auto">
-                            <h2 class="font-title weight-bold">ISLAND BEES</h2>
-                            <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
-                        </div>  
-                    </a>
-                </div>
-                <div class="col-12 col-lg-4 my-auto">
-                    <form method="GET" action="">
-                        <div class="ib-search-box">
-                            <input type="text" name="q" placeholder="Search our products">
-                            <button type="submit">
-                                <i class="fas fa-search text-light"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-12 col-lg-4 my-auto">
-                    <ul class="list-inline list-unstyled text-end text-lg-right my-0">
-                        <li class="list-inline-item dropdown">
-                            <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="text-center">
-                                    <div><i class="fas fa-user fa-lg"></i></div>
-                                    <p class="my-0 font-body">Account</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                        <a href="" class="dropdown-item">Product Management</a>
-                                    {% endif %}
-                                    <a href="" class="dropdown-item">My Profile</a>
-                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                {% else %}
-                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link hex-nav-link" href="">
-                                <div class="text-center ms-2">
-                                    <div class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
-                                        <i class="fas fa-shopping-bag fa-lg text-light"></i>
-                                    </div>
-                                    <p class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
-                                        {% if grand_total %}
-                                            £{{ grand_total|floatformat:2 }}
-                                        {% else %}
-                                            £0.00
-                                        {% endif %}
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
+<body>
+    <header class="container-fluid fixed-top">
+        <div id="uppernav" class="row bg-yellow pt-3 pb-2 d-none d-lg-flex">
+            <div class="logo-div font-title col-12 col-lg-4 my-auto">
+                <a href="{% url 'home' %}" class="nav-link">
+                    <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img me-2">
+                    <div class="logo-text my-auto">
+                        <h2 class="font-title weight-bold">ISLAND BEES</h2>
+                        <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
+                    </div>
+                </a>
             </div>
-            <div class="row bg-yellow">
-                <nav class="uppernav-mobile navbar navbar-expand-lg ps-3 pe-3">
-                    <div class="col-4">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="col-12 col-lg-4 my-auto">
+                <form method="GET" action="">
+                    <div class="ib-search-box">
+                        <input type="text" name="q" placeholder="Search our products">
+                        <button type="submit">
+                            <i class="fas fa-search text-light"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4 my-auto">
+                <ul class="list-inline list-unstyled text-end text-lg-right my-0">
+                    <li class="list-inline-item dropdown">
+                        <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <p class="my-0 font-body">Account</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <a href="" class="dropdown-item">Product Management</a>
+                            {% endif %}
+                            <a href="" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% else %}
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="nav-link hex-nav-link" href="">
+                            <div class="text-center ms-2">
+                                <div class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
+                                    <i class="fas fa-shopping-bag fa-lg text-light"></i>
+                                </div>
+                                <p
+                                    class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
+                                    {% if grand_total %}
+                                    £{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    £0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
+        </div>
+        <div class="row bg-yellow">
+            <nav class="navbar w-100 navbar-expand-lg ps-3 pe-3">
+
+                <div class="uppernav-mobile d-flex d-lg-none w-100">
+
+                    <div class="col-2 col-sm-5 my-auto">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
-                
 
-                        <div class="logo-div-mobile col-4 font-title text-center">
-                            <a href="{% url 'home' %}" class="nav-link">
-                                <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img-mobile">
-                                <div class="logo-text-mobile">
-                                    <h2 class="font-title weight-bold">ISLAND BEES</h2>
-                                </div>  
-                            </a>
-                        </div>
-                        <div class="col-4 my-auto">
-                            <ul class="text-end my-0">
-                                <li class="list-inline-item">
-                                    <a class="text-dark-grey nav-link upper-nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="text-center">
-                                            <div><i class="fas fa-search fa-lg"></i></div>
-                                            <p class="my-0 font-body">Search</p>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-                                        <form class="form" method="GET" action="">
-                                            <div class="input-group w-100">
-                                                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
-                                                <div class="input-group-append">
-                                                    <button class="form-control form-control btn btn-black border border-black rounded-0" type="submit">
-                                                        <span class="icon">
-                                                            <i class="fas fa-search"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                    <div class="logo-div-mobile col-2 my-auto font-title text-center d-none d-sm-block">
+                        <a href="{% url 'home' %}" class="nav-link">
+                            <img src="{% static 'media/logo.svg' %}" alt="Island Bees Logo" class="logo-img-mobile">
+                            <div class="logo-text-mobile">
+                                <h2 class="font-title weight-bold">ISLAND BEES</h2>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-10 col-sm-5 my-auto">
+                        <ul class="my-0 text-end">
+                            <li class="list-inline-item">
+                                <a class="text-dark-grey nav-link upper-nav-link" href="#" id="mobile-search"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="text-center">
+                                        <div><i class="fas fa-search fa-lg"></i></div>
+                                        <p class="my-0 font-body">Search</p>
                                     </div>
-                                </li>
+                                </a>
+                            </li>
 
-                                <li class="list-inline-item dropdown">
-                                    <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="text-center">
-                                            <div><i class="fas fa-user fa-lg"></i></div>
-                                            <p class="my-0 font-body">Account</p>
+                            
+
+                            <li class="list-inline-item dropdown">
+                                <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="text-center">
+                                        <div><i class="fas fa-user fa-lg"></i></div>
+                                        <p class="my-0 font-body">Account</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu text-end border-0 account-dropdown" aria-labelledby="user-options">
+                                    {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                    <a href="" class="dropdown-item">Product Management</a>
+                                    {% endif %}
+                                    <a href="" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                    {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link hex-nav-link" href="">
+                                    <div class="text-center ms-2">
+                                        <div
+                                            class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
+                                            <i class="fas fa-shopping-bag fa-lg text-light"></i>
                                         </div>
-                                    </a>
-                                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                        {% if request.user.is_authenticated %}
-                                            {% if request.user.is_superuser %}
-                                                <a href="" class="dropdown-item">Product Management</a>
+                                        <p
+                                            class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
+                                            {% if grand_total %}
+                                            £{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                            £0.00
                                             {% endif %}
-                                            <a href="" class="dropdown-item">My Profile</a>
-                                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                        {% else %}
-                                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                                        {% endif %}
+                                        </p>
                                     </div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="nav-link hex-nav-link" href="">
-                                        <div class="text-center ms-2">
-                                            <div class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
-                                                <i class="fas fa-shopping-bag fa-lg text-light"></i>
-                                            </div>
-                                            <p class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
-                                                {% if grand_total %}
-                                                    £{{ grand_total|floatformat:2 }}
-                                                {% else %}
-                                                    £0.00
-                                                {% endif %}
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                                </a>
+                            </li>
 
-                    {% include 'includes/lower-nav.html' %}
-                </nav>
+                            
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-nav w-auto mx-auto">
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <div>
+                                    <div class="lower-nav-icon-circle bg-dark">
+                                        <i class="fas fa-bug text-light text-center"></i>
+                                    </div>
+                                    <p class="text-dark ms-1 lower-nav-link-text">THE BEES</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <div>
+                                    <div class="lower-nav-icon-circle bg-dark">
+                                        <i class="fas fa-box-archive text-light text-center"></i>
+                                    </div>
+                                    <p class="text-dark ms-1 lower-nav-link-text">THE KIT</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <div>
+                                    <div class="lower-nav-icon-circle bg-dark">
+                                        <i class="fas fa-graduation-cap text-light text-center"></i>
+                                    </div>
+                                    <p class="text-dark ms-1 lower-nav-link-text">THE COURSES</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <div>
+                                    <div class="lower-nav-icon-circle bg-dark">
+                                        <i class="fas fa-jar text-light text-center"></i>
+                                    </div>
+                                    <p class="text-dark ms-1 lower-nav-link-text">THE GOOD STUFF</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <p class="text-dark lower-nav-link-text">ALL PRODUCTS</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="font-body weight-semibold nav-link lower-nav-link" href="#">
+                                <p class="text-dark lower-nav-link-text">BLOG</p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col bg-dark-grey text-light">
+                <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>
             </div>
-            <div id="delivery-banner" class="row text-center">
-                <div class="col bg-dark-grey text-light">
-                    <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>                
-                </div>            
-            </div>
-        </header>
+        </div>
+    </header>
 
-        
 
-        {% if messages %}
+
+    {% if messages %}
         <div class="message-container"></div>
-        {% endif %}
+    {% endif %}
 
-        <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
-        {% block page_header %}
-        {% endblock %}
+    <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
+    {% block page_header %}
+    {% endblock %}
 
-        {% block content %}
-        {% endblock %}
+    {% block content %}
+    {% endblock %}
 
-        {% block postloadjs %}
-        {% endblock %}
+    {% block postloadjs %}
+        <!-- Main JavaScript File -->
+        <script src="{% static 'js/script.js' %}"></script>
+    {% endblock %}
 
-        
 
 
-        
-    </body>
+
+
+</body>
 
 </html>

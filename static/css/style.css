@@ -162,7 +162,7 @@
 }
 
 .logo-text-mobile h2 {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .logo-div p {
@@ -181,8 +181,6 @@
 .logo-div a {
     display: flex;
 }
-
-
 
 
 .ib-search-box {
@@ -229,6 +227,10 @@
 
 .list-inline-item:not(:last-child) {
     margin-right: 0.8rem;
+}
+
+.account-dropdown {
+    right: 0;
 }
 
 
@@ -350,7 +352,6 @@
 .lower-nav-link > div {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .lower-nav-link-text {
@@ -379,5 +380,12 @@
 }
 
 
+
+
+@media (max-width: 992px) {
+    .lower-nav-link {
+        padding: 0.25rem;
+    }
+}
 
 
