@@ -384,6 +384,17 @@
 }
 
 
+/* Footer */
+
+.upper-footer-section h3 {
+    font-size: 20px;
+}
+
+.upper-footer-section i {
+    margin-right: 5px;
+}
+
+
 
 /* Home Page */
 
@@ -392,6 +403,9 @@
     background-color: var(--mid-grey);
 }
 
+.upper-footer-section:last-of-type p {
+    font-size: 14px;
+}
 
 
 /* Media Queries */

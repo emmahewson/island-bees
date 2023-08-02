@@ -148,19 +148,14 @@
                 </div>
             </div>
         </div>
-        
-        
     </header>
-
-    <div class="bg-blue">
-
-    </div>
-
 
 
     {% if messages %}
         <div class="message-container"></div>
     {% endif %}
+
+
 
     <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
     {% block page_header %}
@@ -168,6 +163,53 @@
 
     {% block content %}
     {% endblock %}
+
+
+    <footer>
+        <div class="container-fluid bg-dark-grey d-flex font-body px-4 py-3">
+            <div class="row">
+                <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
+                    <h3 class="text-yellow weight-semibold mb-2">THE BUZZ</h3>
+                    <a class="d-block text-decoration-none mb-2">
+                        <i class="fa-brands fa-facebook text-yellow text-center d-inline"></i>
+                        <p class="text-light d-inline">Facebook</p>
+                    </a>
+                    <a class="d-block text-decoration-none mb-2">
+                        <i class="fa-brands fa-instagram text-yellow text-center d-inline"></i>
+                        <p class="text-light d-inline">Instagram</p>
+                    </a>
+                    <a class="d-block text-decoration-none mb-2">
+                        <i class="fa-brands fa-pinterest text-yellow text-center d-inline"></i>
+                        <p class="text-light d-inline">Pinterest</p>
+                    </a>
+                    <a class="d-block text-decoration-none mb-2">
+                        <i class="fa-brands fa-twitter text-yellow text-center d-inline"></i>
+                        <p class="text-light d-inline">Twitter</p>
+                    </a>
+                </div>
+    
+                <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
+                    <h3 class="text-yellow weight-semibold mb-2">MORE INFO</h3>
+                    <a class="d-block text-decoration-none">
+                        <p class="text-light mb-2">FAQs</p>
+                    </a>
+                    <a class="d-block text-decoration-none">
+                        <p class="text-light mb-2">CONTACT US</p>
+                    </a>
+                </div>
+    
+                <div class="upper-footer-section col-12 col-sm-6 col-md-8">
+                    <h3 class="text-yellow weight-semibold mb-2">ABOUT US</h3>
+                    <p class="text-light">Island Bees was founded in 2012 by 2 Anglesey beekeepers with more honey and bees than they knew what to do with.  We stock a range of honey & bee-based products as well as beekeeping kit, you can also order bees from us if you live locally. Our award-winning courses run throughout the summer if you're keen to learn more about bees and beekeeping.</p>
+                    <p class="text-light"><em>Site is built for educational purposes and all products are entirely fictional. Transactions are made using Stripe's test mode and no money or products will be sent or received.</em></p>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </footer>
+
 
     {% block postloadjs %}
         <!-- Main JavaScript File -->
