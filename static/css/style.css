@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+body,
+header {
+    max-width: 1400px;
+    background-color: var(--mid-grey);
+    margin: 0 auto;
+}
+
+
 /* Document Colours */
 
 :root {
@@ -27,7 +35,7 @@
 }
 
 .text-ib-dark {
-    color: var(--light);
+    color: var(--dark);
 }
 
 .text-dark-grey {
@@ -142,6 +150,21 @@
 
 .weight-bold {
     font-weight: 700;
+}
+
+/* Recurring Elements */
+
+.section-title {
+    font-size: 24px;
+}
+
+.ib-container p,
+.ib-container h1,
+.ib-container h2,
+.ib-container h3,
+.ib-container h4,
+.ib-container h5 {
+    margin: 0;
 }
 
 
@@ -392,7 +415,7 @@
 }
 
 .upper-footer-section h3 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .upper-footer-section i {
@@ -415,6 +438,10 @@
     -o-transition: all .3s ease-in-out;
 }
 
+.upper-footer-section:last-of-type p {
+    font-size: 14px;
+}
+
 .upper-footer-section a:hover {
     .footer-link-text {
         -webkit-text-decoration-color: rgba(255, 254, 251, 1);
@@ -425,14 +452,93 @@
 
 /* Home Page */
 
-.home-div-test {
-    height: 400px;
-    background-color: var(--mid-grey);
+.header-container {
+    height: 157px;
 }
 
-.upper-footer-section:last-of-type p {
-    font-size: 14px;
+#home-hero {
+    height: 450px;
+    position: relative;
+    background-image: url('/media/ib-home-hero.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
+
+.hex-categories-wrapper {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.category-icon-lg {
+    font-size: 36px;
+}
+
+.container-hex-grid p {
+    font-size: 16px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.container-hex-grid a {
+    padding: 70px 0 86px;
+}
+
+.container-hex-grid a:hover {
+    background-color: var(--yellow);
+    color: var(--dark-grey);
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+
+/* Responsive Hexagon Grid: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 */
+.main {
+    display:flex;
+    width: 632px;
+    --s: 150px;  /* size  */
+    --m: 4px;    /* margin */
+    --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
+  }
+  
+  .container-hex-grid {
+    font-size: 0; /*disable white space between inline block element */
+  }
+  
+  .container-hex-grid div {
+    width: var(--s);
+    margin: var(--m);
+    height: calc(var(--s)*1.1547); 
+    display: inline-block;
+    font-size:initial;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    background: var(--dark-grey);
+    margin-bottom: calc(var(--m) - var(--s)*0.2885); 
+  }
+  .container-hex-grid div:nth-child(odd) {
+    background: var(--dark-grey);
+  }
+  .container-hex-grid::before {
+    content: "";
+    width: calc(var(--s)/2 + var(--m));
+    float: left;
+    height: 120%;
+    shape-outside: repeating-linear-gradient(     
+                     #0000 0 calc(var(--f) - 3px),      
+                     #000  0 var(--f));
+  }
+
+
+
+
+
+
 
 
 /* Media Queries */
@@ -456,7 +562,29 @@
     .lower-nav-dropdown {
         background-color: var(--yellow);
     }
+
+    .header-container {
+        height: 109px;
+    }
     
+    #home-hero {
+        height: 290px;
+    }
+    
+}
+
+/* S Screens Only */
+@media (max-width: 767px) {
+
+    .header-container {
+        height: 97px;
+    }
+
+    .main {
+        width: 474px;
+    }
+
+
 }
 
 /* XS Screens Only */
@@ -465,6 +593,47 @@
         font-size: 14px;
         letter-spacing: 0.9px;
     }
+
+    #home-hero {
+        height: 190px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .main {
+        width: 354px;
+        --s: 110px;  /* size  */
+    }
+
+    .container-hex-grid div.py-5 {
+        padding-top: 1.8rem !important;
+    }
+
+    .category-icon-lg {
+        font-size: 30px;
+    }
+
+    .category-icon-lg + p {
+        font-size: 14px;
+    }
+  
+}
+
+/* Hex Categories for smallest screens */
+@media (max-width: 434px) {
+    .main {
+        width: 316px;
+    }
+}
+
+@media (max-width: 351px) {
+    .main {
+        width: 237px;
+        height: 300px;
+    }
 }
 
 
+  
