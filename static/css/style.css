@@ -22,11 +22,11 @@
 
 /* Text Colour Classes */
 
-.text-light {
+.text-ib-light {
     color: var(--light);
 }
 
-.text-dark {
+.text-ib-dark {
     color: var(--light);
 }
 
@@ -386,6 +386,11 @@
 
 /* Footer */
 
+.ib-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 .upper-footer-section h3 {
     font-size: 20px;
 }
@@ -394,6 +399,28 @@
     margin-right: 5px;
 }
 
+#lower-footer-links i {
+    font-size: 22px
+}
+
+.footer-link-text {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    -webkit-text-decoration-color: rgba(255, 254, 251, 0);
+    text-decoration-color: rgba(255, 254, 251, 0);
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.upper-footer-section a:hover {
+    .footer-link-text {
+        -webkit-text-decoration-color: rgba(255, 254, 251, 1);
+        text-decoration-color: rgba(255, 254, 251, 1);
+    }
+}
 
 
 /* Home Page */
@@ -429,7 +456,6 @@
     .lower-nav-dropdown {
         background-color: var(--yellow);
     }
-
     
 }
 
