@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-body {
-    background-color: #0F748A;
-}
-
 /* Document Colours */
 
 :root {
@@ -237,6 +233,7 @@ body {
 .account-dropdown {
     right: 0;
     border-radius: 3px;
+    width: fit-content;
 }
 
 .icon-hex {
@@ -274,7 +271,6 @@ body {
     -webkit-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-
 
 
 .hex-nav-link:hover {
@@ -326,7 +322,7 @@ body {
 }
 
 .icon-hex i {
-    font-size: 1.1em;
+    font-size: 1.1em !important;
 }
 
 .hex-nav-link p {
@@ -337,7 +333,14 @@ body {
 
 /* Lower Nav */
 
+.lower-nav-dropdown p {
+    font-size: 14px;
+}
+
 .lower-nav-link-text {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 2px;
@@ -361,12 +364,6 @@ body {
     align-items: center;
 }
 
-.lower-nav-link-text {
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-}
-
 .lower-nav-icon-circle {
     border-radius: 50%;
     display: flex;
@@ -377,7 +374,7 @@ body {
 }
 
 .lower-nav-icon-circle i {
-    padding: 5px;
+    padding: 4px;
     font-size: 10px;
 }
 
@@ -388,13 +385,41 @@ body {
 
 
 
+/* Home Page */
 
-@media (max-width: 992px) {
-    .lower-nav-link {
-        padding: 0.25rem;
+.home-div-test {
+    height: 400px;
+    background-color: var(--mid-grey);
+}
+
+
+
+/* Media Queries */
+
+/* Large Screens Only */
+@media (min-width: 992px) {
+
+    .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 
+/* Medium Screens and Smaller */
+@media (max-width: 991px) {
+
+    .lower-nav-link {
+        padding: 0.25rem;
+    }
+
+    .lower-nav-dropdown {
+        background-color: var(--yellow);
+    }
+
+    
+}
+
+/* XS Screens Only */
 @media (max-width: 575px) {
     #delivery-banner h5 {
         font-size: 14px;
