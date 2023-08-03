@@ -159,6 +159,10 @@ header {
     font-size: 24px;
 }
 
+.section-title-lrg {
+    font-size: 28px;
+}
+
 .ib-container p,
 .ib-container h1,
 .ib-container h2,
@@ -166,6 +170,20 @@ header {
 .ib-container h4,
 .ib-container h5 {
     margin: 0;
+}
+
+.category-icon-circle {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+}
+
+.category-icon-circle i {
+    padding: 4px;
+    font-size: 10px;
 }
 
 
@@ -388,19 +406,7 @@ header {
     align-items: center;
 }
 
-.lower-nav-icon-circle {
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 18px;
-    width: 18px;
-}
 
-.lower-nav-icon-circle i {
-    padding: 4px;
-    font-size: 10px;
-}
 
 #delivery-banner h5 {
     font-size: 18px;
@@ -613,13 +619,13 @@ header {
     --s: 150px;  /* size  */
     --m: 4px;    /* margin */
     --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
-  }
+}
   
-  .container-hex-grid {
+.container-hex-grid {
     font-size: 0; /*disable white space between inline block element */
-  }
-  
-  .container-hex-grid div {
+}
+
+.container-hex-grid div {
     width: var(--s);
     margin: var(--m);
     height: calc(var(--s)*1.1547); 
@@ -628,24 +634,69 @@ header {
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
     background: var(--dark-grey);
     margin-bottom: calc(var(--m) - var(--s)*0.2885); 
-  }
-  .container-hex-grid div:nth-child(odd) {
+}
+.container-hex-grid div:nth-child(odd) {
     background: var(--dark-grey);
-  }
-  .container-hex-grid::before {
+}
+.container-hex-grid::before {
     content: "";
     width: calc(var(--s)/2 + var(--m));
     float: left;
     height: 120%;
     shape-outside: repeating-linear-gradient(     
-                     #0000 0 calc(var(--f) - 3px),      
-                     #000  0 var(--f));
-  }
+                        #0000 0 calc(var(--f) - 3px),      
+                        #000  0 var(--f));
+}
 
-  #featured-products-div {
+#featured-products-div {
     height: 200px;
     background-color: red;
-  }
+}
+
+
+/* Products Page */
+
+.category-label {
+    margin-top: 2px;
+}
+
+.category-label p {
+    font-size: 18px;
+}
+
+.category-label a {
+    border-radius: 2px;
+    border: 1px solid var(--blue);
+    padding: 3px 5px;
+
+}
+
+.box-border-deselected {
+    border: 2px solid var(--dark-grey) !important;
+}
+
+.box-border-selected {
+    border: 2px solid var(--blue) !important;
+}
+
+.sort-select-wrapper {
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#sort-selector:focus-visible {
+    outline: none !important;
+}
+
+#sort-selector {
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    border: none !important;
+    background: var(--light);
+}
+
+
 
 
 
@@ -697,6 +748,7 @@ header {
 
 /* S Screens Only */
 @media (max-width: 767px) {
+    
 
     /* Home Hero Hex Grid */
     :root {
@@ -746,6 +798,10 @@ header {
 
     .section-title {
         font-size: 20px;
+    }
+
+    .section-title-lrg {
+        font-size: 24px;
     }
 
     .main {
