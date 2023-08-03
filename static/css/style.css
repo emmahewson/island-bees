@@ -14,13 +14,14 @@ header {
 
 :root {
     --dark: #140C00;
-    --light: #FFFEFB;
+    --light: #fffefb;
     --light-grey: #EAEAEA;
     --mid-grey: #959595;
     --dark-grey: #4D4D4D;
     --yellow: #FFCD85;
     --yellow-light: #FFE7C6;
-    --blue: #0F748A;
+    --blue: #0f748a;
+    --blue-hov: #00596d;
     --blue-light: #BCE1E9;
     --warning: #B25B76;
     --warning-light: #FAE5EC;
@@ -457,7 +458,7 @@ header {
 }
 
 #home-hero {
-    height: 450px;
+    height: 400px;
     position: relative;
     background-image: url('/media/ib-home-hero.jpg');
     background-position: center;
@@ -467,7 +468,114 @@ header {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    overflow: hidden;
 }
+
+/* Home Hero Hexagon Grid & Button */
+/* Adapted from https://jtauber.github.io/articles/css-hexagon.html */
+
+:root {
+    --hex-size: 1;
+    --hex-pos-right: -50px;
+    --hex-pos-top: -200px;
+    --hex-width: 90px;
+    --hex-height: 156px;
+    --hex-border-side: 45px;
+    --hex-border-top-bottom: 78px;
+    --hex-margin-right: -39px;
+    --hex-margin-bottom: -75px;
+    --hex-margin-top: 79.5px;
+    --hex-row-gap: 6px;
+    --hex-color: rgba(255, 254, 251, 0.85);
+}
+
+.hero-hex-row {
+    position: absolute;
+    clear: left;
+    width: 100%;
+}
+
+.hero-hex-row:nth-of-type(2) {
+    top: calc(var(--hex-height) + var(--hex-row-gap));
+}
+
+.hero-hex-row:nth-of-type(3) {
+    top: calc(calc(var(--hex-height) * 2) + calc(var(--hex-row-gap) * 2));
+}
+
+.hero-hex-row:nth-of-type(4) {
+    top: calc(calc(var(--hex-height) * 3) + calc(var(--hex-row-gap) * 3));
+}
+
+.hex {
+    position: relative;
+    right: var(--hex-pos-right);
+    top: var(--hex-pos-top);
+    float: right;
+    margin-right: calc(var(--hex-margin-right) * var(--hex-size));
+    margin-bottom: calc(var(--hex-margin-bottom) * var(--hex-size));
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.hex .left {
+    float: left;
+    width: 0;
+    border-right: calc(var(--hex-border-side) * var(--hex-size)) solid var(--hex-color);
+    border-top: calc(var(--hex-border-top-bottom) * var(--hex-size)) solid transparent;
+    border-bottom: calc(var(--hex-border-top-bottom) * var(--hex-size)) solid transparent;
+}
+
+.hex .middle {
+    float: left;
+    width: calc(var(--hex-width) * var(--hex-size));
+    height: calc(var(--hex-height) * var(--hex-size));
+    background: var(--hex-color);
+}
+
+.hex .right {
+    float: left;
+    width: 0;
+    border-left: calc(var(--hex-border-side) * var(--hex-size)) solid var(--hex-color);
+    border-top: calc(var(--hex-border-top-bottom) * var(--hex-size)) solid transparent;
+    border-bottom: calc(var(--hex-border-top-bottom) * var(--hex-size)) solid transparent;
+}
+
+.hex.even {
+    margin-top: calc(var(--hex-margin-top) * var(--hex-size));
+}
+
+#hex-hero-button-left {
+    border-right-color: var(--blue);
+}
+
+#hex-hero-button-middle {
+    background-color: var(--blue);
+}
+
+#hex-hero-button-right {
+    border-left-color: var(--blue);
+}
+
+.hex-hero-button-text {
+    font-size: 22px;
+    margin: 0;
+}
+
+#hex-hero-button:hover #hex-hero-button-left {
+    border-right-color: var(--blue-hov);
+}
+
+#hex-hero-button:hover #hex-hero-button-middle {
+    background-color: var(--blue-hov);
+}
+
+#hex-hero-button:hover #hex-hero-button-right {
+    border-left-color: var(--blue-hov);
+}
+
 
 .hex-categories-wrapper {
     margin: 0 auto;
@@ -498,7 +606,7 @@ header {
 }
 
 
-/* Responsive Hexagon Grid: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 */
+/* Responsive Hexagon Grid for homepage categories: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 */
 .main {
     display:flex;
     width: 632px;
@@ -534,6 +642,11 @@ header {
                      #000  0 var(--f));
   }
 
+  #featured-products-div {
+    height: 200px;
+    background-color: red;
+  }
+
 
 
 
@@ -555,6 +668,14 @@ header {
 /* Medium Screens and Smaller */
 @media (max-width: 991px) {
 
+    /* Home Hero Hex Grid */
+    :root {
+        --hex-size: 0.8;
+        --hex-pos-right: -50px;
+        --hex-pos-top: -150px;
+        --hex-row-gap: -26px;
+    }
+
     .lower-nav-link {
         padding: 0.25rem;
     }
@@ -570,11 +691,25 @@ header {
     #home-hero {
         height: 290px;
     }
+
+    
     
 }
 
 /* S Screens Only */
 @media (max-width: 767px) {
+
+    /* Home Hero Hex Grid */
+    :root {
+        --hex-size: 0.7;
+        --hex-pos-right: -50px;
+        --hex-pos-top: -110px;
+        --hex-row-gap: -42px;
+    }
+
+    .hex-hero-button-text {
+        font-size: 20px;
+    }
 
     .header-container {
         height: 97px;
@@ -596,6 +731,18 @@ header {
 
     #home-hero {
         height: 190px;
+    }
+
+    /* Home Hero Hex Grid */
+    :root {
+        --hex-size: 0.5;
+        --hex-pos-right: -80px;
+        --hex-pos-top: -90px;
+        --hex-row-gap: -74px;
+    }
+
+    .hex-hero-button-text {
+        font-size: 16px;
     }
 
     .section-title {
