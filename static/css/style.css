@@ -671,7 +671,6 @@ header {
     /* Home Hero Hex Grid */
     :root {
         --hex-size: 0.8;
-        --hex-pos-right: -50px;
         --hex-pos-top: -150px;
         --hex-row-gap: -26px;
     }
@@ -702,17 +701,12 @@ header {
     /* Home Hero Hex Grid */
     :root {
         --hex-size: 0.7;
-        --hex-pos-right: -50px;
-        --hex-pos-top: -110px;
+        --hex-pos-top: -120px;
         --hex-row-gap: -42px;
     }
 
     .hex-hero-button-text {
         font-size: 20px;
-    }
-
-    .header-container {
-        height: 97px;
     }
 
     .main {
@@ -724,6 +718,11 @@ header {
 
 /* XS Screens Only */
 @media (max-width: 575px) {
+
+    .header-container {
+        height: 97px;
+    }
+
     #delivery-banner h5 {
         font-size: 14px;
         letter-spacing: 0.9px;
@@ -742,7 +741,7 @@ header {
     }
 
     .hex-hero-button-text {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .section-title {
