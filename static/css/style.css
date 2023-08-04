@@ -722,10 +722,6 @@ header {
     font-size: 18px;
 }
 
-.category-label a {
-    
-
-}
 
 .box-border-deselected {
     border: 2px solid var(--dark-grey) !important;
@@ -756,8 +752,9 @@ header {
     background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% / cover repeat;
 }
 
+
 .product-card div.card-body h5 {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .rating-hex-small {
@@ -775,10 +772,6 @@ header {
 
 .rating-hex-false {
     color: var(--light-grey);
-}
-
-.card-rating-div {
-    width: fit-content;
 }
 
 .card-rating-div p {
@@ -813,8 +806,9 @@ header {
     line-height: 1;
 }
 
-.card-footer {
-    background-color: white;
+.card-footer,
+.card-body {
+    background-color: inherit;
     border: none;
 }
 
@@ -829,7 +823,7 @@ header {
 
 .card-category-label a {
     width: fit-content;
-    border-radius: 2px;
+    border-radius: 0 2px 2px 0;
     background-color:rgba(255, 255, 255, 0.95);
     padding: 5px 10px 5px 15px;
 }
@@ -896,6 +890,10 @@ header {
     
     #home-hero {
         height: 290px;
+    }
+
+    .card-price {
+        font-size: 24px;
     }
 
     

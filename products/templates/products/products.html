@@ -7,7 +7,7 @@
 {% block content %}
 
 <!-- Products Page Content -->
-<div class="container-fluid ib-container bg-light-grey text-dark-grey px-3 px-md-4 py-3 py-md-5" id="products-div">
+<div class="container-fluid ib-container bg-light-grey text-dark-grey px-3 px-md-4 py-4" id="products-div">
     
     <div class="row">
 
@@ -31,8 +31,8 @@
     <div class="row">
         <div class="product-container">
             <div class="row mt-1 mb-2">
-                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                    <div class="sort-select-wrapper w-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
+                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
+                    <div class="sort-select-wrapper w-75 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
                         <select id="sort-selector" class="custom-select custom-select-sm rounded-0 ">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -46,8 +46,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 order-md-first">
-                    <p class="">
+                <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start">
+                    <p class="text-center text-md-start mt-2 mt-md-0">
                         {% if search_term or current_categories or current_sorting != 'None_None' %}
                             <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                         {% endif %}
@@ -57,7 +57,7 @@
             </div>
             <div class="row">
                 {% for product in products %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 gy-3 align-self-stretch">
+                    <div class="col-md-6 col-lg-4 gy-3">
                         <!-- Product Card -->
                         <div class="card shadow product-card h-100">
 
@@ -72,7 +72,8 @@
 
                             <!-- Product Image -->
                             {% if product.image %}
-                                <a href="">
+                                <a class="card-image-link" href="">
+
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                             {% else %}
@@ -88,7 +89,7 @@
 
                             </div>
 
-                            <div class="card-footer pt-0">
+                            <div class="card-footer pt-0 pb-3">
 
                                 <div class="row">
                                     <div class="col-6 pe-0">
@@ -117,34 +118,21 @@
                                         <div class="row">
                                             <!-- Product EDIT / DELETE Buttons -->
                                             {% if request.user.is_superuser %}
-                                                <div class="card-edit-delete-div mt-3">
-                                                    <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-3">EDIT</a>
+                                                <div class="card-edit-delete-div mt-2 gy-3">
+                                                    <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
                                                     <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
                                                 </div>
                                             {% endif %}
                                         </div>
                                     </div>
 
-                                    <div class="col-6 ps-0 mt-auto">
+                                    <div class="col-6 ps-0 mt-auto d-flex justify-content-end">
                                         
                                         <!-- Product Price -->
-                                    <div class=""><p class="card-price weight-semibold">£{{ product.price }}</p></div>
+                                        <div class=""><p class="card-price weight-semibold">£{{ product.price }}</p></div>
                                     </div>
                                 </div>
 
-                                <div class="row justify-content-between">
-                                    
-
-
-                                </div>
-                                    
-                                <div class="d-flex mt-2 justify-content-end">
-
-                                    
-
-                                    
-                                    
-                                </div>
                             </div>
                                 
 
