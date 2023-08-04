@@ -1,0 +1,22 @@
+<!-- Clickable rating - style needs changing Taken from card page where I included in by mistake -->
+
+{% if rating and rating > 0 %}
+    <a href="#review-div" class="text-decoration-none text-blue card-rating-link">
+    <div class="card-rating-div">
+        <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-{% if rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-{% if rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+        <p class=" d-inline font-body ms-1 align-bottom text">14 REVIEWS</p>
+    </div>
+    </a>
+{% else %}
+    <div>
+        <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+        <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+    </div>
+{% endif %}

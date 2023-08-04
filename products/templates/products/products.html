@@ -17,13 +17,13 @@
         </div>
 
         <!-- Category Name ----------------------------------------------------- WILL NEED TO BE DYNAMIC -->
-        <div class="col-12 category-label d-flex justify-content-center">
-            <a href="" class="font-body d-flex text-blue text-decoration-none">
+        <div class="col">
+            <div class="category-label font-body d-flex text-blue text-decoration-none mx-auto">
                 <div class="bg-blue category-icon-circle me-2">
                     <i class="fas fa-box-archive text-ib-light text-center"></i>
                 </div>
                 <p class="font-title weight-semibold section-title text-uppercase lh-1">COURSES</p>
-            </a>
+            </div>
         </div>
     </div>
 
@@ -55,22 +55,110 @@
                     </p>
                 </div>
             </div>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-sm-6 col-md-6 col-lg-4 gy-3 align-self-stretch">
+                        <!-- Product Card -->
+                        <div class="card shadow product-card h-100">
+
+                            <div class="card-category-label mb-1 position-absolute">
+                                <a href="" class="font-body d-flex text-blue text-decoration-none align-items-center">
+                                    <div class="bg-blue category-icon-circle-sm me-1">
+                                        <i class="fas fa-box-archive text-ib-light text-center"></i>
+                                    </div>
+                                    <p class="font-title weight-semibold section-title text-uppercase">COURSES</p>
+                                </a>
+                            </div>
+
+                            <!-- Product Image -->
+                            {% if product.image %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                                </a>
+                            {% endif %}
+
+                            <div class="card-body bg-ib-white pb-2">
+
+                                <!-- Product Name -->
+                                <h5 class="text-uppercase text-center font-body weight-semibold">{{ product.name }}</h5>
+
+                            </div>
+
+                            <div class="card-footer pt-0">
+
+                                <div class="row">
+                                    <div class="col-6 pe-0">
+                                        <div class="row">
+                                            <!-- Product Rating --------------------------------------------------------------------- WILL NEED TO BE DYNAMIC -->
+                                            {% if rating and rating > 0 %}
+                                            <div class="card-rating-div pe-0">
+                                                <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small me-2 rating-hex-{% if rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <p class=" d-inline font-body mt-n2 text-nowrap">14 REVIEWS</p>
+                                            </div>
+                                            {% else %}
+                                                <div class="">
+                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- Product EDIT / DELETE Buttons -->
+                                            {% if request.user.is_superuser %}
+                                                <div class="card-edit-delete-div mt-3">
+                                                    <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-3">EDIT</a>
+                                                    <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 ps-0 mt-auto">
+                                        
+                                        <!-- Product Price -->
+                                    <div class=""><p class="card-price weight-semibold">£{{ product.price }}</p></div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-between">
+                                    
+
+
+                                </div>
+                                    
+                                <div class="d-flex mt-2 justify-content-end">
+
+                                    
+
+                                    
+                                    
+                                </div>
+                            </div>
+                                
+
+                        </div>
+                        
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+
+    <div id="review-div"></div>
 </div>
 
-
-<div class="container-fluid" id="products-div">
-    <div class="row">
-        
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ products }}
-        </div>
-    </div>
-
-</div>
 
 
 
