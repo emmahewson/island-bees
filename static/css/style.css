@@ -401,6 +401,10 @@ header {
     }
 }
 
+.dropdown-item:hover {
+    background: none !important;
+}
+
 .lower-nav-link > div {
     display: flex;
     align-items: center;
