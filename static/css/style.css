@@ -204,6 +204,28 @@ button {
     background: var(--blue-grad-hov);
 }
 
+#btt-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--yellow);
+    background-blend-mode: lighten;
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    z-index: 9;
+
+}
+
+#btt-btn a {
+    cursor: pointer;
+}
+
+#btt-btn a i {
+    font-size: 1.5em !important;
+
+}
+
+
 
 
 .category-icon-circle,
@@ -737,10 +759,6 @@ button {
                         #000  0 var(--f));
 }
 
-#featured-products-div {
-    height: 200px;
-    background-color: red;
-}
 
 
 /* Products Page */
@@ -758,7 +776,7 @@ button {
 }
 
 .product-count {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -1020,13 +1038,26 @@ button {
 @media (max-width: 434px) {
     .main {
         width: 316px;
+        --s: 110px;
     }
 }
 
 @media (max-width: 351px) {
+
     .main {
-        width: 237px;
-        height: 300px;
+        width: 250px;
+        --s: 90px;
+    }
+    .container-hex-grid div.py-5 {
+        padding-top: 1.5rem !important;
+    }
+
+    .category-icon-lg {
+        font-size: 24px;
+    }
+
+    .category-icon-lg + p {
+        font-size: 12px;
     }
 }
 
