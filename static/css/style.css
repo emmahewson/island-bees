@@ -13,6 +13,8 @@ header {
 /* Document Colours */
 
 :root {
+
+    /* Solid Colours */
     --dark: #140C00;
     --light: #fffefb;
     --light-grey: #EAEAEA;
@@ -29,6 +31,10 @@ header {
     --warning-light: #FAE5EC;
     --success: #419759;
     --success-light: #E2F0E6;
+
+    /* Gradients */
+    --blue-grad: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #1F8B9D 0%, #04677A 100%);
+    --blue-grad-hov: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #167687 0%, #015464 100%);
 }
 
 /* Text Colour Classes */
@@ -155,7 +161,12 @@ header {
     font-weight: 700;
 }
 
+
 /* Recurring Elements */
+
+.ib-lh-1 {
+    line-height: 0.8;
+}
 
 .section-title {
     font-size: 24px;
@@ -173,6 +184,27 @@ header {
 .ib-container h5 {
     margin: 0;
 }
+
+button {
+    border: none;
+}
+
+.ib-button {
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background: var(--blue-grad);
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ib-button:hover {
+    background: var(--blue-grad-hov);
+}
+
+
 
 .category-icon-circle,
 .category-icon-circle-sm {
@@ -574,10 +606,6 @@ header {
     float: right;
     margin-right: calc(var(--hex-margin-right) * var(--hex-size));
     margin-bottom: calc(var(--hex-margin-bottom) * var(--hex-size));
-    transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
 }
 
 .hex .left {
@@ -605,6 +633,13 @@ header {
 
 .hex.even {
     margin-top: calc(var(--hex-margin-top) * var(--hex-size));
+}
+
+#hex-hero-button {
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
 }
 
 #hex-hero-button-left {
@@ -722,13 +757,17 @@ header {
     font-size: 18px;
 }
 
+.product-count {
+    font-size: 20px;
+}
+
 
 .box-border-deselected {
-    border: 2px solid var(--dark-grey) !important;
+    border: 1px solid var(--dark-grey) !important;
 }
 
 .box-border-selected {
-    border: 2px solid var(--blue) !important;
+    border: 1px solid var(--blue) !important;
 }
 
 .sort-select-wrapper {

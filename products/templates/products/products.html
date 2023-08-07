@@ -30,10 +30,13 @@
     <!-- Product Container -->
     <div class="row">
         <div class="product-container">
+
+            <!-- No. of products & sort-dropdown -->
             <div class="row mt-1 mb-2">
+                <!-- Sort-dropdown -->
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
                     <div class="sort-select-wrapper w-75 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
-                        <select id="sort-selector" class="custom-select custom-select-sm rounded-0 ">
+                        <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -46,21 +49,24 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start">
-                    <p class="text-center text-md-start mt-2 mt-md-0">
+                <!-- Products link & No. of Products -->
+                <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-3 my-md-0">
+
                         {% if search_term or current_categories or current_sorting != 'None_None' %}
-                            <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+                            <a href="{% url 'products' %}" class="text-blue"><p class="small text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">ALL PRODUCTS </p></a>
+                            <p class="product-count text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">|</p>
                         {% endif %}
-                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
-                    </p>
+                        <p class="product-count text-center font-body text-md-start mt-2 mt-md-0 ib-lh-1">{{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</p>
                 </div>
             </div>
-            <div class="row">
+
+            <!-- Product Cards Container -->
+            <div class="row pb-4">
+
+                <!-- Product Card -->
                 {% for product in products %}
                     <div class="col-md-6 col-lg-4 gy-3">
-                        <!-- Product Card -->
                         <div class="card shadow product-card h-100">
-
                             <div class="card-category-label mb-1 position-absolute">
                                 <a href="" class="font-body d-flex text-blue text-decoration-none align-items-center">
                                     <div class="bg-blue category-icon-circle-sm me-1">
@@ -73,7 +79,6 @@
                             <!-- Product Image -->
                             {% if product.image %}
                                 <a class="card-image-link" href="">
-
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                             {% else %}
@@ -82,37 +87,27 @@
                                 </a>
                             {% endif %}
 
+                            <!-- Product Name -->
                             <div class="card-body bg-ib-white pb-2">
-
-                                <!-- Product Name -->
                                 <h5 class="text-uppercase text-center font-body weight-semibold">{{ product.name }}</h5>
-
                             </div>
 
+                            <!-- Card Footer - Rating, Price & Edit/Delete -->
                             <div class="card-footer pt-0 pb-3">
 
                                 <div class="row">
                                     <div class="col-6 pe-0">
                                         <div class="row">
-                                            <!-- Product Rating --------------------------------------------------------------------- WILL NEED TO BE DYNAMIC -->
-                                            {% if rating and rating > 0 %}
+
+                                            <!-- Product Rating -->
                                             <div class="card-rating-div pe-0">
                                                 <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 <span class="rating-hex-small rating-hex-{% if rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 <span class="rating-hex-small me-2 rating-hex-{% if rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                                <p class=" d-inline font-body mt-n2 text-nowrap">14 REVIEWS</p>
+                                                <p class=" d-inline font-body mt-n2 text-nowrap">0 REVIEWS</p>
                                             </div>
-                                            {% else %}
-                                                <div class="">
-                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                                                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                                                </div>
-                                            {% endif %}
                                         </div>
 
                                         <div class="row">
@@ -132,19 +127,22 @@
                                         <div class=""><p class="card-price weight-semibold">£{{ product.price }}</p></div>
                                     </div>
                                 </div>
-
                             </div>
-                                
-
                         </div>
-                        
                     </div>
                 {% endfor %}
+                <!-- End of Product Card -->
             </div>
+            <!-- End of Product Cards Container -->
+
+            <div class="row">
+                <div class="col mt-3 mb-5 d-flex align-items-center">
+                    <button id="btt-btn" class="ib-button bg-blue text-white weight-bold font-title text-decoration-none mx-auto shadow-sm">BACK TO TOP</button>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <div id="review-div"></div>
 </div>
 
 

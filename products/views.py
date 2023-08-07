@@ -13,7 +13,7 @@ def all_products(request):
 
     context = {
         'products': products,
-        'rating': 5,  # Need to create code for this
+        'rating': 0,  # Need to create code for this
     }
 
     return render(request, 'products/products.html', context)
