@@ -2,11 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+/* Whole Page Styling */
+
 body,
 header {
     max-width: 1400px;
     background-color: var(--mid-grey);
     margin: 0 auto;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 
@@ -35,6 +41,8 @@ header {
     /* Gradients */
     --blue-grad: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #1F8B9D 0%, #04677A 100%);
     --blue-grad-hov: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #167687 0%, #015464 100%);
+    --grey-grad: radial-gradient(164.52% 51.22% at 50.33% 48.78%, #EAEAEA 64.59%, #DCDCDC 100%);
+    --grey-grad-hov: radial-gradient(164.52% 51.22% at 50.33% 48.78%, #d4d4d4 64.59%, #bfbfbf 100%);
 }
 
 /* Text Colour Classes */
@@ -190,18 +198,62 @@ button {
 }
 
 .ib-button {
-    font-size: 18px;
+    font-size: 16px;
     padding: 6px 10px;
     border-radius: 2px;
+
+}
+
+
+.ib-button-blue {
     background: var(--blue-grad);
+}
+
+.ib-button-grey {
+    background: var(--grey-grad);
+}
+
+.ib-button-yellow {
+    background: var(--yellow);
+}
+
+.ib-button-blue,
+.ib-button-grey,
+.ib-button-yellow {
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
 
-.ib-button:hover {
+.ib-button-blue:hover {
     background: var(--blue-grad-hov);
+}
+
+.ib-button-grey:hover {
+    background: var(--grey-grad-hov);
+}
+
+.ib-button-yellow:hover {
+    background: var(--yellow-hov);
+}
+
+.btn {
+    border-color: var(--blue);
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus,
+.btn:focus-visible,
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    background-color: var(--blue-hov);
+    color: white;
+    border-color: var(--blue);
 }
 
 #btt-btn {
@@ -833,23 +885,23 @@ button {
     color: var(--light-grey);
 }
 
-.card-rating-div p {
+.rating-div p {
     font-size: 12px;
-    text-decoration: underline;
+    text-decoration: underline !important;
     text-underline-offset: 2px;
     text-decoration-thickness: 1px;
-    -webkit-text-decoration-color: rgba(15, 116, 138, 0);
-    text-decoration-color: rgba(15, 116, 138, 0);
+    -webkit-text-decoration-color: rgba(15, 116, 138, 0) !important;
+    text-decoration-color: rgba(15, 116, 138, 0) !important;
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
 }
 
-.card-rating-link:hover {
-    .card-rating-div p {
-        -webkit-text-decoration-color: rgba(15, 116, 138,1);
-        text-decoration-color: rgba(15, 116, 138, 1);
+.product-rating-link:hover {
+    .rating-div p {
+        -webkit-text-decoration-color: rgba(15, 116, 138, 1) !important;
+        text-decoration-color: rgba(15, 116, 138, 1) !important;
     }
     .rating-hex-true {
         color: var(--yellow-hov);
@@ -858,6 +910,7 @@ button {
         color: var(--light-grey-hov);
     } 
 }
+
 
 .card-price {
     font-size: 28px;
@@ -876,7 +929,8 @@ button {
     top: 5%
 }
 
-.card-category-label p {
+.card-category-label p,
+.product-page-category p {
     font-size: 12px;
 }
 
@@ -887,7 +941,9 @@ button {
     padding: 5px 10px 5px 15px;
 }
 
-.card-category-label a:hover {
+
+.card-category-label a:hover,
+.product-page-category a:hover {
 
     background-color: var(--blue);
     color: white;
@@ -903,12 +959,34 @@ button {
 
 .category-icon-circle-sm i,
 .category-icon-circle-sm,
-.card-category-label a {
+.card-category-label a,
+.product-page-category a {
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
 }
+
+
+/* Product Details Page */
+
+.product-page-name,
+.product-page-price {
+    font-size: 24px;
+}
+
+.product-page-category a {
+    width: fit-content;
+    border-radius: 2px;
+    padding: 0px 5px;
+    border: 1px solid var(--blue);
+}
+
+#review-div h2 {
+    font-size: 24px;
+}
+
+
 
 
 

@@ -66,7 +66,7 @@
         </div>
         <!-- SHOP NOW button -->
         <div class="hex">
-            <a href="" id="hex-hero-button">
+            <a href="{% url 'products' %}" id="hex-hero-button">
                 <div id="hex-hero-button-left" class="left"></div>
                 <div id="hex-hero-button-middle" class="middle d-flex align-items-center">
                     <p class="font-title weight-bold text-center text-ib-light hex-hero-button-text">SHOP NOW!</p>
@@ -191,19 +191,19 @@
                                 <div class="card-category-label mb-1 position-absolute">
                                     <a href="" class="font-body d-flex text-blue text-decoration-none align-items-center">
                                         <div class="bg-blue category-icon-circle-sm me-1">
-                                            <i class="fas fa-box-archive text-ib-light text-center"></i>
+                                            <i class="fas fa-{% if product.category.name == 'the_bees' %}bug{% elif product.category.name == 'the_kit' %}box-archive{% elif product.category.name == 'courses' %}graduation-cap{% elif product.category.name == 'produce' %}jar{% else %}shop{% endif %} text-ib-light text-center"></i>
                                         </div>
-                                        <p class="font-title weight-semibold section-title text-uppercase">COURSES</p>
+                                        <p class="font-title weight-semibold section-title text-uppercase">{{ product.category.friendly_name }}</p>
                                     </a>
                                 </div>
 
                                 <!-- Product Image -->
                                 {% if product.image %}
-                                    <a class="card-image-link" href="">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     </a>
                                 {% else %}
-                                    <a href="">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
                                     </a>
                                 {% endif %}
@@ -221,7 +221,7 @@
                                             <div class="row">
 
                                                 <!-- Product Rating -->
-                                                <div class="card-rating-div pe-0">
+                                                <div class="rating-div pe-0">
                                                     <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                     <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                     <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
