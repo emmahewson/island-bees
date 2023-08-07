@@ -6,7 +6,12 @@
 
 {% block content %}
 
+<!-- Hero Div - Image, Hexes & SHOP NOW button -->
 <div id="home-hero">
+
+    <!-- Hex Grid -->
+    <!-- Adapted from https://jtauber.github.io/articles/css-hexagon.html -->
+    <!-- Row 1 -->
     <div class="hero-hex-row">
         <div class="hex">
             <div class="left"></div>
@@ -24,6 +29,7 @@
             <div class="right"></div>
         </div>
     </div>
+    <!-- Row 2 -->
     <div class="hero-hex-row">
         <div class="hex">
             <div class="left"></div>
@@ -46,6 +52,7 @@
             <div class="right"></div>
         </div>
     </div>
+    <!-- Row 3 - Contains Button -->
     <div class="hero-hex-row">
         <div class="hex">
             <div class="left"></div>
@@ -57,6 +64,7 @@
             <div class="middle"></div>
             <div class="right"></div>
         </div>
+        <!-- SHOP NOW button -->
         <div class="hex">
             <a href="" id="hex-hero-button">
                 <div id="hex-hero-button-left" class="left"></div>
@@ -72,6 +80,7 @@
             <div class="right"></div>
         </div>
     </div>
+    <!-- Row 4 -->
     <div class="hero-hex-row">
         <div class="hex">
             <div class="left"></div>
@@ -98,12 +107,11 @@
             <div class="middle"></div>
             <div class="right"></div>
         </div>
-    </div>
-    
-    
-        
+    </div>       
 </div>
 
+
+<!-- Welcome & Intro Info div -->
 <div class="container-fluid ib-container bg-blue-light text-dark-grey text-center px-3 px-md-4 py-3 py-md-5">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -115,6 +123,7 @@
     </div>
 </div>
 
+<!-- Shop By Category div w/ category buttons -->
 <div class="container-fluid ib-container bg-ib-light text-dark-grey px-3 px-md-4 py-3 py-md-5">
     <div class="row text-center">
         <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -122,11 +131,8 @@
         </div>
     </div>
 
-    
-
-
-
-<!-- Responsive Hexagon Grid: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 -->
+    <!-- Category Buttons -->
+    <!-- Responsive Hexagon Grid: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 -->
     <div class="mt-3 pb-5 hex-categories-wrapper">
         <div class="main">
             <div class="container-hex-grid">
@@ -168,7 +174,6 @@
         <div class="col-12">
             <h1 class="font-title weight-bold section-title-lrg mb-2 text-center">FEATURED PRODUCTS</h1>
         </div>
-
     </div>
 
     <!-- Product Container -->
@@ -251,10 +256,7 @@
                 <!-- End of Product Card -->
             </div>
             <!-- End of Product Cards Container -->
-
-
-        </div>
-        
+        </div>  
     </div>
 </div>
 

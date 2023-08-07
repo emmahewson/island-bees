@@ -657,7 +657,9 @@ button {
     margin-top: calc(var(--hex-margin-top) * var(--hex-size));
 }
 
-#hex-hero-button {
+#hex-hero-button-left,
+#hex-hero-button-middle,
+#hex-hero-button-right {
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
