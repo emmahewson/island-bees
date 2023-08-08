@@ -122,8 +122,8 @@
     </div>
 </div>
 
-<div class="container-fluid ib-container bg-light-grey text-ib-dark px-3 px-md-4 py-5 text-center" id="review-div">
-    <div class="row">
+<div class="container-fluid ib-container bg-light-grey text-ib-dark py-5" id="review-div">
+    <div class="row text-center px-3 px-sm-5">
         <div class="col-12">
             <h2 class="font-title weight-bold section-title mb-2 text-uppercase">REVIEWS OF {{ product.name }}</h2>
         </div>
@@ -137,17 +137,59 @@
         </div>
     </div>
 
-    {% for review in reviews %}
-        <p>{{ review.title }}</p>
-        <p>{{ review.user }}</p>
-        <p>{{ review.created_on }}</p>
-        <p>{{ review.rating }}</p>
-        <p>{{ review.content }}</p>
+    <div class="row mt-5 px-3 px-sm-5">
+        {% if reviews|length > 0 %}
+            {% for review in reviews %}
+                <div class="col-12 bg-ib-white mb-3">
+                    <div class="row font-body">
+                        <div class="col-12 col-md-10 d-flex align-items-end">
+                            <h3 class="me-3">{{ review.title }}</h3>
+                            <div>
+                                <p class="d-inline me-2">{{ review.user }}</p>
+                                <p class="d-inline">{{ review.created_on }}</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 text-end">
+                            <!-- Review Rating -->
+                            <div class="rating-div pe-0">
+                                <span class="rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row font-body">
+                        <p>{{ review.content }}</p>
+                    </div>
+
+                    <!-- Review EDIT / DELETE Buttons ------------ NEED TO ADD CURRENT USER CRUD CONTROLS -->
+                    {% if request.user.is_superuser %}
+                        <div class="row">
+                            <div class="card-edit-delete-div mt-2 gy-3">
+                                <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                                <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                            </div>
+                        </div>
+                        
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <!-- No Reviews Text -->
+            <div class="col-12 text-center">
+                <p class="font-body">No Reviews</p>
+            </div>
+        {% endif %}
+    </div>
 
 
 
 
-    {% endfor %}
+
+    
 </div>
 
 {% endblock %}
