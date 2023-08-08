@@ -25,25 +25,25 @@
 
 
             <!-- Product Rating -->
-            {% if rating and rating > 0 %}
+            {% if product.average_rating %}
                 <a href="#review-div" class="text-decoration-none text-blue product-rating-link">
                     <div class="rating-div pe-0 mt-3">
-                        <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small me-2 rating-hex-{% if rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <p class=" d-inline font-body mt-n2 text-nowrap">0 REVIEWS</p>
+                        <span class="rating-hex-small rating-hex-{% if product.average_rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                        <span class="rating-hex-small rating-hex-{% if product.average_rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                        <span class="rating-hex-small rating-hex-{% if product.average_rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                        <span class="rating-hex-small rating-hex-{% if product.average_rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                        <span class="rating-hex-small me-2 rating-hex-{% if product.average_rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEWS</p>
                     </div>
                 </a>
             {% else %}
                 <div class="rating-div pe-0 mt-3">
-                    <span class="rating-hex-small rating-hex-{% if rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-{% if rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-{% if rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-{% if rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                    <span class="rating-hex-small me-2 rating-hex-{% if rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                    <p class=" d-inline font-body mt-n2 text-nowrap">0 REVIEWS</p>
+                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-false me-2">&#x2B22;</span>
+                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEWS</p>
                 </div>
             {% endif %}
 
@@ -136,6 +136,18 @@
             </a>
         </div>
     </div>
+
+    {% for review in reviews %}
+        <p>{{ review.title }}</p>
+        <p>{{ review.user }}</p>
+        <p>{{ review.created_on }}</p>
+        <p>{{ review.rating }}</p>
+        <p>{{ review.content }}</p>
+
+
+
+
+    {% endfor %}
 </div>
 
 {% endblock %}
