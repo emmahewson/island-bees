@@ -994,6 +994,14 @@ button {
     font-size: 24px;
 }
 
+.review-container {
+    border-radius: 2px;
+}
+
+.review-title {
+    font-size: 24px;
+}
+
 
 
 

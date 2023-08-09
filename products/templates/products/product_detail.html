@@ -137,19 +137,26 @@
         </div>
     </div>
 
-    <div class="row mt-5 px-3 px-sm-5">
+    <div class="row mt-5 px-3 px-md-5">
         {% if reviews|length > 0 %}
             {% for review in reviews %}
-                <div class="col-12 bg-ib-white mb-3">
-                    <div class="row font-body">
-                        <div class="col-12 col-md-10 d-flex align-items-end">
-                            <h3 class="me-3">{{ review.title }}</h3>
-                            <div>
-                                <p class="d-inline me-2">{{ review.user }}</p>
-                                <p class="d-inline">{{ review.created_on }}</p>
+                <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 py-3 review-container">
+                    <div class="row font-body text-dark-grey">
+                        <div class="col-12 col-sm-9">
+                            <h3 class="me-3 review-title weight-semibold d-block d-lg-inline me-2">{{ review.title }}</h3>
+                            <div class="d-inline-flex">
+                                <div class="review-user-div text-blue me-2 d-flex align-items-center">
+                                    <div class="category-icon-circle-sm bg-blue me-1">
+                                        <i class="fas fa-user text-ib-light text-center"></i>
+                                    </div>
+                                    <p class="d-inline me-2">{{ review.user }}</p>
+                                </div>
+
+                                
+                                <p class="d-inline weight-light review-date">{{ review.created_on }}</p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-2 text-end">
+                        <div class="col-12 col-sm-3 text-start text-sm-end">
                             <!-- Review Rating -->
                             <div class="rating-div pe-0">
                                 <span class="rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
@@ -165,7 +172,7 @@
                     </div>
 
                     <!-- Review EDIT / DELETE Buttons ------------ NEED TO ADD CURRENT USER CRUD CONTROLS -->
-                    {% if request.user.is_superuser %}
+                    {% if request.user.is_superuser or request.user == review.user %}
                         <div class="row">
                             <div class="card-edit-delete-div mt-2 gy-3">
                                 <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
