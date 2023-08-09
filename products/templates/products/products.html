@@ -16,15 +16,18 @@
             <h1 class="font-title weight-bold section-title-lrg mb-2 text-center">PRODUCTS</h1>
         </div>
 
-        <!-- Category Name ----------------------------------------------------- WILL NEED TO BE DYNAMIC -->
+        <!-- Category Name -->
+
+        {% if current_category %}
         <div class="col">
             <div class="category-label font-body d-flex text-blue text-decoration-none mx-auto">
                 <div class="bg-blue category-icon-circle me-2">
-                    <i class="fas fa-box-archive text-ib-light text-center"></i>
+                    <i class="fas fa-{% if current_category.name == 'the_bees' %}bug{% elif current_category.name == 'the_kit' %}box-archive{% elif current_category.name == 'courses' %}graduation-cap{% elif current_category.name == 'produce' %}jar{% else %}shop{% endif %} text-ib-light text-center"></i>
                 </div>
-                <p class="font-title weight-semibold section-title text-uppercase lh-1">COURSES</p>
+                <p class="font-title weight-semibold section-title text-uppercase lh-1">{{ current_category.friendly_name }}</p>
             </div>
         </div>
+        {% endif %}
     </div>
 
     <!-- Product Container -->
