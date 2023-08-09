@@ -55,7 +55,7 @@
                 <!-- Products link & No. of Products -->
                 <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-3 my-md-0">
 
-                        {% if search_term or current_categories or current_sorting != 'None_None' %}
+                        {% if current_category != None %}
                             <a href="{% url 'products' %}" class="text-blue"><p class="small text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">ALL PRODUCTS </p></a>
                             <p class="product-count text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">|</p>
                         {% endif %}

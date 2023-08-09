@@ -23,7 +23,6 @@ def all_products(request):
 
             print(category)
 
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
