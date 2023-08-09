@@ -149,7 +149,7 @@
                                     <div class="category-icon-circle-sm bg-blue me-1">
                                         <i class="fas fa-user text-ib-light text-center"></i>
                                     </div>
-                                    <p class="d-inline me-2">{{ review.user }}</p>
+                                    <p class="d-inline me-2">{% if review.user != None %}{{ review.user }}{% else %}Anonymous{% endif %}</p>
                                 </div>
 
                                 
