@@ -33,7 +33,7 @@
                         <span class="rating-hex-small rating-hex-{% if product.average_rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
                         <span class="rating-hex-small rating-hex-{% if product.average_rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
                         <span class="rating-hex-small me-2 rating-hex-{% if product.average_rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEWS</p>
+                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count > 1%}S{% endif %}</p>
                     </div>
                 </a>
             {% else %}
@@ -43,7 +43,7 @@
                     <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
                     <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
                     <span class="rating-hex-small rating-hex-false me-2">&#x2B22;</span>
-                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEWS</p>
+                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count > 1%}S{% endif %}</p>
                 </div>
             {% endif %}
 
