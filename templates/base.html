@@ -63,7 +63,7 @@
 
             <!-- Search Box -->
             <div class="col-12 col-lg-4 my-auto">
-                <form method="GET" action="">
+                <form method="GET" action="{% url 'products' %}">
                     <div class="ib-search-box">
                         <input type="text" name="q" placeholder="Search our products">
                         <button type="submit">
@@ -137,7 +137,7 @@
         <div class="collapse" id="collapseSearch">
             <div class="row d-block d-lg-none bg-ib-light">
                 <div class="col-12 px-3 py-2">
-                    <form method="GET" action="">
+                    <form method="GET" action="{% url 'products' %}">
                         <div class="ib-search-box">
                             <input type="text" name="q" placeholder="Search our products">
                             <button type="submit">
