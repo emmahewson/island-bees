@@ -990,6 +990,10 @@ button {
     border: 1px solid var(--blue);
 }
 
+.review-header {
+    height: fit-content;
+}
+
 #review-div h2 {
     font-size: 24px;
 }
@@ -999,12 +1003,15 @@ button {
 }
 
 .review-title {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 0.8;
 }
 
-
-
-
+.review-user-div,
+.review-date,
+.review-rating .rating-hex-small {
+    line-height: 1;
+}
 
 
 
@@ -1071,7 +1078,6 @@ button {
     .main {
         width: 474px;
     }
-
 
 }
 
@@ -1155,6 +1161,15 @@ button {
     .category-icon-lg + p {
         font-size: 12px;
     }
+
+
+    /* Product Details Page */
+
+    .review-title {
+        font-size: 18px;
+        line-height: 1;
+    }
+    
 }
 
 

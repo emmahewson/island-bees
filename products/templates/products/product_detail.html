@@ -140,12 +140,12 @@
     <div class="row mt-5 px-3 px-md-5">
         {% if reviews|length > 0 %}
             {% for review in reviews %}
-                <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 py-3 review-container">
-                    <div class="row font-body text-dark-grey">
-                        <div class="col-12 col-sm-9">
-                            <h3 class="me-3 review-title weight-semibold d-block d-lg-inline me-2">{{ review.title }}</h3>
+                <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 pt-3 pb-3 review-container">
+                    <div class="row font-body text-dark-grey review-header mb-2">
+                        <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
+                            <h3 class="me-3 review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-lg-2">{{ review.title }}</h3>
                             <div class="d-inline-flex">
-                                <div class="review-user-div text-blue me-2 d-flex align-items-center">
+                                <div class="review-user-div text-blue me-2 d-flex align-items-end">
                                     <div class="category-icon-circle-sm bg-blue me-1">
                                         <i class="fas fa-user text-ib-light text-center"></i>
                                     </div>
@@ -153,12 +153,12 @@
                                 </div>
 
                                 
-                                <p class="d-inline weight-light review-date">{{ review.created_on }}</p>
+                                <p class="d-inline weight-light review-date m-0">{{ review.created_on }}</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-3 text-start text-sm-end">
                             <!-- Review Rating -->
-                            <div class="rating-div pe-0">
+                            <div class="rating-div review-rating pe-0">
                                 <span class="rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                 <span class="rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                 <span class="rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row font-body">
+                    <div class="row font-body review-content">
                         <p>{{ review.content }}</p>
                     </div>
 
