@@ -12,6 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         'image',
         'is_featured',
     )
+    list_editable = ('is_featured',)
 
     ordering = ('name',)
 
@@ -32,6 +33,7 @@ class ReviewAdmin(admin.ModelAdmin):
         'created_on',
         'is_featured'
     )
+    list_editable = ('is_featured',)
 
 
 admin.site.register(Product, ProductAdmin)

@@ -95,6 +95,11 @@ class Review(models.Model):
         default=0, blank=False, null=False
     )
 
+    class Meta:
+        ordering = ('-is_featured',)
+
     def __str__(self):
         """ String representation of Review title """
         return self.title
+
+
