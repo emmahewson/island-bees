@@ -111,11 +111,11 @@
 
                                             <!-- Product Rating -->
                                             <div class="rating-div pe-0">
-                                                <span class="rating-hex-small rating-hex-{% if product.average_rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                                <span class="rating-hex-small rating-hex-{% if product.average_rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                                <span class="rating-hex-small rating-hex-{% if product.average_rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                                <span class="rating-hex-small rating-hex-{% if product.average_rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                                <span class="rating-hex-small me-2 rating-hex-{% if product.average_rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if product.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if product.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if product.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="rating-hex-small me-2 rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 <p class="d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count > 1%}S{% endif %}</p>
                                             </div>
                                         </div>

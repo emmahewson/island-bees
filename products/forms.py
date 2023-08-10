@@ -9,15 +9,14 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('title', 'content', 'rating', 'is_featured',)
+        fields = ('title', 'content', 'rating',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
             'title': 'Title',
             'content': 'You Review',
-            'rating': 0,
-            'is_featured': False
+            'rating': 0
         }
 
         self.fields['title'].widget.attrs['autofocus'] = True

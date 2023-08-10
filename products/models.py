@@ -36,38 +36,21 @@ class Product(models.Model):
         max_length=1024, null=True, blank=True)
     image = models.ImageField(
         null=True, blank=True)
+    rating = models.IntegerField(
+        default=0, null=True, blank=True,
+        validators=[
+            MaxValueValidator(5, message="Must be between 0-5"),
+            MinValueValidator(0, message="Must be between 0-5")
+        ],
+    )
 
     def __str__(self):
         """ String representation of Product name """
         return self.name
 
-    """
-    MAY WANT TO CHANGE HOW THE RATING WORKS
-    MIGHT MAKE MORE SENSE TO ADD A FIELD IN
-    THE PRODUCT MODEL WITH THE AVERAGE SCORE
-    THIS WOULD NEED TO UPDATE EACH TIME A REVIEW
-    IS SAVED - THIS WOULD GO IN THE FORM FUNCTIONALTIY
-    This would allow you to order the products by rating
-    But perhaps leave the review count @property as it is
-    """
-
-    # Adapted from https://github.com/DaveyJH/ci-portfolio-four/
-    # blob/main/therapists/models.py#L29-L40
-    @property
-    def average_rating(self):
-        """ Returns average rating of product """
-        average = self.reviews.aggregate(Avg('rating'))['rating__avg']
-
-        if average:
-            if average.is_integer():
-                average = int(average)
-            else:
-                avg = round(average, 1)
-
-        return average
-
     @property
     def review_count(self):
+        """ Returns total number of reviews """
 
         return self.reviews.count()
 
@@ -96,7 +79,7 @@ class Review(models.Model):
     )
 
     class Meta:
-        ordering = ('-is_featured',)
+        ordering = ('-is_featured', 'created_on')
 
     def __str__(self):
         """ String representation of Review title """
