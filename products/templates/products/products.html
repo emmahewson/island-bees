@@ -40,14 +40,18 @@
             <!-- No. of products & sort-dropdown -->
             <div class="row mt-1 mb-2">
                 <!-- Sort-dropdown -->
-                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
-                    <div class="sort-select-wrapper w-75 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
+                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-1 mt-md-3 mt-md-0">
+                    <div class="sort-select-wrapper w-50 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
                         <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
-                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+
+
+
+                            <!-- NEED TO WORK OUT HOW TO DO THIS - MOVE THE RATING TO A MODEL FIELD ON PRODUCT? WHERE WOULD THIS BE CALCULATED?
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option> -->
                             <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                             <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                             <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
@@ -56,9 +60,9 @@
                     </div>
                 </div>
                 <!-- Products link & No. of Products -->
-                <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-3 my-md-0">
+                <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-2 my-md-0">
 
-                        {% if current_category != None %}
+                        {% if search_term or current_category or current_sorting != 'None_None' %}
                             <a href="{% url 'products' %}" class="text-blue"><p class="small text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">ALL PRODUCTS </p></a>
                             <p class="product-count text-center font-body text-md-start mt-2 mt-md-0 weight-semibold me-2 ib-lh-1">|</p>
                         {% endif %}
@@ -155,4 +159,12 @@
 
 
 
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Scroll to Top JS -->
+    <script src="{% static 'js/scroll_top.js' %}"></script>
+
+    <!-- Sort Box JS -->
+    <script src="{% static 'js/sort_box.js' %}"></script>
 {% endblock %}

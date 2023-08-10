@@ -17,4 +17,3 @@ function scrollFunction() {
         button.style.display = "none"
     }
 }
-

@@ -39,9 +39,6 @@
     </script>
     {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
-
 </head>
 
 <body>
@@ -233,7 +230,10 @@
 
     {% block postloadjs %}
         <!-- Main JavaScript File -->
-        <script src="{% static 'js/script.js' %}"></script>
+        <!-- <script src="{% static 'js/script.js' %}"></script> -->
+    {% endblock %}
+
+    {% block extra_js %}
     {% endblock %}
 
 
