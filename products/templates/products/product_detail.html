@@ -21,9 +21,7 @@
                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
             {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
-                </a>
+                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
             {% endif %}
 
 
@@ -60,7 +58,7 @@
 
             <!-- Product Category -->
             <div class="product-page-category mt-1">
-                <a href="" class="font-body d-flex text-blue text-decoration-none align-items-center">
+                <a href="{% url 'products' %}?category={{ product.category.name }}" class="font-body d-flex text-blue text-decoration-none align-items-center">
                     <div class="bg-blue category-icon-circle-sm me-1">
                         <i class="fas fa-{% if product.category.name == 'the_bees' %}bug{% elif product.category.name == 'the_kit' %}box-archive{% elif product.category.name == 'courses' %}graduation-cap{% elif product.category.name == 'produce' %}jar{% else %}shop{% endif %} text-ib-light text-center"></i>
                     </div>
