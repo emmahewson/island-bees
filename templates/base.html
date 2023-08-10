@@ -147,16 +147,20 @@
     </header>
 
 
-    {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
-
     <!-- Header to push content below nav -->
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
     </div>
+
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages%}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {% block content %}
     {% endblock %}

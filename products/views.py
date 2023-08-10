@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .models import Product, Review, Category
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Q
 from django.db.models.functions import Lower
+
+from django.contrib.auth.models import User
+from .models import Product, Review, Category
+from .forms import ReviewForm
 
 # Create your views here.
 
@@ -76,3 +80,65 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+# def add_review(request):
+#     """ Add a review """
+
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             review = form.save()
+#             messages.success(request, 'Successfully added review!')
+#             return redirect(reverse('products'))
+#         else:
+#             messages.error(
+#                 request,
+#                 'Failed to add review. Please ensure the form is valid.')
+#     else:
+#         form = ReviewForm()
+
+#     template = 'products/add_review.html'
+#     context = {
+#         'form': form,
+#     }
+
+#     return render(request, template, context)
+
+
+def add_review(request, product_id):
+    """
+    Renders form to add a review
+    """
+
+    if request.user:
+        author = User.objects.get(username=request.user)
+    else:
+        author = "Anonymous"
+
+    product = Product.objects.get(id=product_id)
+    print(product.id)
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            review = form.save()
+            review.product = product
+            review.user = author
+            review.save()
+            messages.success(request, "New product review added.")
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, "Form invalid, please try again.")
+    else:
+        form = ReviewForm()
+
+    template = 'products/add_review.html'
+
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)

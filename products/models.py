@@ -77,7 +77,7 @@ class Review(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        null=False, blank=False,
+        null=True, blank=True,
         related_name="reviews",
     )
     user = models.ForeignKey(
@@ -89,8 +89,8 @@ class Review(models.Model):
     is_featured = models.BooleanField(default=False, blank=True)
     rating = models.IntegerField(
         validators=[
-            MaxValueValidator(5, message=None),
-            MinValueValidator(0, message=None)
+            MaxValueValidator(5, message="Must be between 0-5"),
+            MinValueValidator(0, message="Must be between 0-5")
         ],
         default=0, blank=False, null=False
     )
@@ -101,5 +101,3 @@ class Review(models.Model):
     def __str__(self):
         """ String representation of Review title """
         return self.title
-
-

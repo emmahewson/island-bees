@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Add a review{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="WELCOME TO ISLAND BEES! Add your review here!">
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <form method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+
+            <button class="btn" type="submit">SUBMIT</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
