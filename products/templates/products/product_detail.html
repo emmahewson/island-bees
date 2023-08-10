@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-{% endblock %}
+{% block extra_title %}- {{ product.name }}{% endblock %}
 
 {% block content %}
 
@@ -143,7 +142,7 @@
                 <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 pt-3 pb-3 review-container">
                     <div class="row font-body text-dark-grey review-header mb-2">
                         <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
-                            <h3 class="me-3 review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-lg-2">{{ review.title }}</h3>
+                            <h3 class="review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-md-3">{{ review.title }}</h3>
                             <div class="d-inline-flex">
                                 <div class="review-user-div text-blue me-2 d-flex align-items-end">
                                     <div class="category-icon-circle-sm bg-blue me-1">
