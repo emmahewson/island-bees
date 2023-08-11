@@ -19,7 +19,7 @@ class Review(models.Model):
         User, on_delete=models.SET_NULL, null=True, blank=True
     )
     created_on = models.DateField(auto_now_add=True, blank=False, null=False)
-    title = models.CharField(max_length=40)
+    title = models.CharField(max_length=40, blank=False, null=False)
     content = models.TextField(max_length=500)
     rating = models.IntegerField(
         validators=[

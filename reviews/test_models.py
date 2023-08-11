@@ -12,7 +12,7 @@ class TestReviewModels(TestCase):
 
     def setUp(self):
         """
-        Creates test objects for Products app
+        Creates test objects for Reviews app
         """
 
         self.categoryTest = Category.objects.create(
