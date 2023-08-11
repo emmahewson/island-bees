@@ -21,7 +21,6 @@ class Review(models.Model):
     created_on = models.DateField(auto_now_add=True, blank=False, null=False)
     title = models.CharField(max_length=40)
     content = models.TextField(max_length=500)
-    is_featured = models.BooleanField(default=False, blank=True)
     rating = models.IntegerField(
         validators=[
             MaxValueValidator(5, message="Must be between 0-5"),
@@ -31,7 +30,7 @@ class Review(models.Model):
     )
 
     class Meta:
-        ordering = ('-is_featured', 'created_on')
+        ordering = ('-rating', 'created_on')
 
     def __str__(self):
         """ String representation of Review title """

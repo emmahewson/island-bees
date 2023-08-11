@@ -31,7 +31,6 @@ def add_review(request, product_id):
             review = form.save()
             review.product = product
             review.user = author
-            review.is_featured = True if review.rating > 3 else False
             review.save()
 
             print(product.rating)

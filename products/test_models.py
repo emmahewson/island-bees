@@ -68,7 +68,7 @@ class TestProductsModels(TestCase):
             'Test description for Bee Suit'
         )
 
-    def test_product_product(self):
+    def test_product_price(self):
         """ Test the product price """
         self.assertEqual(self.productTest.price, 53.99)
 

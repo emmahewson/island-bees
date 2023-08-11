@@ -24,25 +24,19 @@ html {
     --dark: #140C00;
     --light: #fffefb;
     --light-grey: #EAEAEA;
-    --light-grey-hov: #dedede;
+    --light-grey-hov: #cccccc;
     --mid-grey: #959595;
     --dark-grey: #4D4D4D;
     --yellow: #FFCD85;
-    --yellow-hov: #fdbc60;
+    --yellow-hov: #feb247;
     --yellow-light: #FFE7C6;
     --blue: #0f748a;
-    --blue-hov: #00596d;
+    --blue-hov: #005163;
     --blue-light: #BCE1E9;
     --warning: #B25B76;
     --warning-light: #FAE5EC;
     --success: #419759;
     --success-light: #E2F0E6;
-
-    /* Gradients */
-    --blue-grad: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #1F8B9D 0%, #04677A 100%);
-    --blue-grad-hov: radial-gradient(108.38% 51.22% at 50.33% 48.78%, #167687 0%, #015464 100%);
-    --grey-grad: radial-gradient(164.52% 51.22% at 50.33% 48.78%, #EAEAEA 64.59%, #DCDCDC 100%);
-    --grey-grad-hov: radial-gradient(164.52% 51.22% at 50.33% 48.78%, #d4d4d4 64.59%, #bfbfbf 100%);
 }
 
 /* Text Colour Classes */
@@ -172,6 +166,9 @@ html {
 
 /* Recurring Elements */
 
+
+/* Generic Classes */
+
 .shadow {
     box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.25)!important;
 }
@@ -201,6 +198,9 @@ html {
     margin: 0;
 }
 
+
+/* Buttons */
+
 button {
     border: none;
 }
@@ -212,13 +212,12 @@ button {
 
 }
 
-
 .ib-button-blue {
-    background: var(--blue-grad);
+    background: var(--blue);
 }
 
 .ib-button-grey {
-    background: var(--grey-grad);
+    background: var(--light-grey);
 }
 
 .ib-button-yellow {
@@ -235,18 +234,19 @@ button {
 }
 
 .ib-button-blue:hover {
-    background: var(--blue-grad-hov);
+    background: var(--blue-hov);
 }
 
 .ib-button-grey:hover {
-    background: var(--grey-grad-hov);
+    background: var(--light-grey-hov);
 }
 
 .ib-button-yellow:hover {
     background: var(--yellow-hov);
 }
 
-.btn {
+.decrement-qty.btn,
+.increment-qty.btn {
     border-color: var(--blue);
 }
 
@@ -263,6 +263,8 @@ button {
     color: white;
     border-color: var(--blue);
 }
+
+/* Back To Top Button */
 
 #btt-btn {
     width: 50px;
@@ -283,38 +285,6 @@ button {
 #btt-btn a i {
     font-size: 1.5em !important;
 
-}
-
-
-
-
-.category-icon-circle,
-.category-icon-circle-sm {
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.category-icon-circle {
-    height: 18px;
-    width: 18px;
-}
-
-.category-icon-circle-sm {
-    height: 14px;
-    width: 14px;
-}
-
-.category-icon-circle i {
-    padding: 4px;
-    font-size: 10px;
-}
-
-.category-icon-circle-sm i {
-    padding: 4px;
-    font-size: 8px;
 }
 
 
@@ -349,6 +319,76 @@ button {
     color: var(--light);
     background-color: var(--warning);
 }
+
+
+/* Recurring Icon Styles */
+
+.category-icon-circle,
+.category-icon-circle-sm {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.category-icon-circle {
+    height: 18px;
+    width: 18px;
+}
+
+.category-icon-circle-sm {
+    height: 14px;
+    width: 14px;
+}
+
+.category-icon-circle i {
+    padding: 4px;
+    font-size: 10px;
+}
+
+.category-icon-circle-sm i {
+    padding: 4px;
+    font-size: 8px;
+}
+
+
+/* Forms Styling */
+
+input.ib-form-field,
+textarea.ib-form-field {
+    width: 100%;
+    font-size: 16px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.50) inset;
+}
+
+input.ib-form-field {
+    height: 40px;
+}
+
+input.ib-form-field:focus-visible,
+textarea.ib-form-field:focus-visible {
+    outline: none;
+    border: var(--li)
+}
+
+input,
+textarea {
+    border: none !important;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    border: var(--blue) 2px solid !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--mid-grey)
+}
+
+
+
 
 
 /* Upper Nav */
@@ -1013,6 +1053,51 @@ button {
     line-height: 1;
 }
 
+
+/* Add Review Page */
+
+.ib-form {
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
+.review-form {
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.review-form .ib-form-header {
+    height: 100px;
+}
+
+.review-form .ib-form-header p {
+    font-size: 14px;
+}
+
+.review-form .ib-form-header h1 {
+    font-size: 18px;
+}
+
+.review-form .ib-form-header img {
+    height: 100%;
+    width: auto;
+}
+
+.rating-hex {
+    font-size: 46px;
+    line-height: 1;
+    margin-right: 5px;
+    color: var(--light-grey);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.rating-hex-selected {
+    color: var(--yellow);
+}
 
 
 /* Media Queries */

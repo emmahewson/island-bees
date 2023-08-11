@@ -9,9 +9,7 @@ class ReviewAdmin(admin.ModelAdmin):
         'title',
         'rating',
         'created_on',
-        'is_featured'
     )
-    list_editable = ('is_featured',)
 
 
 admin.site.register(Review, ReviewAdmin)
