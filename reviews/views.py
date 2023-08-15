@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
@@ -59,6 +59,64 @@ def add_review(request, product_id):
     # Sets current product & form content
     context = {
         'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required()
+def edit_review(request, review_id):
+    """
+    Renders form to edit review.
+    Logged in Users Only (redirects to log in).
+    Updates review on database.
+    """
+
+    # Checks user is logged in - redirects to log in
+    if not request.user.is_authenticated:
+        messages.error(request,
+                       'You need to be logged in to update a review, sorry!')
+        return redirect(reverse('account_login'))
+
+    review = get_object_or_404(Review, pk=review_id)
+    product = Product.objects.filter(reviews=review)[0]
+
+    # Checks user is author of review - redirects to product detail
+    if request.user != review.user:
+        messages.error(request,
+                       'You can only edit your own reviews.')
+        return redirect(reverse('product_detail', args=[product.id]))
+        
+    # Handles Form Submission
+    if request.method == "POST":
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+
+        if form.is_valid():
+            form.save()
+
+            # Updates product rating on product object
+            product.rating = round(
+                product.reviews.aggregate(Avg('rating'))['rating__avg'])
+            product.save()
+
+            messages.success(request, "Your review has been updated.")
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, "Form invalid, please try again.")
+
+    # Handles View Rendering
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing... "{review.title}"')
+
+    # Sets page template
+    template = 'reviews/edit_review.html'
+
+    # Sets current product & form content
+    context = {
+        'form': form,
+        'review': review,
         'product': product,
     }
 
