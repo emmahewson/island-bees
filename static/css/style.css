@@ -1057,8 +1057,8 @@ textarea::placeholder {
 /* Add Review Page */
 
 .ib-form {
-    margin-top: 60px;
-    margin-bottom: 100px;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .review-form {
@@ -1066,9 +1066,7 @@ textarea::placeholder {
     border-radius: 5px;
 }
 
-.review-form .ib-form-header {
-    height: 100px;
-}
+
 
 .review-form .ib-form-header p {
     font-size: 14px;
@@ -1079,8 +1077,7 @@ textarea::placeholder {
 }
 
 .review-form .ib-form-header img {
-    height: 100%;
-    width: auto;
+    width: 150px;
 }
 
 .rating-hex {
@@ -1140,8 +1137,6 @@ textarea::placeholder {
     .card-price {
         font-size: 24px;
     }
-
-    
     
 }
 
@@ -1162,6 +1157,15 @@ textarea::placeholder {
 
     .main {
         width: 474px;
+    }
+
+    .ib-form {
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    .review-form .ib-form-header h1 {
+        font-size: 16px;
     }
 
 }
@@ -1211,12 +1215,28 @@ textarea::placeholder {
         padding-top: 1.8rem !important;
     }
 
+
+    /* Category Icons */
+
     .category-icon-lg {
         font-size: 30px;
     }
 
     .category-icon-lg + p {
         font-size: 14px;
+    }
+
+    /* Add Review Form */
+
+    .rating-hex {
+        font-size: 40px;
+        line-height: 1;
+
+    }
+
+    .ib-form {
+        margin-top: 25px;
+        margin-bottom: 40px;
     }
   
 }

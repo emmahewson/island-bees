@@ -9,40 +9,51 @@
 
 {% block content %}
 
-<div class="row bg-light-grey">
-    <div class="col-6 offset-3 ib-form review-form bg-ib-white p-0 shadow">
-        <div class="ib-form-header bg-yellow-light d-flex justify-content-between align-items-center">
-            <div class="font-body my-2 mx-4 text-v">
-                <p class="weight-regular mb-1">Tell us your thoughts on...</p>
-                <h1 class="weight-semibold text-uppercase m-0">{{ product.name }}</h1>
-            </div>
-            <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
-        </div>
-        <form class="px-4 py-4" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for field in form %}
-                {{ field }}
-            {% endfor %}
-
-            <div class="rating-form-div" aria-hidden="true">
-                <p class="font-body weight-semibold m-0">Your Rating *</p>
-                <div class="rating-div pe-0">
-                    <span class="rating-hex hex-1" data-hex="1">&#x2B22;</span>
-                    <span class="rating-hex hex-2" data-hex="2">&#x2B22;</span>
-                    <span class="rating-hex hex-3" data-hex="3">&#x2B22;</span>
-                    <span class="rating-hex hex-4" data-hex="4">&#x2B22;</span>
-                    <span class="rating-hex hex-5" data-hex="5">&#x2B22;</span>
+<div class="container-fluid">
+    <div class="row px-4 px-sm-0 bg-light-grey">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ib-form review-form bg-ib-white p-0 shadow">
+            <div class="ib-form-header bg-yellow-light d-flex justify-content-between align-items-center">
+                <div class="font-body my-2 mx-3 my-sm-2 mx-sm-4 text-v">
+                    <p class="weight-regular mb-0 mb-md-1">Tell us your thoughts on...</p>
+                    <h1 class="weight-semibold text-uppercase m-0 text-break">{{ product.name }}</h1>
                 </div>
+    
+                <!-- Product Image -->
+                {% if product.image %}
+                    <img class="d-none d-sm-block" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img class="d-none d-sm-block" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                {% endif %}
+                
             </div>
-
-            <div class="d-flex justify-content-end">
-                <a class="ib-button ib-button-grey me-3 text-decoration-none text-dark-grey font-title weight-bold shadow-sm" href="">CANCEL</a>
-                <button class="ib-button ib-button-yellow text-dark-grey font-title weight-bold shadow-sm" type="submit">SUBMIT</button>
-            </div>
-            
-        </form>
+            <form class="px-3 px-md-4 py-4" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field }}
+                {% endfor %}
+    
+                <div class="rating-form-div" aria-hidden="true">
+                    <p class="font-body weight-semibold m-0">Your Rating *</p>
+                    <div class="rating-div pe-0">
+                        <span class="rating-hex hex-1" data-hex="1">&#x2B22;</span>
+                        <span class="rating-hex hex-2" data-hex="2">&#x2B22;</span>
+                        <span class="rating-hex hex-3" data-hex="3">&#x2B22;</span>
+                        <span class="rating-hex hex-4" data-hex="4">&#x2B22;</span>
+                        <span class="rating-hex hex-5" data-hex="5">&#x2B22;</span>
+                    </div>
+                </div>
+    
+                <div class="d-flex justify-content-center justify-content-sm-end mt-5">
+                    <a class="ib-button ib-button-grey me-3 text-decoration-none text-dark-grey font-title weight-bold shadow-sm" href="">CANCEL</a>
+                    <button class="ib-button ib-button-yellow text-dark-grey font-title weight-bold shadow-sm" type="submit">SUBMIT</button>
+                </div>
+                
+            </form>
+        </div>
     </div>
+
 </div>
+
 
 
 
