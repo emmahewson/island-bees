@@ -28,7 +28,10 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu102.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu102.gitpod.io',
+    '8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu103.gitpod.io',
+]
 
 
 # Application definition

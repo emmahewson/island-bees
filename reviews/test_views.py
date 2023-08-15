@@ -18,7 +18,14 @@ class TestReviewsViews(TestCase):
             email='testuseremail@email.com',
         )
         userTest.save()
-        
+
+        superuserTest = User.objects.create_superuser(
+            username="superuser1",
+            password="super_password1",
+            email='testsuperuseremail@email.com',
+        )
+        superuserTest.save()
+
         self.categoryTest = Category.objects.create(
             name="Clothing",
             friendly_name="clothing",
@@ -55,3 +62,13 @@ class TestReviewsViews(TestCase):
         response = self.client.get('/reviews/add_review/1')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'reviews/add_review.html')
+
+    def test_add_review_page(self):
+        """
+        Checks add_review redirects to login
+        if user is not logged in
+        """
+
+        response = self.client.get('/reviews/add_review/1')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/accounts/login/')

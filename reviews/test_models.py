@@ -1,10 +1,14 @@
 from django.test import TestCase
 from datetime import datetime, date
+from django.utils import timezone
+from freezegun import freeze_time
+
 from products.models import Product, Category
 from django.contrib.auth.models import User
 from reviews.models import Review
 
 
+@freeze_time("2022-08-15")
 class TestReviewModels(TestCase):
     """
     Test Reviews App Models
@@ -41,7 +45,7 @@ class TestReviewModels(TestCase):
             title="test review title",
             content="test review content",
             rating=3,
-            created_on="Aug. 10, 2023",
+            created_on=timezone.now(),
         )
 
     def test_review_string_method(self):
@@ -63,7 +67,7 @@ class TestReviewModels(TestCase):
 
     def test_review_created_on(self):
         """ Test the review content """
-        self.assertEqual(self.reviewTest.created_on, date(2023, 8, 11))
+        self.assertEqual(self.reviewTest.created_on, date(2022, 8, 15))
 
     def test_review_product_name(self):
         """ Test the review product """
