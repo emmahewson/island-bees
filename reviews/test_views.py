@@ -126,3 +126,31 @@ class TestReviewsViews(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
             response, '/products/1/')
+
+    def test_delete_review_view_for_logged_out_user(self):
+        """
+        Checks delete review redirects to login
+        if user is not logged in
+        """
+
+        response = self.client.get('/reviews/delete_review/1/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response,
+            '/accounts/login/?next=%2Freviews%2Fdelete_review%2F1%2F'
+        )
+
+    def test_delete_review_page_for_unauthorized_user(self):
+        """
+        Checks delete_review redirects to product_details
+        if user is not author of review
+        """
+
+        logged_in = self.client.login(
+            username='user1', password='password1')
+        self.assertTrue(logged_in)
+
+        response = self.client.get('/reviews/delete_review/2/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response, '/products/1/')
