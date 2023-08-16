@@ -35,5 +35,7 @@ class ReviewForm(forms.ModelForm):
                 'ib-form-field mb-3 px-2 py-2 font-body text-dark-grey')
             self.fields[field].label = False
 
+        # Hidden input field for rating score
+        # Accessible to screen readers
         self.fields['rating'].widget.attrs['class'] = (
             'rating-field visually-hidden')

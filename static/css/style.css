@@ -298,6 +298,13 @@ button {
 .del-btn {
     color: var(--warning);
     border: var(--warning) solid 1px;
+    background-color: transparent;
+}
+
+.dismiss-btn {
+    color: var(--dark-grey);
+    border: var(--mid-grey) solid 1px;
+    background-color: transparent;
 }
 
 .edit-del-btn {
@@ -310,6 +317,23 @@ button {
     -o-transition: all .2s ease-in-out;
 }
 
+.modal-close-cross {
+    background-color: transparent;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.modal-close-cross span {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
 .edit-btn:hover {
     color: var(--light);
     background-color: var(--success);
@@ -319,6 +343,19 @@ button {
     color: var(--light);
     background-color: var(--warning);
 }
+
+.dismiss-btn:hover {
+    color: var(--light);
+    background-color: var(--mid-grey);
+    border-color: var(--mid-grey);
+}
+
+.modal-close-cross:hover {
+    color: var(--yellow)
+    
+}
+
+
 
 
 /* Recurring Icon Styles */
