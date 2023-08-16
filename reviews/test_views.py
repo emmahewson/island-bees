@@ -1,9 +1,16 @@
 from django.test import TestCase
 from django.urls import reverse
+from datetime import datetime, date
+from django.utils import timezone
+from freezegun import freeze_time
+from django.contrib.messages import get_messages
+
 from .models import *
+from .forms import *
 from products.models import Product, Category
 
 
+@freeze_time("2022-08-15")
 class TestReviewsViews(TestCase):
     """ Test product model url views """
 
@@ -47,12 +54,20 @@ class TestReviewsViews(TestCase):
             title="test review title",
             content="test review content",
             rating=3,
-            created_on="Aug. 10, 2023",
-
+            created_on=timezone.now(),
         )
 
-    def test_add_review_page(self):
-        """ Test add_review view """
+        self.reviewTest2 = Review.objects.create(
+            product=self.productTest,
+            user=superuserTest,
+            title="test review title 2",
+            content="test review content 2",
+            rating=5,
+            created_on=timezone.now(),
+        )
+
+    def test_add_review_page_for_authorized_user(self):
+        """ Test add_review view for logged in user"""
 
         logged_in = self.client.login(
             username='user1', password='password1')
@@ -63,7 +78,7 @@ class TestReviewsViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'reviews/add_review.html')
 
-    def test_add_review_page(self):
+    def test_add_review_page_for_logged_out_user(self):
         """
         Checks add_review redirects to login
         if user is not logged in
@@ -71,4 +86,43 @@ class TestReviewsViews(TestCase):
 
         response = self.client.get('/reviews/add_review/1')
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/accounts/login/')
+        self.assertRedirects(
+            response, '/accounts/login/?next=%2Freviews%2Fadd_review%2F1')
+
+    def test_edit_review_page_for_authorized_user(self):
+        """ Test edit_review view for logged in user"""
+
+        logged_in = self.client.login(
+            username='user1', password='password1')
+        self.assertTrue(logged_in)
+
+        userTest = User.objects.get(username='user1')
+        response = self.client.get('/reviews/edit_review/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'reviews/edit_review.html')
+
+    def test_edit_review_page_for_logged_out_user(self):
+        """
+        Checks edit_review redirects to login
+        if user is not logged in
+        """
+
+        response = self.client.get('/reviews/edit_review/1/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response, '/accounts/login/?next=%2Freviews%2Fedit_review%2F1%2F')
+
+    def test_edit_review_page_for_unauthorized_user(self):
+        """
+        Checks edit_review redirects to product_details
+        if user is not author of review
+        """
+
+        logged_in = self.client.login(
+            username='user1', password='password1')
+        self.assertTrue(logged_in)
+
+        response = self.client.get('/reviews/edit_review/2/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response, '/products/1/')

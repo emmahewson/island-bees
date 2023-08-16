@@ -17,12 +17,6 @@ def add_review(request, product_id):
     Adds new review to database.
     """
 
-    # Checks user is logged in - redirects to log in
-    if not request.user.is_authenticated:
-        messages.error(request,
-                       'You need to be logged in to leave a review, sorry!')
-        return redirect(reverse('account_login'))
-
     # Sets product based on product_id
     product = Product.objects.get(id=product_id)
 
@@ -73,12 +67,6 @@ def edit_review(request, review_id):
     Updates review on database.
     """
 
-    # Checks user is logged in - redirects to log in
-    if not request.user.is_authenticated:
-        messages.error(request,
-                       'You need to be logged in to update a review, sorry!')
-        return redirect(reverse('account_login'))
-
     review = get_object_or_404(Review, pk=review_id)
     product = Product.objects.filter(reviews=review)[0]
 
@@ -87,7 +75,7 @@ def edit_review(request, review_id):
         messages.error(request,
                        'You can only edit your own reviews.')
         return redirect(reverse('product_detail', args=[product.id]))
-        
+
     # Handles Form Submission
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES, instance=review)
