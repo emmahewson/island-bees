@@ -172,12 +172,14 @@
                         <p>{{ review.content }}</p>
                     </div>
 
-                    <!-- Review EDIT / DELETE Buttons ------------ NEED TO ADD CURRENT USER CRUD CONTROLS -->
+                    <!-- Review EDIT / DELETE Buttons -->
+
+                    <!-- NEED TO ADD MODAL FOR DELETE CHECK!!! -->
                     {% if request.user.is_superuser or request.user == review.user %}
                         <div class="row">
                             <div class="card-edit-delete-div mt-2 gy-3">
                                 <a href="{% url 'edit_review' review.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                                <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                <a href="{% url 'delete_review' review.id %}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
                             </div>
                         </div>
                         

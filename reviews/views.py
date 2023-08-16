@@ -70,11 +70,12 @@ def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     product = Product.objects.filter(reviews=review)[0]
 
-    # Checks user is author of review - redirects to product detail
-    if request.user != review.user:
-        messages.error(request,
-                       'You can only edit your own reviews.')
-        return redirect(reverse('product_detail', args=[product.id]))
+    # Checks user is author of review or superuser
+    # redirects to product detail if not
+    if not request.user.is_superuser:
+        if request.user != review.user:
+            messages.error(request, 'You can only edit your own reviews.')
+            return redirect(reverse('product_detail', args=[product.id]))
 
     # Handles Form Submission
     if request.method == "POST":
@@ -109,3 +110,23 @@ def edit_review(request, review_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete a review """
+
+    review = get_object_or_404(Review, pk=review_id)
+    product = Product.objects.filter(reviews=review)[0]
+
+    # Checks user is author of review or superuser
+    # redirects to product detail if not
+    if not request.user.is_superuser:
+        if request.user != review.user:
+            messages.error(request, 'You can only delete your own reviews.')
+            return redirect(reverse('product_detail', args=[product.id]))
+
+    review = get_object_or_404(Review, pk=review_id)
+    review.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('product_detail', args=[product.id]))
