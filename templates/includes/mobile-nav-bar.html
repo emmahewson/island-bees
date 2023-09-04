@@ -61,20 +61,18 @@
             <!-- Shopping Bag -->
             <li class="list-inline-item">
                 <a class="nav-link hex-nav-link" href="{% url 'view_bag' %}">
-                    <div class="text-center ms-2">
-                        <div
-                            class="icon-hex {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
-                            <i class="fas fa-shopping-bag text-ib-light"></i>
-                        </div>
-                        <p
-                            class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
-                            {% if grand_total %}
-                            £{{ grand_total|floatformat:2 }}
-                            {% else %}
-                            £0.00
-                            {% endif %}
-                        </p>
+                    <div
+                        class="icon-hex mx-auto {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
+                        <i class="fas fa-shopping-bag text-ib-light"></i>
                     </div>
+                    <p
+                        class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
+                        {% if grand_total %}
+                        £{{ grand_total|floatformat:2 }}
+                        {% else %}
+                        £0.00
+                        {% endif %}
+                    </p>
                 </a>
             </li>
 

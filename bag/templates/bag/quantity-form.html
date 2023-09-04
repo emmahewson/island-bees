@@ -1,25 +1,23 @@
 <form class="form update-form mb-3" method="POST" action="">
     {% csrf_token %}
     <div class="form-group">
-        <div class="input-group">
+        <div class="input-group bag-quantity-group">
             <div class="input-group-prepend">
-                <button class="decrement-qty bg-blue text-ib-light weight-bold btn rounded-0" 
+                <button class="decrement-qty decrement-qty-sm bg-blue text-ib-light weight-bold btn rounded-0 d-flex justify-content-center align-items-center" 
                     data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                     <span>
                         <i class="fas fa-minus fa-sm"></i>
                     </span>
                 </button>
             </div>
-            <input class="form-control qty_input ib-form-field font-body weight-semibold" type="number"
+            <input class="form-control qty_input qty-input-sm ib-form-field font-body weight-semibold" type="number"
                 name="quantity" value="{{ item.quantity }}" min="1" max="99"
                 data-item_id="{{ item.item_id }}"
                 id="id_qty_{{ item.item_id }}">
             <div class="input-group-append">
-                <button class="increment-qty bg-blue text-ib-light weight-bold btn rounded-0"
+                <button class="increment-qty increment-qty-sm bg-blue text-ib-light weight-bold btn rounded-0 d-flex justify-content-center align-items-center"
                     data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                    <span>
-                        <i class="fas fa-plus fa-sm"></i>
-                    </span>
+                    <i class="fas fa-plus fa-sm"></i>
                 </button>
             </div>
         </div>

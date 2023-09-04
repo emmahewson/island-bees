@@ -258,6 +258,20 @@ button {
     width: 40px;
 }
 
+.bag-quantity-group {
+    height: 35px;
+}
+
+.decrement-qty-sm.btn,
+.increment-qty-sm.btn {
+    height: 35px;
+    width: 35px;
+}
+
+input.qty-input-sm {
+    height: 100% !important;
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus,
@@ -627,10 +641,6 @@ textarea::placeholder {
     font-size: 1.1em !important;
 }
 
-.hex-nav-link p {
-    position: relative;
-    left: -9px;
-}
 
 
 /* Lower Nav */
@@ -1357,7 +1367,7 @@ textarea::placeholder {
         line-height: 1;
     }
     
-    .product-page-buttons * {
+    .button-group * {
         font-size: 14px;
     }
     
