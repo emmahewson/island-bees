@@ -1094,6 +1094,7 @@ textarea::placeholder {
 }
 
 
+
 /* Add Review Page */
 
 .ib-form {
@@ -1278,10 +1279,11 @@ textarea::placeholder {
         margin-top: 25px;
         margin-bottom: 40px;
     }
+
   
 }
 
-/* Hex Categories for smallest screens */
+/* Bespoke Smaller Screens */
 @media (max-width: 434px) {
     .main {
         width: 316px;
@@ -1313,6 +1315,10 @@ textarea::placeholder {
     .review-title {
         font-size: 18px;
         line-height: 1;
+    }
+    
+    .product-page-buttons * {
+        font-size: 14px;
     }
     
 }
