@@ -31,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu102.gitpod.io',
     '8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu103.gitpod.io',
+    '8000-emmahewson-islandbees-bj2tahhh1s7.ws-eu104.gitpod.io',
 ]
 
 

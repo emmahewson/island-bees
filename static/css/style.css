@@ -247,7 +247,10 @@ button {
 
 .decrement-qty.btn,
 .increment-qty.btn {
-    border-color: var(--blue);
+    border: none;
+    height: 40px;
+    width: 40px;
+
 }
 
 .btn:hover,
