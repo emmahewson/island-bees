@@ -34,8 +34,10 @@ html {
     --blue-hov: #005163;
     --blue-light: #BCE1E9;
     --warning: #B25B76;
+    --warning-hov: #6b102d;
     --warning-light: #FAE5EC;
     --success: #419759;
+    --success-hov: #00601b;
     --success-light: #E2F0E6;
 }
 
@@ -105,7 +107,7 @@ html {
 }
 
 .bg-yellow-light {
-    background-color: var(--yellow-light);
+    background-color: var(--yellow-light) !important;
 }
 
 .bg-blue {
@@ -198,6 +200,11 @@ html {
     margin: 0;
 }
 
+hr {
+    color: var(--mid-grey);
+    opacity: 1;
+}
+
 
 /* Buttons */
 
@@ -209,7 +216,6 @@ button {
     font-size: 16px;
     padding: 6px 10px;
     border-radius: 2px;
-
 }
 
 .ib-button-blue {
@@ -250,7 +256,6 @@ button {
     border: none;
     height: 40px;
     width: 40px;
-
 }
 
 .btn:hover,
@@ -278,10 +283,11 @@ button {
     right: 12px;
     bottom: 12px;
     z-index: 9;
-
 }
 
-#btt-btn a {
+#btt-btn a,
+.remove-item,
+.update-link {
     cursor: pointer;
 }
 
@@ -358,9 +364,6 @@ button {
     
 }
 
-
-
-
 /* Recurring Icon Styles */
 
 .category-icon-circle,
@@ -427,8 +430,22 @@ textarea::placeholder {
     color: var(--mid-grey)
 }
 
+.remove-item,
+.update-link {
+    font-size: 14px;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
 
+.remove-item:hover {
+    color: var(--warning-hov)
+}
 
+.update-link:hover {
+    color: var(--success-hov)
+}
 
 
 /* Upper Nav */
@@ -463,7 +480,6 @@ textarea::placeholder {
 .logo-div a {
     display: flex;
 }
-
 
 .ib-search-box {
     height: 42px;
@@ -1107,8 +1123,6 @@ textarea::placeholder {
     border-radius: 5px;
 }
 
-
-
 .review-form .ib-form-header p {
     font-size: 14px;
 }
@@ -1135,6 +1149,21 @@ textarea::placeholder {
 
 .rating-hex-selected {
     color: var(--yellow);
+}
+
+
+/* Shopping Bag */
+
+.bag-subtotal {
+    font-size: 20px;
+}
+
+.bag-grand-total {
+    font-size: 24px;
+}
+
+.bag-item-row {
+    border-bottom: var(--mid-grey) solid 1px;
 }
 
 
@@ -1207,6 +1236,17 @@ textarea::placeholder {
 
     .review-form .ib-form-header h1 {
         font-size: 16px;
+    }
+
+
+    /* Shopping Bag */
+
+    .bag-subtotal {
+        font-size: 16px;
+    }
+
+    .bag-grand-total {
+        font-size: 20px;
     }
 
 }
@@ -1283,7 +1323,7 @@ textarea::placeholder {
   
 }
 
-/* Bespoke Smaller Screens */
+/* Bespoke Smaller Screens Sizes */
 @media (max-width: 434px) {
     .main {
         width: 316px;

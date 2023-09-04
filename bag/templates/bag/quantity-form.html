@@ -1,0 +1,29 @@
+<form class="form update-form mb-3" method="POST" action="">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="decrement-qty bg-blue text-ib-light weight-bold btn rounded-0" 
+                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                    <span>
+                        <i class="fas fa-minus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+            <input class="form-control qty_input ib-form-field font-body weight-semibold" type="number"
+                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                data-item_id="{{ item.item_id }}"
+                id="id_qty_{{ item.item_id }}">
+            <div class="input-group-append">
+                <button class="increment-qty bg-blue text-ib-light weight-bold btn rounded-0"
+                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                    <span>
+                        <i class="fas fa-plus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<a class="update-link text-ib-success weight-semibold text-decoration-none float-start">UPDATE</a>
+<a class="remove-item text-ib-warning weight-semibold text-decoration-none float-end" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">REMOVE</a>

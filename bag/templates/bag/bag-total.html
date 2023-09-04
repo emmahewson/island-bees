@@ -1,0 +1,8 @@
+<p class="bag-subtotal">Bag Total: £{{ total|floatformat:2 }}</p>
+<p class="bag-subtotal">Delivery: £{{ delivery|floatformat:2 }}<p>
+<p class="mt-2 weight-semibold bag-grand-total">Grand Total: £{{ grand_total|floatformat:2 }}</p>
+
+<!-- How much left to spend if under free delivery threshold -->
+{% if free_delivery_delta > 0 %}
+    <p class="text-ib-warning weight-medium">You could get free delivery by spending just <span class="weight-bold">£{{ free_delivery_delta }}</span> more!</p>
+{% endif %}
