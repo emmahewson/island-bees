@@ -32,6 +32,7 @@ class Product(models.Model):
     price = models.DecimalField(
         max_digits=6, decimal_places=2)
     is_featured = models.BooleanField(default=False, blank=True)
+    delivery_charge = models.BooleanField(default=True, blank=False)
     image_url = models.URLField(
         max_length=1024, null=True, blank=True)
     image = models.ImageField(
@@ -53,34 +54,3 @@ class Product(models.Model):
         """ Returns total number of reviews """
 
         return self.reviews.count()
-
-
-# class Review(models.Model):
-#     """ Review Model """
-#     product = models.ForeignKey(
-#         Product,
-#         on_delete=models.CASCADE,
-#         null=True, blank=True,
-#         related_name="reviews",
-#     )
-#     user = models.ForeignKey(
-#         User, on_delete=models.SET_NULL, null=True, blank=True
-#     )
-#     created_on = models.DateField(auto_now_add=True, blank=False, null=False)
-#     title = models.CharField(max_length=40)
-#     content = models.TextField(max_length=500)
-#     is_featured = models.BooleanField(default=False, blank=True)
-#     rating = models.IntegerField(
-#         validators=[
-#             MaxValueValidator(5, message="Must be between 0-5"),
-#             MinValueValidator(0, message="Must be between 0-5")
-#         ],
-#         default=0, blank=False, null=False
-#     )
-
-#     class Meta:
-#         ordering = ('-is_featured', 'created_on')
-
-#     def __str__(self):
-#         """ String representation of Review title """
-#         return self.title

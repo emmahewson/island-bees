@@ -10,10 +10,10 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'rating',
         'price',
-        'image',
         'is_featured',
+        'delivery_charge',
     )
-    list_editable = ('is_featured',)
+    list_editable = ('is_featured', 'delivery_charge')
 
     ordering = ('name',)
 
