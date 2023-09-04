@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container-fluid ib-container bg-ib-white text-ib-dark px-3 px-md-4 py-5 font-body">
+    <div class="row">
+        <div class="col-md-12 col-lg-10 offset-lg-1">
+            <h1 class="font-title weight-bold section-title-lrg mb-2">YOUR BAG...</h1>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-10 offset-lg-1">
+            {% if bag_items %}
+                <div class="table-responsive rounded d-none d-md-block">
+                    
+                </div>
+            {% else %}
+                <p class="lead mb-5">Your bag is empty</p>
+
+                <!-- KEEP SHOPPING BUTTONS -->
+                <a href="{% url 'products' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+                    <i class="fas fa-chevron-left d-inline me-1"></i>
+                    <p class="d-inline">KEEP SHOPPING</p>
+                </a>
+
+
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+    <div class="container mb-2">
+        
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.btt-link').click(function(e) {
+        window.scrollTo(0,0)
+    })
+</script>
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('product_size');
+        var url = `/bag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
+{% endblock %}
