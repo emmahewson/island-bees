@@ -1182,6 +1182,101 @@ select:-webkit-autofill:focus {
 }
 
 
+/* Toasts */
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 92px;
+    right: 12px;
+    z-index: 99999999999;
+    margin-left: 12px;
+}
+
+.custom-toast {
+    overflow: visible;
+    max-width: 100vw;
+    width: 350px;
+}
+
+.toast-capper {
+    height: 5px;
+}
+
+.toast-close span {
+    font-size: 28px;
+    line-height: 0;
+    vertical-align: top;
+}
+
+.toast-close {
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.toast-close:hover {
+    color: var(--dark);
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: var(--success) !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+.bag-notification-wrapper {
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.toast-total {
+    font-size: 18px;
+}
+
+
 /* Media Queries */
 
 /* Large Screens Only */
@@ -1221,6 +1316,16 @@ select:-webkit-autofill:focus {
 
     .card-price {
         font-size: 24px;
+    }
+
+    /* Toasts */
+
+    .message-container {
+        top: 76px;
+    }
+
+    .arrow-up {
+        right: 24px;
     }
     
 }
@@ -1335,6 +1440,11 @@ select:-webkit-autofill:focus {
         margin-bottom: 40px;
     }
 
+    /* Toasts */
+
+    .message-container {
+        top: 70px;
+    }
   
 }
 

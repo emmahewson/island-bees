@@ -75,9 +75,7 @@ class TestProductsViews(TestCase):
         )
         bag_before = self.client.session['bag']
         self.assertIn(f'{self.productTest.id}', bag_before)
-        
+
         response = self.client.post(f'/bag/remove/{str(self.productTest.id)}/')
         bag_after = self.client.session['bag']
         self.assertNotIn(f'{self.productTest.id}', bag_after)
-
-

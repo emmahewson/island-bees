@@ -160,7 +160,7 @@
         <!-- Messages -->
         <div class="message-container">
             {% for message in messages%}
-                {{ message }}
+                {% include 'includes/toasts/toast_success.html' %}
             {% endfor %}
         </div>
     {% endif %}
@@ -254,6 +254,10 @@
 
         <!-- Scroll to Top JS -->
         <script src="{% static 'js/scroll_top.js' %}"></script>
+
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
         
     {% endblock %}
 
