@@ -1,4 +1,4 @@
-<form class="form update-form mb-3" method="POST" action="">
+<form class="form update-form mb-3" method="POST" action="{% url 'adjust_bag' item.item_id %}">
     {% csrf_token %}
     <div class="form-group">
         <div class="input-group input-group-{{ item.item_id }}">
@@ -23,4 +23,4 @@
     </div>
 </form>
 <a class="update-link text-ib-success weight-semibold text-decoration-none float-start">UPDATE</a>
-<a class="remove-item text-ib-warning weight-semibold text-decoration-none float-end" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">REMOVE</a>
+<a class="remove-item text-ib-warning weight-semibold text-decoration-none float-end" id="remove_{{ item.item_id }}">REMOVE</a>
