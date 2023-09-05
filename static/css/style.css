@@ -552,6 +552,10 @@ textarea::placeholder {
     width: fit-content;
 }
 
+.icon-hex i {
+    font-size: 1.1em !important;
+}
+
 .icon-hex {
     width: 20px;
     height: 32px;
@@ -559,6 +563,7 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--dark-grey);
 }
 
 .icon-hex:before {
@@ -566,6 +571,7 @@ textarea::placeholder {
     width: 0; height: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
+    border-right: 9px solid var(--dark-grey);
     position: absolute;
     left: -9px;
 }
@@ -575,13 +581,15 @@ textarea::placeholder {
     width: 0; height: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
+    border-left: 9px solid var(--dark-grey);
     position: absolute;
     right: -9px;
 }
 
 .icon-hex,
 .icon-hex:before,
-.icon-hex::after {
+.icon-hex::after,
+.bag-total {
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -590,22 +598,13 @@ textarea::placeholder {
 
 
 .hex-nav-link:hover {
-    .bag-empty {
+    .icon-hex {
         background-color: var(--dark);
     }
-    .bag-empty:before {
+    .icon-hex:before {
         border-right: 9px solid var(--dark);
     }
-    .bag-empty:after {
-        border-left: 9px solid var(--dark);
-    }
-    .bag-contents {
-        background-color: var(--dark);
-    }
-    .bag-contents:before {
-        border-right: 9px solid var(--dark);
-    }
-    .bag-contents:after {
+    .icon-hex:after {
         border-left: 9px solid var(--dark);
     }
     .bag-total {
@@ -613,33 +612,6 @@ textarea::placeholder {
     }
 }
 
-.bag-contents {
-    background: var(--blue);
-}
-
-.bag-contents:before {
-    border-right: 9px solid var(--blue);
-}
-
-.bag-contents:after {
-    border-left: 9px solid var(--blue);
-}
-
-.bag-empty {
-    background: var(--dark-grey);
-}
-
-.bag-empty:before {
-    border-right: 9px solid var(--dark-grey);
-}
-
-.bag-empty:after {
-    border-left: 9px solid var(--dark-grey);
-}
-
-.icon-hex i {
-    font-size: 1.1em !important;
-}
 
 
 

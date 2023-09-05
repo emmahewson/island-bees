@@ -63,12 +63,12 @@
                 <a class="nav-link hex-nav-link" href="{% url 'view_bag' %}">
                     <div
                         class="icon-hex mx-auto {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
-                        <i class="fas fa-shopping-bag text-ib-light"></i>
+                        <i class="fas fa-shopping-bag fa-lg {% if grand_total %}text-ib-light{% else %}text-yellow{% endif %}"></i>
                     </div>
                     <p
-                        class="my-0 font-body bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
-                        {% if grand_total %}
-                        £{{ grand_total|floatformat:2 }}
+                        class="my-0 font-body bag-total text-dark-grey {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
+                        {% if total %}
+                        £{{ total|floatformat:2 }}
                         {% else %}
                         £0.00
                         {% endif %}

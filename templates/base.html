@@ -70,6 +70,8 @@
             <!-- Main Nav Links -->
             <div class="col-12 col-lg-4 my-auto">
                 <ul class="list-inline list-unstyled text-end text-lg-right my-0">
+
+                    <!-- Account Dropdown -->
                     <li class="list-inline-item dropdown">
                         <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,14 +93,16 @@
                             {% endif %}
                         </div>
                     </li>
+
+                    <!-- Shopping Bag -->
                     <li class="list-inline-item">
                         <a class="nav-link hex-nav-link" href="{% url 'view_bag' %}">
-                            <div class="icon-hex mx-auto {% if grand_total %}bag-contents{% else %}bag-empty{% endif %}">
-                                <i class="fas fa-shopping-bag fa-lg text-ib-light"></i>
+                            <div class="icon-hex mx-auto">
+                                <i class="fas fa-shopping-bag fa-lg {% if grand_total %}text-ib-light{% else %}text-yellow{% endif %}"></i>
                             </div>
-                            <p class="my-0 font-body text-center bag-total {% if grand_total %}text-blue weight-bold{% else %}text-dark-grey weight-regular{% endif %}">
-                                {% if grand_total %}
-                                    £{{ grand_total|floatformat:2 }}
+                            <p class="my-0 font-body text-center bag-total text-dark-grey {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
+                                {% if total %}
+                                    £{{ total|floatformat:2 }}
                                 {% else %}
                                     £0.00
                                 {% endif %}
@@ -110,21 +114,23 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
         </div>
 
-        <!-- Lower Nav - Large Screens: Products Links | Medium/Small Screens: Main Nav & Products Collapsible -->
+
         <div class="row bg-yellow">
             <nav class="navbar w-100 navbar-expand-lg px-3">
-
                 {% include 'includes/mobile-nav-bar.html' %}
                 {% include 'includes/lower-nav.html' %}
 
             </nav>
         </div>
+
+        <!-- Delivery Banner -->
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-dark-grey text-ib-light">
                 <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>
             </div>
         </div>
 
+        <!-- Mobile Search Collapsible -->
         <div class="collapse" id="collapseSearch">
             <div class="row d-block d-lg-none bg-ib-light">
                 <div class="col-12 px-3 py-2">
@@ -149,7 +155,9 @@
         </div>
     </div>
 
+    
     {% if messages %}
+        <!-- Messages -->
         <div class="message-container">
             {% for message in messages%}
                 {{ message }}
@@ -161,9 +169,14 @@
     {% endblock %}
 
 
+    <!-- Footer -->
     <footer>
+
+        <!-- Upper Footer -->
         <div class="container-fluid bg-dark-grey d-flex font-body px-3 px-md-4 py-3 py-md-4">
             <div class="row">
+
+                <!-- Social Links -->
                 <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
                     <h3 class="text-yellow weight-semibold mb-2">THE BUZZ</h3>
                     <a class="d-block text-decoration-none mb-2" href="https://www.facebook.com/" target="_blank" aria-label="Facebook - Opens in a new tab">
@@ -184,6 +197,7 @@
                     </a>
                 </div>
     
+                <!-- More Info -->
                 <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
                     <h3 class="text-yellow weight-semibold mb-2">MORE INFO</h3>
                     <a class="d-block text-decoration-none" href="">
@@ -194,6 +208,7 @@
                     </a>
                 </div>
     
+                <!-- About Us -->
                 <div class="upper-footer-section col-12 col-sm-6 col-md-8">
                     <h3 class="text-yellow weight-semibold mb-2">ABOUT US</h3>
                     <p class="text-ib-light">Island Bees was founded in 2012 by 2 Anglesey beekeepers with more honey and bees than they knew what to do with.  We stock a range of honey & bee-based products as well as beekeeping kit, you can also order bees from us if you live locally. Our award-winning courses run throughout the summer if you're keen to learn more about bees and beekeeping.</p>
@@ -202,6 +217,7 @@
             </div>
         </div>
 
+        <!-- Lower Footer -->
         <div class="container-fluid bg-ib-dark d-flex font-body text-ib-light px-4 py-3">
             <div class="row w-100 ib-row">
                 <p class="weight-light col-12 col-lg-9 col-xl-8 text-center lower-footer-text mb-2 mb-lg-0">ISLAND BEES IS A FULL STACK DJANGO E-COMMERCE SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
