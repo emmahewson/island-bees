@@ -168,6 +168,13 @@
     {% block content %}
     {% endblock %}
 
+    <!-- Back to Top Button -->
+    <div id="btt-btn">
+        <a class="text-dark-grey weight-bold font-title text-decoration-none shadow-sm h-100 w-100 d-flex justify-content-center align-items-center">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+
 
     <!-- Footer -->
     <footer>
@@ -244,8 +251,10 @@
 
 
     {% block postloadjs %}
-        <!-- Main JavaScript File -->
-        <!-- <script src="{% static 'js/script.js' %}"></script> -->
+
+        <!-- Scroll to Top JS -->
+        <script src="{% static 'js/scroll_top.js' %}"></script>
+        
     {% endblock %}
 
     {% block extra_js %}
