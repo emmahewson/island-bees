@@ -283,7 +283,13 @@ input.qty-input-sm {
 :not(.btn-check)+.btn:active {
     background-color: var(--blue-hov);
     color: white;
-    border-color: var(--blue);
+    border-color: var(--blue-hov);
+}
+
+.decrement-qty:disabled,
+.increment-qty:disabled {
+    background-color: var(--mid-grey) !important;
+    color: var(--dark-grey);
 }
 
 /* Back To Top Button */
