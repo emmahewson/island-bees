@@ -251,15 +251,14 @@ button {
     background: var(--yellow-hov);
 }
 
+
+/* Quantity Selector */
+
 .decrement-qty.btn,
 .increment-qty.btn {
     border: none;
     height: 40px;
     width: 40px;
-}
-
-.bag-quantity-group {
-    height: 35px;
 }
 
 .decrement-qty-sm.btn,
@@ -290,6 +289,12 @@ input.qty-input-sm {
 .increment-qty:disabled {
     background-color: var(--mid-grey) !important;
     color: var(--dark-grey);
+}
+
+.qty_input:focus,
+.qty_input:focus-visible {
+    box-shadow: 0px 0px 0px 2px var(--blue) inset;
+    border: none !important;
 }
 
 /* Back To Top Button */

@@ -1,4 +1,5 @@
 // Handles quantity input for products
+// Taken from Code Institute's Boutique Ado Walkthrough
 
 // Disable +/- buttons outside 1-99 range
 function handleEnableDisable(itemId) {
