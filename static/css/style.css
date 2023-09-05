@@ -295,6 +295,7 @@ input.qty-input-sm {
 .qty_input:focus-visible {
     box-shadow: 0px 0px 0px 2px var(--blue) inset;
     border: none !important;
+    outline: none !important;
 }
 
 /* Back To Top Button */
@@ -472,6 +473,19 @@ textarea::placeholder {
     color: var(--success-hov)
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--dark-grey);
+    box-shadow: 0px 0px 6px 0px var(--dark-grey) inset;
+}
+
 
 /* Upper Nav */
 
@@ -542,6 +556,13 @@ textarea::placeholder {
 .ib-search-box button i {
     font-size: 20px;
     line-height: unset;
+}
+
+.ib-search-box input:focus,
+.ib-search-box input:focus-visible {
+    box-shadow: 0px 0px 0px 2px var(--blue) inset;
+    border: none !important;
+    outline: none !important;
 }
 
 .fa-lg {
