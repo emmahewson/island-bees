@@ -1,0 +1,26 @@
+<!-- Error Toast -->
+<div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
+
+    <!-- Colour Band & Arrow -->
+    <div class="arrow-up arrow-danger"></div>
+    <div class="w-100 toast-capper bg-ib-warning"></div>
+
+    <!-- Message -->
+    <div class="toast-header bg-ib-light text-ib-dark border-0 justify-content-between">
+        <div class="">
+            <p class="me-auto my-auto weight-bold font-title">ERROR!</p>
+            <div class="font-body mt-1">
+                {{ message }}
+            </div>
+        </div>
+
+        <!-- Close Button -->
+        <button type="button" class="ml-2 mb-1 close toast-close bg-ib-light text-mid-grey float-end" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!-- Colour Band-->
+    <div class="w-100 toast-capper bg-ib-warning"></div>
+
+</div>

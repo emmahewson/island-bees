@@ -1,18 +1,29 @@
+<!-- Success Toast -->
 <div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
+
+    <!-- Colour Band & Arrow -->
     <div class="arrow-up arrow-success"></div>
     <div class="w-100 toast-capper bg-ib-success"></div>
-    <div class="toast-header bg-light-grey text-ib-dark border-0 justify-content-between">
+
+    <!-- Message -->
+    <div class="toast-header bg-ib-light text-ib-dark border-0 justify-content-between">
         <div class="">
             <p class="me-auto my-auto weight-bold font-title">SUCCESS!</p>
             <div class="font-body mt-1">
                 {{ message }}
             </div>
         </div>
-        <button type="button" class="ml-2 mb-1 close toast-close bg-light-grey text-mid-grey float-end" data-dismiss="toast" aria-label="Close">
+
+        <!-- Close Button -->
+        <button type="button" class="ml-2 mb-1 close toast-close bg-ib-light text-mid-grey float-end" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        
     </div>
+
+    <!-- Colour Band -->
+    <div class="w-100 toast-capper bg-ib-success"></div>
+
+    <!-- Shopping Bag Summary -->
     <div class="toast-body bg-ib-light text-ib-dark font-body">
         {% if grand_total and not on_profile_page %}
             <p class="font-title weight-bold">YOUR BAG ({{ product_count }})</p>
@@ -34,24 +45,28 @@
                     <div class="row"><div class="col"><hr class="my-3"></div></div>
                 {% endfor %}
             </div>
+
             <div class="row">
+
+                <!-- Total -->
                 <div class="col-12">
-                    <!-- Total -->
                     <p class="d-inline mt-auto">TOTAL{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: </p>
                     <p class="d-inline weight-semibold ms-1 toast-total">${{ total|floatformat:2 }}</p>
                 </div>
 
                 {% if free_delivery_delta > 0 %}
+                <!-- Delivery Delta Banner -->
                 <div class="col-12 text-center bg-yellow-light mt-3 mb-3 py-1">
-                    <!-- Delivery Delta Info -->
                         <p class="weight-regular m-0">
                             Spend <span class="weight-bold">£{{ free_delivery_delta }}</span> more to get free next day delivery!
                         </p>
                 </div>
                 {% endif %}
 
+                <!-- Checkout Button -->
                 <div class="col-12">
-                    <!-- Checkout Button -->
+
+                    <!-- CHANGE THIS TO CHECKOUT LINK!!! -->
                     <a href="{% url 'view_bag' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm float-end">
                         <p class="d-inline">CHECKOUT</p>
                         <i class="fas fa-lock d-inline"></i>
