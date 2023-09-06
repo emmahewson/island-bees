@@ -1233,13 +1233,12 @@ select:-webkit-autofill:focus {
     right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
-    border-bottom-color: #007bff !important;
+    border-bottom-color: var(--dark-grey) !important;
 }
 
 .arrow-secondary {
-    border-bottom-color: #6c757d !important;
+    border-bottom-color: var(--dark-grey) !important;
 }
 
 .arrow-success {
@@ -1247,27 +1246,27 @@ select:-webkit-autofill:focus {
 }
 
 .arrow-danger {
-    border-bottom-color: #dc3545 !important;
+    border-bottom-color: var(--warning) !important;
 }
 
 .arrow-warning {
-    border-bottom-color: #ffc107 !important;
+    border-bottom-color: var(--warning) !important;
 }
 
 .arrow-info {
-    border-bottom-color: #17a2b8 !important;
+    border-bottom-color: var(--blue) !important;
 }
 
 .arrow-light {
-    border-bottom-color: #f8f9fa !important;
+    border-bottom-color: var(--light) !important;
 }
 
 .arrow-dark {
-    border-bottom-color: #343a40 !important;
+    border-bottom-color: var(--dark-grey) !important;
 }
 
 .bag-notification-wrapper {
-    max-height: 100px;
+    max-height: 150px;
     overflow-x: hidden;
     overflow-y: auto;
 }

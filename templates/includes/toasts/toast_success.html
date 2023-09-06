@@ -23,7 +23,7 @@
                             {% if item.product.image %}
                                 <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             {% else %}
-                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
                             {% endif %}
                         </div>
                         <div class="col-8 font-body">
@@ -31,6 +31,7 @@
                             <p class="my-0">Qty: {{ item.quantity }}</p>
                         </div>
                     </div>
+                    <div class="row"><div class="col"><hr class="my-3"></div></div>
                 {% endfor %}
             </div>
             <div class="row">
@@ -40,14 +41,14 @@
                     <p class="d-inline weight-semibold ms-1 toast-total">${{ total|floatformat:2 }}</p>
                 </div>
 
+                {% if free_delivery_delta > 0 %}
                 <div class="col-12 text-center bg-yellow-light mt-3 mb-3 py-1">
                     <!-- Delivery Delta Info -->
-                    {% if free_delivery_delta > 0 %}
                         <p class="weight-regular m-0">
                             Spend <span class="weight-bold">£{{ free_delivery_delta }}</span> more to get free next day delivery!
                         </p>
-                    {% endif %}
                 </div>
+                {% endif %}
 
                 <div class="col-12">
                     <!-- Checkout Button -->
