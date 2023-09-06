@@ -98,22 +98,27 @@ class Order(models.Model):
     def update_total(self):
         """
         Update grand total each time a line item is added,
-        accounting for delivery costs.
+        accounting for delivery costs on items which
+        charge for delivery.
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
 
         # Calculate delivery costs based on if product charges for delivery
-        total_delivery_chargable = self.lineitems.product.filter(
-            delivery_cost=True).aggregate(
-                Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        total_delivery_chargable = self.lineitems.filter(
+            product__delivery_charge=True).aggregate(
+                Sum('lineitem_total'))['lineitem_total__sum'] or 0.00
 
-        if total_delivery_chargable < settings.FREE_DELIVERY_THRESHOLD:
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = (
-                self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+                total_delivery_chargable * (
+                    settings.STANDARD_DELIVERY_PERCENTAGE
+                ) / 100)
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
+
+        print(self.delivery_cost)
         self.save()
 
     def save(self, *args, **kwargs):
