@@ -180,7 +180,7 @@ html {
 }
 
 .ib-lh-1 {
-    line-height: 0.8;
+    line-height: 1;
 }
 
 .section-title {
@@ -189,6 +189,18 @@ html {
 
 .section-title-lrg {
     font-size: 28px;
+}
+
+.subtitle {
+    font-size: 20px;
+}
+
+.small-para-text {
+    font-size: 14px;
+}
+
+.big-para-text {
+    font-size: 20px;
 }
 
 .ib-container p,
@@ -363,7 +375,6 @@ input.qty-input-sm {
 
 .modal-close-cross span {
     font-size: 24px;
-    line-height: 1;
 }
 
 .modal-header, .modal-footer {
@@ -426,7 +437,8 @@ input.qty-input-sm {
 /* Forms Styling */
 
 input.ib-form-field,
-textarea.ib-form-field {
+textarea.ib-form-field,
+select.ib-form-field {
     width: 100%;
     font-size: 16px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.50) inset;
@@ -437,9 +449,9 @@ input.ib-form-field {
 }
 
 input.ib-form-field:focus-visible,
-textarea.ib-form-field:focus-visible {
+textarea.ib-form-field:focus-visible,
+.form-check-input:focus-visible {
     outline: none;
-    border: var(--li)
 }
 
 input,
@@ -448,7 +460,9 @@ textarea {
 }
 
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+.form-check-input:focus,
+.form-check-input:focus-visible {
     border: var(--blue) 2px solid !important;
 }
 
@@ -485,6 +499,23 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     -webkit-text-fill-color: var(--dark-grey);
     box-shadow: 0px 0px 6px 0px var(--dark-grey) inset;
+}
+
+legend {
+    font-size: 16px;
+}
+
+.form-check-input {
+    font-size: 20px; 
+}
+
+.form-check-input:checked {
+    background-color: var(--blue);
+    font-size: 20px;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
 }
 
 
@@ -1034,7 +1065,6 @@ select:-webkit-autofill:focus {
 .card-price {
     font-size: 28px;
     text-align: right;
-    line-height: 1;
 }
 
 .card-footer,
@@ -1118,12 +1148,6 @@ select:-webkit-autofill:focus {
     line-height: 0.8;
 }
 
-.review-user-div,
-.review-date,
-.review-rating .rating-hex-small {
-    line-height: 1;
-}
-
 
 
 /* Add Review Page */
@@ -1152,7 +1176,6 @@ select:-webkit-autofill:focus {
 
 .rating-hex {
     font-size: 46px;
-    line-height: 1;
     margin-right: 5px;
     color: var(--light-grey);
     cursor: pointer;

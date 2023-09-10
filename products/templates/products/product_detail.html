@@ -156,7 +156,7 @@
                         <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
                             <h3 class="review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-md-3">{{ review.title }}</h3>
                             <div class="d-inline-flex">
-                                <div class="review-user-div text-blue me-2 d-flex align-items-end">
+                                <div class="review-user-div text-blue me-2 d-flex align-items-end ib-lh-1">
                                     <div class="category-icon-circle-sm bg-blue me-1">
                                         <i class="fas fa-user text-ib-light text-center"></i>
                                     </div>
@@ -164,17 +164,17 @@
                                 </div>
 
                                 
-                                <p class="d-inline weight-light review-date m-0">{{ review.created_on }}</p>
+                                <p class="d-inline weight-light review-date m-0 ib-lh-1">{{ review.created_on }}</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-3 text-start text-sm-end">
                             <!-- Review Rating -->
-                            <div class="rating-div review-rating pe-0">
-                                <span class="rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                <span class="rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                <span class="rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                <span class="rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                <span class="rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                            <div class="rating-div review-rating ib-lh-1 pe-0">
+                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                                     <div class="modal-header justify-content-between bg-dark-grey py-3">
                                         <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
                                         <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true" class="ib-lh-1">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body pb-2 font-body">

@@ -38,7 +38,7 @@
                             {% endif %}
                         </div>
                         <div class="col-8 font-body">
-                            <p class="my-0 text-uppercase weight-semibold">{{ item.product.name }}</p>
+                            <p class="my-0 text-uppercase weight-semibold small-text">{{ item.product.name }}</p>
                             <p class="my-0">Qty: {{ item.quantity }}</p>
                         </div>
                     </div>
@@ -65,8 +65,6 @@
 
                 <!-- Checkout Button -->
                 <div class="col-12">
-
-                    <!-- CHANGE THIS TO CHECKOUT LINK!!! -->
                     <a href="{% url 'view_bag' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm float-end">
                         <p class="d-inline">CHECKOUT</p>
                         <i class="fas fa-lock d-inline"></i>

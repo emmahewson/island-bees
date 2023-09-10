@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_tools %}
+
+{% block content %}
+    <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+        <div class="row">
+            <div class="col">
+                <h1 class="font-title weight-bold section-title-lrg mb-2">CHECKOUT</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row font-body">
+
+            <!-- Order Summary -->
+            <div class="col-12 col-lg-5 offset-lg-1 order-lg-last">
+                <p class="mt-0 mb-3 mt-sm-3 subtitle weight-semibold text-dark-grey">Your Order ({{ product_count }})</p>
+
+                <!-- Heading Row -->
+                <div class="row weight-semibold mb-2">
+                    <div class="col-9 bg-yellow-light py-1">
+                        <p class="">Item</p>
+                    </div>
+                    <div class="col-3 text-right bg-yellow-light py-1">
+                        <p class="text-end">Subtotal</p>
+                    </div>
+                </div>
+
+                <!-- Products in Bag -->
+                {% for item in bag_items %}
+                    <!-- Product Row -->
+                    <div class="row small-para-text">
+                        <div class="col-2 pe-0">
+                            <a href="{% url 'product_detail' item.product.id %}">
+                                {% if item.product.image %}
+                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                    <img class="w-100" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <p class="text-uppercase weight-semibold">{{ item.product.name }}</p>
+                            <p class="">Qty: {{ item.quantity }}</p>
+                        </div>
+                        <div class="col-3 text-end ps-0">
+                            <p class="">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                {% endfor %}
+
+                <!-- Totals -->
+                <div class="row text-end">
+                    <div class="col mt-4">
+                        <p class="">Order Total: £{{ total | floatformat:2 }}</p>
+                        <p class="">Delivery: £{{ delivery | floatformat:2 }}</p>
+                        <p class="mt-2 big-para-text weight-semibold">GRAND TOTAL: £{{ grand_total | floatformat:2 }}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Order Form -->
+            <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
+                <p class="mt-0 mb-3 mt-sm-3 weight-semibold text-dark-grey">Please fill out the form below to complete your order</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="mb-2">
+                        <legend class="w-100">Details</legend>
+                        {{ order_form.full_name }}
+                        {{ order_form.email }}
+                    </fieldset>
+                    <fieldset class="mb-3">
+                        <legend class="w-100">Delivery</legend>
+                        {{ order_form.street_address1 }}
+                        {{ order_form.street_address2 }}
+                        {{ order_form.town_or_city }}
+                        {{ order_form.county }}
+                        {{ order_form.postcode }}
+                        {{ order_form.country }}
+                        {{ order_form.phone_number }}
+                        <div class="text-end d-flex align-items-end justify-content-end">
+							{% if user.is_authenticated %}
+								<label class="form-check-label ib-lh-1" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="form-check-input ms-2 me-0" type="checkbox" id="id-save-info" name="save-info" checked>
+							{% else %}
+								<label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+							{% endif %}
+						</div>
+                    </fieldset>
+                    <fieldset class="mb-5">
+                        <legend class="w-100">Payment</legend>
+                        <!-- Stripe Card Input -->
+                        <div class="mb-3" id="card-element"></div>
+                        <!-- Form Errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <!-- Client Secret - hidden element to pass to view -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    </fieldset>
+
+                    <!-- Checkout Buttons -->
+                    <div class="button-group mt-3 d-flex justify-content-between">
+
+                        <!-- Keep Shopping Button -->
+                        <a href="{% url 'view_bag' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+                            <i class="fas fa-chevron-left d-inline me-1"></i>
+                            <p class="d-inline">BACK TO BAG</p>
+                        </a>
+                    
+                        <!-- Complete Order Button -->
+                        <button id="submit-button" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm">
+                            <p class="d-inline me-1">PLACE ORDER</p>
+                            <i class="fas fa-lock d-inline"></i>
+                        </button>
+                    </div>
+
+                    <!-- Amount to be charged to card - warning text -->
+                    <p class="text-ib-warning text-end mt-2">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
