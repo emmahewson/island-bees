@@ -96,7 +96,7 @@
                     <fieldset class="mb-5">
                         <legend class="w-100">Payment</legend>
                         <!-- Stripe Card Input -->
-                        <div class="mb-3" id="card-element"></div>
+                        <div class="mb-3 " id="card-element"></div>
                         <!-- Form Errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <!-- Client Secret - hidden element to pass to view -->
@@ -131,4 +131,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

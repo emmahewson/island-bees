@@ -310,6 +310,7 @@ input.qty-input-sm {
     outline: none !important;
 }
 
+
 /* Back To Top Button */
 
 #btt-btn {
@@ -442,6 +443,10 @@ select.ib-form-field {
     width: 100%;
     font-size: 16px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.50) inset;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
 }
 
 input.ib-form-field {
@@ -450,7 +455,8 @@ input.ib-form-field {
 
 input.ib-form-field:focus-visible,
 textarea.ib-form-field:focus-visible,
-.form-check-input:focus-visible {
+.form-check-input:focus-visible,
+.StripeElement:focus-visible {
     outline: none;
 }
 
@@ -462,7 +468,11 @@ textarea {
 input:focus-visible,
 textarea:focus-visible,
 .form-check-input:focus,
-.form-check-input:focus-visible {
+.form-check-input:focus-visible,
+.StripeElement:focus,
+.StripeElement:focus-visible
+.StripeElement:active,
+.StripeElement--focus {
     border: var(--blue) 2px solid !important;
 }
 
@@ -496,7 +506,8 @@ textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
+select:-webkit-autofill:focus,
+.StripeElement--webkit-autofill {
     -webkit-text-fill-color: var(--dark-grey);
     box-shadow: 0px 0px 6px 0px var(--dark-grey) inset;
 }
@@ -520,6 +531,27 @@ legend {
 
 select:invalid {
     color: var(--mid-grey);
+}
+
+
+/* Stripe Elements */
+
+#card-element {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.50) inset;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    
+}
+
+.StripeElement {
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0;
 }
 
 
@@ -1210,8 +1242,6 @@ select:invalid {
 
 
 /* Toasts */
-
-/* ------------------------------- bootstrap toasts */
 
 .message-container {
     position: fixed;

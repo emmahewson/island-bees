@@ -10,7 +10,6 @@ button.addEventListener('click', function() {
 })
 
 function scrollFunction() {
-    console.log(document.documentElement.scrollTop)
     if (document.documentElement.scrollTop > 20) {
         button.style.display = "block"
     } else {
