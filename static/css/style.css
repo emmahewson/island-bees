@@ -554,6 +554,10 @@ select:invalid {
   border-radius: 0;
 }
 
+.text-danger {
+    color: var(--warning) !important;
+}
+
 
 /* Upper Nav */
 
