@@ -518,6 +518,10 @@ legend {
     box-shadow: none;
 }
 
+select:invalid {
+    color: var(--mid-grey);
+}
+
 
 /* Upper Nav */
 
