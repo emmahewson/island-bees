@@ -103,7 +103,7 @@ class Order(models.Model):
         charge for delivery.
         """
         self.order_total = self.lineitems.aggregate(
-            Sum('lineitem_total'))['lineitem_total__sum'] or 0
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0.00
 
         # Calculate delivery costs based on if product charges for delivery
         total_delivery_chargable = self.lineitems.filter(
@@ -118,8 +118,6 @@ class Order(models.Model):
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
-
-        print(self.delivery_cost)
         self.save()
 
     def save(self, *args, **kwargs):

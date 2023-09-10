@@ -1267,7 +1267,7 @@ select:invalid {
 
 .toast-close span {
     font-size: 28px;
-    line-height: 0;
+    line-height: 0.6;
     vertical-align: top;
 }
 
@@ -1291,7 +1291,7 @@ select:invalid {
     border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
-    right: 42px;
+    right: 30px;
 }
 
 .arrow-success {
@@ -1369,7 +1369,7 @@ select:invalid {
     }
 
     .arrow-up {
-        right: 30px;
+        right: 17px;
     }
     
 }

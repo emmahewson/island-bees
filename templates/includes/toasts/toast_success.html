@@ -6,10 +6,10 @@
     <div class="w-100 toast-capper bg-ib-success"></div>
 
     <!-- Message -->
-    <div class="toast-header bg-ib-light text-ib-dark border-0 justify-content-between">
+    <div class="toast-header bg-ib-light text-ib-dark border-0 justify-content-between align-items-start">
         <div class="">
             <p class="me-auto my-auto weight-bold font-title">SUCCESS!</p>
-            <div class="font-body mt-1">
+            <div class="font-body mt-1 text-break">
                 {{ message }}
             </div>
         </div>
@@ -24,10 +24,10 @@
     <div class="w-100 toast-capper bg-ib-success"></div>
 
     <!-- Shopping Bag Summary -->
-    <div class="toast-body bg-ib-light text-ib-dark font-body">
+    <div class="toast-body bg-ib-light text-ib-dark font-body p-0">
         {% if grand_total and not on_profile_page %}
-            <p class="font-title weight-bold">YOUR BAG ({{ product_count }})</p>
-            <div class="bag-notification-wrapper mb-2">
+            <p class="font-title weight-bold pt-3 px-3">YOUR BAG ({{ product_count }})</p>
+            <div class="bag-notification-wrapper mb-2 px-3">
                 {% for item in bag_items %}
                     <div class="row">
                         <div class="col-4">
@@ -46,7 +46,7 @@
                 {% endfor %}
             </div>
 
-            <div class="row">
+            <div class="row px-3 pb-3">
 
                 <!-- Total -->
                 <div class="col-12">

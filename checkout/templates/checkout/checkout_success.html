@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+    <!-- Order Confirmation Page -->
+    <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
+        <div class="row px-3 px-sm-0">
+
+            <!-- Title and text -->
+            <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 text-center">
+                <h2 class="font-title weight-bold section-title-lrg mb-2">THANK YOU!</h2>
+                <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
+                
+            </div>
+            <hr class="mt-4 mb-5 mb-sm-4 col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
+        </div>
+
+        <div class="row">
+            <!-- Order Confirmation Wrapper -->
+            <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 shadow">
+
+                <div class="row bg-yellow-light py-2">
+                    <div class="col">
+                        <p class="weight-semibold">YOUR ORDER</p>
+                    </div>
+                </div>
+
+                <div class="row bg-ib-white px-3 py-4">
+
+                    <!-- Order Info -->
+                    <div class="col-12 col-md-9 ">
+                        <p class="text-blue mb-2 weight-semibold">Order Info</p>
+
+                        <div class="row">
+                            <div class="col-12 col-md-3 text-ib-dark">
+                                <p class="weight-semibold">Order No.</p>
+                            </div>
+
+                            <div class="col-12 col-md-9">
+                                <p class="text-break">{{ order.order_number }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-3 text-ib-dark">
+                                <p class="weight-semibold">Order Date</p>
+                            </div>
+
+                            <div class="col-12 col-md-9">
+                                <p class="">{{ order.date }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="col-12 col-md-3 text-md-end weight-semibold text-ib-dark mt-4 mt-md-0">
+                        <p class="text-blue mb-2">Delivering To</p>
+                        <p class="">{{ order.full_name }}</p>
+                        <p>{{ order.street_address1 }}</p>
+                        {% if order.street_address2 %}
+                            <p>{{ order.street_address2 }}</p>
+                        {% endif %}
+                        <p>{{ order.town_or_city }}</p>
+                        <p>{{ order.county }}</p>
+                        <p>{{ order.postcode }}</p>
+                        <p>{{ order.country.name }}</p>
+                        <p>{{ order.phone_number }}</p>
+                        
+                    </div>
+
+                </div>
+
+                <div class="row bg-light-grey px-3 py-4">
+
+                    <!-- Order Details -->
+                    <div class="col-12">
+                        <p class="text-blue weight-semibold mb-2">Order Details</p>
+
+                        {% for item in order.lineitems.all %}
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <p class="weight-semibold text-uppercase">{{ item.product.name }}</p>
+                            </div>
+                            <div class="col-12 col-md-4 text-md-end">
+                                <p>{{ item.quantity }} @ £{{ item.product.price }}</p>
+
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12 text-md-end mt-4">
+                        <p>Total: £{{ order.order_total }}</p>
+                        <p>Delivery: £{{ order.delivery_cost }}</p>
+                        <p class="mt-2 big-para-text weight-semibold">GRAND TOTAL: £{{ order.grand_total }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col-10 offset-1 col-lg-8 offset-lg-2 px-0 text-sm-start text-center">
+
+                <!--Back to Shop Button -->
+                <a href="{% url 'products' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
+                    <i class="fas fa-chevron-left d-inline me-1"></i>
+                    <p class="d-inline">BACK TO SHOP</p>
+                </a>
+            </div>
+        </div>
+        
+
+        
+    
+    </div>
+{% endblock %}
