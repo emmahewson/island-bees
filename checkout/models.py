@@ -136,10 +136,6 @@ class Order(models.Model):
             self.delivery_cost = 0.00
 
         # Calculates total including delivery
-
-        print(type(self.order_total))
-        print(type(self.delivery_cost))
-
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 

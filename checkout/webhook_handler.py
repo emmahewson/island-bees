@@ -19,6 +19,18 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        # Get payment intent
+        intent = event.data.object
+
+        # Get ID of payment intent
+        pid = intent.id
+
+        # Get bag from payment intent
+        bag = intent.metadata.bag
+
+        # Get value of 'save_info' box from payment intent
+        save_info = intent.metadata.save_info
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | ' +
             'SUCCESS: Created order in webhook',
