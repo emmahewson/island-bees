@@ -18,7 +18,7 @@ def view_bag(request):
     context = {
         'on_bag_page': True
     }
-    
+
     return render(request, 'bag/bag.html', context)
 
 
