@@ -4,4 +4,8 @@ Bug - attempted to move the js for the remove item from bag in to separate JS fi
 
 Bug - bag appears in toast after review updated or added - not sorted
 
-Bug - issues with the checkout delivery & total calculations - couldn't add a float & a decimal type numbers. Converted the order_total & total_delivery_charge to floats which fixed the problem.
+Bug - issues with the checkout delivery & total calculations - couldn't add a float & a decimal type numbers. 
+Fix - Had to convert the order_total and total_delivery_chargable to float values with checks to make sure they had a value in the first place. This accounted for the various different scenarios.
+    1. Under delivery threshold & delivery chargable on all products
+    2. Under delivery threshold & delivery chargable on some but not all products
+    3. Over delivery threshold

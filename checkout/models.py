@@ -108,12 +108,23 @@ class Order(models.Model):
             Sum('lineitem_total'))['lineitem_total__sum']) or float(0)
 
         # Calculate delivery costs based on if product charges for delivery
-        total_delivery_chargable = float(self.lineitems.filter(
+        total_for_delivery = self.lineitems.filter(
             product__delivery_charge=True).aggregate(
-                Sum('lineitem_total'))['lineitem_total__sum']) or float(0)
+                Sum('lineitem_total'))['lineitem_total__sum']
 
-        print(type(total_delivery_chargable))
-        print(total_delivery_chargable)
+        # Converts total_for_delivery to a float - avoids calculation errors
+        # Checks the total has a value
+        if total_for_delivery is not None:
+            # Checks the value is above 0 & converts to a float
+            if total_for_delivery > 0:
+                total_delivery_chargable = float(total_for_delivery)
+            # Converts the value to a float if 0
+            else:
+                total_delivery_chargable = float(0)
+        # If total_for_delivery has no value sets it to a float of 0
+        else:
+            total_delivery_chargable = float(0)
+
         # Checks if total qualifies for free delivery
         # and calculates delivery charge
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
@@ -125,7 +136,7 @@ class Order(models.Model):
             self.delivery_cost = 0.00
 
         # Calculates total including delivery
-        
+
         print(type(self.order_total))
         print(type(self.delivery_cost))
 
