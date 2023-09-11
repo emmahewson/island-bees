@@ -455,6 +455,7 @@ input.ib-form-field {
 
 input.ib-form-field:focus-visible,
 textarea.ib-form-field:focus-visible,
+select:focus-visible,
 .form-check-input:focus-visible,
 .StripeElement:focus-visible {
     outline: none;
@@ -469,6 +470,8 @@ input:focus-visible,
 textarea:focus-visible,
 .form-check-input:focus,
 .form-check-input:focus-visible,
+select:focus,
+select:focus-visible,
 .StripeElement:focus,
 .StripeElement:focus-visible
 .StripeElement:active,
@@ -510,6 +513,10 @@ select:-webkit-autofill:focus,
 .StripeElement--webkit-autofill {
     -webkit-text-fill-color: var(--dark-grey);
     box-shadow: 0px 0px 6px 0px var(--dark-grey) inset;
+}
+
+select {
+    border: none !important;
 }
 
 legend {
@@ -1260,6 +1267,10 @@ select:invalid {
     height: 100%;
     font-size: 50px;
 }
+
+
+
+
 
 
 /* Toasts */

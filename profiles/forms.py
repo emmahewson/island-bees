@@ -25,7 +25,7 @@ class UserProfileForm(forms.ModelForm):
         }
 
         # Sets autofocus on first input
-        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+        self.fields['default_street_address1'].widget.attrs['autofocus'] = True
 
         for field in self.fields:
             # Adds placeholders to inputs (except Country)

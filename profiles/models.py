@@ -52,6 +52,7 @@ class UserProfile(models.Model):
     )
 
     def __str__(self):
+        """ String representation of Profile username """
         return self.user.username
 
 

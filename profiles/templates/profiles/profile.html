@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+        <div class="row">
+            <div class="col">
+                <h1 class="font-title weight-bold section-title-lrg mb-2">MY PROFILE</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row font-body pb-5">
+
+
+            <!-- Order Form -->
+            <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
+                <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
+                <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form }}
+
+                    <!-- Update Button -->
+                    <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">
+                        UPDATE
+                    </button>
+                </form>
+            </div>
+
+            <!-- Order History -->
+            <div class="col-12 col-lg-6">
+                <p class="mt-0 mb-3 mt-sm-3 subtitle weight-semibold text-dark-grey">MY ORDER HISTORY</p>
+
+                <div class="table-responsive mt-3">
+                    <table class="table table-borderless font-body">
+                        <thead>
+                            <tr class="small-para-text">
+                                <th scope="col" class="bg-yellow-light weight-semibold">Order</th>
+                                <th scope="col" class="bg-yellow-light weight-semibold">Date</th>
+                                <th scope="col" class="bg-yellow-light weight-semibold">Item</th>
+                                <th scope="col" class="bg-yellow-light weight-semibold">Total</th>
+                            </tr>
+                        </thead>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr class="bag-item-row small-para-text">
+                                <td class="py-2 weight-semibold">
+                                    <a href="{% url 'order_history' order.order_number %}"
+                                    title="{{ order.order_number }}" class="text-decoration-none text-blue">
+                                        {{ order.order_number|truncatechars:6 }}
+                                    </a>
+                                </td>
+                                <td class="py-2">{{ order.date }}</td>
+                                <td class="py-2">
+                                    <ul class="list-unstyled mb-0">
+                                        {% for item in order.lineitems.all %}
+                                            <li class="text-uppercase">
+                                                {{ item.quantity }} X {{ item.product.name }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td class="py-2">£{{ order.grand_total }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}
