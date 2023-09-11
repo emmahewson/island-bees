@@ -1,4 +1,4 @@
-// Scroll to top button
+// Scroll to top functionality
 
 let button = document.getElementById("btt-btn");
 
