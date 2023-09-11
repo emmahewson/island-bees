@@ -13,17 +13,31 @@ from products.models import Product
 def view_bag(request):
     """ A view that renders the bag contents page """
 
-    return render(request, 'bag/bag.html')
+    # Tells toast message which page user is on
+    # To set toast bag summary button link
+    context = {
+        'on_bag_page': True
+    }
+    
+    return render(request, 'bag/bag.html', context)
 
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
 
+    # Gets product from DB
     product = get_object_or_404(Product, pk=item_id)
+
+    # Gets quantity value from form
     quantity = int(request.POST.get('quantity'))
+
     redirect_url = request.POST.get('redirect_url')
+
+    # Gets bag from session
     bag = request.session.get('bag', {})
 
+    # Checks if product is already in bag
+    # If so updates quantity & if not adds to bag
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
         messages.success(
@@ -33,6 +47,7 @@ def add_to_bag(request, item_id):
         bag[item_id] = quantity
         messages.success(request, f'Added {product.name} to your bag')
 
+    # Updates bag in session
     request.session['bag'] = bag
     return redirect(redirect_url)
 
@@ -40,10 +55,18 @@ def add_to_bag(request, item_id):
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
+    # Gets product from DB
     product = get_object_or_404(Product, pk=item_id)
+
+    # Gets quantity value from form
     quantity = int(request.POST.get('quantity'))
+
+    # Gets bag from session
     bag = request.session.get('bag', {})
 
+    # Checks if quantity is more than 0
+    # If so updates quantity
+    # If not removes item from bag
     if quantity > 0:
         bag[item_id] = quantity
         messages.success(
@@ -52,6 +75,7 @@ def adjust_bag(request, item_id):
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
 
+    # Updates bag in session
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
@@ -60,15 +84,21 @@ def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
 
     try:
+        # Gets product from DB
         product = get_object_or_404(Product, pk=item_id)
+
+        # Gets bag from session
         bag = request.session.get('bag', {})
 
+        # Removes item id from bag
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
 
+        # Updates bag in session
         request.session['bag'] = bag
         return HttpResponse(status=200)
 
+    # Handles errors
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)

@@ -20,7 +20,6 @@
         </div>
 
         <!-- Category Name -->
-
         {% if current_category %}
         <div class="col">
             <div class="category-label font-body d-flex text-blue text-decoration-none mx-auto">
@@ -46,11 +45,7 @@
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-
-
-
-                            <!-- NEED TO WORK OUT HOW TO DO THIS - MOVE THE RATING TO A MODEL FIELD ON PRODUCT? WHERE WOULD THIS BE CALCULATED?
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
                             <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option> -->
                             <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                             <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>

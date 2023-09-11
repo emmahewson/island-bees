@@ -9,9 +9,12 @@
 
 {% block content %}
 
+<!-- Add Review Page -->
 <div class="container-fluid">
     <div class="row px-4 px-sm-0 bg-light-grey">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ib-form review-form bg-ib-white p-0 shadow">
+
+            <!-- Form Header -->
             <div class="ib-form-header bg-yellow-light d-flex justify-content-between align-items-center">
                 <div class="font-body my-2 mx-3 my-sm-2 mx-sm-4 text-v">
                     <p class="weight-regular mb-0 mb-md-1">Tell us your thoughts on...</p>
@@ -26,12 +29,15 @@
                 {% endif %}
                 
             </div>
+
+            <!-- Review Form -->
             <form class="px-3 px-md-4 py-4" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
                     {{ field }}
                 {% endfor %}
     
+                <!-- Rating Select - populates hidden rating input using JS -->
                 <div class="rating-form-div" aria-hidden="true">
                     <p class="font-body weight-semibold m-0">Your Rating *</p>
                     <div class="rating-div pe-0">
@@ -43,8 +49,13 @@
                     </div>
                 </div>
     
+                <!-- Buttons -->
                 <div class="d-flex justify-content-center justify-content-sm-end mt-5">
+
+                    <!-- Cancel Button -->
                     <a class="ib-button ib-button-grey me-3 text-decoration-none text-dark-grey font-title weight-bold shadow-sm" href="{% url 'product_detail' product.id %}">CANCEL</a>
+                    
+                    <!-- Submit Button -->
                     <button class="ib-button ib-button-yellow text-dark-grey font-title weight-bold shadow-sm" type="submit">SUBMIT</button>
                 </div>
                 

@@ -16,6 +16,8 @@ class OrderForm(forms.ModelForm):
         labels and set autofocus on first field
         """
         super().__init__(*args, **kwargs)
+
+        # Sets placeholder values for form inputs
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
@@ -27,14 +29,21 @@ class OrderForm(forms.ModelForm):
             'county': 'County, State or Locality',
         }
 
+        # Sets autofocus on first input
         self.fields['full_name'].widget.attrs['autofocus'] = True
+
         for field in self.fields:
+            # Adds placeholders to inputs (except Country)
             if field != 'country':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+
+            # Adds styling classes to all inputs
             self.fields[field].widget.attrs['class'] = (
                     'ib-form-field mb-3 px-2 py-2 font-body text-dark-grey')
+
+            # Removes labels from inputs
             self.fields[field].label = False

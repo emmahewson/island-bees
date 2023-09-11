@@ -9,11 +9,10 @@ def index(request):
     A view to return the home page
     """
 
+    # Gets products from DB for featured products section
     products = Product.objects.all()
-
     context = {
         'products': products,
-        'rating': 0,  # Need to create code for this
     }
 
     return render(request, 'home/index.html', context)

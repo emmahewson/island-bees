@@ -102,6 +102,8 @@ class Order(models.Model):
         accounting for delivery costs on items which
         charge for delivery.
         """
+
+        # Calculates the order total without delivery
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0.00
 
@@ -110,6 +112,8 @@ class Order(models.Model):
             product__delivery_charge=True).aggregate(
                 Sum('lineitem_total'))['lineitem_total__sum'] or 0.00
 
+        # Checks if total qualifies for free delivery
+        # and calculates delivery charge
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = (
                 total_delivery_chargable * (
@@ -117,6 +121,8 @@ class Order(models.Model):
                 ) / 100)
         else:
             self.delivery_cost = 0
+
+        # Calculates total including delivery
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 

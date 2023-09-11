@@ -1,3 +1,4 @@
+<!-- Product Image -->
 {% if item.product.image %}
     <a href="{% url 'product_detail' item.product.id %}">
         <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ product.name }}">

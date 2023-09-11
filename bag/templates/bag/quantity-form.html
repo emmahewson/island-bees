@@ -1,7 +1,12 @@
+<!-- Quantity Form -->
 <form class="form update-form mb-3" method="POST" action="{% url 'adjust_bag' item.item_id %}">
     {% csrf_token %}
+
+    <!-- Increment & Decrement Buttons & input Box -->
     <div class="form-group">
         <div class="input-group input-group-{{ item.item_id }}">
+
+            <!-- Decrement Button -->
             <div class="input-group-prepend">
                 <button class="decrement-qty decrement-qty-sm bg-blue text-ib-light weight-bold btn rounded-0 d-flex justify-content-center align-items-center decrement-qty_{{ item.item_id }}" 
                     data-item_id="{{ item.item_id }}">
@@ -10,17 +15,26 @@
                     </span>
                 </button>
             </div>
+
+            <!-- Quantity Input -->
             <input class="form-control qty_input qty-input-sm ib-form-field font-body weight-semibold id_qty_{{ item.item_id }}" type="number"
                 name="quantity" value="{{ item.quantity }}" min="1" max="99"
                 data-item_id="{{ item.item_id }}">
+
+            <!-- Increment Button -->
             <div class="input-group-append">
                 <button class="increment-qty increment-qty-sm bg-blue text-ib-light weight-bold btn rounded-0 d-flex justify-content-center align-items-center increment-qty_{{ item.item_id }}"
                     data-item_id="{{ item.item_id }}">
                     <i class="fas fa-plus fa-sm"></i>
                 </button>
             </div>
+
         </div>
     </div>
 </form>
+
+<!-- Update Link -->
 <a class="update-link text-ib-success weight-semibold text-decoration-none float-start">UPDATE</a>
+
+<!-- Remove Link -->
 <a class="remove-item text-ib-warning weight-semibold text-decoration-none float-end" id="remove_{{ item.item_id }}">REMOVE</a>

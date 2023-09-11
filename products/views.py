@@ -16,7 +16,10 @@ def all_products(request):
     A view to show all products, including sorting & searching
     """
 
+    # Gets products from DB
     products = Product.objects.all()
+
+    # Resets variables for sort/search
     query = None
     category = None
     sort = None
@@ -24,14 +27,18 @@ def all_products(request):
 
     if request.GET:
 
+        # Handles product sorting based on sortkey & direction
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
+
             if sortkey == "name":
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower("name"))
+
             if sortkey == 'category':
                 sortkey = 'category__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == "desc":
@@ -39,13 +46,13 @@ def all_products(request):
 
             products = products.order_by(sortkey)
 
+        # Handles product filtering by category
         if 'category' in request.GET:
             category = request.GET['category']
             products = products.filter(category__name=category)
             category = Category.objects.get(name=category)
 
-            print(category)
-
+        # Handles product search
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -56,6 +63,7 @@ def all_products(request):
                 description__icontains=query)
             products = products.filter(queries)
 
+    # Sets current sorting & direction
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -71,9 +79,11 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details """
 
+    # Gets product from DB
     product = get_object_or_404(Product, pk=product_id)
+
+    # Gets prorduct reviews from DB
     reviews = Review.objects.filter(product=product_id)
-    print(reviews.count())
 
     context = {
         'product': product,

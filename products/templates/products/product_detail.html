@@ -26,27 +26,18 @@
 
 
             <!-- Product Rating -->
-            {% if product.rating > 0 %}
+
                 <a href="#review-div" class="text-decoration-none text-blue product-rating-link">
                     <div class="rating-div pe-0 mt-3">
                         <span class="rating-hex-small rating-hex-{% if product.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
                         <span class="rating-hex-small rating-hex-{% if product.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
                         <span class="rating-hex-small rating-hex-{% if product.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
                         <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small me-2 rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count > 1%}S{% endif %}</p>
+                        <span class="rating-hex-small rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %} me-2">&#x2B22;</span>
+                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count != 1 %}S{% endif %}</p>
                     </div>
                 </a>
-            {% else %}
-                <div class="rating-div pe-0 mt-3">
-                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-false">&#x2B22;</span>
-                    <span class="rating-hex-small rating-hex-false me-2">&#x2B22;</span>
-                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count > 1%}S{% endif %}</p>
-                </div>
-            {% endif %}
+
 
 
         </div>
