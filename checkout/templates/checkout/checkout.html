@@ -95,10 +95,13 @@
                     </fieldset>
                     <fieldset class="mb-5">
                         <legend class="w-100">Payment</legend>
+                        
                         <!-- Stripe Card Input -->
                         <div class="mb-3 " id="card-element"></div>
+
                         <!-- Form Errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+
                         <!-- Client Secret - hidden element to pass to view -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>

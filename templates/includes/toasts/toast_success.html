@@ -23,9 +23,10 @@
     <!-- Colour Band -->
     <div class="w-100 toast-capper bg-ib-success"></div>
 
+    {% if grand_total and not on_profile_page %}
     <!-- Shopping Bag Summary -->
     <div class="toast-body bg-ib-light text-ib-dark font-body p-0">
-        {% if grand_total and not on_profile_page %}
+        
             <p class="font-title weight-bold pt-3 px-3">YOUR BAG ({{ product_count }})</p>
             <div class="bag-notification-wrapper mb-2 px-3">
                 {% for item in bag_items %}
@@ -46,41 +47,49 @@
                 {% endfor %}
             </div>
 
-            <div class="row px-3 pb-3">
 
-                <!-- Total -->
-                <div class="col-12">
-                    <p class="d-inline mt-auto">TOTAL{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: </p>
-                    <p class="d-inline weight-semibold ms-1 toast-total">${{ total|floatformat:2 }}</p>
-                </div>
 
-                {% if free_delivery_delta > 0 %}
-                <!-- Delivery Delta Banner -->
-                <div class="col-12 text-center bg-yellow-light mt-3 mb-3 py-1">
-                        <p class="weight-regular m-0">
-                            Spend <span class="weight-bold">£{{ free_delivery_delta }}</span> more to get free next day delivery!
-                        </p>
-                </div>
-                {% endif %}
-
-                <div class="col-12">
-                    {% if on_bag_page %}
-                        <!-- Checkout Button - if already on bag page -->
-                        <a href="{% url 'checkout' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm float-end">
-                            <p class="d-inline">CHECKOUT</p>
-                            <i class="fas fa-lock d-inline"></i>
-                        </a>
-                    {% else %}
-                        <!-- View Bag Button - if not already on bag page -->
-                        <a href="{% url 'view_bag' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm float-end">
-                            <p class="d-inline">VIEW BAG</p>
-                            <i class="fas fa-lock d-inline"></i>
-                        </a>
-                    {% endif %}
-                </div>
+            <!-- Total -->
+            <div class="px-3">
+                <p class="d-inline mt-auto">TOTAL{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: </p>
+                <p class="d-inline weight-semibold ms-1 toast-total">£{{ total|floatformat:2 }}</p>
             </div>
 
+            {% if free_delivery_delta > 0 %}
+            <!-- Delivery Delta Banner -->
+            <div class="text-center bg-yellow-light mt-3 mb-3 px-3 py-1">
+                    <p class="weight-regular m-0">
+                        Spend <span class="weight-bold">£{{ free_delivery_delta }}</span> more to get free next day delivery!
+                    </p>
+            </div>
+            {% endif %}
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 pb-3">
+                        {% if on_bag_page %}
+                            <!-- Checkout Button - if already on bag page -->
+                            <a href="{% url 'checkout' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold me-2 shadow-sm float-end">
+                                <p class="d-inline me-1">CHECKOUT</p>
+                                <i class="fas fa-lock d-inline"></i>
+                            </a>
+                        {% else %}
+                            <!-- View Bag Button - if not already on bag page -->
+                            <a href="{% url 'view_bag' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold me-2 shadow-sm float-end">
+                                <p class="d-inline me-1">VIEW BAG</p>
+                                <i class="fas fa-lock d-inline"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
             
-        {% endif %}
+            
+
+
+            
+        
     </div>
+    {% endif %}
 </div>
