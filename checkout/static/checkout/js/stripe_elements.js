@@ -82,6 +82,12 @@ form.addEventListener('submit', function(ev) {
                 <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
 
+            // Re-displays the payment form
+            $('#payment-form').fadeToggle(100);
+
+            // Hides the loading animation
+            $('#loading-overlay').fadeToggle(100);
+
             // Re-enable the submit button and card input
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
