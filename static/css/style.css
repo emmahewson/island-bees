@@ -26,7 +26,7 @@ html {
     --light-grey: #EAEAEA;
     --light-grey-hov: #cccccc;
     --mid-grey: #959595;
-    --dark-grey: #4D4D4D;
+    --dark-grey: #4d4d4d;
     --yellow: #FFCD85;
     --yellow-hov: #feb247;
     --yellow-light: #FFE7C6;
@@ -1237,6 +1237,28 @@ select:invalid {
 
 .bag-item-row {
     border-bottom: var(--mid-grey) solid 1px;
+}
+
+/* Checkout */
+
+#loading-overlay {
+	display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 12, 0, .85);
+    z-index: 9999;
+}
+
+.loading-spinner {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+    font-size: 50px;
 }
 
 
