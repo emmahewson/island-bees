@@ -8,12 +8,19 @@
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
         <div class="row px-3 px-sm-0">
 
+            
             <!-- Title and text -->
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 text-center">
-                <h2 class="font-title weight-bold section-title-lrg mb-2">THANK YOU!</h2>
-                <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
-                
+
+                {% if from_profile %}
+                    <h2 class="font-title weight-bold section-title-lrg mb-2">PAST ORDER DETAILS</h2>
+                    <p>Below are the details of your historical order. A confirmation email was sent to {{ order.email }}.</p>
+                {% else %}
+                    <h2 class="font-title weight-bold section-title-lrg mb-2">THANK YOU!</h2>
+                    <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
+                {% endif %}
             </div>
+
             <hr class="mt-4 mb-5 mb-sm-4 col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
         </div>
 
@@ -49,7 +56,7 @@
                             </div>
 
                             <div class="col-12 col-md-9">
-                                <p class="">{{ order.date }}</p>
+                                <p class="">{{ order.date|date:"g:i d/m/Y" }}</p>
                             </div>
                         </div>
                     </div>
@@ -106,10 +113,20 @@
             <div class="col-10 offset-1 col-lg-8 offset-lg-2 px-0 text-sm-start text-center">
 
                 <!--Back to Shop Button -->
-                <a href="{% url 'products' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
-                    <i class="fas fa-chevron-left d-inline me-1"></i>
-                    <p class="d-inline">BACK TO SHOP</p>
-                </a>
+                {% if user.is_authenticated and from_profile %}
+                    <a href="{% url 'profile' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
+                        <i class="fas fa-chevron-left d-inline me-1"></i>
+                        <p class="d-inline">BACK TO PROFILE</p>
+                    </a>
+                {% else %}
+                    <a href="{% url 'products' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
+                        <i class="fas fa-chevron-left d-inline me-1"></i>
+                        <p class="d-inline">BACK TO SHOP</p>
+                    </a>
+                
+                {% endif %}
+
+                
             </div>
         </div>
         

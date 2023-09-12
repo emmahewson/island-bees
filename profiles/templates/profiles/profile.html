@@ -56,7 +56,7 @@
                                         <ul class="list-unstyled mb-0">
                                             {% for item in order.lineitems.all %}
                                                 <li class="text-uppercase">
-                                                    {{ item.quantity }} X {{ item.product.name }}
+                                                    {{ item.quantity }}<span class="text-lowercase">x</span> {{ item.product.name }}
                                                 </li>
                                             {% endfor %}
                                         </ul>
