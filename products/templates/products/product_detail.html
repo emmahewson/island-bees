@@ -37,9 +37,6 @@
                         <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count != 1 %}S{% endif %}</p>
                     </div>
                 </a>
-
-
-
         </div>
 
         
@@ -65,9 +62,9 @@
 
             <!-- Product EDIT / DELETE Buttons -->
             {% if request.user.is_superuser %}
-                <div class="card-edit-delete-div mt-2 gy-3">
+                <div class="mt-2 gy-3">
                     <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                    <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                    <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            
                 </div>
             {% endif %}
 
@@ -176,7 +173,7 @@
                     <!-- Review EDIT / DELETE Buttons -->
                     {% if request.user.is_superuser or request.user == review.user %}
                         <div class="row">
-                            <div class="card-edit-delete-div mt-2 gy-3">
+                            <div class="mt-2 gy-3">
                                 <a href="{% url 'edit_review' review.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
                                 <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            </div>
                         </div>

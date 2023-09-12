@@ -342,6 +342,7 @@ input.qty-input-sm {
 .edit-btn {
     color: var(--success);
     border: var(--success) solid 1px;
+    display: inline-flex;
 }
 
 .del-btn {
@@ -358,8 +359,9 @@ input.qty-input-sm {
 
 .edit-del-btn {
     font-size: 18px;
-    padding: 0 3px;
+    padding: 0 6px;
     border-radius: 2px;
+    height: 30px;
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
@@ -1272,7 +1274,6 @@ select:invalid {
 
 
 
-
 /* Toasts */
 
 .message-container {
@@ -1349,6 +1350,17 @@ select:invalid {
 }
 
 
+/* Profile */
+
+.profile-review-product {
+    font-size: 22px;
+}
+
+.profile-review-title {
+    font-size: 18px;
+}
+
+
 /* Media Queries */
 
 /* Large Screens Only */
@@ -1389,6 +1401,13 @@ select:invalid {
     .card-price {
         font-size: 24px;
     }
+
+    /* Profile */
+
+    .profile-review-product {
+        font-size: 20px;
+    }
+
 
     /* Toasts */
 

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <!-- Profile Info Form & Order History Section -->
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
         <div class="row">
             <div class="col">
@@ -10,10 +11,10 @@
             </div>
         </div>
 
-        <div class="row gx-5 font-body pb-5">
+        <div class="row gx-5 font-body">
 
 
-            <!-- Order Form -->
+            <!-- Profile Info Form -->
             <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
                 <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
@@ -41,37 +42,37 @@
                                 <th scope="col" class="bg-yellow-light weight-semibold">Total</th>
                             </tr>
                         </thead>
-                    </thead>
-                    <tbody>
-                        {% for order in orders %}
-                            <tr class="bag-item-row small-para-text">
-                                <td class="py-2 weight-semibold">
-                                    <a href="{% url 'order_history' order.order_number %}"
-                                    title="{{ order.order_number }}" class="text-decoration-none text-blue">
-                                        {{ order.order_number|truncatechars:6 }}
-                                    </a>
-                                </td>
-                                <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
-                                <td class="py-2">
-                                    <ul class="list-unstyled mb-0">
-                                        {% for item in order.lineitems.all %}
-                                            <li class="text-uppercase">
-                                                {{ item.quantity }} X {{ item.product.name }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </td>
-                                <td class="py-2">£{{ order.grand_total }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr class="bag-item-row small-para-text">
+                                    <td class="py-2 weight-semibold">
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}" class="text-decoration-none text-blue">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
+                                    <td class="py-2">
+                                        <ul class="list-unstyled mb-0">
+                                            {% for item in order.lineitems.all %}
+                                                <li class="text-uppercase">
+                                                    {{ item.quantity }} X {{ item.product.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td class="py-2">£{{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- User Reviews -->
-    <div class="container-fluid ib-container bg-light-grey text-ib-dark py-5" id="review-div">
+    <div class="container-fluid ib-container bg-light-grey text-ib-dark py-5 px-md-4" id="review-div">
         <div class="row text-center px-3 px-sm-5">
             <div class="col-12">
                 <h2 class="font-title weight-bold section-title mb-2 text-uppercase text-break">MY REVIEWS</h2>
@@ -81,27 +82,36 @@
             </div>
         </div>
     
-        <div class="row mt-5 px-3 px-md-5">
-            {% if reviews|length > 0 %}
+        <!-- Review Container -->
+        <div class="row mt-3 px-3 review-container">
+            <div class="col">
+                {% if reviews|length > 0 %}
                 {% for review in reviews %}
-                    <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 pt-3 pb-3 review-container">
-                        <div class="row font-body text-dark-grey review-header mb-2">
-                            <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
-                                <h3 class="review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-md-3">{{ review.title }}</h3>
-                                <div class="d-inline-flex">
-                                    <div class="review-user-div text-blue me-2 d-flex align-items-end ib-lh-1">
-                                        <div class="category-icon-circle-sm bg-blue me-1">
-                                            <i class="fas fa-user text-ib-light text-center"></i>
-                                        </div>
-                                        <p class="d-inline me-2">{% if review.user != None %}{{ review.user }}{% else %}Anonymous{% endif %}</p>
-                                    </div>
-    
-                                    
-                                    <p class="d-inline weight-light review-date m-0 ib-lh-1">{{ review.created_on|date:"d/m/Y" }}</p>
-                                </div>
+
+                <!-- Review -->
+                <div class="row mb-3 text-ib-dark">
+
+                    <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0 bg-ib-white">
+                        <!-- Product Image -->
+                        <a href="{% url 'product_detail' review.product.id %}">
+                            {% if review.product.image %}
+                                <img class="img-fluid" src="{{ review.product.image.url }}" alt="{{ review.product.name }}">
+                            {% else %}
+                                <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+
+                    <div class="col-12 col-sm-9 col-md-10 bg-ib-white p-3">
+
+                        <!-- Product Name -->
+                        <div class="row font-body review-header">
+                            <div class="col-12 col-sm-8">
+                                <h3 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
                             </div>
-                            <div class="col-12 col-sm-3 text-start text-sm-end">
-                                <!-- Review Rating -->
+
+                            <!-- Review Rating -->
+                            <div class="col-12 col-sm-4 text-start text-sm-end mt-2 mt-sm-0">
                                 <div class="rating-div review-rating ib-lh-1 pe-0">
                                     <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                     <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
@@ -111,16 +121,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row font-body review-content">
+
+                        <!-- Review Title & Date -->
+                        <div class="row font-body text-dark-grey my-2">
+                            <div class="col-12 d-block d-flex flex-wrap align-items-baseline">
+                                <p class="profile-review-title me-3">{{ review.title }}</p>
+                                <p class="weight-light m-0">{{ review.created_on|date:"d/m/Y" }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Review Content -->
+                        <div class="row font-body review-content text-dark-grey ">
                             <p>{{ review.content }}</p>
                         </div>
-    
+
                         <!-- Review EDIT / DELETE Buttons -->
                         {% if request.user.is_superuser or request.user == review.user %}
                             <div class="row">
-                                <div class="card-edit-delete-div mt-2 gy-3">
+                                <div class="col mt-3">
                                     <a href="{% url 'edit_review' review.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                                    <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            </div>
+                                    <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            
+                                </div>
                             </div>
     
                             <!-- Confirm Delete Modal - Defensive Programming -->
@@ -146,7 +167,10 @@
                             </div>
                             
                         {% endif %}
+
                     </div>
+                </div>
+                    
                 {% endfor %}
     
             {% else %}
@@ -155,6 +179,9 @@
                     <p class="font-body">No Reviews</p>
                 </div>
             {% endif %}
+
+            </div>
+            
         </div>
     
     </div>
