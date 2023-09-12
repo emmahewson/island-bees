@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
+from django.db.models import Avg, Count
 
 from django.contrib.auth.models import User
 from .models import Review
@@ -84,13 +84,17 @@ def edit_review(request, review_id):
         if form.is_valid():
             form.save()
 
+            # Gets URL to redirect user back to previous page
+            redirect_url = request.POST.get('redirect_url')
+            print(redirect_url)
+
             # Updates product rating on product object
             product.rating = round(
                 product.reviews.aggregate(Avg('rating'))['rating__avg'])
             product.save()
 
             messages.success(request, "Your review has been updated.")
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(redirect_url)
         else:
             messages.error(request, "Form invalid, please try again.")
 
@@ -119,6 +123,9 @@ def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     product = Product.objects.filter(reviews=review)[0]
 
+    # Gets the previous page URL for redirect
+    next = request.GET.get('next', '')
+
     # Checks user is author of review or superuser
     # redirects to product detail if not
     if not request.user.is_superuser:
@@ -128,5 +135,15 @@ def delete_review(request, review_id):
 
     review = get_object_or_404(Review, pk=review_id)
     review.delete()
+
+    # Updates product rating on product object
+    if product.reviews.count() != 0:
+        product.rating = round(
+            product.reviews.aggregate(Avg('rating'))['rating__avg'])
+    else:
+        product.rating = 0
+
+    product.save()
+
     messages.success(request, 'Review successfully deleted!')
-    return redirect(reverse('product_detail', args=[product.id]))
+    return redirect(next)

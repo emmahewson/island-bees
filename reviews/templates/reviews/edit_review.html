@@ -48,6 +48,9 @@
                         <span class="ib-lh-1 rating-hex hex-5 {% if review.rating >= 5 %}rating-hex-selected{% endif %}" data-hex="5">&#x2B22;</span>
                     </div>
                 </div>
+
+                <!-- Hidden input to redirect user back to previous page once submitted -->
+                <input type="hidden" name="redirect_url" value="{{ request.GET.next }}">
     
                 <!-- Buttons -->
                 <div class="d-flex justify-content-center justify-content-sm-end mt-5">

@@ -31,6 +31,7 @@ def add_to_bag(request, item_id):
     # Gets quantity value from form
     quantity = int(request.POST.get('quantity'))
 
+    # Gets URL to redirect user back to previous page
     redirect_url = request.POST.get('redirect_url')
 
     # Gets bag from session

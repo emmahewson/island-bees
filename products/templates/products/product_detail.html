@@ -113,10 +113,7 @@
                 <!-- Hidden input to redirect user back to current page once added to bag -->
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
-
             </form>
-            
-
         </div>
     </div>
 </div>
@@ -174,7 +171,7 @@
                     {% if request.user.is_superuser or request.user == review.user %}
                         <div class="row">
                             <div class="mt-2 gy-3">
-                                <a href="{% url 'edit_review' review.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                                <a href="{% url 'edit_review' review.id %}?next={{request.path}}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
                                 <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            </div>
                         </div>
 
@@ -194,7 +191,7 @@
                                     </div>
                                     <div class="modal-footer pt-0">
                                         <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
-                                        <a href="{% url 'delete_review' review.id %}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                        <a href="{% url 'delete_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
                                     </div>
                                 </div>
                             </div>

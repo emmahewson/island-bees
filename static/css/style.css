@@ -1353,7 +1353,7 @@ select:invalid {
 /* Profile */
 
 .profile-review-product {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .profile-review-title {
@@ -1401,13 +1401,6 @@ select:invalid {
     .card-price {
         font-size: 24px;
     }
-
-    /* Profile */
-
-    .profile-review-product {
-        font-size: 20px;
-    }
-
 
     /* Toasts */
 

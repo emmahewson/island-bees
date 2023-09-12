@@ -22,7 +22,8 @@ class Review(models.Model):
         User,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True,
+        related_name="reviews"
     )
     created_on = models.DateField(
         auto_now_add=True,
@@ -46,10 +47,6 @@ class Review(models.Model):
         blank=False,
         null=False
     )
-
-    class Meta:
-        # Sets order by rating (primary) & by date (secondary)
-        ordering = ('-rating', 'created_on')
 
     def __str__(self):
         """ String representation of Review title """

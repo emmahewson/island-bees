@@ -28,7 +28,7 @@ def profile(request):
     orders = profile.orders.all()
 
     # Gets all user's reviews from DB
-    reviews = Review.objects.filter(user=profile.user.id)
+    reviews = profile.user.reviews.all().order_by('-created_on')
 
     template = 'profiles/profile.html'
     context = {
