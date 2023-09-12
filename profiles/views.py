@@ -5,6 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from checkout.models import Order
+from reviews.models import Review
 
 
 @login_required
@@ -22,12 +23,18 @@ def profile(request):
                 request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
+    
+    # Gets all user's orders from DB
     orders = profile.orders.all()
+
+    # Gets all user's reviews from DB
+    reviews = Review.objects.filter(user=profile.user.id)
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
+        'reviews': reviews,
         'on_profile_page': True
     }
 

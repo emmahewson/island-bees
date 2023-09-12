@@ -4,7 +4,9 @@ from django.core.validators import (
 )
 
 from django.contrib.auth.models import User
+
 from products.models import Product
+from profiles.models import UserProfile
 
 
 class Review(models.Model):

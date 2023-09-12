@@ -82,7 +82,7 @@ def product_detail(request, product_id):
     # Gets product from DB
     product = get_object_or_404(Product, pk=product_id)
 
-    # Gets prorduct reviews from DB
+    # Gets product reviews from DB
     reviews = Review.objects.filter(product=product_id)
 
     context = {

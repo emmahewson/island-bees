@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="row font-body pb-5">
+        <div class="row gx-5 font-body pb-5">
 
 
             <!-- Order Form -->
@@ -51,7 +51,7 @@
                                         {{ order.order_number|truncatechars:6 }}
                                     </a>
                                 </td>
-                                <td class="py-2">{{ order.date }}</td>
+                                <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
                                 <td class="py-2">
                                     <ul class="list-unstyled mb-0">
                                         {% for item in order.lineitems.all %}
@@ -68,6 +68,95 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <!-- User Reviews -->
+    <div class="container-fluid ib-container bg-light-grey text-ib-dark py-5" id="review-div">
+        <div class="row text-center px-3 px-sm-5">
+            <div class="col-12">
+                <h2 class="font-title weight-bold section-title mb-2 text-uppercase text-break">MY REVIEWS</h2>
+            </div>
+            <div class="col-12 mb-3">
+                <p class="font-body">These are all the reviews you've left for our products (thank you!) View, edit & delete them below.</p>
+            </div>
+        </div>
+    
+        <div class="row mt-5 px-3 px-md-5">
+            {% if reviews|length > 0 %}
+                {% for review in reviews %}
+                    <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 pt-3 pb-3 review-container">
+                        <div class="row font-body text-dark-grey review-header mb-2">
+                            <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
+                                <h3 class="review-title weight-semibold d-block d-lg-inline mb-1 mb-md-0 me-md-3">{{ review.title }}</h3>
+                                <div class="d-inline-flex">
+                                    <div class="review-user-div text-blue me-2 d-flex align-items-end ib-lh-1">
+                                        <div class="category-icon-circle-sm bg-blue me-1">
+                                            <i class="fas fa-user text-ib-light text-center"></i>
+                                        </div>
+                                        <p class="d-inline me-2">{% if review.user != None %}{{ review.user }}{% else %}Anonymous{% endif %}</p>
+                                    </div>
+    
+                                    
+                                    <p class="d-inline weight-light review-date m-0 ib-lh-1">{{ review.created_on|date:"d/m/Y" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-3 text-start text-sm-end">
+                                <!-- Review Rating -->
+                                <div class="rating-div review-rating ib-lh-1 pe-0">
+                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row font-body review-content">
+                            <p>{{ review.content }}</p>
+                        </div>
+    
+                        <!-- Review EDIT / DELETE Buttons -->
+                        {% if request.user.is_superuser or request.user == review.user %}
+                            <div class="row">
+                                <div class="card-edit-delete-div mt-2 gy-3">
+                                    <a href="{% url 'edit_review' review.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                                    <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            </div>
+                            </div>
+    
+                            <!-- Confirm Delete Modal - Defensive Programming -->
+                            <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header justify-content-between bg-dark-grey py-3">
+                                            <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
+                                            <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" class="ib-lh-1">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body pb-2 font-body">
+                                            <p>Are you sure you want to the delete the review...
+                                            <strong>"{{ review.title }}"</strong></p>
+                                        </div>
+                                        <div class="modal-footer pt-0">
+                                            <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
+                                            <a href="{% url 'delete_review' review.id %}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        {% endif %}
+                    </div>
+                {% endfor %}
+    
+            {% else %}
+                <!-- No Reviews Text -->
+                <div class="col-12 text-center">
+                    <p class="font-body">No Reviews</p>
+                </div>
+            {% endif %}
+        </div>
+    
     </div>
 {% endblock %}
 
