@@ -1,28 +1,43 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile
-from .forms import UserProfileForm
+from django.contrib.auth.models import User
 
 from checkout.models import Order
 from reviews.models import Review
 
+from .models import UserProfile
+from .forms import UserProfileForm, UserForm
+
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """
+    Displays the user's profile, order history & user reviews
+    Updates the User Profile Model via form
+    Updates the User Model via form
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
+    user = get_object_or_404(User, username=request.user)
 
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
+        profile_form = UserProfileForm(request.POST, instance=profile)
+        user_form = UserForm(request.POST, instance=profile)
+
+        # Updates the UserProfile & User Models
+        if profile_form.is_valid():
+            instance = profile_form.save(commit=False)
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            user.save()
+            instance.save()
             messages.success(request, 'Profile updated successfully')
         else:
             messages.error(
                 request, 'Update failed. Please ensure the form is valid.')
     else:
-        form = UserProfileForm(instance=profile)
+        profile_form = UserProfileForm(instance=profile)
+        user_form = UserForm(instance=user)
 
     # Gets all user's orders from DB
     orders = profile.orders.all()
@@ -32,7 +47,8 @@ def profile(request):
 
     template = 'profiles/profile.html'
     context = {
-        'form': form,
+        'profile_form': profile_form,
+        'user_form': user_form,
         'orders': orders,
         'reviews': reviews,
         'on_profile_page': True

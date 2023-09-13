@@ -16,10 +16,14 @@
 
             <!-- Profile Info Form -->
             <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
-                <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
+                <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p>
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ user_form }}
+
+                    <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
+
+                    {{ profile_form }}
 
                     <!-- Update Button -->
                     <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">

@@ -8,14 +8,13 @@
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
         <div class="row px-3 px-sm-0">
 
-            
-            <!-- Title and text -->
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 text-center">
-
                 {% if from_profile %}
+                    <!-- Title & intro text for order history -->
                     <h2 class="font-title weight-bold section-title-lrg mb-2">ORDER DETAILS</h2>
                     <p>Below are the details of the order you placed on {{ order.date|date:"d/m/Y" }}.<br> A confirmation email was sent to {{ order.email }}.</p>
                 {% else %}
+                    <!-- Title & intro text for checkout success -->
                     <h2 class="font-title weight-bold section-title-lrg mb-2">THANK YOU!</h2>
                     <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
                 {% endif %}
@@ -112,13 +111,14 @@
         <div class="row mt-5">
             <div class="col-10 offset-1 col-lg-8 offset-lg-2 px-0 text-sm-start text-center">
 
-                <!--Back to Shop Button -->
                 {% if user.is_authenticated and from_profile %}
+                    <!-- Back to Profile Button (for order history)-->
                     <a href="{% url 'profile' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
                         <i class="fas fa-chevron-left d-inline me-1"></i>
                         <p class="d-inline">BACK TO PROFILE</p>
                     </a>
                 {% else %}
+                    <!-- Back to Products Button (for checkout success)-->
                     <a href="{% url 'products' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">
                         <i class="fas fa-chevron-left d-inline me-1"></i>
                         <p class="d-inline">BACK TO SHOP</p>
