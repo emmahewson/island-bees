@@ -35,10 +35,12 @@ html {
     --blue-light: #BCE1E9;
     --warning: #B25B76;
     --warning-hov: #6b102d;
-    --warning-light: #FAE5EC;
+    --warning-light: #e9c2cf;
+    --warning-light-hov: #eeaec3;
     --success: #419759;
     --success-hov: #00601b;
-    --success-light: #E2F0E6;
+    --success-light: #b5dec1;
+    --success-light-hov: #8cc29c;
 }
 
 /* Text Colour Classes */
@@ -230,6 +232,12 @@ button {
     border-radius: 2px;
 }
 
+.ib-button-sm {
+    font-size: 16px;
+    padding: 0 5px;
+    border-radius: 2px;
+}
+
 .ib-button-blue {
     background: var(--blue);
 }
@@ -242,9 +250,20 @@ button {
     background: var(--yellow);
 }
 
+.ib-button-warning {
+    background: var(--warning-light);
+}
+
+.ib-button-success {
+    background: var(--success-light);
+}
+
+
 .ib-button-blue,
 .ib-button-grey,
-.ib-button-yellow {
+.ib-button-yellow,
+.ib-button-warning,
+.ib-button-success {
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -261,6 +280,14 @@ button {
 
 .ib-button-yellow:hover {
     background: var(--yellow-hov);
+}
+
+.ib-button-warning:hover {
+    background: var(--warning-light-hov);
+}
+
+.ib-button-success:hover {
+    background: var(--success-light-hov);
 }
 
 
@@ -1374,6 +1401,10 @@ select:invalid {
 .profile-review-title {
     font-size: 18px;
 }
+
+/* All Auth */
+
+
 
 
 /* Media Queries */

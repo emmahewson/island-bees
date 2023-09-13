@@ -1,21 +1,45 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load widget_tweaks %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+{% block inner_content %}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<!-- Page Title -->
+<h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign Up" %}</h1>
 
+<!-- Intro text & link to signin -->
+<p class="text-ib-dark">{% blocktrans %}Already have an account? Then please 
+  <a href="{{ login_url }}" class="weight-semibold text-blue text-decoration-none text-link-blue">sign in</a>.{% endblocktrans %}
+</p>
+<hr class="mt-4 mb-5 mb-sm-4">
+
+<!-- Form -->
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+
+  <!-- Form Inputs -->
+  {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.email2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.username|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.password1|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.password2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+
+  <div class="button-group mt-4 d-flex justify-content-end">
+    <!-- Home Button -->
+    <a href="{% url 'view_bag' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+      <p class="d-inline">HOME</p>
+    </a>
+    <!-- Submit Button -->
+    <button class="primaryAction ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm text-uppercase float-end ms-3" type="submit">{% trans "Sign Up" %}</button>
+  </div>
+
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+
 </form>
 
 {% endblock %}

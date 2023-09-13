@@ -9,7 +9,7 @@
 {% block inner_content %}
 
 <!-- Page Title -->
-<h2 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign In" %}</h2>
+<h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
 
@@ -28,13 +28,14 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% else %}
 <!-- Intro text & link to signup -->
-<p class="text-dark-grey">{% blocktrans %}Don't have an account yet?
+<p class="text-ib-dark">{% blocktrans %}Don't have an account yet?
 <a href="{{ signup_url }}" class="weight-semibold text-blue text-decoration-none text-link-blue">Sign up here.</a>{% endblocktrans %}</p>
 {% endif %}
 <hr class="mt-4 mb-5 mb-sm-4">
 
 <!-- Form -->
 <form class="login" method="POST" action="{% url 'account_login' %}">
+  
   {% csrf_token %}
 
   <!-- Form Inputs -->
@@ -46,7 +47,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
     {{ form.remember|add_class:"form-check-input auth-form-check-input m-0 ms-2" }}
   </div>
 
-  <div class="button-group mt-4 d-flex justify-content-between">
+  <div class="button-group mt-4 d-flex justify-content-end">
     <!-- Home Button -->
     <a href="{% url 'view_bag' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
       <p class="d-inline">HOME</p>

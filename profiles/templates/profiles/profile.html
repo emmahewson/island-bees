@@ -16,10 +16,23 @@
 
             <!-- Profile Info Form -->
             <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
+
+                <!-- Section Title -->
                 <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p>
+
+                <!-- Form -->
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ user_form }}
+
+                    <div class="weight-semibold d-flex justify-content-end">
+
+                        <!-- Link to change password -->
+                         <a class="weight-semibold text-blue text-decoration-none text-link-blue float-end d-inline me-3" href="{% url 'account_email' %}">Manage Email</a>
+     
+                         <!-- Link to manage email -->
+                         <a class="weight-semibold text-blue text-decoration-none text-link-blue float-end d-inline" href="{% url 'account_change_password' %}">Change Password</a>
+                     </div>
 
                     <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
 
@@ -30,6 +43,8 @@
                         UPDATE
                     </button>
                 </form>
+
+                
             </div>
 
             <!-- Order History -->
