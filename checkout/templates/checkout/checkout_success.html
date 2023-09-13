@@ -13,8 +13,8 @@
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 text-center">
 
                 {% if from_profile %}
-                    <h2 class="font-title weight-bold section-title-lrg mb-2">PAST ORDER DETAILS</h2>
-                    <p>Below are the details of your historical order. A confirmation email was sent to {{ order.email }}.</p>
+                    <h2 class="font-title weight-bold section-title-lrg mb-2">ORDER DETAILS</h2>
+                    <p>Below are the details of the order you placed on {{ order.date|date:"d/m/Y" }}.<br> A confirmation email was sent to {{ order.email }}.</p>
                 {% else %}
                     <h2 class="font-title weight-bold section-title-lrg mb-2">THANK YOU!</h2>
                     <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
