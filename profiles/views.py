@@ -17,9 +17,11 @@ def profile(request):
     Updates the User Profile Model via form
     Updates the User Model via form
     """
+    # Gets user information from database
     profile = get_object_or_404(UserProfile, user=request.user)
     user = get_object_or_404(User, username=request.user)
 
+    # Handles POST request (form submission)
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST, instance=profile)
         user_form = UserForm(request.POST, instance=profile)
@@ -34,10 +36,13 @@ def profile(request):
             messages.success(request, 'Profile updated successfully')
         else:
             messages.error(
-                request, 'Update failed. Please ensure the form is valid.')
-    else:
-        profile_form = UserProfileForm(instance=profile)
-        user_form = UserForm(instance=user)
+                request, 'Update failed. Please ensure the form is valid.')  
+
+    # Handles GET request (populates page)
+
+    # Populates the forms with the model data
+    profile_form = UserProfileForm(instance=profile)
+    user_form = UserForm(instance=user)
 
     # Gets all user's orders from DB
     orders = profile.orders.all()
