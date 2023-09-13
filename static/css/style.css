@@ -1402,8 +1402,10 @@ select:invalid {
     font-size: 18px;
 }
 
-/* All Auth */
-
+.order-history {
+    max-height: 600px;
+    overflow-y: auto;
+}
 
 
 

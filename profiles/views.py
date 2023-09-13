@@ -45,7 +45,7 @@ def profile(request):
     user_form = UserForm(instance=user)
 
     # Gets all user's orders from DB
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-date')
 
     # Gets all user's reviews from DB
     reviews = profile.user.reviews.all().order_by('-created_on')

@@ -51,38 +51,48 @@
             <div class="col-12 col-lg-6">
                 <p class="mt-0 mb-3 mt-sm-3 subtitle weight-semibold text-dark-grey">MY ORDER HISTORY</p>
 
-                <div class="table-responsive mt-3">
+                <div class="table-responsive order-history mt-3">
                     <table class="table table-borderless font-body">
                         <thead>
                             <tr class="small-para-text">
                                 <th scope="col" class="bg-yellow-light weight-semibold">Order</th>
                                 <th scope="col" class="bg-yellow-light weight-semibold">Date</th>
                                 <th scope="col" class="bg-yellow-light weight-semibold">Item</th>
-                                <th scope="col" class="bg-yellow-light weight-semibold">Total</th>
+                                <th scope="col" class="bg-yellow-light weight-semibold text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for order in orders %}
-                                <tr class="bag-item-row small-para-text">
-                                    <td class="py-2 weight-semibold">
-                                        <a href="{% url 'order_history' order.order_number %}"
-                                        title="{{ order.order_number }}" class="text-decoration-none text-blue">
-                                            {{ order.order_number|truncatechars:6 }}
-                                        </a>
-                                    </td>
-                                    <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
-                                    <td class="py-2">
-                                        <ul class="list-unstyled mb-0">
-                                            {% for item in order.lineitems.all %}
-                                                <li class="text-uppercase">
-                                                    {{ item.quantity }}<span class="text-lowercase">x</span> {{ item.product.name }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td class="py-2">£{{ order.grand_total }}</td>
-                                </tr>
-                            {% endfor %}
+                            {% if orders|length > 0 %}
+                                {% for order in orders %}
+                                    <tr class="bag-item-row small-para-text">
+                                        <td class="py-2 weight-semibold">
+                                            <a href="{% url 'order_history' order.order_number %}"
+                                            title="{{ order.order_number }}" class="text-decoration-none text-blue">
+                                                {{ order.order_number|truncatechars:6 }}
+                                            </a>
+                                        </td>
+                                        <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
+                                        <td class="py-2">
+                                            <ul class="list-unstyled mb-0">
+                                                {% for item in order.lineitems.all %}
+                                                    <li class="text-uppercase">
+                                                        {{ item.quantity }}<span class="text-lowercase">x</span> {{ item.product.name }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                        <td class="py-2 text-end">£{{ order.grand_total }}</td>
+                                    </tr>
+                                {% endfor %}
+                        {% else %}
+                            <!-- No Orders Text -->
+                            <tr class="col-12 text-center">
+                                <td colspan="5">
+                                    <p class="font-body mt-3">You haven't placed any orders yet... <br> <a href="{% url 'products' %}" class="weight-semibold text-blue text-decoration-none text-link-blue">Go Shopping!</a></p>
+                                </td>
+                                
+                            </tr>
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>
@@ -105,99 +115,99 @@
         <div class="row mt-3 px-3 review-container">
             <div class="col">
                 {% if reviews|length > 0 %}
-                {% for review in reviews %}
+                    {% for review in reviews %}
 
-                <!-- Review -->
-                <div class="row mb-3 text-ib-dark">
+                        <!-- Review -->
+                        <div class="row mb-3 text-ib-dark">
 
-                    <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0 bg-ib-white">
-                        <!-- Product Image -->
-                        <a href="{% url 'product_detail' review.product.id %}">
-                            {% if review.product.image %}
-                                <img class="img-fluid" src="{{ review.product.image.url }}" alt="{{ review.product.name }}">
-                            {% else %}
-                                <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
-                            {% endif %}
-                        </a>
-                    </div>
-
-                    <div class="col-12 col-sm-9 col-md-10 bg-ib-white p-3">
-
-                        <!-- Product Name -->
-                        <div class="row font-body review-header">
-                            <div class="col-12 col-sm-8">
-                                <h3 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
+                            <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0 bg-ib-white">
+                                <!-- Product Image -->
+                                <a href="{% url 'product_detail' review.product.id %}">
+                                    {% if review.product.image %}
+                                        <img class="img-fluid" src="{{ review.product.image.url }}" alt="{{ review.product.name }}">
+                                    {% else %}
+                                        <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
+                                    {% endif %}
+                                </a>
                             </div>
 
-                            <!-- Review Rating -->
-                            <div class="col-12 col-sm-4 text-start text-sm-end mt-2 mt-sm-0">
-                                <div class="rating-div review-rating ib-lh-1 pe-0">
-                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                    <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="col-12 col-sm-9 col-md-10 bg-ib-white p-3">
 
-                        <!-- Review Title & Date -->
-                        <div class="row font-body text-dark-grey my-2">
-                            <div class="col-12 d-block d-flex flex-wrap align-items-baseline">
-                                <p class="profile-review-title me-3">{{ review.title }}</p>
-                                <p class="weight-light m-0">{{ review.created_on|date:"d/m/Y" }}</p>
-                            </div>
-                        </div>
+                                <!-- Product Name -->
+                                <div class="row font-body review-header">
+                                    <div class="col-12 col-sm-8">
+                                        <h3 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
+                                    </div>
 
-                        <!-- Review Content -->
-                        <div class="row font-body review-content text-dark-grey ">
-                            <p>{{ review.content }}</p>
-                        </div>
-
-                        <!-- Review EDIT / DELETE Buttons -->
-                        {% if request.user.is_superuser or request.user == review.user %}
-                            <div class="row">
-                                <div class="col mt-3">
-                                    <a href="{% url 'edit_review' review.id %}?next={{request.path}}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                                    <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            
-                                </div>
-                            </div>
-    
-                            <!-- Confirm Delete Modal - Defensive Programming -->
-                            <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                            <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
-                                            <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true" class="ib-lh-1">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body pb-2 font-body">
-                                            <p>Are you sure you want to the delete the review...
-                                            <strong>"{{ review.title }}"</strong></p>
-                                        </div>
-                                        <div class="modal-footer pt-0">
-                                            <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
-                                            <a href="{% url 'delete_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                    <!-- Review Rating -->
+                                    <div class="col-12 col-sm-4 text-start text-sm-end mt-2 mt-sm-0">
+                                        <div class="rating-div review-rating ib-lh-1 pe-0">
+                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                        {% endif %}
 
-                    </div>
-                </div>
-                    
-                {% endfor %}
+                                <!-- Review Title & Date -->
+                                <div class="row font-body text-dark-grey my-2">
+                                    <div class="col-12 d-block d-flex flex-wrap align-items-baseline">
+                                        <p class="profile-review-title me-3">{{ review.title }}</p>
+                                        <p class="weight-light m-0">{{ review.created_on|date:"d/m/Y" }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- Review Content -->
+                                <div class="row font-body review-content text-dark-grey ">
+                                    <p>{{ review.content }}</p>
+                                </div>
+
+                                <!-- Review EDIT / DELETE Buttons -->
+                                {% if request.user.is_superuser or request.user == review.user %}
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <a href="{% url 'edit_review' review.id %}?next={{request.path}}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                                            <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            
+                                        </div>
+                                    </div>
+            
+                                    <!-- Confirm Delete Modal - Defensive Programming -->
+                                    <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header justify-content-between bg-dark-grey py-3">
+                                                    <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
+                                                    <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true" class="ib-lh-1">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body pb-2 font-body">
+                                                    <p>Are you sure you want to the delete the review...
+                                                    <strong>"{{ review.title }}"</strong></p>
+                                                </div>
+                                                <div class="modal-footer pt-0">
+                                                    <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
+                                                    <a href="{% url 'delete_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        
+                    {% endfor %}
     
-            {% else %}
-                <!-- No Reviews Text -->
-                <div class="col-12 text-center">
-                    <p class="font-body">No Reviews</p>
-                </div>
-            {% endif %}
+                {% else %}
+                    <!-- No Reviews Text -->
+                    <div class="col-12 text-center">
+                        <p class="font-body">No Reviews</p>
+                    </div>
+                {% endif %}
 
             </div>
             
