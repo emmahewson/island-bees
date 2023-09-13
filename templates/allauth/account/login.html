@@ -2,45 +2,67 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load widget_tweaks %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
+{% block inner_content %}
 
-<h1>{% trans "Sign In" %}</h1>
+<!-- Page Title -->
+<h2 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign In" %}</h2>
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
+<!-- Social Accounts Log In (Not currently using)-->
 <p>{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
 for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
 <div class="socialaccount_ballot">
-
   <ul class="socialaccount_providers">
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
-
   <div class="login-or">{% trans 'or' %}</div>
-
 </div>
-
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+<!-- Intro text & link to signup -->
+<p class="text-dark-grey">{% blocktrans %}Don't have an account yet?
+<a href="{{ signup_url }}" class="weight-semibold text-blue text-decoration-none text-link-blue">Sign up here.</a>{% endblocktrans %}</p>
 {% endif %}
+<hr class="mt-4 mb-5 mb-sm-4">
 
+<!-- Form -->
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+
+  <!-- Form Inputs -->
+  {{ form.login|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.password|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+
+  <div class="d-flex align-items-end justify-content-end mt-2">
+    <label class="form-check-label ib-lh-1" for="id-save-info">Remember me:</label>
+    {{ form.remember|add_class:"form-check-input auth-form-check-input m-0 ms-2" }}
+  </div>
+
+  <div class="button-group mt-4 d-flex justify-content-between">
+    <!-- Home Button -->
+    <a href="{% url 'view_bag' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+      <p class="d-inline">HOME</p>
+    </a>
+    <!-- Submit Button -->
+    <button class="primaryAction ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm text-uppercase float-end ms-3" type="submit">{% trans "Sign In" %}</button>
+  </div>
+
+
   {% if redirect_field_value %}
+  <!-- Hidden input to redirect user back to previous page -->
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+
+  <!-- Forgot Password Link -->
+  <a class="button secondaryAction d-block mt-4 text-center text-blue weight-semibold text-decoration-none text-link-blue" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 </form>
 
 {% endblock %}

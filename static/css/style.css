@@ -405,6 +405,19 @@ input.qty-input-sm {
     
 }
 
+/* Link Text */
+
+.text-link-blue {
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.text-link-blue:hover {
+    color: var(--blue-hov) !important;
+}
+
 /* Recurring Icon Styles */
 
 .category-icon-circle,
@@ -526,7 +539,9 @@ legend {
 }
 
 .form-check-input {
-    font-size: 20px; 
+    font-size: 20px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50) inset;
+    
 }
 
 .form-check-input:checked {
