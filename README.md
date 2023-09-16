@@ -40,6 +40,9 @@ if save_info == "true:
 In addition I noticed on Slack that previous students had had issues with the code not working once deployed if the script link was in the footer, so I moved it to the head to avoid these issues coming up later on.
 
 
+Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc - bad user experience as it was irrelevant to the user action. I removed it by adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts'.
+{% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER %}
+
 
 
 Mention
