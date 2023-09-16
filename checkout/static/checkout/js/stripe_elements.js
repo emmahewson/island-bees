@@ -48,6 +48,7 @@ card.addEventListener('change', function (event) {
     }
 });
 
+
 // Handle form submit
 var form = document.getElementById('payment-form');
 
@@ -66,7 +67,8 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     // Gets the value of the checkbox from the form (save user info)
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    // var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var saveInfo = document.getElementById('id-save-info').checked
 
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -75,6 +77,7 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
+    
     var url = '/checkout/cache_checkout_data/';
 
     // Posts the data to the URL

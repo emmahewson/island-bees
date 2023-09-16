@@ -105,7 +105,7 @@ def checkout(request):
                     return redirect(reverse('view_bag'))
 
             # Stores whether user wanted to save their form data to profile
-            request.session['save_info'] = 'save-info' in request.POST
+            request.session['save_info'] = 'save_info' in request.POST
 
             # Takes user to Checkout Success page
             return redirect(reverse(
@@ -188,7 +188,7 @@ def checkout_success(request, order_number):
         order.save()
 
         # Save the user's info
-        if save_info:
+        if save_info is True:
             profile_data = {
                 'default_phone_number': order.phone_number,
                 'default_country': order.country,
