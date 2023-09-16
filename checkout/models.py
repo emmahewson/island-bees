@@ -35,8 +35,8 @@ class Order(models.Model):
     )
     phone_number = models.CharField(
         max_length=20,
-        null=False,
-        blank=False
+        null=True,
+        blank=True
     )
     street_address1 = models.CharField(
         max_length=80,
@@ -55,12 +55,12 @@ class Order(models.Model):
     )
     county = models.CharField(
         max_length=80,
-        null=True,
+        null=False,
         blank=False
     )
     postcode = models.CharField(
         max_length=20,
-        null=True,
+        null=False,
         blank=False
     )
     country = CountryField(
@@ -196,4 +196,4 @@ class OrderLineItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.name} on order {self.order.order_number}'
+        return f'{self.product.name} on order {self.order.order_number}'

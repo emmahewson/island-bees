@@ -12,7 +12,7 @@ from products.models import Product, Category
 
 @freeze_time("2022-08-15")
 class TestReviewsViews(TestCase):
-    """ Test product model url views """
+    """ Test review model url views """
 
     def setUp(self):
         """
