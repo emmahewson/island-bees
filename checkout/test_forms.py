@@ -60,7 +60,7 @@ class TestOrderForm(TestCase):
         self.assertEqual(
             form.errors['country'][0], 'This field is required.')
 
-    def test_street2_not_required(self):
+    def test_not_required_fields(self):
         """ Test form is valid with empty non-required fields """
         form = OrderForm(
             {
