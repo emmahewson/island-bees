@@ -29,7 +29,7 @@ save_info = intent.metadata.save_info
 if save_info:
     # updates userProfile based on data
 
-With the help of the following posts on Slack 
+With the help of the following post on the Code Institute Slack Channel
 https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605302104469800?thread_ts=1605222094.452700&cid=C7HS3U3AP
 I discovered that rather than now returning a Boolean value from the new JS code it was returning a string of "true" or "false" - which meant that when checking if save_info: it was always returning True because it always had contents. I fixed the issue by changing it to:
 
