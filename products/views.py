@@ -9,8 +9,6 @@ from .models import Product, Category
 from .forms import ProductForm
 from reviews.models import Review
 
-# Create your views here.
-
 
 def all_products(request):
     """
@@ -104,10 +102,13 @@ def add_product(request):
     # Handle Form Submission
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
+
         if form.is_valid():
             product = form.save()
+
             request.session['show_bag_summary'] = False
             messages.success(request, 'Product added successfully.')
+
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(
@@ -136,10 +137,13 @@ def edit_product(request, product_id):
     # Handle Form Submission
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
+
         if form.is_valid():
             form.save()
+
             request.session['show_bag_summary'] = False
             messages.success(request, 'Successfully updated product!')
+
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(
@@ -167,6 +171,8 @@ def delete_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
+
     request.session['show_bag_summary'] = False
     messages.success(request, 'Product deleted!')
+
     return redirect(reverse('products'))
