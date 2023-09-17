@@ -38,6 +38,7 @@ def add_review(request, product_id):
                 product.reviews.aggregate(Avg('rating'))['rating__avg'])
             product.save()
 
+            request.session['show_bag_summary'] = False
             messages.success(request, "New product review added.")
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -93,6 +94,7 @@ def edit_review(request, review_id):
                 product.reviews.aggregate(Avg('rating'))['rating__avg'])
             product.save()
 
+            request.session['show_bag_summary'] = False
             messages.success(request, "Your review has been updated.")
             return redirect(redirect_url)
         else:
@@ -145,5 +147,6 @@ def delete_review(request, review_id):
 
     product.save()
 
+    request.session['show_bag_summary'] = False
     messages.success(request, 'Review successfully deleted!')
     return redirect(next)

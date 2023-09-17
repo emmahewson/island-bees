@@ -2,8 +2,6 @@ Notes
 
 Bug - attempted to move the js for the remove item from bag in to separate JS file - update worked ok but remove didn't. Put back in to HTML as a script tag.
 
-Bug - bag appears in toast after review updated or added - not sorted
-
 Bug - issues with the checkout delivery & total calculations - couldn't add a float & a decimal type numbers. 
 Fix - Had to convert the order_total and total_delivery_chargable to float values with checks to make sure they had a value in the first place. This accounted for the various different scenarios.
     1. Under delivery threshold & delivery chargable on all products
@@ -40,8 +38,10 @@ if save_info == "true:
 In addition I noticed on Slack that previous students had had issues with the code not working once deployed if the script link was in the footer, so I moved it to the head to avoid these issues coming up later on.
 
 
-Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc & for review add/edit/delete - bad user experience as it was irrelevant to the user action. I removed it by adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts'.
-{% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER and "reviews" not in request.META.HTTP_REFERER %}
+Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc & for review & product add/edit/delete - bad user experience as it was irrelevant to the user action. I removed it by firstly adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts' to stop the bag showing when any messages.success were called by the built-in allauth code. Then in addition, I added a session variable called show_bag_summary to true or false each time I called messages.success and an additional conditional value in the template tag to check this value:
+
+{% if grand_total and request.session.show_bag_summary and "accounts" not in request.META.HTTP_REFERER %}
+    
 
 Bug - add product form - wanted to have different styling on the labels for the text & textarea labels compared to the checkbox labels. I couldn't find a way to add class attributes to the labels themselves within the forms.py logic so I separated the fields out to individual tags and styled them in this way. However I discovered that this had the unintended result of not showing any form error messages e.g. if the price had too many digits. I got around this by explicitly including the error messages below the labels as separate tags:
 e.g.

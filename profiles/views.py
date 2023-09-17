@@ -33,6 +33,7 @@ def profile(request):
             user.last_name = request.POST['last_name']
             user.save()
             instance.save()
+            request.session['show_bag_summary'] = False
             messages.success(request, 'Profile updated successfully')
         else:
             messages.error(

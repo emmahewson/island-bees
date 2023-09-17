@@ -41,15 +41,19 @@ def add_to_bag(request, item_id):
     # If so updates quantity & if not adds to bag
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
+        request.session['show_bag_summary'] = True
         messages.success(
             request, f'Updated {product.name} quantity to {bag[item_id]}'
         )
     else:
         bag[item_id] = quantity
-        messages.success(request, f'Added {product.name} to your bag')
 
+        request.session['show_bag_summary'] = True
+        messages.success(request, f'Added {product.name} to your bag')
+    
     # Updates bag in session
     request.session['bag'] = bag
+
     return redirect(redirect_url)
 
 
@@ -70,10 +74,12 @@ def adjust_bag(request, item_id):
     # If not removes item from bag
     if quantity > 0:
         bag[item_id] = quantity
+        request.session['show_bag_summary'] = True
         messages.success(
             request, f'Updated {product.name} quantity to {bag[item_id]}')
     else:
         bag.pop(item_id)
+        request.session['show_bag_summary'] = True
         messages.success(request, f'Removed {product.name} from your bag')
 
     # Updates bag in session
@@ -93,6 +99,7 @@ def remove_from_bag(request, item_id):
 
         # Removes item id from bag
         bag.pop(item_id)
+        request.session['show_bag_summary'] = True
         messages.success(request, f'Removed {product.name} from your bag')
 
         # Updates bag in session
