@@ -1,22 +1,26 @@
-<div class="mt-4">
+<div class="mt-2">
     {% if widget.is_initial %}
         <!-- Current Image Text -->
-        <p class="weight-semibold my-2">{{ widget.initial_text }}:</p>
+        <p class="mb-1 text-blue">{{ widget.initial_text }}:</p>
 
-        <!-- Image Thumbnail with clickable link to open full-size image -->
-        <a href="{{ widget.value.url }}">
-            <img class="thumbnail-image" src="{{ widget.value.url }}">
-        </a>
-        {% if not widget.required %}
-            <!-- Remove Image Checkbox -->
-            <div class="mt-3">
-                <input class="form-check-input form-check-input-pink m-0" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
-                <label class="ib-lh-1 m-0 text-ib-warning weight-semibold ms-2" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
-            </div>
-        {% endif %}<br>
+        <div class="d-flex align-items-end">
+            <!-- Image Thumbnail with clickable link to open full-size image -->
+            <a href="{{ widget.value.url }}">
+                <img class="thumbnail-image me-3" src="{{ widget.value.url }}">
+            </a>
+            {% if not widget.required %}
+                <!-- Remove Image Checkbox -->
+                <div class="mt-3">
+                    <input class="form-check-input form-check-input-pink m-0" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+                    <label class="ib-lh-1 m-0 text-ib-warning weight-semibold ms-2" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+                </div>
+            {% endif %}
+        </div>
+        
+        <br>
         {{ widget.input_text }}
     {% endif %}
-    
+
     <!-- Select Image Button -->
     <span class="btn-file ib-button ib-button-light-blue text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
         SELECT IMAGE <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>

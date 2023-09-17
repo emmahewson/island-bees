@@ -611,6 +611,10 @@ select:invalid {
     margin-top: 1rem;
 }
 
+#product-form label[for='id_image'] {
+    margin-bottom: 0.2rem;
+}
+
 .checkbox-label label {
     line-height: 1;
     margin: 0 !important;
@@ -636,8 +640,8 @@ label[for="id_price"] {
 }
 
 .thumbnail-image {
-    height: 60px;
-    width: auto;
+    width: 100px;
+    height: auto;
     border-radius: 5px;
 }
 
@@ -1673,8 +1677,15 @@ label[for="id_price"] {
         line-height: 1;
     }
     
-    .button-group * {
+    .button-group *,
+    .btn-file {
         font-size: 14px;
+    }
+
+    /* Add / Edit Product Form */
+
+    .thumbnail-image {
+        width: 70px;
     }
     
 }
