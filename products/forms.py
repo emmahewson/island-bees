@@ -19,7 +19,6 @@ class ProductForm(forms.ModelForm):
             'price': 'Price',
             'is_featured': 'Featured?',
             'delivery_charge': 'Delivery Required?',
-            'image_url': "Image URL",
         }
 
     # Set image field attributes
