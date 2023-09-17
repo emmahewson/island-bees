@@ -101,15 +101,16 @@ def add_product(request):
         messages.error(request, 'Sorry, only store owners can add products.')
         return redirect(reverse('home'))
 
-    # if request.method == 'POST':
-    #     form = ProductForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         product = form.save()
-    #         messages.success(request, 'Product added successfully.')
-    #         return redirect(reverse('product_detail', args=[product.id]))
-    #     else:
-    #         messages.error(
-    #             request, 'Failed to add product. Please check the form.')
+    # Handle Form Submission
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Product added successfully.')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(
+                request, 'Failed to add product. Please check the form.')
     else:
         form = ProductForm()
 

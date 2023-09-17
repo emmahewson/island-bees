@@ -40,10 +40,14 @@ if save_info == "true:
 In addition I noticed on Slack that previous students had had issues with the code not working once deployed if the script link was in the footer, so I moved it to the head to avoid these issues coming up later on.
 
 
-Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc - bad user experience as it was irrelevant to the user action. I removed it by adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts'.
-{% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER %}
+Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc & for review add/edit/delete - bad user experience as it was irrelevant to the user action. I removed it by adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts'.
+{% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER and "reviews" not in request.META.HTTP_REFERER %}
 
-
+Bug - add product form - wanted to have different styling on the labels for the text & textarea labels compared to the checkbox labels. I couldn't find a way to add class attributes to the labels themselves within the forms.py logic so I separated the fields out to individual tags and styled them in this way. However I discovered that this had the unintended result of not showing any form error messages e.g. if the price had too many digits. I got around this by explicitly including the error messages below the labels as separate tags:
+e.g.
+{% for error in form.price.errors  %}
+    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+{% endfor %}
 
 Mention
 using widget-tweak to add style classes to the form inputs in the auth templates

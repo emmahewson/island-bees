@@ -23,7 +23,7 @@
     <!-- Colour Band -->
     <div class="w-100 toast-capper bg-ib-success"></div>
 
-    {% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER %}
+    {% if grand_total and not on_profile_page and "accounts" not in request.META.HTTP_REFERER and "reviews" not in request.META.HTTP_REFERER %}
     <!-- Shopping Bag Summary -->
     <div class="toast-body bg-ib-light text-ib-dark font-body p-0">
         

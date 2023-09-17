@@ -2,7 +2,7 @@
 {% load static %}
 {% load bag_tools %}
 
-{% block extra_js %}
+{% block extra_js_head %}
     <script defer src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
 
@@ -73,18 +73,55 @@
                     {% csrf_token %}
                     <fieldset class="mb-2">
                         <legend class="w-100">Details</legend>
+
                         {{ order_form.full_name }}
+                        {% for error in order_form.full_name.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.email }}
+                        {% for error in order_form.email.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                     </fieldset>
                     <fieldset class="mb-3">
                         <legend class="w-100">Delivery</legend>
                         {{ order_form.street_address1 }}
+                        {% for error in order_form.street_address1.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.street_address2 }}
+                        {% for error in order_form.street_address2.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.town_or_city }}
+                        {% for error in order_form.town_or_city.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                        
                         {{ order_form.county }}
+                        {% for error in order_form.county.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.postcode }}
+                        {% for error in order_form.postcode.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.country }}
+                        {% for error in order_form.country.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         {{ order_form.phone_number }}
+                        {% for error in order_form.phone_number.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+
                         <div class="text-end d-flex align-items-end justify-content-end">
 							{% if user.is_authenticated %}
 								<label class="form-check-label ib-lh-1" for="id-save-info">Save this delivery information to my profile</label>

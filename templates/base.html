@@ -37,7 +37,7 @@
     </script>
     {% endblock %}
 
-    {% block extra_js %}
+    {% block extra_js_head %}
     {% endblock %}
 
 </head>
@@ -276,6 +276,9 @@
         <!-- Stripe JS -->
         <script src="https://js.stripe.com/v3/"></script>
         
+    {% endblock %}
+
+    {% block extra_js_end %}
     {% endblock %}
 
 

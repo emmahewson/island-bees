@@ -10,53 +10,91 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <hr>
-                <h2 class="logo-font mb-4">Add Product</h2>
-                <hr>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_product' %}" class="form mb-2" id="product-form" enctype="multipart/form-data">
+    <div class="container-fluid bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
+        <div class="row pb-5">
+
+            <!-- Page Title -->
+            <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
+                <h1 class="font-title weight-bold section-title-lrg mb-2">ADD PRODUCT</h1>
+                <hr>
+
+                <!-- Product Form -->
+                <form method="POST" action="{% url 'add_product' %}" class="form mt-3" id="product-form" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.category.label }}
+                    
+                    <!-- Category -->
+                    {{ form.category.label_tag }}
                     {{ form.category }}
+                    {% for error in form.category.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
-                    {{ form.name.label }}
+                    <!-- Name -->
+                    {{ form.name.label_tag }}
                     {{ form.name }}
+                    {% for error in form.name.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
-                    {{ form.description.label }}
+                    <!-- Description -->
+                    {{ form.description.label_tag }}
                     {{ form.description }}
+                    {% for error in form.description.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
-                    {{ form.price.label }}
+                    <!-- Price -->
+                    {{ form.price.label_tag }}
                     {{ form.price }}
+                    {% for error in form.price.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
-                    <span class="d-flex align-items-end">
-                        <span class="me-2 ib-lh-1">{{ form.is_featured.label }}</span>
+                    <!-- Is Featured? -->
+                    <span class="d-flex mt-4">
                         {{ form.is_featured }}
+                        <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.is_featured.label_tag }}</span>
                     </span>
-                    <span class="d-flex align-items-end">
-                        <span class="me-2 ib-lh-1">{{ form.delivery_charge.label }}</span>
-                        {{ form.delivery_charge }}
-                    </span>
+                    {% for error in form.is_featured.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
-                    {{ form.image_url.label }}
+                    <!-- Delivery Charge? -->
+                    <span class="d-flex mt-4 mb-2">
+                        {{ form.delivery_charge }}
+                        <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.delivery_charge.label_tag }}</span>
+                    </span>
+                    {% for error in form.delivery_charge.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    <!-- Image Selection -->
+                    {{ form.image_url.label_tag }}
                     {{ form.image_url }}
+                    {% for error in form.image_url.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
                     {{ form.image }}
 
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+                    <!-- Buttons -->
+                    <div class="button-group my-3 d-flex justify-content-end">
+
+                        <!-- Cancel Button -->
+                        <a href="{% url 'products' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+                            <p class="d-inline">CANCEL</p>
+                        </a>
+                    
+                        <!-- Submit Button -->
+                        <button type="submit" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm">
+                            ADD PRODUCT
+                        </button>
                     </div>
+
                 </form>
-            </div>            
+            </div>
         </div>
-    </div>
 {% endblock %}
 
 {% block postloadjs %}

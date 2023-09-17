@@ -19,10 +19,12 @@ class ProductForm(forms.ModelForm):
             'price': 'Price',
             'is_featured': 'Featured?',
             'delivery_charge': 'Delivery Required?',
+            'image_url': "Image URL",
         }
 
     # Set image field attributes
-    image = forms.ImageField(required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -36,7 +38,7 @@ class ProductForm(forms.ModelForm):
             # Adds styling classes to inputs
             if field_name not in ['is_featured', 'delivery_charge', 'image']:
                 field.widget.attrs['class'] = (
-                        'ib-form-field mb-3 px-2 py-2 ' +
+                        'ib-form-field px-2 py-2 ' +
                         'font-body text-dark-grey')
 
             if field_name in ['is_featured', 'delivery_charge']:

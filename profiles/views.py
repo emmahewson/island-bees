@@ -39,10 +39,10 @@ def profile(request):
                 request, 'Update failed. Please ensure the form is valid.')
 
     # Handles GET request (populates page)
-
-    # Populates the forms with the model data
-    profile_form = UserProfileForm(instance=profile)
-    user_form = UserForm(instance=user)
+    else:
+        # Populates the forms with the model data
+        profile_form = UserProfileForm(instance=profile)
+        user_form = UserForm(instance=user)
 
     # Gets all user's orders from DB
     orders = profile.orders.all().order_by('-date')

@@ -33,9 +33,7 @@
             <!-- Review Form -->
             <form class="px-3 px-md-4 py-4" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% for field in form %}
-                    {{ field }}
-                {% endfor %}
+                {{ form }}
     
                 <!-- Rating Select - populates hidden rating input using JS -->
                 <div class="rating-form-div" aria-hidden="true">
@@ -65,12 +63,9 @@
 
 </div>
 
-
-
-
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_js_end %}
     <!-- Rating Selector JS -->
     <script src="{% static 'reviews/js/rating_select.js' %}"></script>
 {% endblock %}
