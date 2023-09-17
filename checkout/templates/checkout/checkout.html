@@ -38,9 +38,9 @@
                         <div class="col-2 pe-0">
                             <a href="{% url 'product_detail' item.product.id %}">
                                 {% if item.product.image %}
-                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                                    <img class="w-100 image-ratio" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                                    <img class="w-100 image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
                                 {% endif %}
                             </a>
                         </div>

@@ -23,9 +23,9 @@
     
                 <!-- Product Image -->
                 {% if product.image %}
-                    <img class="d-none d-sm-block" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="image-ratio d-none d-sm-block" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                    <img class="d-none d-sm-block" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                    <img class="image-ratio d-none d-sm-block" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
                 {% endif %}
                 
             </div>

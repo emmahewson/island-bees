@@ -18,10 +18,10 @@
             <!-- Product Image -->
             {% if product.image %}
                 <a class="" href="{{ product.image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
             {% else %}
-                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
             {% endif %}
 
 

@@ -1126,6 +1126,11 @@ label[for="id_price"] {
     font-size: 18px;
 }
 
+.image-ratio {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 .box-border-deselected {
     border: 1px solid var(--dark-grey) !important;
 }
