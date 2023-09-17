@@ -1,17 +1,20 @@
-{% if widget.is_initial %}
-    <p>{{ widget.initial_text }}:</p>
-    <a href="{{ widget.value.url }}">
-        <img width="96" height="96" class="rounded shadow-sm" src="{{ widget.value.url }}">
-    </a>
-    {% if not widget.required %}
-        <div class="custom-control custom-checkbox mt-2">
-            <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
-            <label class="custom-control-label text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
-        </div>
-    {% endif %}<br>
-    {{ widget.input_text }}
-{% endif %}
-<span class="btn-file ib-button ib-button-light-blue text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
-    SELECT IMAGE <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
-</span>
-<strong><p class="text-danger" id="filename"></p></strong>
+<div class="mt-4">
+    {% if widget.is_initial %}
+        <p class="weight-semibold my-2">{{ widget.initial_text }}:</p>
+        <a href="{{ widget.value.url }}">
+            <img class="thumbnail-image" src="{{ widget.value.url }}">
+        </a>
+        {% if not widget.required %}
+            <div class="mt-3">
+                <input class="form-check-input form-check-input-pink m-0" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+                <label class="ib-lh-1 m-0 text-ib-warning weight-semibold ms-2" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+            </div>
+        {% endif %}<br>
+        {{ widget.input_text }}
+    {% endif %}
+    <span class="btn-file ib-button ib-button-light-blue text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
+        SELECT IMAGE <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+    </span>
+    <p class="weight-semibold text-ib-warning mt-3" id="filename"></p>
+</div>
+    
