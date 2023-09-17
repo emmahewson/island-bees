@@ -50,7 +50,7 @@ def add_to_bag(request, item_id):
 
         request.session['show_bag_summary'] = True
         messages.success(request, f'Added {product.name} to your bag')
-    
+
     # Updates bag in session
     request.session['bag'] = bag
 

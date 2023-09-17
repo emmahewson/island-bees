@@ -393,15 +393,16 @@ input.qty-input-sm {
 }
 
 .edit-del-btn {
-    font-size: 18px;
-    padding: 0 6px;
+    font-size: 16px;
+    padding: 5px;
     border-radius: 2px;
-    height: 30px;
+    line-height: 1;
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
 }
+
 
 .modal-close-cross {
     background-color: transparent;
@@ -600,6 +601,44 @@ legend {
 
 select:invalid {
     color: var(--mid-grey);
+}
+
+/* Add / Edit Product Form */
+
+#product-form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.checkbox-label label {
+    line-height: 1;
+    margin: 0 !important;
+}
+
+label[for="id_price"] {
+    margin-top: 0.5rem !important;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.thumbnail-image {
+    height: 60px;
+    width: auto;
+    border-radius: 5px;
 }
 
 
@@ -1087,7 +1126,6 @@ select:invalid {
     font-size: 18px;
 }
 
-
 .box-border-deselected {
     border: 1px solid var(--dark-grey) !important;
 }
@@ -1164,7 +1202,6 @@ select:invalid {
         color: var(--light-grey-hov);
     } 
 }
-
 
 .card-price {
     font-size: 28px;
@@ -1423,46 +1460,6 @@ select:invalid {
 .order-history {
     max-height: 600px;
     overflow-y: auto;
-}
-
-/* Add / Edit Product Form */
-
-#product-form label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
-}
-
-.checkbox-label label {
-    line-height: 1;
-    margin: 0 !important;
-}
-
-label[for="id_price"] {
-    margin-top: 0.5rem !important;
-}
-
-/* Product Form */
-
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.thumbnail-image {
-    height: 60px;
-    width: auto;
-    border-radius: 5px;
 }
 
 
