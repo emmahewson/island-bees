@@ -49,6 +49,9 @@ e.g.
     <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
 {% endfor %}
 
+
+Bug - during deployment my products page wouldn't load and returned a 400 error. I turned debug back on and discovered that it couldn't load the sort_box.js file and was throwing up a suspicious operation error and blocking the page. I fixed this error with the help of this page https://stackoverflow.com/questions/43529912/suspicious-operation-attempted-access-to-denied-while-loading-static-files by removing the leading '/' on the script tag in the template.
+
 Mention
 using widget-tweak to add style classes to the form inputs in the auth templates
 The delivery charge calculations when no delivery is chargable
