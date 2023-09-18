@@ -52,6 +52,12 @@ e.g.
 
 Bug - during deployment my products page wouldn't load and returned a 400 error. I turned debug back on and discovered that it couldn't load the sort_box.js file and was throwing up a suspicious operation error and blocking the page. I fixed this error with the help of this page https://stackoverflow.com/questions/43529912/suspicious-operation-attempted-access-to-denied-while-loading-static-files by removing the leading '/' on the script tag in the template.
 
+
+Bug - Whilst initially working correctly I found that my checkout began to create duplicates when placing an order - one in the view and another in the webhook. After extensive research and testing using print statements I discovered that the problem was at the point where the webhook searches for the order in the database and if it didn't find it, creates the order. The problem stemmed from the form fields which were not required and so could be empty - phone number and street address 2. I fixed the problem by removing these fields from the search parameters in the webhook query.
+
+
+
+
 Mention
 using widget-tweak to add style classes to the form inputs in the auth templates
 The delivery charge calculations when no delivery is chargable

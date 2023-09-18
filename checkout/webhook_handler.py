@@ -109,7 +109,6 @@ class StripeWH_Handler:
         # Makes 5 attempts to find order in DB
         # Avoids duplicating orders if view is slow to create Order
         while attempt <= 5:
-            print(f'Attempt {attempt}: Order Exists: {order_exists}')
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -126,11 +125,9 @@ class StripeWH_Handler:
 
                 # Sets value to True if order is found
                 order_exists = True
-                print(f'Found order! Order Exists: {order_exists}')
                 break
             # Reattempts to find order if fails (5 times over 5 seconds)
             except Order.DoesNotExist:
-                print("Trying again...")
                 attempt += 1
                 time.sleep(1)
 
@@ -144,7 +141,6 @@ class StripeWH_Handler:
 
         # If order is not found in DB create order
         else:
-            print("Order not found - Webhook Creating an order")
             order = None
             # Attempts to create order
             try:
