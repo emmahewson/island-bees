@@ -2,10 +2,6 @@
 {% load static %}
 {% load bag_tools %}
 
-{% block extra_js_head %}
-    <script defer src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-{% endblock %}
-
 {% block content %}
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
         <div class="row">
@@ -188,5 +184,6 @@
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
+    <script defer src="{% static 'checkout/js/stripe_elements.js' %}"></script>
     
 {% endblock %}
