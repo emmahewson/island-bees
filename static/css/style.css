@@ -1383,8 +1383,8 @@ label[for="id_price"] {
 /* Toasts */
 
 .message-container {
-    position: fixed;
-    top: 92px;
+    position: absolute;
+    top: -65px;
     right: 12px;
     z-index: 99999999999;
     margin-left: 12px;
@@ -1516,7 +1516,7 @@ label[for="id_price"] {
     /* Toasts */
 
     .message-container {
-        top: 76px;
+        top: -35px;
     }
 
     .arrow-up {
@@ -1638,7 +1638,7 @@ label[for="id_price"] {
     /* Toasts */
 
     .message-container {
-        top: 70px;
+        top: -27px;
     }
   
 }

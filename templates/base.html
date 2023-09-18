@@ -160,6 +160,7 @@
 
     
     {% if messages %}
+    <div class="position-relative">
         <!-- Messages -->
         <div class="message-container">
             {% for message in messages %}
@@ -176,6 +177,9 @@
                 {% endwith %}
             {% endfor %}
         </div>
+
+    </div>
+        
     {% endif %}
 
     {% block content %}
