@@ -54,7 +54,7 @@
                 <div class="d-flex justify-content-center justify-content-sm-end mt-5">
 
                     <!-- Cancel Button -->
-                    <a class="ib-button ib-button-grey me-3 text-decoration-none text-dark-grey font-title weight-bold shadow-sm" href="{% url 'product_detail' product.id %}">CANCEL</a>
+                    <a class="ib-button ib-button-grey me-3 text-decoration-none text-dark-grey font-title weight-bold shadow-sm" href="{{ request.GET.next }}">CANCEL</a>
                     
                     <!-- Submit Button -->
                     <button class="ib-button ib-button-yellow text-dark-grey font-title weight-bold shadow-sm" type="submit">UDPATE</button>

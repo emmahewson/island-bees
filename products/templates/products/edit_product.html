@@ -78,7 +78,7 @@
                     <div class="button-group mt-5 d-flex justify-content-end">
 
                         <!-- Cancel Button -->
-                        <a href="{% url 'products' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+                        <a href="{{ request.GET.next }}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
                             <p class="d-inline">CANCEL</p>
                         </a>
                     

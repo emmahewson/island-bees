@@ -87,7 +87,6 @@ def edit_review(request, review_id):
 
             # Gets URL to redirect user back to previous page
             redirect_url = request.POST.get('redirect_url')
-            print(redirect_url)
 
             # Updates product rating on product object
             product.rating = round(
