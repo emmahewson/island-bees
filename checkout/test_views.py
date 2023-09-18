@@ -20,7 +20,6 @@ class TestCheckoutViews(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url',
             image='image-file'
         )
 

@@ -1,6 +1,5 @@
 from django.test import TestCase
-from django.urls import reverse
-from .models import *
+from .models import Product, Category
 
 
 class TestProductsViews(TestCase):
@@ -22,7 +21,6 @@ class TestProductsViews(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url'
         )
 
     def test_products_page(self):

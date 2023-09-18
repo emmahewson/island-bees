@@ -1,5 +1,5 @@
 from django.test import TestCase
-from datetime import datetime, date
+from datetime import date
 from django.utils import timezone
 from freezegun import freeze_time
 
@@ -30,7 +30,6 @@ class TestReviewModels(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url'
         )
 
         self.userTest = User.objects.create(

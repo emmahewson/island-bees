@@ -23,7 +23,6 @@ class TestProductsModels(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url'
         )
 
     def test_category_string_method(self):
@@ -75,7 +74,3 @@ class TestProductsModels(TestCase):
     def test_product_is_featured_field(self):
         """ Test the product is_featured field """
         self.assertTrue(self.productTest.is_featured)
-
-    def test_product_image_url(self):
-        """ Test the product image url """
-        self.assertEqual(self.productTest.image_url, 'my image url')

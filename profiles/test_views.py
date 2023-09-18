@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.contrib.messages import get_messages
 from django.contrib.auth.models import User
 from .models import UserProfile
 from checkout.models import Order

@@ -3,8 +3,6 @@ from django.core.validators import (
     MaxValueValidator, MinValueValidator
 )
 
-from django.contrib.auth.models import User
-
 
 class Category(models.Model):
 

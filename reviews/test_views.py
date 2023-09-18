@@ -1,13 +1,10 @@
 from django.test import TestCase
-from django.urls import reverse
-from datetime import datetime, date
 from django.utils import timezone
 from freezegun import freeze_time
-from django.contrib.messages import get_messages
+from django.contrib.auth.models import User
 
-from .models import *
-from .forms import *
 from products.models import Product, Category
+from reviews.models import Review
 
 
 @freeze_time("2022-08-15")
@@ -44,7 +41,6 @@ class TestReviewsViews(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url',
             image='image-file'
         )
 
@@ -73,7 +69,6 @@ class TestReviewsViews(TestCase):
             username='user1', password='password1')
         self.assertTrue(logged_in)
 
-        userTest = User.objects.get(username='user1')
         response = self.client.get('/reviews/add_review/1')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'reviews/add_review.html')
@@ -96,7 +91,6 @@ class TestReviewsViews(TestCase):
             username='user1', password='password1')
         self.assertTrue(logged_in)
 
-        userTest = User.objects.get(username='user1')
         response = self.client.get('/reviews/edit_review/1/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'reviews/edit_review.html')

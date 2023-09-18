@@ -1,7 +1,5 @@
 from django.test import TestCase
-from django.urls import reverse
 
-from .models import *
 from products.models import Product, Category
 
 
@@ -24,7 +22,6 @@ class TestProductsViews(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            image_url='my image url'
         )
 
     def test_bag_page(self):
@@ -36,7 +33,6 @@ class TestProductsViews(TestCase):
     def test_add_product_to_bag(self):
         """ Test can add a product to the bag """
 
-        product = self.productTest
         response = self.client.post(
             f'/bag/add/{str(self.productTest.id)}/',
             {'quantity': 3, 'redirect_url': 'view_bag'}
@@ -47,7 +43,6 @@ class TestProductsViews(TestCase):
 
     def test_update_bag(self):
         """ Test can update a product in bag """
-        product = self.productTest,
 
         response = self.client.post(
             f'/bag/add/{str(self.productTest.id)}/',
@@ -67,7 +62,6 @@ class TestProductsViews(TestCase):
         self.assertIn('bag', self.client.session)
 
     def test_remove_product_from_bag(self):
-        product = self.productTest,
 
         self.client.post(
             f'/bag/add/{str(self.productTest.id)}/',
@@ -76,6 +70,6 @@ class TestProductsViews(TestCase):
         bag_before = self.client.session['bag']
         self.assertIn(f'{self.productTest.id}', bag_before)
 
-        response = self.client.post(f'/bag/remove/{str(self.productTest.id)}/')
+        self.client.post(f'/bag/remove/{str(self.productTest.id)}/')
         bag_after = self.client.session['bag']
         self.assertNotIn(f'{self.productTest.id}', bag_after)

@@ -61,3 +61,9 @@ Bug - Whilst initially working correctly I found that my checkout began to creat
 Mention
 using widget-tweak to add style classes to the form inputs in the auth templates
 The delivery charge calculations when no delivery is chargable
+
+
+Linting Errors
+- checkout/apps.py - checkout.signals is imported but unused - signals is being passed in and used elsewhere so can be disregarded
+- checkout/webhooks.py - local variable e is assigned to but never used - have investigated this and it appears to be an industry standard way of assigning this particular error checking. I also passed this code through the CI Python Linter and it didn't raise an issue. https://pep8ci.herokuapp.com/
+- remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py

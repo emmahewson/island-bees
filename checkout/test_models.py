@@ -20,7 +20,6 @@ class TestCheckoutModels(TestCase):
             description="Test description for Bee Suit",
             price=50,
             is_featured=True,
-            image_url='my image url',
             image='image-file'
         )
 
@@ -30,7 +29,6 @@ class TestCheckoutModels(TestCase):
             description="Test description for Hive",
             price=20,
             is_featured=True,
-            image_url='my image url',
             image='image-file'
         )
 
@@ -40,7 +38,6 @@ class TestCheckoutModels(TestCase):
             description="Test description for Honey",
             price=1,
             is_featured=True,
-            image_url='my image url',
             image='image-file'
         )
 
@@ -51,7 +48,6 @@ class TestCheckoutModels(TestCase):
             price=2,
             is_featured=True,
             delivery_charge=False,
-            image_url='my image url',
             image='image-file'
         )
 
