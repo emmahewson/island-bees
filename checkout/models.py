@@ -172,7 +172,8 @@ class OrderLineItem(models.Model):
         Product,
         null=False,
         blank=False,
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT,
+        related_name='lineitems'
     )
     quantity = models.IntegerField(
         null=False,

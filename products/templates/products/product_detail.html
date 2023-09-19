@@ -64,7 +64,7 @@
             {% if request.user.is_superuser %}
                 <div class="mt-2 gy-3">
                     <a href="{% url 'edit_product' product.id %}?next={{ request.path|urlencode }}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                    <a type="button" data-toggle="modal" data-target="#modal-{{ product.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>                            
+                    <button type="button" data-toggle="modal" data-target="#modal-{{ product.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</button>                            
                 </div>
 
 
@@ -73,17 +73,25 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                <h5 class="font-body text-ib-light">DELETE PRODUCT</h5>
+                                <h5 class="font-body text-ib-light">{% if protected_product %}REMOVE{% else %}DELETE{% endif %} PRODUCT</h5>
                                 <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" class="ib-lh-1">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body pb-2 font-body">
-                                <p>Are you sure you want to delete this product: <strong>"{{ product.name }}"</strong>?</p>
+                                    {% if protected_product %}
+                                        <p><strong>"{{ product.name }}"</strong> has associated lineitems in customer orders and cannot be deleted from the database.
+                                            <br><br>Do you wish to remove it from the site by marking it as 'discontinued'? It will still be accessible in the admin panel.
+                                        </p>
+                                    {% else %}
+                                        <p>Are you sure you want to delete this product: <strong>"{{ product.name }}"</strong>?
+                                        <br><strong>This cannot be undone.</strong></p>
+                                    {% endif %}
+                                </p>
                             </div>
                             <div class="modal-footer pt-0">
                                 <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
-                                <a href="{% url 'delete_product' product.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                <a href="{% url 'delete_product' product.id %}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">{% if protected_product %}REMOVE{% else %}DELETE{% endif %}</a>
                             </div>
                         </div>
                     </div>

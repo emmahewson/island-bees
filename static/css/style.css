@@ -1169,6 +1169,10 @@ label[for="id_price"] {
     font-size: 20px;
 }
 
+.product-card a img {
+    border-radius: 5px 5px 0 0;
+}
+
 .rating-hex-small {
     font-size: 20px;
     margin-right: -3px;

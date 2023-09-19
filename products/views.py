@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+from checkout.models import OrderLineItem
+
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -67,7 +69,7 @@ def all_products(request):
         'products': products,
         'search_term': query,
         'current_category': category,
-        'current_sorting': current_sorting
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
@@ -79,15 +81,32 @@ def product_detail(request, product_id):
     # Gets product from DB
     product = get_object_or_404(Product, pk=product_id)
 
-    # Gets product reviews from DB
-    reviews = product.reviews.all().order_by('-rating', '-created_on')
+    if product.discontinued:
+        messages.info(request, 'That product is no longer available, sorry.')
+        return redirect(reverse('products'))
 
-    context = {
-        'product': product,
-        'reviews': reviews,
-    }
+    else:
+        # Gets product reviews from DB
+        reviews = product.reviews.all().order_by('-rating', '-created_on')
 
-    return render(request, 'products/product_detail.html', context)
+        # Check if product has ever been ordered
+        # protects it from deletion to preserve order history
+        lineitems = OrderLineItem.objects.all()
+
+        for lineitem in lineitems:
+            if product == lineitem.product:
+                protected_product = True
+                break
+            else:
+                protected_product = False
+
+        context = {
+            'product': product,
+            'reviews': reviews,
+            'protected_product': protected_product
+        }
+
+        return render(request, 'products/product_detail.html', context)
 
 
 @login_required
@@ -153,13 +172,34 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
 
-            # Gets URL to redirect user back to previous page
-            redirect_url = request.POST.get('redirect_url')
-
             request.session['show_bag_summary'] = False
             messages.success(request, 'Successfully updated product!')
 
-            return redirect(redirect_url)
+            # Gets URL to redirect user back to previous page
+            redirect_url = request.POST.get('redirect_url')
+
+            # Gets bag from session
+            bag = request.session.get('bag', {})
+
+            # Checks 'discontinued' value
+            # If item is not discontinued redirects them to previous page
+            if request.POST.get('discontinued') is None:
+                return redirect(redirect_url)
+
+            # If item is discontinued checks if item is in bag & removes it
+            else:
+                if str(product.id) in bag:
+                    bag.pop(str(product.id))
+                    request.session['show_bag_summary'] = True
+                    messages.info(
+                        request,
+                        f'{product.name} discontinued & removed from bag.')
+
+                    # Updates bag in session
+                    request.session['bag'] = bag
+
+                # Redirects to 'products'
+                return redirect(reverse('products'))
         else:
             messages.error(
                 request, 'Failed to update product. Please check the form.')
@@ -185,9 +225,6 @@ def edit_product(request, product_id):
 def delete_product(request, product_id):
     """ Delete a product """
 
-    # Gets the previous page URL for redirect
-    next = request.GET.get('next', '')
-
     # Checks user is superuser
     # redirects to home if not
     if not request.user.is_superuser:
@@ -196,10 +233,48 @@ def delete_product(request, product_id):
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
-    product.delete()
 
-    request.session['show_bag_summary'] = False
-    messages.success(request, 'Product deleted!')
-    print(next)
+    # Check if product has ever been ordered
+    # protects it from deletion to preserve order history
+    lineitems = OrderLineItem.objects.all()
 
-    return redirect(next)
+    for lineitem in lineitems:
+        if product == lineitem.product:
+            protected_product = True
+            break
+        else:
+            protected_product = False
+
+    if protected_product:
+
+        # If product is protected set it to discontinued
+        product.discontinued = True
+        product.save()
+
+        # Checks if item is in bag & removes it
+        bag = request.session.get('bag', {})
+        if str(product.id) in bag:
+            bag.pop(str(product.id))
+
+            # Updates bag in session
+            request.session['bag'] = bag
+
+            message = 'Product discontinued and removed from the store & bag.'
+            request.session['show_bag_summary'] = True
+
+        else:
+            message = 'Product discontinued and removed from the store.'
+            request.session['show_bag_summary'] = False
+
+        messages.success(request, message)
+
+        # Redirects to 'products'
+        return redirect(reverse('products'))
+    else:
+
+        # If product is not protected - delete
+        product.delete()
+        message = 'Product deleted!'
+
+    messages.success(request, message)
+    return redirect(reverse('products'))

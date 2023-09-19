@@ -189,6 +189,18 @@ Bug - during deployment my products page wouldn't load and returned a 400 error.
 Bug - Whilst initially working correctly I found that my checkout began to create duplicates when placing an order - one in the view and another in the webhook. After extensive research and testing using print statements I discovered that the problem was at the point where the webhook searches for the order in the database and if it didn't find it, creates the order. The problem stemmed from the form fields which were not required and so could be empty - phone number and street address 2. I fixed the problem by removing these fields from the search parameters in the webhook query.
 
 
+Bug - When attempting to delete a product that is linked to a previous order as a line item in the OrderLineItem model it throws an error because, due to the CASCADE setting on the field, by deleting the product you are also then deleting all references to it. This posed a problem because I wanted to give superusers the ability to delete a product to remove it from sale, but keeping all old order information is also very important. I solved this problem with an idea from this CI Slack channel [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1598004199059700?thread_ts=1597961336.047800&cid=C7HS3U3AP) by stopping store owners deleting products using model.PROTECT but allowing them to remove them from sale with a 'discontinued' Boolean field.
+
+This meant additional changes had to be made to the site to ensure smooth running and good user experience:
+- added a conditional check to the delete_product viewto see if the product appears on any OrderLineItems and if so rather than deleting it, to mark it as 'discontinued'
+- Dymanically changing the text in the delete product modal depending on whether the product has associated OrderLineItems and if so removing the ability to delete it and offering the admin the chance to 'discontinue' it instead.
+- Only displaying cards products that are not 'discontinued' on the products & home pages
+- Adding a check on the product_detail view to redirect users who link to it directly using the url or back button to the 'products' page
+- Adding an additional field to the add/edit product form to mark a product as 'discontinued'
+- Removing the edit/delete buttons from the product cards to improve user experience and keep the site logic as simple and bug free as possible
+- When a form is submitted with the 'discontinue' input checked, if that product is in the shopping bag, remove it.
+- Added a conditional check on the add_to_bag view to only add if the product was not discontinued.
+
 #### Fixed Bugs
 
 - - -
