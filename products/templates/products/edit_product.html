@@ -74,6 +74,9 @@
                     <em class="d-inline ms-2">Images should be in a 16:9 aspect ratio</em>
                     {{ form.image }}
 
+                    <!-- Hidden input to redirect user back to previous page once submitted -->
+                    <input type="hidden" name="redirect_url" value="{{ request.GET.next }}">
+
                     <!-- Buttons -->
                     <div class="button-group mt-5 d-flex justify-content-end">
 

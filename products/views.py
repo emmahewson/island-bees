@@ -93,16 +93,22 @@ def product_detail(request, product_id):
 @login_required
 def add_product(request):
     """ Add a new product to the store """
+
+    # Checks user is superuser
+    # redirects to home if not
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can add products.')
         return redirect(reverse('home'))
 
-    # Handle Form Submission
+    # Handles Form Submission
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
 
         if form.is_valid():
             product = form.save()
+
+            # Gets URL to redirect user back to previous page
+            redirect_url = request.POST.get('redirect_url')
 
             request.session['show_bag_summary'] = False
             messages.success(request, 'Product added successfully.')
@@ -111,10 +117,15 @@ def add_product(request):
         else:
             messages.error(
                 request, 'Failed to add product. Please check the form.')
+
+    # Handles View Rendering
     else:
         form = ProductForm()
 
+    # Sets page template
     template = 'products/add_product.html'
+
+    # Sets current product & form content
     context = {
         'form': form,
     }
@@ -125,6 +136,9 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """ Edit a product """
+
+    # Checks user is superuser
+    # redirects to home if not
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can edit products.')
         return redirect(reverse('home'))
@@ -139,18 +153,26 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
 
+            # Gets URL to redirect user back to previous page
+            redirect_url = request.POST.get('redirect_url')
+
             request.session['show_bag_summary'] = False
             messages.success(request, 'Successfully updated product!')
 
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(redirect_url)
         else:
             messages.error(
                 request, 'Failed to update product. Please check the form.')
+
+    # Handles View Rendering
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
+    # Sets page template
     template = 'products/edit_product.html'
+
+    # Sets current product & form content
     context = {
         'form': form,
         'product': product,
@@ -162,6 +184,12 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     """ Delete a product """
+
+    # Gets the previous page URL for redirect
+    next = request.GET.get('next', '')
+
+    # Checks user is superuser
+    # redirects to home if not
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, only store owners can delete products.')
@@ -172,5 +200,6 @@ def delete_product(request, product_id):
 
     request.session['show_bag_summary'] = False
     messages.success(request, 'Product deleted!')
+    print(next)
 
-    return redirect(reverse('products'))
+    return redirect(next)
