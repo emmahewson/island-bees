@@ -28,38 +28,33 @@ def add_to_bag(request, item_id):
     # Gets product from DB
     product = get_object_or_404(Product, pk=item_id)
 
-    if product.discontinued:
-        messages.info(request, 'That product is no longer available, sorry.')
+    # Gets quantity value from form
+    quantity = int(request.POST.get('quantity'))
 
+    # Gets URL to redirect user back to previous page
+    redirect_url = request.POST.get('redirect_url')
+
+    # Gets bag from session
+    bag = request.session.get('bag', {})
+
+    # Checks if product is already in bag
+    # If so updates quantity & if not adds to bag
+    if item_id in list(bag.keys()):
+        bag[item_id] += quantity
+        request.session['show_bag_summary'] = True
+        messages.success(
+            request, f'Updated {product.name} quantity to {bag[item_id]}'
+        )
     else:
+        bag[item_id] = quantity
 
-        # Gets quantity value from form
-        quantity = int(request.POST.get('quantity'))
+        request.session['show_bag_summary'] = True
+        messages.success(request, f'Added {product.name} to your bag')
 
-        # Gets URL to redirect user back to previous page
-        redirect_url = request.POST.get('redirect_url')
+    # Updates bag in session
+    request.session['bag'] = bag
 
-        # Gets bag from session
-        bag = request.session.get('bag', {})
-
-        # Checks if product is already in bag
-        # If so updates quantity & if not adds to bag
-        if item_id in list(bag.keys()):
-            bag[item_id] += quantity
-            request.session['show_bag_summary'] = True
-            messages.success(
-                request, f'Updated {product.name} quantity to {bag[item_id]}'
-            )
-        else:
-            bag[item_id] = quantity
-
-            request.session['show_bag_summary'] = True
-            messages.success(request, f'Added {product.name} to your bag')
-
-        # Updates bag in session
-        request.session['bag'] = bag
-
-        return redirect(redirect_url)
+    return redirect(redirect_url)
 
 
 def adjust_bag(request, item_id):

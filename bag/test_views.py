@@ -24,6 +24,15 @@ class TestProductsViews(TestCase):
             is_featured=True,
         )
 
+        self.productTest2 = Product.objects.create(
+            category=self.categoryTest,
+            name="Old Product",
+            description="Test description for Old Product",
+            price=4,
+            is_featured=True,
+            discontinued=True
+        )
+
     def test_bag_page(self):
         """ Test bag view """
         response = self.client.get('/bag/')

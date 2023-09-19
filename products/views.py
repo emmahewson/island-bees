@@ -92,6 +92,7 @@ def product_detail(request, product_id):
         # Check if product has ever been ordered
         # protects it from deletion to preserve order history
         lineitems = OrderLineItem.objects.all()
+        protected_product = False
 
         for lineitem in lineitems:
             if product == lineitem.product:

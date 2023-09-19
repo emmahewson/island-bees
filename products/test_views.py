@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from .models import Product, Category
+from checkout.models import Order, OrderLineItem
 
 
 class TestProductsViews(TestCase):
@@ -37,6 +38,43 @@ class TestProductsViews(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
+            discontinued=False
+        )
+
+        self.productTest2 = Product.objects.create(
+            category=self.categoryTest,
+            name="Hive Tool",
+            description="Test description for Hive Tool",
+            price=4,
+            is_featured=True,
+            discontinued=False
+        )
+
+        self.productTest3 = Product.objects.create(
+            category=self.categoryTest,
+            name="Old Product",
+            description="Test description for Old Product",
+            price=4,
+            is_featured=True,
+            discontinued=True
+        )
+
+        self.orderTest = Order.objects.create(
+            order_number='1234567890',
+            full_name="Test User",
+            email="testemail@email.com",
+            phone_number="0123456789",
+            street_address1="Test Address 1",
+            street_address2="Test Address 2",
+            town_or_city="Test City",
+            county="Test County",
+            country="GB",
+        )
+
+        self.orderLineItemTest1 = OrderLineItem.objects.create(
+            order=self.orderTest,
+            product=self.productTest2,
+            quantity=1,
         )
 
     def test_products_page(self):
@@ -53,8 +91,14 @@ class TestProductsViews(TestCase):
 
     def test_product_detail_page_with_invalid_product(self):
         """ Test product detail view works with an invalid product """
-        response = self.client.get('/products/2/')
+        response = self.client.get('/products/99/')
         self.assertEqual(response.status_code, 404)
+
+    def test_product_detail_page_with_discontinued_product(self):
+        """ Test product detail view works with a discontinued product """
+        response = self.client.get('/products/3/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/products/')
 
     def test_add_product_page_for_logged_out_user(self):
         """ Test add product view for logged out user """
@@ -128,7 +172,7 @@ class TestProductsViews(TestCase):
             username='superuser1', password='super_password1')
         self.assertTrue(logged_in)
 
-        response = self.client.get('/products/edit/2/')
+        response = self.client.get('/products/edit/99/')
         self.assertEqual(response.status_code, 404)
 
     def test_delete_product_view_for_logged_out_user(self):
@@ -176,5 +220,19 @@ class TestProductsViews(TestCase):
             username='superuser1', password='super_password1')
         self.assertTrue(logged_in)
 
-        response = self.client.get('/products/delete/2/')
+        response = self.client.get('/products/delete/99/')
         self.assertEqual(response.status_code, 404)
+
+    def test_delete_protected_product_page_for_superuser(self):
+        """
+        Test delete product view for authorised user (superuser)
+        With a protected product (appears in a lineitem)
+        """
+
+        logged_in = self.client.login(
+            username='superuser1', password='super_password1')
+        self.assertTrue(logged_in)
+
+        response = self.client.get('/products/delete/2/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/products/')
