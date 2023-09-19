@@ -1,4 +1,137 @@
-Notes
+# Island Bees - E-Commerce Site
+
+![Mock-up]()
+
+#### **By Emma Hewson**
+[Click here to view the live web application](https://island-bees-5e7b15194c83.herokuapp.com/)
+
+This is the documentation for my e-commerce web application: Island Bees. It has been built using Django, Python, JavaScript, CSS3 & HTML5 for educational purposes as part of Code Institute’s Diploma in Web Application Development Course.
+
+DETAILS OF SITE HERE???
+
+- - -
+## Table of Contents
+
+1. [User Experience](#)
+    * [Project Aims](#)
+    * [User Stories](#)
+    * [Design](#)
+        * [Wireframes](#)
+        * [Colour](#)
+        * [Typography](#)
+        * [Images & Graphics](#)
+        * [Database Schema](#)
+        * [Flow Diagram](#)
+        * [Design Changes](#)
+2. [Features](#)
+    * [Site Features](#)
+    * [Future Features](#)
+3. [Technologies Used](#)
+    * [Languages Used](#)
+    * [Python Modules, Packages & Frameworks Used](#)
+    * [Programs and Tools Used](#)
+4. [Testing](#)
+    * [Bugs](#)
+        * [Fixed Bugs](#)
+        * [Remaining Bugs](#)
+5. [Deployment](#deployment)
+  * [Forking the GitHub Repository]()
+  * [Making a Local Clone]()
+  * [Deploying with Heroku]()
+6. [Credits]()
+  * [Online resources]()
+  * [Code]()
+  * [Media]()
+  * [Acknowledgments]()
+
+
+- - -
+
+## User Experience
+
+### Project Aims
+
+- - -
+
+###  User Stories
+
+
+- - -
+
+### Design
+
+#### Wireframes
+
+- - -
+
+#### Colour
+
+- - -
+
+#### Typography
+
+- - -
+
+#### Images & Graphics
+
+- - -
+
+#### Database Schema
+
+- - -
+
+#### Flow Diagram
+
+- - -
+
+#### Design Changes
+
+- - -
+[Go to Top](#island-bees---e-commerce-site)
+- - -
+
+## Features
+
+### Site Features
+
+Mention
+using widget-tweak to add style classes to the form inputs in the auth templates
+The delivery charge calculations when no delivery is chargable
+
+- - -
+
+### Future Features
+
+- - -
+[Go to Top](#island-bees---e-commerce-site)
+- - -
+
+
+## Technologies Used
+
+### Languages Used
+
+- - -
+
+### Python Modules, Packages & Frameworks Used
+
+- - -
+
+### Programs and Tools Used
+
+- - -
+[Go to Top](#island-bees---e-commerce-site)
+- - -
+
+
+## Testing
+
+Linting Errors
+- checkout/apps.py - checkout.signals is imported but unused - signals is being passed in and used elsewhere so can be disregarded
+- checkout/webhooks.py - local variable e is assigned to but never used - have investigated this and it appears to be an industry standard way of assigning this particular error checking. I also passed this code through the CI Python Linter and it didn't raise an issue. https://pep8ci.herokuapp.com/
+- remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py
+
+### Bugs
 
 Bug - attempted to move the js for the remove item from bag in to separate JS file - update worked ok but remove didn't. Put back in to HTML as a script tag.
 
@@ -56,14 +189,51 @@ Bug - during deployment my products page wouldn't load and returned a 400 error.
 Bug - Whilst initially working correctly I found that my checkout began to create duplicates when placing an order - one in the view and another in the webhook. After extensive research and testing using print statements I discovered that the problem was at the point where the webhook searches for the order in the database and if it didn't find it, creates the order. The problem stemmed from the form fields which were not required and so could be empty - phone number and street address 2. I fixed the problem by removing these fields from the search parameters in the webhook query.
 
 
+#### Fixed Bugs
+
+- - -
+
+#### Remaining Bugs
+
+- - -
+[Go to Top](#island-bees---e-commerce-site)
+- - -
 
 
-Mention
-using widget-tweak to add style classes to the form inputs in the auth templates
-The delivery charge calculations when no delivery is chargable
+## Deployment
+
+### Forking the GitHub Repository
+
+- - -
+
+#### Making a Local Clone
+
+- - -
+
+#### Deploying with Heroku
+
+- - -
+[Go to Top](#island-bees---e-commerce-site)
+- - -
 
 
-Linting Errors
-- checkout/apps.py - checkout.signals is imported but unused - signals is being passed in and used elsewhere so can be disregarded
-- checkout/webhooks.py - local variable e is assigned to but never used - have investigated this and it appears to be an industry standard way of assigning this particular error checking. I also passed this code through the CI Python Linter and it didn't raise an issue. https://pep8ci.herokuapp.com/
-- remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py
+## Credits
+
+### Online resources
+
+- - -
+
+### Code
+
+- - -
+
+### Media
+
+- - -
+
+### Acknowledgments
+
+- - -
+
+[Go to Top](#island-bees---e-commerce-site)
+
