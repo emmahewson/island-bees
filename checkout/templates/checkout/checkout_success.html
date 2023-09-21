@@ -81,7 +81,9 @@
                         <p>{{ order.county }}</p>
                         <p>{{ order.postcode }}</p>
                         <p>{{ order.country.name }}</p>
-                        <p>{{ order.phone_number }}</p>
+                        {% if order.phone_number %}
+                            <p>{{ order.phone_number }}</p>
+                        {% endif %}
                         
                     </div>
 
