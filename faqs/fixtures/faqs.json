@@ -1,0 +1,100 @@
+[
+    {
+        "pk": 1,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "What products do you sell on your website?",
+            "answer": "We offer a wide range of bee-related goods, including honey, beehives, beekeeping tools, and live bee packages suitable for UK beekeepers."
+        }
+        
+    },
+    {
+        "pk": 2,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Can I purchase live bees from your website?",
+            "answer": "Yes, we do offer live bee packages for sale. Please note that live bees are available during specific seasons, and availability may vary. Make sure to check our live bee package section for updates."
+        }
+        },
+    {
+        "pk": 3,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Are your live bees suitable for beginners?",
+            "answer": "We provide resources and support to help both beginners and experienced beekeepers. Our live bee packages include information to guide you through the process of installing and maintaining your bee colony."
+    
+        }
+        },
+    {
+        "pk": 4,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Do you deliver outside the UK?",
+            "answer": "We currently only offer delivery within the UK due to the specific regulations and requirements for live bee shipments."
+        }
+        
+    },
+    {
+        "pk": 5,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "What is your shipping policy?",
+            "answer": "We offer standard shipping within the UK. Shipping fees are based on your order amount as a percentage of the total. Some products, such as courses, do not incur shipping fees as these are voucher-based products."
+        }
+        
+    },
+    {
+        "pk": 6,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Can I return products if I am not satisfied with my purchase?",
+            "answer": "Yes, we have a return policy in place. If you are not satisfied with your order, please contact our customer support team within 30 days of receiving your products. We will guide you through the return process."
+        }
+        
+    },
+    {
+        "pk": 7,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Are your products suitable for organic beekeeping?",
+            "answer": "Many of our products are suitable for organic beekeeping practices. Check the product descriptions for specific details, and feel free to contact us if you have any questions about the suitability of a particular product."
+        }
+        
+    },
+    {
+        "pk": 8,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Do you offer bulk discounts for beekeeping clubs or organisations?",
+            "answer": "Yes, we offer bulk discounts for beekeeping clubs and organisations. Please reach out to our customer support team for more information on bulk pricing and custom orders."
+        }
+        
+    },
+    {
+        "pk": 9,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "How can I contact your customer support team?",
+            "answer": "You can reach our customer support team through our Contact Us page, where you can fill out a form or find our email address for inquiries. We aim to respond to all inquiries promptly."
+        }
+        
+    },
+    {
+        "pk": 10,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "Is your honey locally sourced in the UK?",
+            "answer": "Our honey all comes from our own apiary based in Anglesey, North Wales. It is entirely natural with no additives and is 100% pure."
+        }
+       
+    },
+    {
+        "pk": 11,
+        "model": "faqs.faq",
+        "fields": {
+            "question": "How do I care for the beekeeping equipment I purchase from your website?",
+            "answer": "We offer care and maintenance guidelines for our beekeeping equipment in the product descriptions and our Beekeeping Guide section. Proper maintenance is essential for the longevity and effectiveness of your equipment."
+        }
+        
+    }
+  ]

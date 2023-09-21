@@ -919,6 +919,82 @@ label[for="id_price"] {
 }
 
 
+/* Toasts */
+
+.message-container {
+    position: absolute;
+    top: -65px;
+    right: 12px;
+    z-index: 99999999999;
+    margin-left: 12px;
+}
+
+.custom-toast {
+    overflow: visible;
+    max-width: 90vw;
+    width: 350px;
+}
+
+.toast-capper {
+    height: 5px;
+}
+
+.toast-close span {
+    font-size: 28px;
+    line-height: 0.6;
+    vertical-align: top;
+}
+
+.toast-close {
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.toast-close:hover {
+    color: var(--dark);
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 30px;
+}
+
+.arrow-success {
+    border-bottom-color: var(--success) !important;
+}
+
+.arrow-danger {
+    border-bottom-color: var(--warning) !important;
+}
+
+.arrow-warning {
+    border-bottom-color: var(--warning) !important;
+}
+
+.arrow-info {
+    border-bottom-color: var(--blue) !important;
+}
+
+.bag-notification-wrapper {
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.toast-total {
+    font-size: 18px;
+}
+
+
 /* Home Page */
 
 .header-container {
@@ -1381,86 +1457,7 @@ label[for="id_price"] {
 }
 
 
-
-
-
-/* Toasts */
-
-.message-container {
-    position: absolute;
-    top: -65px;
-    right: 12px;
-    z-index: 99999999999;
-    margin-left: 12px;
-}
-
-.custom-toast {
-    overflow: visible;
-    max-width: 90vw;
-    width: 350px;
-}
-
-.toast-capper {
-    height: 5px;
-}
-
-.toast-close span {
-    font-size: 28px;
-    line-height: 0.6;
-    vertical-align: top;
-}
-
-.toast-close {
-    transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-}
-
-.toast-close:hover {
-    color: var(--dark);
-}
-
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
-    width: 0; 
-    height: 0; 
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent; 
-    border-bottom: 10px solid black;
-    position: absolute;
-    top: -10px;
-    right: 30px;
-}
-
-.arrow-success {
-    border-bottom-color: var(--success) !important;
-}
-
-.arrow-danger {
-    border-bottom-color: var(--warning) !important;
-}
-
-.arrow-warning {
-    border-bottom-color: var(--warning) !important;
-}
-
-.arrow-info {
-    border-bottom-color: var(--blue) !important;
-}
-
-.bag-notification-wrapper {
-    max-height: 150px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.toast-total {
-    font-size: 18px;
-}
-
-
-/* Profile */
+/* Profile Page */
 
 .profile-review-product {
     font-size: 20px;
@@ -1473,6 +1470,22 @@ label[for="id_price"] {
 .order-history {
     max-height: 600px;
     overflow-y: auto;
+}
+
+
+/* FAQ Page */
+
+#faq-accordian .card .card-header,
+#faq-accordian .card .card-header p button {
+    background: none;
+}
+
+#faq-accordian .card .card-header p button {
+    text-align: left;
+}
+
+.edit-del-faq-wrapper {
+    min-width: 125.82px;
 }
 
 

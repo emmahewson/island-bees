@@ -9,10 +9,85 @@
 
 {% block content %}
 
-{% for faq in faqs %}
-    <p>{{faq.question}}</p>
-    <p>{{faq.answer}}</p>
-{% endfor %}
+<div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+    
+    <!-- Title Section -->
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <h1 class="font-title weight-bold section-title-lrg mb-2">FAQs</h1>
+            <p class="mb-3">All you need to know about delivery, returns, refunds and general info. Click on a question to reveal the answer.<br>Got a question not covered below? <a class="weight-semibold text-blue text-decoration-none text-link-blue" href="#">Contact us!</a></p>
+            
+            {% if request.user.is_superuser %}
+                <!-- Add FAQ button -->
+                <a href="" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm">ADD FAQ</a>
+            {% endif %}
+
+            <hr class="mt-4 mb-4">
+        </div>
+    </div>
+
+    <!-- FAQs Container -->
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 accordian" id="faq-accordian">
+            {% for faq in faqs %}
+            <div class="card w-100 border-0 border-bottom rounded-0 pb-3 mb-3">
+                <div class="card-header border-0 p-0 d-flex justify-content-between" id="header-{{ faq.id }}">
+                    <p class="{% if request.user.is_superuser %}me-3{% endif %}">
+                        <button class="weight-semibold d-inline p-0" type="button" data-toggle="collapse" data-target="#collapse-{{faq.id}}" aria-expanded="false" aria-controls="collapse-{{faq.id}}">
+                            {{faq.question}}
+                        </button>
+                    </p>
+                    <!-- FAQ EDIT / DELETE Buttons -->
+                    {% if request.user.is_superuser %}
+                        <div class="edit-del-faq-wrapper">
+                            <a href="" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                            <button type="button" data-toggle="modal" data-target="#modal-{{ faq.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                        </div>
+
+                        <!-- Confirm Delete Modal - Defensive Programming -->
+                        <div class="modal fade" id="modal-{{ faq.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-between bg-dark-grey py-3">
+                                        <h5 class="font-body text-ib-light">DELETE FAQ</h5>
+                                        <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true" class="ib-lh-1">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body pb-2 font-body">
+                                        <p>Are you sure you want to the delete the FAQ entry for...
+                                        <strong>"{{ faq.question }}"</strong></p>
+                                    </div>
+                                    <div class="modal-footer pt-0">
+                                        <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
+                                        <a href="" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    {% endif %}
+                </div>
+            
+                <div id="collapse-{{faq.id}}" class="collapse" aria-labelledby="header-{{ faq.id }}" data-parent="#faq-accordian">
+                    <div class="card-body px-0 pt-3 pb-0">
+                        <p>{{faq.answer}}</p>                    
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+                
+                
+        </div>
+        
+    </div>
+
+
+
+</div>
+
+
 
 
 
