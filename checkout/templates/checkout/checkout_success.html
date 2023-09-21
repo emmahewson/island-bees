@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}- View your order{% endblock %}
+
+{% block extra_meta %}
+    {% if from_profile %}
+        <meta name="description" content="Details of order number {{ order.order_number }} placed on {{ order.date|date:'g:i d/m/Y' }}">
+    {% else %}
+        <meta name="description" content="Your order has been successful. View details of order number: {{ order.order_number|truncatechars:6 }}.">
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}- Add a review{% endblock %}
+{% block extra_title %}- Edit Review: {{review.title}} for {{product.name}}{% endblock %}
 
 {% block extra_meta %}
-    <meta name="description" content="WELCOME TO ISLAND BEES! Add your review here!">
+    <meta name="description" content="Edit review: {{review.title}} for {{product.name}} using our simple form">
 {% endblock %}
 
 {% block content %}

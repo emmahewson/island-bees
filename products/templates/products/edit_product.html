@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}- Edit Product: {{product.name}}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Edit product {{product.name}} using our simple form - Admin Only">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">

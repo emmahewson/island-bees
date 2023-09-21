@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}- Profile{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="View your Island Bees' profile, update your personal details, see your order history.">
+{% endblock %}
+
 {% block content %}
     <!-- Profile Info Form & Order History Section -->
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
