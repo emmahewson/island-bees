@@ -23,7 +23,15 @@ class TestProductsModels(TestCase):
             description="Test description for Bee Suit",
             price=53.99,
             is_featured=True,
-            discontinued=False,
+            discontinued=True,
+            delivery_charge=False,
+        )
+
+        self.productTest2 = Product.objects.create(
+            category=self.categoryTest,
+            name="Hive Tool",
+            description="Test description for Hive Tool",
+            price=10,
         )
 
     def test_category_string_method(self):
@@ -68,14 +76,22 @@ class TestProductsModels(TestCase):
         """ Test the product is_featured field """
         self.assertTrue(self.productTest.is_featured)
 
-    def test_product_is_featured_defaults_to_false(self):
-        product = Product.objects.create(
-            name="A test bee product",
-            description="Test description",
-            price=3.99
-        )
-        self.assertFalse(product.is_featured)
-
     def test_product_discontinued_field(self):
         """ Test the product discontinued field """
-        self.assertFalse(self.productTest.discontinued)
+        self.assertTrue(self.productTest.discontinued)
+
+    def test_product_delivery_charge_field(self):
+        """ Test the product delivery charge field """
+        self.assertFalse(self.productTest.delivery_charge)
+
+    def test_product_is_featured_defaults_to_false(self):
+        """ Test the is_featured field defaults to False """
+        self.assertFalse(self.productTest2.is_featured)
+
+    def test_product_discontinued_defaults_to_false(self):
+        """ Test the discontinued field defaults to False """
+        self.assertFalse(self.productTest2.discontinued)
+
+    def test_product_delivery_charge_defaults_to_true(self):
+        """ Test the delivery charge field defaults to True """
+        self.assertTrue(self.productTest2.delivery_charge)
