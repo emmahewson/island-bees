@@ -29,9 +29,9 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(
         max_digits=6, decimal_places=2)
-    is_featured = models.BooleanField(default=False, blank=True)
-    delivery_charge = models.BooleanField(default=True, blank=False)
-    discontinued = models.BooleanField(default=False, blank=False)
+    is_featured = models.BooleanField(default=False)
+    delivery_charge = models.BooleanField(default=True)
+    discontinued = models.BooleanField(default=False)
     image = models.ImageField(
         null=True, blank=True)
     rating = models.IntegerField(
