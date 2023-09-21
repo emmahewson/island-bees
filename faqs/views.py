@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from products.models import Product
+from .models import Faq
 
 
 def faqs(request):
