@@ -1476,8 +1476,9 @@ label[for="id_price"] {
 /* FAQ Page */
 
 #faq-accordian .card .card-header,
+#faq-accordian .card,
 #faq-accordian .card .card-header p button {
-    background: none;
+    background: none !important;
 }
 
 #faq-accordian .card .card-header p button {
@@ -1487,6 +1488,7 @@ label[for="id_price"] {
 .edit-del-faq-wrapper {
     min-width: 125.82px;
 }
+
 
 
 /* Media Queries */
