@@ -2,7 +2,7 @@ from django.test import TestCase
 from .forms import ProductForm
 
 
-class TestAddReviewForm(TestCase):
+class TestProductForm(TestCase):
 
     def test_product_name_required(self):
         """ Test the product name is a required field """
