@@ -27,8 +27,12 @@ html {
     --light-grey-hov: #cccccc;
     --mid-grey: #959595;
     --dark-grey: #4d4d4d;
+    --hex-grey: #c2c2c2;
+    --hex-grey-hov: #9c9c9c;
     --yellow: #FFCD85;
     --yellow-hov: #feb247;
+    --hex-yellow: #feb247;
+    --hex-yellow-hov: #fda529;
     --yellow-light: #FFE7C6;
     --blue: #0f748a;
     --blue-hov: #005163;
@@ -1259,11 +1263,11 @@ label[for="id_price"] {
 }
 
 .rating-hex-true {
-    color: var(--yellow);
+    color: var(--hex-yellow);
 }
 
 .rating-hex-false {
-    color: var(--light-grey);
+    color: var(--hex-grey);
 }
 
 .rating-div p {
@@ -1285,10 +1289,10 @@ label[for="id_price"] {
         text-decoration-color: rgba(15, 116, 138, 1) !important;
     }
     .rating-hex-true {
-        color: var(--yellow-hov);
+        color: var(--hex-yellow-hov);
     }
     .rating-hex-false {
-        color: var(--light-grey-hov);
+        color: var(--hex-grey-hov);
     } 
 }
 
@@ -1407,7 +1411,7 @@ label[for="id_price"] {
 .rating-hex {
     font-size: 46px;
     margin-right: 5px;
-    color: var(--light-grey);
+    color: var(--hex-grey);
     cursor: pointer;
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -1416,7 +1420,7 @@ label[for="id_price"] {
 }
 
 .rating-hex-selected {
-    color: var(--yellow);
+    color: var(--hex-yellow);
 }
 
 
