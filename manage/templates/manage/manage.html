@@ -7,6 +7,7 @@
     <meta name="description" content="An area for site admins to view customer messages, add products & link to the main admin area.">
 {% endblock %}
 
+
 {% block content %}
 
 <div class="container-fluid ib-container bg-light-grey text-ib-dark p-4 py-md-5 font-body">
@@ -70,22 +71,28 @@
                     <div class="col-12 d-flex justify-content-end align-items-end mt-2">
                         <p class="me-3">STATUS: <span class="weight-semibold">{% if message.is_open %}OPEN{% else %}CLOSED{%endif%}</span></p>
 
-                        <div class="form-check form-switch">
-                            <input class="form-check-input form-check-message" type="checkbox" role="switch" id="flexSwitchCheck{% if message.is_open %}Default{% else %}Checked{% endif %}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
-                        </div>
+                        <!-- Form to change message is_open status -->
+                        <form method="POST" action="{% url 'toggle_message' message.id %}" id="message-form-{{message.id}}">
+                            {% csrf_token %}
+                            <div class="form-check form-switch">
+                                <input class="message-toggle form-check-input form-check-message" type="checkbox" role="switch" name="toggle-open" id="{{message.id}}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
+                            </div>
+    
+                            <!-- Hidden input to submit value of toggle -->
+                            <input type="hidden" id="message-{{message.id}}-input" name="is_open" value="{{ message.is_open }}">
+                        </form>   
                     </div>
                 </div>
-
-            
             {% endfor %}
         </div>
-
-        
     </div>
-
-    
-
 </div>
+{% endblock %}
 
+{% block extra_js_end %}
 
+<!-- Sends Toggle Value to View & Submits Form -->
+<script src="{% static 'manage/js/message_toggle.js' %}"></script>
+<!-- Scroll To Previous Location on Reload JS -->
+<script src="{% static 'manage/js/scroll_messages.js' %}"></script>
 {% endblock %}

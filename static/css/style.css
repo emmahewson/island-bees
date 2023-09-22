@@ -1525,7 +1525,7 @@ label[for="id_price"] {
     min-width: 125.82px;
 }
 
-/* */
+/* Site Management */
 
 .border-open {
     border: var(--warning) 0.5px solid;
@@ -1533,6 +1533,17 @@ label[for="id_price"] {
 
 .border-closed {
     border: var(--success) 0.5px solid;
+}
+
+.border-closed,
+.border-open {
+    border-radius: 3px;
+}
+
+.toggle-link {
+    display: contents;
+    width: 100%;
+    height: 100%;
 }
 
 

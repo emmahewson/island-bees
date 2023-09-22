@@ -26,3 +26,22 @@ def manage(request):
     }
 
     return render(request, 'manage/manage.html', context)
+
+
+def toggle_message(request, message_id):
+    """
+    A View to toggle the message open / closed
+    """
+    message = get_object_or_404(Message, id=message_id)
+
+    # Gets value of hidden input
+    message_open = request.POST.get('is_open')
+
+    if message_open == "True":
+        message.is_open = True
+    else:
+        message.is_open = False
+
+    message.save()
+
+    return redirect('manage')
