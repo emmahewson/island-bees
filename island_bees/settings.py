@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'faqs',
+    'manage',
 
     # Other
     'widget_tweaks',

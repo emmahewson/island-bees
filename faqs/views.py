@@ -11,7 +11,7 @@ def faqs(request):
     A view to return the FAQs
     """
 
-    # Gets faqs from DB for featured faqs section
+    # Gets faqs from DB
     faqs = Faq.objects.all()
     context = {
         'faqs': faqs,

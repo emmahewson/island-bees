@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Site Management{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="An area for site admins to view customer messages, add products & link to the main admin area.">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid ib-container bg-light-grey text-ib-dark px-md-4 py-4 py-md-5 font-body">
+    
+    <!-- Title Section -->
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <h1 class="font-title weight-bold section-title-lrg mb-2">SITE MANAGEMENT</h1>
+
+            <hr class="mt-4 mb-4">
+        </div>
+    </div>
+
+    {% for message in messages %}
+        {{message}}
+
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

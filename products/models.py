@@ -22,20 +22,45 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+
     category = models.ForeignKey(
-        'Category', null=True, blank=True, on_delete=models.SET_NULL)
+        'Category',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL)
+
     name = models.CharField(
-        max_length=50)
+        max_length=50
+    )
+
     description = models.TextField()
+
     price = models.DecimalField(
-        max_digits=6, decimal_places=2)
-    is_featured = models.BooleanField(default=False)
-    delivery_charge = models.BooleanField(default=True)
-    discontinued = models.BooleanField(default=False)
+        max_digits=6,
+        decimal_places=2
+    )
+
+    is_featured = models.BooleanField(
+        default=False
+    )
+
+    delivery_charge = models.BooleanField(
+        default=True
+    )
+
+    discontinued = models.BooleanField(
+        default=False
+    )
+
     image = models.ImageField(
-        null=True, blank=True)
+        null=True,
+        blank=True
+    )
+
     rating = models.IntegerField(
-        default=0, null=True, blank=True,
+        default=0,
+        null=True,
+        blank=True,
         validators=[
             MaxValueValidator(5, message="Must be between 0-5"),
             MinValueValidator(0, message="Must be between 0-5")
