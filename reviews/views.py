@@ -71,12 +71,11 @@ def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     product = Product.objects.filter(reviews=review)[0]
 
-    # Checks user is author of review or superuser
+    # Checks user is author of review
     # redirects to product detail if not
-    if not request.user.is_superuser:
-        if request.user != review.user:
-            messages.error(request, 'You can only edit your own reviews.')
-            return redirect(reverse('product_detail', args=[product.id]))
+    if request.user != review.user:
+        messages.error(request, 'You can only edit your own reviews.')
+        return redirect(reverse('product_detail', args=[product.id]))
 
     # Handles Form Submission
     if request.method == "POST":

@@ -98,6 +98,7 @@ Mention
 using widget-tweak to add style classes to the form inputs in the auth templates
 The delivery charge calculations when no delivery is chargable
 Additonal titles and description meta tags on each page
+Reviews - superuser cannot edit, only delete
 
 - - -
 
