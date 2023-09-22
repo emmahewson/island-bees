@@ -3,7 +3,6 @@
 // Adapted from https://stackoverflow.com/questions/17642872/refresh-page-and-keep-scroll-position
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-    console.log(document.referrer.indexOf("manage"))
 
     // Stops scroll if originating from a different page
     // Adapted from https://masteringjs.io/tutorials/fundamentals/if-url-contains

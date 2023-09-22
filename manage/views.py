@@ -20,7 +20,9 @@ def manage(request):
         return redirect(reverse('home'))
 
     # Gets messages from DB
-    customer_messages = Message.objects.all()
+    customer_messages = Message.objects.all().order_by(
+        '-is_open', 'created_on').values()
+        
     context = {
         'customer_messages': customer_messages,
     }
