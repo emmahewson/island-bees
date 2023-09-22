@@ -40,11 +40,13 @@ html {
     --warning: #B25B76;
     --warning-hov: #6b102d;
     --warning-light: #e9c2cf;
-    --warning-light-hov: #eeaec3;
+    --warning-light-hov: #e59bb4;
     --success: #419759;
     --success-hov: #00601b;
     --success-light: #b5dec1;
     --success-light-hov: #8cc29c;
+    --message-closed: #e2fbea;
+    --message-open: #fde5ee;
 }
 
 /* Text Colour Classes */
@@ -138,6 +140,14 @@ html {
 
 .bg-ib-warning-light {
     background-color: var(--warning-light);
+}
+
+.bg-message-closed {
+    background-color: var(--message-closed);
+}
+
+.bg-message-open{
+    background-color: var(--message-open);
 }
 
 
@@ -540,6 +550,16 @@ select:focus-visible,
     border: var(--warning) 2px solid !important;
 }
 
+.form-check-input-green:focus,
+.form-check-input-green:focus-visible {
+    border: var(--success) 2px solid !important;
+}
+
+.form-check-input.form-check-message:focus,
+.form-check-input.form-check-message:focus-visible {
+    border: none !important;
+}
+
 input::placeholder,
 textarea::placeholder {
     color: var(--mid-grey)
@@ -599,8 +619,20 @@ legend {
     background-color: var(--warning);
 }
 
+.form-check-message {
+    background-color: var(--warning);
+}
+
+.form-check-message:checked {
+    background-color: var(--success);
+}
+
 .form-check-input:focus {
     box-shadow: none;
+}
+
+.form-switch .form-check-input.form-check-message {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
 }
 
 select:invalid {
@@ -1493,6 +1525,15 @@ label[for="id_price"] {
     min-width: 125.82px;
 }
 
+/* */
+
+.border-open {
+    border: var(--warning) 0.5px solid;
+}
+
+.border-closed {
+    border: var(--success) 0.5px solid;
+}
 
 
 /* Media Queries */
@@ -1658,6 +1699,13 @@ label[for="id_price"] {
         margin-bottom: 40px;
     }
 
+    /* Product Details Page */
+    
+    .button-group *,
+    .btn-file {
+        font-size: 14px;
+    }
+
     /* Toasts */
 
     .message-container {
@@ -1698,11 +1746,6 @@ label[for="id_price"] {
     .review-title {
         font-size: 18px;
         line-height: 1;
-    }
-    
-    .button-group *,
-    .btn-file {
-        font-size: 14px;
     }
 
     /* Add / Edit Product Form */

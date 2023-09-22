@@ -9,21 +9,81 @@
 
 {% block content %}
 
-<div class="container-fluid ib-container bg-light-grey text-ib-dark px-md-4 py-4 py-md-5 font-body">
+<div class="container-fluid ib-container bg-light-grey text-ib-dark p-4 py-md-5 font-body">
     
     <!-- Title Section -->
     <div class="row">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="col-12 col-lg-10 offset-lg-1 px-3 px-md-0">
             <h1 class="font-title weight-bold section-title-lrg mb-2">SITE MANAGEMENT</h1>
 
             <hr class="mt-4 mb-4">
         </div>
     </div>
 
-    {% for message in messages %}
-        {{message}}
+    <!-- Product Management -->
+    <div class="row">
+        <div class="bg-ib-light col-12 col-lg-10 offset-lg-1 pt-3 pb-3 px-3">
+            <h2 class="subtitle weight-semibold text-dark-grey mb-3">USEFUL LINKS</h2>
+            <div class="d-flex flex-wrap button-group"> 
+                <a href="{% url 'add_product' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm me-3 mb-3">
+                    <p class="d-inline">ADD PRODUCT</p>
+                </a>
+                <a href="{% url 'add_product' %}" class="ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm me-3 mb-3">
+                    <p class="d-inline">FAQS</p>
+                </a>
+                <a href="{% url 'admin:index' %}" class="ib-button ib-button-light-blue text-decoration-none text-ib-dark font-title weight-bold shadow-sm me-3 mb-3">
+                    <p class="d-inline">ADMIN AREA</p>
+                </a>
+            </div>
+            
+        </div>
+    </div>
 
-    {% endfor %}
+    <!-- Messages Section -->
+    <div class="row">
+        <div class="col-12 col-lg-10 offset-lg-1 px-0">
+            <hr class="mt-4 mb-4">
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="bg-ib-light col-12 col-lg-10 offset-lg-1 p-3">
+            <h2 class="subtitle weight-semibold text-dark-grey mb-3">CUSTOMER MESSAGES</h2>
+
+            {% for message in customer_messages %}
+            <!-- Message -->
+                <div class="row text-ib-dark {% if message.is_open %}bg-message-open{% else %}bg-message-closed{% endif %} w-100 m-auto mb-3 py-3 shadow-sm {% if message.is_open %}border-open{% else%}border-closed{%endif%}">
+                    <div class="col-12 d-flex small-para-text">
+                        <p class="me-3">{{message.created_on|date:"d/m/Y"}}</p>
+                        <a class="text-blue text-link-blue weight-semibold" href="mailto:{{message.email}}">
+                            <p>{{message.email}}</p>
+                        </a>
+    
+                    </div>
+                    <div class="col-12 mt-2">
+                        <p class="weight-semibold">{{message.subject}}</p>
+                    </div>
+                    <div class="col-12 mt-1">
+                        <p>{{message.content}}</p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end align-items-end mt-2">
+                        <p class="me-3">STATUS: <span class="weight-semibold">{% if message.is_open %}OPEN{% else %}CLOSED{%endif%}</span></p>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input form-check-message" type="checkbox" role="switch" id="flexSwitchCheck{% if message.is_open %}Default{% else %}Checked{% endif %}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
+                        </div>
+                    </div>
+                </div>
+
+            
+            {% endfor %}
+        </div>
+
+        
+    </div>
+
+    
 
 </div>
 
