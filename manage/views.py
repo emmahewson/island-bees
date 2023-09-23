@@ -22,25 +22,22 @@ def manage(request):
         return redirect(reverse('home'))
 
     # Gets messages from DB
-    customer_messages = Message.objects.all().order_by('created_on').values()
+    customer_messages = Message.objects.all().order_by('-created_on')
 
-    # Reset open variable for filters
+    # Reset filter variables
     open = None
     current_filter = None
-    print(f'Open: {open}')
-    print(f'Current_Filter: {current_filter}')
 
     # Handles product filtering by is_open
     if 'open' in request.GET:
         open = request.GET['open']
         customer_messages = customer_messages.filter(
-            is_open=open).order_by('created_on').values()
-        print(f'Open has been set to: {open}')
+            is_open=open).order_by('-created_on').values()
+        
+        # Sets current filter value
         if open == "False":
-            print("It's False")
             current_filter = "Closed"
         else:
-            print("It's True")
             current_filter = "Open"
 
     context = {

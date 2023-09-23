@@ -37,6 +37,7 @@ html {
     --blue: #0f748a;
     --blue-hov: #005163;
     --blue-light: #BCE1E9;
+    --blue-light-hov: #92d7e6;
     --warning: #B25B76;
     --warning-hov: #6b102d;
     --warning-light: #e9c2cf;
@@ -282,6 +283,7 @@ button {
 
 
 .ib-button-blue,
+.ib-button-light-blue,
 .ib-button-grey,
 .ib-button-yellow,
 .ib-button-warning,
@@ -294,6 +296,10 @@ button {
 
 .ib-button-blue:hover {
     background: var(--blue-hov);
+}
+
+.ib-button-light-blue:hover  {
+    background: var(--blue-light-hov);
 }
 
 .ib-button-grey:hover {
@@ -1273,7 +1279,8 @@ label[for="id_price"] {
 }
 
 #products-div {
-    background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% / cover repeat;
+    background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% no-repeat;
+    background-size: cover;
 }
 
 

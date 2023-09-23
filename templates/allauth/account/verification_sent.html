@@ -7,6 +7,6 @@
 {% block inner_content %}
     <h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Verify Your E-mail Address" %}</h1>
 
-    <p class="text-ib-dark">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please <a href="" class=" text-blue weight-semibold text-decoration-none text-link-blue">contact us</a> if you do not receive it within a few minutes.{% endblocktrans %}</p>
+    <p class="text-ib-dark">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please <a href="{% url 'contact_us' %}" class=" text-blue weight-semibold text-decoration-none text-link-blue">contact us</a> if you do not receive it within a few minutes.{% endblocktrans %}</p>
 
 {% endblock %}

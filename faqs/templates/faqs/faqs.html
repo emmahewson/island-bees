@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1 class="font-title weight-bold section-title-lrg mb-2">FAQs</h1>
-            <p class="mb-3">All you need to know about delivery, returns, refunds and general info. Click on a question to reveal the answer. Got a question not covered below? <a class="weight-semibold text-blue text-decoration-none text-link-blue" href="#">Contact us!</a></p>
+            <p class="mb-3">All you need to know about delivery, returns, refunds and general info. Click on a question to reveal the answer. Got a question not covered below? <a class="weight-semibold text-blue text-decoration-none text-link-blue" href="{% url 'contact_us' %}">Contact us!</a></p>
             
             {% if request.user.is_superuser %}
                 <!-- Add FAQ button -->
