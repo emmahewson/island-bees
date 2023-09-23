@@ -33,7 +33,7 @@ def manage(request):
         open = request.GET['open']
         customer_messages = customer_messages.filter(
             is_open=open).order_by('-created_on').values()
-        
+
         # Sets current filter value
         if open == "False":
             current_filter = "Closed"
