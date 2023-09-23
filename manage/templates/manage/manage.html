@@ -50,7 +50,30 @@
 
     <div class="row">
         <div class="bg-ib-light col-12 col-lg-10 offset-lg-1 p-3">
-            <h2 class="subtitle weight-semibold text-dark-grey mb-3">CUSTOMER MESSAGES</h2>
+            <div class="d-flex justify-content-between flex-wrap">
+                <h2 class="subtitle weight-semibold text-dark-grey mb-3 me-3">CUSTOMER MESSAGES</h2>
+                <div class="d-flex justify-content-end align-items-end mb-4">
+                    <p class="ib-lh-1">FILTERS:</p>
+                    <div class="d-flex button-group">
+                        <a href="{% url 'manage' %}?open=True" class="ib-button-sm ib-button-warning text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                            <p class="d-inline">OPEN</p>
+                        </a>
+                        <a href="{% url 'manage' %}?open=False" class="ib-button-sm ib-button-success text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                            <p class="d-inline">CLOSED</p>
+                        </a>
+                        <a href="{% url 'manage' %}" class="ib-button-sm ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                            <p class="d-inline">ALL</p>
+                        </a>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+                
+                
+            
+            
 
             {% for message in customer_messages %}
             <!-- Message -->
