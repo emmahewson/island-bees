@@ -9,8 +9,69 @@
 
 
 {% block content %}
+    <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+                <h1 class="font-title weight-bold section-title-lrg mb-2">CONTACT US</h1>
+                <hr>
+            </div>
+        </div>
 
-    {{form}}
+        <div class="row font-body">
+
+            <!-- Contact Us Form -->
+            <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-1 mt-2 font-body text-dark-grey">
+                <p class="mb-3 weight-semibold">Send us a message using the form below.</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    {{ form }}
+
+                    <!-- Send Button -->
+                    <div class="text-end">
+                        <button id="submit-button" class="ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm">SEND</button>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <!-- Address -->
+            <div class="col-12 col-md-10 offset-md-1 col-lg-4 offset-lg-0 ps-lg-4 mt-4 mt-lg-2 text-dark-grey font-body">
+                <h2 class="subtitle weight-semibold mb-3">CONTACT DETAILS</h2>
+
+                <div class="d-flex mb-2">
+                    <div class="pe-3">
+                        <span class="ib-lh-1 rating-hex-small rating-hex-true">&#x2B22;</span>
+                    </div>
+                    <div>
+                        <p class="font-title weight-bold">ISLAND BEES</p>
+                        <p>123 Dublin Road</p>
+                        <p>Holyhead</p>
+                        <p>Isle of Anglesey</p>
+                        <p>LL65 1AA</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="pe-3">
+                        <span class="ib-lh-1 rating-hex-small rating-hex-true">&#x2B22;</span>
+                    </div>
+                    <div>
+                        <p class="weight-semibold">12345 678 910</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="pe-3">
+                        <span class="ib-lh-1 rating-hex-small rating-hex-true">&#x2B22;</span>
+                    </div>
+                    <div>
+                        <a class="text-dark-grey weight-semibold" href="mailto:info@islandbees.com">
+                            <p class="weight-semibold">info@islandbees.com</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
