@@ -22,14 +22,28 @@ def manage(request):
     # Gets messages from DB
     customer_messages = Message.objects.all().order_by('created_on').values()
 
+    # Reset open variable for filters
+    open = None
+    current_filter = None
+    print(f'Open: {open}')
+    print(f'Current_Filter: {current_filter}')
+
     # Handles product filtering by is_open
     if 'open' in request.GET:
         open = request.GET['open']
         customer_messages = customer_messages.filter(
             is_open=open).order_by('created_on').values()
+        print(f'Open has been set to: {open}')
+        if open == "False":
+            print("It's False")
+            current_filter = "Closed"
+        else:
+            print("It's True")
+            current_filter = "Open"
 
     context = {
         'customer_messages': customer_messages,
+        'current_filter': current_filter,
     }
 
     return render(request, 'manage/manage.html', context)

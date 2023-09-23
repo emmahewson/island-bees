@@ -50,8 +50,19 @@
 
     <div class="row">
         <div class="bg-ib-light col-12 col-lg-10 offset-lg-1 p-3">
-            <div class="d-flex justify-content-between flex-wrap">
-                <h2 class="subtitle weight-semibold text-dark-grey mb-3 me-3">CUSTOMER MESSAGES</h2>
+            <div class="d-flex justify-content-between flex-wrap ">
+
+                <div class="mb-3 d-flex flex-wrap align-items-end d-sm-block">
+                    <h2 class="subtitle weight-semibold text-dark-grey mb-0 me-2 me-sm-0 mb-sm-1">CUSTOMER MESSAGES</h2>
+                
+                    <p class="small weight-regular text-mid-grey">{% if current_filter %}<span class="text-uppercase">{{current_filter}}{% else %}ALL</span>{% endif %} MESSAGES ({{ customer_messages|length }})</p>
+
+                </div>
+                <!-- Messages Title -->
+                
+                
+
+                <!-- Messages Filter Buttons -->
                 <div class="d-flex justify-content-end align-items-end mb-4">
                     <p class="ib-lh-1">FILTERS:</p>
                     <div class="d-flex button-group">
@@ -64,16 +75,10 @@
                         <a href="{% url 'manage' %}" class="ib-button-sm ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
                             <p class="d-inline">ALL</p>
                         </a>
-
                     </div>
-                    
                 </div>
-
             </div>
                 
-                
-            
-            
 
             {% for message in customer_messages %}
             <!-- Message -->
