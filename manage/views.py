@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
+from profiles.models import UserProfile
 
 from .models import Message
-# from .forms import MessageForm
+from .forms import MessageForm
 
 
 @login_required
@@ -75,3 +77,58 @@ def toggle_message(request, message_id):
     message.save()
 
     return redirect('manage')
+
+
+def contact_us(request):
+    """
+    Renders form to add message / contact us.
+    Adds new message to database.
+    """
+
+    if request.user.is_authenticated:
+        # Sets author based on current user
+        user = User.objects.get(username=request.user)
+    else:
+        user = None
+
+    # Handles Form Submission
+    if request.method == "POST":
+        form = MessageForm(request.POST)
+
+        if form.is_valid():
+            message = form.save()
+            message.user = user
+            message.save()
+
+            request.session['show_bag_summary'] = False
+            messages.success(request, "Your message has been sent.")
+            return redirect(reverse('contact_us'))
+        else:
+            messages.error(request, "Form invalid, please try again.")
+
+    # Handles View Rendering
+    else:
+
+        # Attempt to prefill form with user info
+        # If not render empty form
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                form = MessageForm(initial={
+                    'name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                })
+            except UserProfile.DoesNotExist:
+                form = MessageForm()
+        else:
+            form = MessageForm()
+
+    # Sets page template
+    template = 'manage/contact_us.html'
+
+    # Sets current product & form content
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
