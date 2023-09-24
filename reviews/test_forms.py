@@ -4,7 +4,7 @@ from .forms import ReviewForm
 # Create your tests here.
 
 
-class TestAddReviewForm(TestCase):
+class TestReviewForm(TestCase):
 
     def test_review_title_required(self):
         """ Test the review title is a required field """

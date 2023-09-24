@@ -48,6 +48,7 @@ def manage(request):
     return render(request, 'manage/manage.html', context)
 
 
+@login_required
 def toggle_message(request, message_id):
     """
     A View to toggle the message open / closed

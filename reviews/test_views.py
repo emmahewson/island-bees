@@ -121,6 +121,21 @@ class TestReviewsViews(TestCase):
         self.assertRedirects(
             response, '/products/1/')
 
+    def test_edit_other_user_review_page_for_superuser(self):
+        """
+        Checks edit_review redirects to product_details
+        if superuser is not author of review
+        """
+
+        logged_in = self.client.login(
+            username='superuser1', password='super_password1')
+        self.assertTrue(logged_in)
+
+        response = self.client.get('/reviews/edit_review/1/')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response, '/products/1/')
+
     def test_delete_review_view_for_logged_out_user(self):
         """
         Checks delete review redirects to login
