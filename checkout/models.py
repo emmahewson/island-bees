@@ -11,6 +11,10 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    Model for Customer Orders
+    """
+
     order_number = models.CharField(
         max_length=32,
         null=False,
@@ -125,19 +129,19 @@ class Order(models.Model):
         if total_for_delivery is not None:
             # Checks the value is above 0 & converts to a float
             if total_for_delivery > 0:
-                total_delivery_chargable = float(total_for_delivery)
+                total_delivery_chargeable = float(total_for_delivery)
             # Converts the value to a float if 0
             else:
-                total_delivery_chargable = float(0)
+                total_delivery_chargeable = float(0)
         # If total_for_delivery has no value sets it to a float of 0
         else:
-            total_delivery_chargable = float(0)
+            total_delivery_chargeable = float(0)
 
         # Checks if total qualifies for free delivery
         # and calculates delivery charge
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = (
-                total_delivery_chargable * (
+                total_delivery_chargeable * (
                     settings.STANDARD_DELIVERY_PERCENTAGE
                 ) / 100)
         else:
@@ -161,6 +165,10 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+    Model for Line Items on a Customer Order
+    """
+
     order = models.ForeignKey(
         Order,
         null=False,

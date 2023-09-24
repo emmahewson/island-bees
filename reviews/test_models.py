@@ -11,7 +11,7 @@ from reviews.models import Review
 @freeze_time("2022-08-15")
 class TestReviewModels(TestCase):
     """
-    Test Reviews App Models
+    Reviews Model Tests
     """
 
     def setUp(self):

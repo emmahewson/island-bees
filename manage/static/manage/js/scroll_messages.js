@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 });
 
+// Saves scroll position to session before unloading page
 window.onbeforeunload = function(e) {
     sessionStorage.setItem('scrollpos', window.scrollY);
 };

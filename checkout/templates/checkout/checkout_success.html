@@ -17,7 +17,9 @@
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
         <div class="row px-3 px-sm-0">
 
+            <!-- Title Section -->
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 text-center">
+
                 {% if from_profile %}
                     <!-- Title & intro text for order history -->
                     <h2 class="font-title weight-bold section-title-lrg mb-2">ORDER DETAILS</h2>
@@ -28,11 +30,11 @@
                     <p>Below are the details of your order. We'll email a confirmation to {{ order.email }}. We're processing your order now and we'll let you know when your goodies are on their way!</p>
                 {% endif %}
             </div>
-
             <hr class="mt-4 mb-5 mb-sm-4 col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
         </div>
 
         <div class="row">
+
             <!-- Order Confirmation Wrapper -->
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 shadow">
 
@@ -84,9 +86,7 @@
                         {% if order.phone_number %}
                             <p>{{ order.phone_number }}</p>
                         {% endif %}
-                        
                     </div>
-
                 </div>
 
                 <div class="row bg-light-grey px-3 py-4">
@@ -102,10 +102,8 @@
                             </div>
                             <div class="col-12 col-md-4 text-md-end">
                                 <p>{{ item.quantity }} @ £{{ item.product.price }}</p>
-
                             </div>
                         </div>
-
                         {% endfor %}
                     </div>
 
@@ -118,7 +116,7 @@
             </div>
         </div>
 
-
+        <!-- Buttons -->
         <div class="row mt-5">
             <div class="col-10 offset-1 col-lg-8 offset-lg-2 px-0 text-sm-start text-center">
 
@@ -134,15 +132,8 @@
                         <i class="fas fa-chevron-left d-inline me-1"></i>
                         <p class="d-inline">BACK TO SHOP</p>
                     </a>
-                
                 {% endif %}
-
-                
             </div>
         </div>
-        
-
-        
-    
     </div>
 {% endblock %}

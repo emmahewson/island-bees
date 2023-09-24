@@ -3,13 +3,12 @@ from django.test import TestCase
 from products.models import Product, Category
 
 
-class TestProductsViews(TestCase):
-    """ Test product model url views """
+class TestBagViews(TestCase):
+    """
+    Bag Views Tests
+    """
 
     def setUp(self):
-        """
-        Creates test objects for Bag app
-        """
 
         self.categoryTest = Category.objects.create(
             name="Clothing",

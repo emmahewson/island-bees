@@ -11,21 +11,19 @@
 
 <div class="container-fluid ib-container bg-ib-light text-ib-dark px-md-4 py-4 py-md-5 text-dark-grey font-body text-center">
 
+    <!-- Error Page Content -->
     <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
         <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="error-bee">
         <h1 class="font-title error-title text-center mx-3 ib-lh-1">404</h1>
         <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="backwards error-bee">
     </div>
-    
     <p>The page you are looking for doesn't exist.</p>
     
-    <!-- Cancel Button -->
+    <!-- Home Button -->
     <div class="m-4">
         <a href="{% url 'home' %}" class="ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
             <p class="d-inline">GO HOME</p>
         </a>
     </div>
-    
-
 </div>
 {% endblock %}

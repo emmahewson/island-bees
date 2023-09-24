@@ -10,6 +10,8 @@
 
 {% block content %}
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+
+        <!-- Title Section -->
         <div class="row">
             <div class="col">
                 <h1 class="font-title weight-bold section-title-lrg mb-2">CHECKOUT</h1>
@@ -66,7 +68,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Order Form -->
             <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
@@ -147,6 +148,7 @@
 
                         <!-- Client Secret - hidden element to pass to view -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
+
                     </fieldset>
 
                     <!-- Checkout Buttons -->
@@ -172,12 +174,12 @@
                         </span>
                         <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
                     </p>
-
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- Loading Animation -->
     <div id="loading-overlay">
         <div class="loading-spinner">
             <i class="text-yellow fa-3x fas fa-cog fa-spin"></i>
@@ -191,5 +193,4 @@
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-    
 {% endblock %}

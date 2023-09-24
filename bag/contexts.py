@@ -5,10 +5,13 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """
+    Set bag contents & calculate totals
+    """
 
     bag_items = []
     total = 0
-    total_delivery_chargable = 0
+    total_delivery_chargeable = 0
     product_count = 0
     bag = request.session.get('bag', {})
 
@@ -22,10 +25,10 @@ def bag_contents(request):
             'product': product,
         })
         if product.delivery_charge is True:
-            total_delivery_chargable += (product.price * item_data)
+            total_delivery_chargeable += (product.price * item_data)
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total_delivery_chargable * Decimal(
+        delivery = total_delivery_chargeable * Decimal(
             settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
 

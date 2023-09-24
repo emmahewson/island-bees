@@ -5,6 +5,9 @@ from django.core.validators import (
 
 
 class Category(models.Model):
+    """
+    Category Model
+    """
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -22,6 +25,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Product Model
+    """
 
     category = models.ForeignKey(
         'Category',

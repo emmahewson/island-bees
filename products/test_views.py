@@ -6,7 +6,9 @@ from checkout.models import Order, OrderLineItem
 
 
 class TestProductsViews(TestCase):
-    """ Test product model url views """
+    """
+    Products Views Tests
+    """
 
     def setUp(self):
         """

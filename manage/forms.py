@@ -4,7 +4,7 @@ from .models import Message
 
 class MessageForm(forms.ModelForm):
     """
-    Add Message / Contact Us Form
+    Form for Message Model
     """
 
     class Meta:
@@ -38,7 +38,7 @@ class MessageForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
 
-            # Sets placecholders on inputs
+            # Sets placeholders on inputs
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
             # Adds stylings classes to inputs

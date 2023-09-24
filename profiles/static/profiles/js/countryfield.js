@@ -1,3 +1,6 @@
+// Country input styling to display previously selected country
+// Adapted from Code Institute's Boutique Ado Walkthrough
+
 let countrySelected = $('#id_default_country').val();
 
 if(!countrySelected) {

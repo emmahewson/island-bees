@@ -1,5 +1,4 @@
 // Toggle messages open / closed. Submits Form to View.
-
 $('.message-toggle').change(function(e) {
 
     let messageId = e.target.id
@@ -11,6 +10,5 @@ $('.message-toggle').change(function(e) {
     } else {
         input.value = "True"
     }
-
     form.submit();
 });

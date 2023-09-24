@@ -4,7 +4,7 @@ from .models import Faq
 
 class FaqForm(forms.ModelForm):
     """
-    Add / Edit Faq form
+    Form for FAQ Model - Add / Edit
     """
 
     class Meta:
@@ -34,7 +34,7 @@ class FaqForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
 
-            # Sets placecholders on inputs
+            # Sets placeholders on inputs
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
             # Adds stylings classes to inputs

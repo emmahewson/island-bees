@@ -5,7 +5,9 @@ from .models import UserProfile
 
 
 class TestProfileModels(TestCase):
-    """ Testing profile models """
+    """
+    Profiles Models Tests
+    """
 
     def setUp(self):
 

@@ -1,10 +1,11 @@
 from django.test import TestCase
 from .forms import ReviewForm
 
-# Create your tests here.
-
 
 class TestReviewForm(TestCase):
+    """
+    Review Form Tests
+    """
 
     def test_review_title_required(self):
         """ Test the review title is a required field """

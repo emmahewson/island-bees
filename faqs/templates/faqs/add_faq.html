@@ -7,20 +7,12 @@
     <meta name="description" content="Add FAQs to the Island Bees site - Admin Only">
 {% endblock %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
 
     <div class="container-fluid bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
         <div class="row pb-5">
 
-            <!-- Page Title -->
+            <!-- Title Section -->
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
                 <h1 class="font-title weight-bold section-title-lrg mb-2">ADD FAQ</h1>
                 <hr>
@@ -28,10 +20,8 @@
                 <!-- Faq Form -->
                 <form method="POST" action="{% url 'add_faq' %}" class="form mt-4" id="faq-form">
                     {% csrf_token %}
-
                     {{ form }}
                     
-
                     <!-- Buttons -->
                     <div class="button-group mt-5 d-flex justify-content-end">
 
@@ -44,8 +34,8 @@
                         <button type="submit" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm">
                             ADD FAQ
                         </button>
-                    </div>
 
+                    </div>
                 </form>
             </div>
         </div>

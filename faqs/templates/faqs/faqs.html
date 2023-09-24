@@ -28,17 +28,20 @@
 
     <!-- FAQs Container -->
     <div class="row">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 accordian" id="faq-accordian">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 accordion" id="faq-accordion">
             {% for faq in faqs %}
                 <div class="card w-100 border-0 border-bottom rounded-0 pb-3 mb-3">
                     <div class="card-header border-0 p-0 d-flex justify-content-between" id="header-{{ faq.id }}">
+
+                        <!-- FAQ Question & Collapse Trigger -->
                         <p class="{% if request.user.is_superuser %}me-3{% endif %}">
                             <button class="weight-semibold d-inline p-0" type="button" data-toggle="collapse" data-target="#collapse-{{faq.id}}" aria-expanded="false" aria-controls="collapse-{{faq.id}}">
                                 {{faq.question}}
                             </button>
                         </p>
-                        <!-- FAQ EDIT / DELETE Buttons -->
+                        
                         {% if request.user.is_superuser %}
+                            <!-- FAQ EDIT / DELETE Buttons -->
                             <div class="edit-del-faq-wrapper">
                                 <a href="{% url 'edit_faq' faq.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
                                 <button type="button" data-toggle="modal" data-target="#modal-{{ faq.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
@@ -65,11 +68,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         {% endif %}
                     </div>
                 
-                    <div id="collapse-{{faq.id}}" class="collapse" aria-labelledby="header-{{ faq.id }}" data-parent="#faq-accordian">
+                    <!-- FAQ Answer Collapsible -->
+                    <div id="collapse-{{faq.id}}" class="collapse" aria-labelledby="header-{{ faq.id }}" data-parent="#faq-accordion">
                         <div class="card-body px-0 pt-3 pb-0">
                             <p>{{faq.answer}}</p>                    
                         </div>

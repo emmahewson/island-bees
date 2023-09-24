@@ -3,7 +3,9 @@ from .forms import OrderForm
 
 
 class TestOrderForm(TestCase):
-    """ Testing the Order Form """
+    """
+    Order Form Tests
+    """
 
     def test_name_required(self):
         """ Test the full name is a required field """

@@ -5,7 +5,9 @@ from .models import Faq
 
 
 class TestFaqsViews(TestCase):
-    """ Test FAQs model url views """
+    """
+    FAQ Views Tests
+    """
 
     def setUp(self):
         """

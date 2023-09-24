@@ -4,6 +4,8 @@
 
     CSS from here: 
     https://stripe.com/docs/stripe-js
+
+    Adapted from Code Institute's Boutique Ado Walkthrough
 */
 
 // Add the card element & set variables
@@ -153,4 +155,3 @@ form.addEventListener('submit', function(ev) {
     })
     
 });
-

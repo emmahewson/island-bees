@@ -9,7 +9,9 @@ from reviews.models import Review
 
 @freeze_time("2022-08-15")
 class TestReviewsViews(TestCase):
-    """ Test review model url views """
+    """
+    Review Views Tests
+    """
 
     def setUp(self):
         """

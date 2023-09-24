@@ -7,14 +7,6 @@
     <meta name="description" content="Edit Faq {{ faq.question }} - Admin Only">
 {% endblock %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
 
     <div class="container-fluid bg-ib-white text-ib-dark px-md-4 pt-4 pb-5 py-md-5 font-body">
@@ -28,9 +20,7 @@
                 <!-- Faq Form -->
                 <form method="POST" action="{% url 'edit_faq' faq.id %}" class="form mt-4" id="faq-form">
                     {% csrf_token %}
-
                     {{ form }}
-                    
 
                     <!-- Buttons -->
                     <div class="button-group mt-5 d-flex justify-content-end">
@@ -44,8 +34,8 @@
                         <button type="submit" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold ms-2 shadow-sm">
                             UPDATE FAQ
                         </button>
-                    </div>
 
+                    </div>
                 </form>
             </div>
         </div>

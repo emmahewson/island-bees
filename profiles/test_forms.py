@@ -3,7 +3,9 @@ from .forms import UserForm, UserProfileForm
 
 
 class TestUserProfileForm(TestCase):
-    """ Testing the User Form """
+    """
+    Profile Form Tests
+    """
 
     def test_not_required_fields(self):
         """ Test User Profile form is valid with empty non-required fields """

@@ -4,7 +4,7 @@ from .models import Review
 
 class ReviewForm(forms.ModelForm):
     """
-    Add / Edit Review form
+    Form for Review Model - Add / Edit
     """
 
     class Meta:
@@ -37,7 +37,7 @@ class ReviewForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
 
-            # Sets placecholders on inputs
+            # Sets placeholders on inputs
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
             # Adds stylings classes to inputs

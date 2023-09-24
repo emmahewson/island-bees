@@ -5,7 +5,9 @@ from products.models import Product, Category
 
 
 class TestCheckoutViews(TestCase):
-    """ Testing checkout url views """
+    """
+    Checkout Views Tests
+    """
 
     def setUp(self):
 

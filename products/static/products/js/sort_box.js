@@ -1,4 +1,5 @@
 // Sort Products Box
+// Adapted from Code Institute's Boutique Ado Walkthrough
 
 $('#sort-selector').change(function(){
     var selector = $(this);
@@ -16,7 +17,5 @@ $('#sort-selector').change(function(){
     }else{
         currentUrl.searchParams.delete("sort");
         currentUrl.searchParams.delete("direction");
-
     }
 })
-

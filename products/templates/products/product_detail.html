@@ -24,23 +24,21 @@
                 <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
             {% endif %}
 
-
             <!-- Product Rating -->
-
-                <a href="#review-div" class="text-decoration-none text-blue product-rating-link">
-                    <div class="rating-div pe-0 mt-3">
-                        <span class="rating-hex-small rating-hex-{% if product.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if product.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if product.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                        <span class="rating-hex-small rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %} me-2">&#x2B22;</span>
-                        <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count != 1 %}S{% endif %}</p>
-                    </div>
-                </a>
+            <a href="#review-div" class="text-decoration-none text-blue product-rating-link">
+                <div class="rating-div pe-0 mt-3">
+                    <span class="rating-hex-small rating-hex-{% if product.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-{% if product.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-{% if product.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                    <span class="rating-hex-small rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %} me-2">&#x2B22;</span>
+                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count != 1 %}S{% endif %}</p>
+                </div>
+            </a>
         </div>
 
-        
         <div class="col-12 col-md-6 col-lg-5">
+
             <!-- Product Name -->
             <h1 class="product-page-name text-uppercase weight-semibold text-break">{{ product.name }}</h1>
 
@@ -66,7 +64,6 @@
                     <a href="{% url 'edit_product' product.id %}?next={{ request.path|urlencode }}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
                     <button type="button" data-toggle="modal" data-target="#modal-{{ product.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</button>                            
                 </div>
-
 
                 <!-- Confirm Delete Modal - Defensive Programming -->
                 <div class="modal fade" id="modal-{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,6 +125,7 @@
                     </div>
                 </div>
 
+                <!-- Buttons -->
                 <div class="button-group my-4 pt-2 pt-md-4 d-flex">
 
                     <!-- Keep Shopping Button -->
@@ -148,6 +146,7 @@
     </div>
 </div>
 
+<!-- Product Reviews Section -->
 <div class="container-fluid ib-container bg-light-grey text-ib-dark py-5" id="review-div">
     <div class="row text-center px-3 px-sm-5">
         <div class="col-12">
@@ -156,6 +155,8 @@
         <div class="col-12 mb-3">
             <p class="font-body">Have you bought this product? Leave a review!</p>
         </div>
+
+        <!-- Add Review Button -->
         <div class="col-12">
             <a href="{% url 'add_review' product.id %}" class="ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
                 ADD REVIEW
@@ -163,9 +164,11 @@
         </div>
     </div>
 
+    <!-- Reviews Container -->
     <div class="row mt-5 px-3 px-md-5">
         {% if reviews|length > 0 %}
             {% for review in reviews %}
+                <!-- Review -->
                 <div class="col-12 col-lg-10 offset-lg-1 bg-ib-white mb-3 pt-3 pb-3 review-container">
                     <div class="row font-body text-dark-grey review-header mb-2">
                         <div class="col-12 col-sm-9 d-block d-md-flex flex-wrap align-items-end mb-1 mb-md-0">
@@ -177,12 +180,11 @@
                                     </div>
                                     <p class="d-inline me-2">{% if review.user != None %}{{ review.user }}{% else %}Anonymous{% endif %}</p>
                                 </div>
-
-                                
                                 <p class="d-inline weight-light review-date m-0 ib-lh-1">{{ review.created_on|date:"d/m/Y" }}</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-3 text-start text-sm-end">
+
                             <!-- Review Rating -->
                             <div class="rating-div review-rating ib-lh-1 pe-0">
                                 <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
@@ -233,7 +235,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     {% endif %}
                 </div>
             {% endfor %}
@@ -244,10 +245,9 @@
                 <p class="font-body">No Reviews</p>
             </div>
         {% endif %}
+        
     </div>
-
 </div>
-
 {% endblock %}
 
 {% block extra_js_end %}

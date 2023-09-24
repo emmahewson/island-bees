@@ -4,7 +4,7 @@ from products.models import Product, Category
 
 class TestProductsModels(TestCase):
     """
-    Test Products App Models
+    Products Models Tests
     """
 
     def setUp(self):

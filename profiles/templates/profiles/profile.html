@@ -8,8 +8,10 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Profile Info Form & Order History Section -->
+
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
+
+        <!--Title Section -->
         <div class="row">
             <div class="col">
                 <h1 class="font-title weight-bold section-title-lrg mb-2">MY PROFILE</h1>
@@ -18,7 +20,6 @@
         </div>
 
         <div class="row gx-5 font-body">
-
 
             <!-- Profile Info Form -->
             <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
@@ -49,8 +50,6 @@
                         UPDATE
                     </button>
                 </form>
-
-                
             </div>
 
             <!-- Order History -->
@@ -68,8 +67,10 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             {% if orders|length > 0 %}
                                 {% for order in orders %}
+                                    <!-- Order -->
                                     <tr class="bag-item-row small-para-text">
                                         <td class="py-2 weight-semibold">
                                             <a href="{% url 'order_history' order.order_number %}"
@@ -90,13 +91,13 @@
                                         <td class="py-2 text-end">£{{ order.grand_total }}</td>
                                     </tr>
                                 {% endfor %}
+
                         {% else %}
                             <!-- No Orders Text -->
                             <tr class="col-12 text-center">
                                 <td colspan="5">
                                     <p class="font-body mt-3">You haven't placed any orders yet... <br> <a href="{% url 'products' %}" class="weight-semibold text-blue text-decoration-none text-link-blue">Go Shopping!</a></p>
                                 </td>
-                                
                             </tr>
                         {% endif %}
                         </tbody>
@@ -205,25 +206,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 {% endif %}
-
                             </div>
                         </div>
-                        
                     {% endfor %}
-    
+
                 {% else %}
                     <!-- No Reviews Text -->
                     <div class="col-12 text-center">
                         <p class="font-body">No Reviews</p>
                     </div>
                 {% endif %}
-
             </div>
-            
         </div>
-    
     </div>
 {% endblock %}
 

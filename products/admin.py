@@ -1,10 +1,11 @@
 from django.contrib import admin
 from .models import Product, Category
 
-# Register your models here.
-
 
 class ProductAdmin(admin.ModelAdmin):
+    """
+    Product Model Admin
+    """
 
     readonly_fields = ('rating',)
 
@@ -23,6 +24,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    """
+    Category Model Admin
+    """
+
     list_display = (
         'friendly_name',
         'name',

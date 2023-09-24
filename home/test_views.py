@@ -3,7 +3,9 @@ from django.urls import reverse
 
 
 class TestHomeViews(TestCase):
-    """ Test home url views """
+    """
+    Home Views Tests
+    """
 
     def test_get_home_page(self):
         response = self.client.get('/')

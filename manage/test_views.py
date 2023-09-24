@@ -6,7 +6,9 @@ from .models import Message
 
 
 class TestManageViews(TestCase):
-    """ Test Manage App views """
+    """
+    Manage Views Tests
+    """
 
     def setUp(self):
         """
@@ -71,7 +73,7 @@ class TestManageViews(TestCase):
 
     def test_manage_page_for_logged_out_user(self):
         """
-        Checks maange redirects to login
+        Checks manage page redirects to login
         if user is not logged in
         """
 

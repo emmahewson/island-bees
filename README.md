@@ -96,8 +96,8 @@ DETAILS OF SITE HERE???
 
 Mention
 using widget-tweak to add style classes to the form inputs in the auth templates
-The delivery charge calculations when no delivery is chargable
-Additonal titles and description meta tags on each page
+The delivery charge calculations when no delivery is chargeable
+Additional titles and description meta tags on each page
 Reviews - superuser cannot edit, only delete
 
 - - -
@@ -138,12 +138,12 @@ Linting Errors
 Bug - attempted to move the js for the remove item from bag in to separate JS file - update worked ok but remove didn't. Put back in to HTML as a script tag.
 
 Bug - issues with the checkout delivery & total calculations - couldn't add a float & a decimal type numbers. 
-Fix - Had to convert the order_total and total_delivery_chargable to float values with checks to make sure they had a value in the first place. This accounted for the various different scenarios.
-    1. Under delivery threshold & delivery chargable on all products
-    2. Under delivery threshold & delivery chargable on some but not all products
+Fix - Had to convert the order_total and total_delivery_chargeable to float values with checks to make sure they had a value in the first place. This accounted for the various different scenarios.
+    1. Under delivery threshold & delivery chargeable on all products
+    2. Under delivery threshold & delivery changeable on some but not all products
     3. Over delivery threshold
 
-Bug - the save info checkbox on the checkout was saving the form information regardless of whether the checkbox was selected or not. After alot of testing and reserach I found out the problem was stemming from 2 places:
+Bug - the save info checkbox on the checkout was saving the form information regardless of whether the checkbox was selected or not. After a lot of testing and research I found out the problem was stemming from 2 places:
 1. In stripe_elements.js there was an issue with the JQuery assignment of the Boolean value and the value being sent to the post_data was always true no matter whether the checkbox was selected or not. I couldn't pin point exactly why it was behaving like this but I was able to solve it by assigning the value using vanilla JavaScript.
 
 Old Code - didn't work
@@ -170,12 +170,10 @@ I discovered that rather than now returning a Boolean value from the new JS code
 if save_info == "true:
     # updates userProfile based on data
 
-In addition I noticed on Slack that previous students had had issues with the code not working once deployed if the script link was in the footer, so I moved it to the head to avoid these issues coming up later on.
-
 
 Bug - the shopping bag summary was showing in the toast after accounts functionality e.g. login, change password, confirm emails etc & for review & product add/edit/delete - bad user experience as it was irrelevant to the user action. I removed it by firstly adding an additional conditional statement to the message_success template to check whether the referring page url contained the word 'accounts' to stop the bag showing when any messages.success were called by the built-in allauth code. Then in addition, I added a session variable called show_bag_summary to true or false each time I called messages.success and an additional conditional value in the template tag to check this value:
 
-{% if grand_total and request.session.show_bag_summary and "accounts" not in request.META.HTTP_REFERER %}
+{% if grand_total and request.session.show_bag_summary and "accounts" not in request.META.HTTP_REFERRER %}
     
 
 Bug - add product form - wanted to have different styling on the labels for the text & textarea labels compared to the checkbox labels. I couldn't find a way to add class attributes to the labels themselves within the forms.py logic so I separated the fields out to individual tags and styled them in this way. However I discovered that this had the unintended result of not showing any form error messages e.g. if the price had too many digits. I got around this by explicitly including the error messages below the labels as separate tags:
@@ -194,8 +192,8 @@ Bug - Whilst initially working correctly I found that my checkout began to creat
 Bug - When attempting to delete a product that is linked to a previous order as a line item in the OrderLineItem model it throws an error because, due to the CASCADE setting on the field, by deleting the product you are also then deleting all references to it. This posed a problem because I wanted to give superusers the ability to delete a product to remove it from sale, but keeping all old order information is also very important. I solved this problem with an idea from this CI Slack channel [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1598004199059700?thread_ts=1597961336.047800&cid=C7HS3U3AP) by stopping store owners deleting products using model.PROTECT but allowing them to remove them from sale with a 'discontinued' Boolean field.
 
 This meant additional changes had to be made to the site to ensure smooth running and good user experience:
-- added a conditional check to the delete_product viewto see if the product appears on any OrderLineItems and if so rather than deleting it, to mark it as 'discontinued'
-- Dymanically changing the text in the delete product modal depending on whether the product has associated OrderLineItems and if so removing the ability to delete it and offering the admin the chance to 'discontinue' it instead.
+- added a conditional check to the delete_product view to see if the product appears on any OrderLineItems and if so rather than deleting it, to mark it as 'discontinued'
+- Dynamically changing the text in the delete product modal depending on whether the product has associated OrderLineItems and if so removing the ability to delete it and offering the admin the chance to 'discontinue' it instead.
 - Only displaying cards products that are not 'discontinued' on the products & home pages
 - Adding a check on the product_detail view to redirect users who link to it directly using the url or back button to the 'products' page
 - Adding an additional field to the add/edit product form to mark a product as 'discontinued'

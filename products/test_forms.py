@@ -3,6 +3,9 @@ from .forms import ProductForm
 
 
 class TestProductForm(TestCase):
+    """
+    Product Form Tests
+    """
 
     def test_product_name_required(self):
         """ Test the product name is a required field """
@@ -45,7 +48,7 @@ class TestProductForm(TestCase):
 
     def test_excluded_field_in_form_metaclass(self):
         """
-        Test that the 'rating' field is exluded from form Meta class
+        Test that the 'rating' field is excluded from form Meta class
         """
         form = ProductForm()
         self.assertEqual(form.Meta.exclude, ('rating',))

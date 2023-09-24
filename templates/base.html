@@ -3,144 +3,63 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+    <head>
 
-    <!-- CHECK IF ALL THESE BLOCKS ARE BEING USED!!!!! -->
+        <!-- Meta Tags -->
+        {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock %}
 
-    {% block meta %}
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
+        {% block extra_meta %}
+        {% endblock %}
 
-    {% block extra_meta %}
-    {% endblock %}
+        <!-- Page Title -->
+        <title>Island Bees {% block extra_title %}{% endblock %}</title>
 
-    <title>Island Bees {% block extra_title %}{% endblock %}</title>
+        {% block corecss %}
+        <!-- CSS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png">
+        <link rel="manifest" href="{{ MEDIA_URL }}site.webmanifest">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% endblock %}
 
-    {% block corecss %}
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png">
-    <link rel="manifest" href="{{ MEDIA_URL }}site.webmanifest">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    {% endblock %}
+        {% block corejs %}
+        <!-- JavaScript -->
+        <script src="https://kit.fontawesome.com/75c900e0d1.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+        {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+    </head>
 
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/75c900e0d1.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    {% endblock %}
+    <body>
+        <header class="container-fluid fixed-top">
+            <!-- Upper Nav - Large Screens Only -->
+            <div id="uppernav" class="row bg-yellow pt-4 pb-2 px-3 d-none d-lg-flex">
 
-    {% block extra_js_head %}
-    {% endblock %}
-
-</head>
-
-<body>
-    <header class="container-fluid fixed-top">
-        <!-- Upper Nav - Large Screens Only -->
-        <div id="uppernav" class="row bg-yellow pt-4 pb-2 px-3 d-none d-lg-flex">
-
-            <!-- Logo -->
-            <div class="logo-div font-title col-12 col-lg-4 my-auto">
-                <a href="{% url 'home' %}" class="nav-link">
-                    <img src="{{ MEDIA_URL }}logo.svg" alt="Island Bees Logo" class="logo-img me-2">
-                    <div class="logo-text my-auto">
-                        <h2 class="font-title weight-bold">ISLAND BEES</h2>
-                        <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Search Box -->
-            <div class="col-12 col-lg-4 my-auto">
-                <form method="GET" action="{% url 'products' %}">
-                    <div class="ib-search-box">
-                        <input type="text" name="q" placeholder="Search our products">
-                        <button type="submit">
-                            <i class="fas fa-search text-ib-light"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Main Nav Links -->
-            <div class="col-12 col-lg-4 my-auto">
-                <ul class="list-inline list-unstyled text-end text-lg-right my-0">
-
-                    <!-- Account Dropdown -->
-                    <li class="list-inline-item dropdown">
-                        <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0 font-body">Account</p>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right border-0 account-dropdown shadow bg-ib-light text-end font-body" aria-labelledby="user-options">
-                            {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                                <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
-                            {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
+                <!-- Logo -->
+                <div class="logo-div font-title col-12 col-lg-4 my-auto">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <img src="{{ MEDIA_URL }}logo.svg" alt="Island Bees Logo" class="logo-img me-2">
+                        <div class="logo-text my-auto">
+                            <h2 class="font-title weight-bold">ISLAND BEES</h2>
+                            <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
                         </div>
-                    </li>
+                    </a>
+                </div>
 
-                    <!-- Shopping Bag -->
-                    <li class="list-inline-item">
-                        <a class="nav-link hex-nav-link" href="{% url 'view_bag' %}">
-                            <div class="icon-hex mx-auto">
-                                <i class="fas fa-shopping-bag fa-lg {% if grand_total %}text-ib-light{% else %}text-yellow{% endif %}"></i>
-                            </div>
-                            <p class="my-0 font-body text-center bag-total text-dark-grey {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
-                                {% if total %}
-                                    £{{ total|floatformat:2 }}
-                                {% else %}
-                                    £0.00
-                                {% endif %}
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
-        </div>
-
-
-        <div class="row bg-yellow">
-            <nav class="navbar w-100 navbar-expand-lg px-3">
-                {% include 'includes/mobile-nav-bar.html' %}
-                {% include 'includes/lower-nav.html' %}
-
-            </nav>
-        </div>
-
-        <!-- Delivery Banner -->
-        <div id="delivery-banner" class="row text-center">
-            <div class="col bg-dark-grey text-ib-light">
-                <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>
-            </div>
-        </div>
-
-        <!-- Mobile Search Collapsible -->
-        <div class="collapse" id="collapseSearch">
-            <div class="row d-block d-lg-none bg-ib-light">
-                <div class="col-12 px-3 py-2">
+                <!-- Search Box -->
+                <div class="col-12 col-lg-4 my-auto">
                     <form method="GET" action="{% url 'products' %}">
                         <div class="ib-search-box">
                             <input type="text" name="q" placeholder="Search our products">
@@ -150,150 +69,208 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </header>
 
+                <!-- Main Nav Links -->
+                <div class="col-12 col-lg-4 my-auto">
+                    <ul class="list-inline list-unstyled text-end text-lg-right my-0">
 
-    <!-- Header to push content below nav -->
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+                        <!-- Account Dropdown -->
+                        <li class="list-inline-item dropdown">
+                            <a class="text-dark-grey nav-link upper-nav-link" href="#" id="user-options"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="my-0 font-body">Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right border-0 account-dropdown shadow bg-ib-light text-end font-body" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
+                                {% endif %}
+                                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
 
-    
-    {% if messages %}
-    <div class="position-relative">
-        <!-- Messages -->
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
-
-    </div>
-        
-    {% endif %}
-
-    {% block content %}
-    {% endblock %}
-
-    <!-- Back to Top Button -->
-    <div id="btt-btn">
-        <a class="text-dark-grey weight-bold font-title text-decoration-none shadow-sm h-100 w-100 d-flex justify-content-center align-items-center">
-            <i class="fa fa-arrow-up"></i>
-        </a>
-    </div>
-
-
-    <!-- Footer -->
-    <footer>
-
-        <!-- Upper Footer -->
-        <div class="container-fluid bg-dark-grey d-flex font-body px-3 px-md-4 py-3 py-md-4">
-            <div class="row">
-
-                <!-- Social Links -->
-                <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
-                    <h3 class="text-yellow weight-semibold mb-2">THE BUZZ</h3>
-                    <a class="d-block text-decoration-none mb-2" href="https://www.facebook.com/" target="_blank" aria-label="Facebook - Opens in a new tab">
-                        <i class="fa-brands fa-facebook text-yellow text-center d-inline"></i>
-                        <p class="text-ib-light d-inline footer-link-text">Facebook</p>
-                    </a>
-                    <a class="d-block text-decoration-none mb-2" href="https://www.instagram.com/" target="_blank" aria-label="Instagram - Opens in a new tab">
-                        <i class="fa-brands fa-instagram text-yellow text-center d-inline"></i>
-                        <p class="text-ib-light d-inline footer-link-text">Instagram</p>
-                    </a>
-                    <a class="d-block text-decoration-none mb-2" href="https://www.pinterest.co.uk/" target="_blank" aria-label="Pinterest - Opens in a new tab">
-                        <i class="fa-brands fa-pinterest text-yellow text-center d-inline"></i>
-                        <p class="text-ib-light d-inline footer-link-text">Pinterest</p>
-                    </a>
-                    <a class="d-block text-decoration-none mb-2" href="https://twitter.com/" target="_blank" aria-label="Twitter - Opens in a new tab">
-                        <i class="fa-brands fa-twitter text-yellow text-center d-inline"></i>
-                        <p class="text-ib-light d-inline footer-link-text">Twitter</p>
-                    </a>
-                </div>
-    
-                <!-- More Info -->
-                <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
-                    <h3 class="text-yellow weight-semibold mb-2">MORE INFO</h3>
-                    <a class="d-block text-decoration-none" href="{% url 'faqs' %}">
-                        <p class="text-ib-light mb-2 footer-link-text">FAQs</p>
-                    </a>
-                    <a class="d-block text-decoration-none" href="{% url 'contact_us' %}">
-                        <p class="text-ib-light mb-2 footer-link-text">CONTACT US</p>
-                    </a>
-                </div>
-    
-                <!-- About Us -->
-                <div class="upper-footer-section col-12 col-sm-6 col-md-8">
-                    <h3 class="text-yellow weight-semibold mb-2">ABOUT US</h3>
-                    <p class="text-ib-light">Island Bees was founded in 2012 by 2 Anglesey beekeepers with more honey and bees than they knew what to do with.  We stock a range of honey & bee-based products as well as beekeeping kit, you can also order bees from us if you live locally. Our award-winning courses run throughout the summer if you're keen to learn more about bees and beekeeping.</p>
-                    <p class="text-ib-light"><em>Site is built for educational purposes and all products are entirely fictional. Transactions are made using Stripe's test mode and no money or products will be sent or received.</em></p>
+                        <!-- Shopping Bag -->
+                        <li class="list-inline-item">
+                            <a class="nav-link hex-nav-link" href="{% url 'view_bag' %}">
+                                <div class="icon-hex mx-auto">
+                                    <i class="fas fa-shopping-bag fa-lg {% if grand_total %}text-ib-light{% else %}text-yellow{% endif %}"></i>
+                                </div>
+                                <p class="my-0 font-body text-center bag-total text-dark-grey {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
+                                    {% if total %}
+                                        £{{ total|floatformat:2 }}
+                                    {% else %}
+                                        £0.00
+                                    {% endif %}
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- Lower Footer -->
-        <div class="container-fluid bg-ib-dark d-flex font-body text-ib-light px-4 py-3">
-            <div class="row w-100 ib-row">
-                <p class="weight-light col-12 col-lg-9 col-xl-8 text-center lower-footer-text mb-2 mb-lg-0">ISLAND BEES IS A FULL STACK DJANGO E-COMMERCE SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
-                <div class="col-12 col-lg-3 col-xl-4 text-center" id="lower-footer-links">
-                    <p class="weight-semibold d-inline me-2 lower-footer-text mb-2 mb-lg-0">© EMMA HEWSON</p>
-                    <div class="d-inline">
-                        <a class="text-decoration-none text-ib-light me-2" href="https://www.linkedin.com/in/emmajmhewson/" target="_blank" aria-label="Linked In - Opens in a new tab">
-                            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                        </a>
-                        <a class="text-decoration-none text-ib-light me-2" href="https://github.com/emmahewson" target="_blank" aria-label="Git Hub - Opens in a new tab">
-                            <i class="fa-brands fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a class="text-decoration-none text-ib-light" href="https://emmahewson.co.uk/" target="_blank" aria-label="My Portfolio - Opens in a new tab">
-                            <i class="fa-solid fa-globe" aria-hidden="true"></i>
-                        </a>
+            <div class="row bg-yellow">
+                <nav class="navbar w-100 navbar-expand-lg px-3">
+                    <!-- Mobile Nav Bar -->
+                    {% include 'includes/mobile-nav-bar.html' %}
+                    <!-- Lower Nav -->
+                    {% include 'includes/lower-nav.html' %}
+                </nav>
+            </div>
+
+            <!-- Delivery Banner -->
+            <div id="delivery-banner" class="row text-center">
+                <div class="col bg-dark-grey text-ib-light">
+                    <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>
+                </div>
+            </div>
+
+            <!-- Mobile Search Collapsible -->
+            <div class="collapse" id="collapseSearch">
+                <div class="row d-block d-lg-none bg-ib-light">
+                    <div class="col-12 px-3 py-2">
+                        <form method="GET" action="{% url 'products' %}">
+                            <div class="ib-search-box">
+                                <input type="text" name="q" placeholder="Search our products">
+                                <button type="submit">
+                                    <i class="fas fa-search text-ib-light"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            
+        </header>
 
-
+        <!-- Header to push content below nav -->
+        <div class="container header-container">
+            <div class="row">
+                <div class="col"></div>
+            </div>
         </div>
-    </footer>
-
-
-    {% block postloadjs %}
-
-        <!-- Scroll to Top JS -->
-        <script src="{% static 'js/scroll_top.js' %}"></script>
-
-        <!-- Toasts / Messages JS-->
-        <script type="text/javascript">
-            $('.toast').toast('show');
-        </script>
-
-        <!-- Stripe JS -->
-        <script src="https://js.stripe.com/v3/"></script>
         
-    {% endblock %}
+        {% if messages %}
+            <div class="position-relative">
+                <!-- Messages -->
+                <div class="message-container">
+                    {% for message in messages %}
+                        {% with message.level as level %}
+                            {% if level == 40 %}
+                                {% include 'includes/toasts/toast_error.html' %}
+                            {% elif level == 30 %}
+                                {% include 'includes/toasts/toast_warning.html' %}
+                            {% elif level == 25 %}
+                                {% include 'includes/toasts/toast_success.html' %}
+                            {% else %}
+                                {% include 'includes/toasts/toast_info.html' %}
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
 
-    {% block extra_js_end %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
+        <!-- Back to Top Button -->
+        <div id="btt-btn">
+            <a class="text-dark-grey weight-bold font-title text-decoration-none shadow-sm h-100 w-100 d-flex justify-content-center align-items-center">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+        </div>
 
+        <!-- Footer -->
+        <footer>
 
+            <!-- Upper Footer -->
+            <div class="container-fluid bg-dark-grey d-flex font-body px-3 px-md-4 py-3 py-md-4">
+                <div class="row">
 
+                    <!-- Social Links -->
+                    <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
+                        <h3 class="text-yellow weight-semibold mb-2">THE BUZZ</h3>
+                        <a class="d-block text-decoration-none mb-2" href="https://www.facebook.com/" target="_blank" aria-label="Facebook - Opens in a new tab">
+                            <i class="fa-brands fa-facebook text-yellow text-center d-inline"></i>
+                            <p class="text-ib-light d-inline footer-link-text">Facebook</p>
+                        </a>
+                        <a class="d-block text-decoration-none mb-2" href="https://www.instagram.com/" target="_blank" aria-label="Instagram - Opens in a new tab">
+                            <i class="fa-brands fa-instagram text-yellow text-center d-inline"></i>
+                            <p class="text-ib-light d-inline footer-link-text">Instagram</p>
+                        </a>
+                        <a class="d-block text-decoration-none mb-2" href="https://www.pinterest.co.uk/" target="_blank" aria-label="Pinterest - Opens in a new tab">
+                            <i class="fa-brands fa-pinterest text-yellow text-center d-inline"></i>
+                            <p class="text-ib-light d-inline footer-link-text">Pinterest</p>
+                        </a>
+                        <a class="d-block text-decoration-none mb-2" href="https://twitter.com/" target="_blank" aria-label="Twitter - Opens in a new tab">
+                            <i class="fa-brands fa-twitter text-yellow text-center d-inline"></i>
+                            <p class="text-ib-light d-inline footer-link-text">Twitter</p>
+                        </a>
+                    </div>
+        
+                    <!-- More Info -->
+                    <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
+                        <h3 class="text-yellow weight-semibold mb-2">MORE INFO</h3>
+                        <a class="d-block text-decoration-none" href="{% url 'faqs' %}">
+                            <p class="text-ib-light mb-2 footer-link-text">FAQs</p>
+                        </a>
+                        <a class="d-block text-decoration-none" href="{% url 'contact_us' %}">
+                            <p class="text-ib-light mb-2 footer-link-text">CONTACT US</p>
+                        </a>
+                    </div>
+        
+                    <!-- About Us -->
+                    <div class="upper-footer-section col-12 col-sm-6 col-md-8">
+                        <h3 class="text-yellow weight-semibold mb-2">ABOUT US</h3>
+                        <p class="text-ib-light">Island Bees was founded in 2012 by 2 Anglesey beekeepers with more honey and bees than they knew what to do with.  We stock a range of honey & bee-based products as well as beekeeping kit, you can also order bees from us if you live locally. Our award-winning courses run throughout the summer if you're keen to learn more about bees and beekeeping.</p>
+                        <p class="text-ib-light"><em>Site is built for educational purposes and all products are entirely fictional. Transactions are made using Stripe's test mode and no money or products will be sent or received.</em></p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Lower Footer -->
+            <div class="container-fluid bg-ib-dark d-flex font-body text-ib-light px-4 py-3">
+                <div class="row w-100 ib-row">
+                    <p class="weight-light col-12 col-lg-9 col-xl-8 text-center lower-footer-text mb-2 mb-lg-0">ISLAND BEES IS A FULL STACK DJANGO E-COMMERCE SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
+                    <div class="col-12 col-lg-3 col-xl-4 text-center" id="lower-footer-links">
+                        <p class="weight-semibold d-inline me-2 lower-footer-text mb-2 mb-lg-0">© EMMA HEWSON</p>
+                        <div class="d-inline">
+                            <a class="text-decoration-none text-ib-light me-2" href="https://www.linkedin.com/in/emmajmhewson/" target="_blank" aria-label="Linked In - Opens in a new tab">
+                                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a class="text-decoration-none text-ib-light me-2" href="https://github.com/emmahewson" target="_blank" aria-label="Git Hub - Opens in a new tab">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a class="text-decoration-none text-ib-light" href="https://emmahewson.co.uk/" target="_blank" aria-label="My Portfolio - Opens in a new tab">
+                                <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-</body>
+        <!-- Postload JavaScript -->
+        {% block postloadjs %}
+            <!-- Scroll to Top JS -->
+            <script src="{% static 'js/scroll_top.js' %}"></script>
+            <!-- Toasts / Messages JS-->
+            <script type="text/javascript">
+                $('.toast').toast('show');
+            </script>
+            <!-- Stripe JS -->
+            <script src="https://js.stripe.com/v3/"></script>
+        {% endblock %}
 
+        {% block extra_js_end %}
+        {% endblock %}
+        
+    </body>
 </html>

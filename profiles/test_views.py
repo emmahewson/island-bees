@@ -5,7 +5,9 @@ from checkout.models import Order
 
 
 class TestProfileViews(TestCase):
-    """ Testing Profile views """
+    """
+    Profile Views Tests
+    """
 
     def setUp(self):
 

@@ -10,7 +10,7 @@ from .models import Message
 @freeze_time("2022-08-15")
 class TestMessageModels(TestCase):
     """
-    Test Messages App Models
+    Messages Models Tests
     """
 
     def setUp(self):

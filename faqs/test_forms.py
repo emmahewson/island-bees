@@ -3,6 +3,9 @@ from .forms import FaqForm
 
 
 class TestFaqForm(TestCase):
+    """
+    FAQ Form Tests
+    """
 
     def test_faq_question_required(self):
         """ Test the faq question is a required field """

@@ -4,7 +4,7 @@ from .forms import MessageForm
 
 class TestMessageForm(TestCase):
     """
-    Test Message / Contact Us Form
+    Message Form Tests
     """
 
     def test_message_name_required(self):

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-/* Whole Page Styling */
+/* Whole Page */
 
 body,
 header {
@@ -19,7 +19,6 @@ html {
 /* Document Colours */
 
 :root {
-
     /* Solid Colours */
     --dark: #140C00;
     --light: #fffefb;
@@ -49,6 +48,7 @@ html {
     --message-closed: #e2fbea;
     --message-open: #fde5ee;
 }
+
 
 /* Text Colour Classes */
 
@@ -185,7 +185,6 @@ html {
 
 /* Recurring Elements */
 
-
 /* Generic Classes */
 
 .shadow {
@@ -281,7 +280,6 @@ button {
     background: var(--success-light);
 }
 
-
 .ib-button-blue,
 .ib-button-light-blue,
 .ib-button-grey,
@@ -319,7 +317,7 @@ button {
 }
 
 
-/* Quantity Selector */
+/* Product Quantity Selector */
 
 .decrement-qty.btn,
 .increment-qty.btn {
@@ -422,7 +420,6 @@ input.qty-input-sm {
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
 }
-
 
 .modal-close-cross {
     background-color: transparent;
@@ -645,6 +642,8 @@ select:invalid {
     color: var(--mid-grey);
 }
 
+/* Specific Form Styling */
+
 /* Add / Edit Product Form */
 
 #product-form label {
@@ -687,7 +686,6 @@ label[for="id_price"] {
     border-radius: 5px;
 }
 
-
 /* Stripe Elements */
 
 #card-element {
@@ -712,6 +710,8 @@ label[for="id_price"] {
     color: var(--warning) !important;
 }
 
+
+/* Nav */
 
 /* Upper Nav */
 
@@ -870,9 +870,6 @@ label[for="id_price"] {
     }
 }
 
-
-
-
 /* Lower Nav */
 
 .lower-nav-dropdown p {
@@ -909,8 +906,6 @@ label[for="id_price"] {
     display: flex;
     align-items: center;
 }
-
-
 
 #delivery-banner h5 {
     font-size: 18px;
@@ -1162,7 +1157,6 @@ label[for="id_price"] {
     border-left-color: var(--blue-hov);
 }
 
-
 .hex-categories-wrapper {
     margin: 0 auto;
     width: fit-content;
@@ -1191,7 +1185,6 @@ label[for="id_price"] {
     -o-transition: all .2s ease-in-out;
 }
 
-
 /* Responsive Hexagon Grid for homepage categories: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 */
 .main {
     display:flex;
@@ -1215,9 +1208,11 @@ label[for="id_price"] {
     background: var(--dark-grey);
     margin-bottom: calc(var(--m) - var(--s)*0.2885); 
 }
+
 .container-hex-grid div:nth-child(odd) {
     background: var(--dark-grey);
 }
+
 .container-hex-grid::before {
     content: "";
     width: calc(var(--s)/2 + var(--m));
@@ -1282,7 +1277,6 @@ label[for="id_price"] {
     background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% no-repeat;
     background-size: cover;
 }
-
 
 .product-card div.card-body h5 {
     font-size: 20px;
@@ -1363,7 +1357,6 @@ label[for="id_price"] {
     padding: 5px 10px 5px 15px;
 }
 
-
 .card-category-label a:hover,
 .product-page-category a:hover {
 
@@ -1422,7 +1415,6 @@ label[for="id_price"] {
 }
 
 
-
 /* Add Review Page */
 
 .ib-form {
@@ -1477,6 +1469,7 @@ label[for="id_price"] {
     border-bottom: var(--mid-grey) solid 1px;
 }
 
+
 /* Checkout */
 
 #loading-overlay {
@@ -1518,13 +1511,13 @@ label[for="id_price"] {
 
 /* FAQ Page */
 
-#faq-accordian .card .card-header,
-#faq-accordian .card,
-#faq-accordian .card .card-header p button {
+#faq-accordion .card .card-header,
+#faq-accordion .card,
+#faq-accordion .card .card-header p button {
     background: none !important;
 }
 
-#faq-accordian .card .card-header p button {
+#faq-accordion .card .card-header p button {
     text-align: left;
 }
 
@@ -1570,6 +1563,7 @@ label[for="id_price"] {
     width: 80px;
     height: auto;
 }
+
 
 /* Media Queries */
 
@@ -1627,7 +1621,6 @@ label[for="id_price"] {
 /* S Screens Only */
 @media (max-width: 767px) {
     
-
     /* Home Hero Hex Grid */
     :root {
         --hex-size: 0.7;
@@ -1643,6 +1636,8 @@ label[for="id_price"] {
         width: 474px;
     }
 
+    /* Forms */
+
     .ib-form {
         margin-top: 30px;
         margin-bottom: 60px;
@@ -1651,7 +1646,6 @@ label[for="id_price"] {
     .review-form .ib-form-header h1 {
         font-size: 16px;
     }
-
 
     /* Shopping Bag */
 
@@ -1668,6 +1662,8 @@ label[for="id_price"] {
 /* XS Screens Only */
 @media (max-width: 575px) {
 
+    /* Recurring Elements */
+
     .header-container {
         height: 97px;
     }
@@ -1676,6 +1672,8 @@ label[for="id_price"] {
         font-size: 14px;
         letter-spacing: 0.9px;
     }
+
+    /* Home */
 
     #home-hero {
         height: 190px;
@@ -1710,7 +1708,6 @@ label[for="id_price"] {
         padding-top: 1.8rem !important;
     }
 
-
     /* Category Icons */
 
     .category-icon-lg {
@@ -1726,7 +1723,6 @@ label[for="id_price"] {
     .rating-hex {
         font-size: 40px;
         line-height: 1;
-
     }
 
     .ib-form {
@@ -1786,7 +1782,6 @@ label[for="id_price"] {
         font-size: 12px;
     }
 
-
     /* Product Details Page */
 
     .review-title {
@@ -1799,8 +1794,4 @@ label[for="id_price"] {
     .thumbnail-image {
         width: 70px;
     }
-    
 }
-
-
-  

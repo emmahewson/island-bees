@@ -5,7 +5,7 @@ from .models import Faq
 
 class TestFaqsModels(TestCase):
     """
-    Test FAQS App Models
+    FAQs Models Tests
     """
 
     def setUp(self):

@@ -3,6 +3,9 @@ from .models import Message
 
 
 class MessageAdmin(admin.ModelAdmin):
+    """
+    Message Model Admin
+    """
 
     readonly_fields = ('created_on',)
 
