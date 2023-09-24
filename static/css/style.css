@@ -1229,7 +1229,6 @@ label[for="id_price"] {
 }
 
 
-
 /* Products Page */
 
 .category-label {
@@ -1278,7 +1277,8 @@ label[for="id_price"] {
     background: var(--light);
 }
 
-#products-div {
+#products-div,
+#error-container {
     background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% no-repeat;
     background-size: cover;
 }
@@ -1532,6 +1532,7 @@ label[for="id_price"] {
     min-width: 125.82px;
 }
 
+
 /* Site Management */
 
 .border-open {
@@ -1553,6 +1554,22 @@ label[for="id_price"] {
     height: 100%;
 }
 
+
+/* Error Pages */
+
+.error-title {
+    font-size: 84px
+}
+
+.backwards {
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.error-bee {
+    width: 80px;
+    height: auto;
+}
 
 /* Media Queries */
 
@@ -1722,6 +1739,17 @@ label[for="id_price"] {
     .button-group *,
     .btn-file {
         font-size: 14px;
+    }
+
+    /* Error Pages */
+
+    .error-title {
+        font-size: 64px
+    }
+
+    .error-bee {
+        width: 60px;
+        height: auto;
     }
 
     /* Toasts */
