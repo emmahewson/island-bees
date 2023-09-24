@@ -130,7 +130,7 @@
                                 <!-- Product Image -->
                                 <a href="{% url 'product_detail' review.product.id %}">
                                     {% if review.product.image %}
-                                        <img class="img-fluid image-ratio" src="{{ review.product.image.url }}" alt="{{ review.product.name }}">
+                                        <img class="img-fluid image-ratio" src="{{ review.product.image.url }}" alt="{{ review.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                                     {% else %}
                                         <img class="img-fluid image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
                                     {% endif %}

@@ -85,7 +85,8 @@
                                 <!-- Product Image -->
                                 {% if product.image %}
                                     <a href="{% url 'product_detail' product.id %}">
-                                        <img class="image-ratio img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img class="image-ratio img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}"
+                                        onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                                     </a>
                                 {% else %}
                                     <a href="{% url 'product_detail' product.id %}">

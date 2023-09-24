@@ -23,7 +23,7 @@
     
                 <!-- Product Image -->
                 {% if product.image %}
-                    <img class="image-ratio d-none d-sm-block" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="image-ratio d-none d-sm-block" src="{{ product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                 {% else %}
                     <img class="image-ratio d-none d-sm-block" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
                 {% endif %}

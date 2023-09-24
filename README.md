@@ -203,6 +203,9 @@ This meant additional changes had to be made to the site to ensure smooth runnin
 - When a form is submitted with the 'discontinue' input checked, if that product is in the shopping bag, remove it.
 - Added a conditional check on the add_to_bag view to only add if the product was not discontinued.
 
+- Broken image links showing when image is missing, rather than the 'no-image' backup. This meant that if there was an error getting the product image the product cards were hard to click on to link to the product detail page as the image is the link element. In order to fix this I added an 'onerror' to the image tags to show the no-image if there was an error displaying the image.
+`onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'"`
+
 #### Fixed Bugs
 
 - - -
