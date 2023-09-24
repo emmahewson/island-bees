@@ -55,7 +55,7 @@ class TestMessageModels(TestCase):
         """ Test the message subject """
         self.assertEqual(self.TestMessage.subject, 'Test Subject')
 
-    def test_message_subject(self):
+    def test_message_content(self):
         """ Test the message content """
         self.assertEqual(self.TestMessage.content, 'Test Content')
 

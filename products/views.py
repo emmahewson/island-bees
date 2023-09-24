@@ -127,9 +127,6 @@ def add_product(request):
         if form.is_valid():
             product = form.save()
 
-            # Gets URL to redirect user back to previous page
-            redirect_url = request.POST.get('redirect_url')
-
             request.session['show_bag_summary'] = False
             messages.success(request, 'Product added successfully.')
 

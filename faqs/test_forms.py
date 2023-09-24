@@ -25,4 +25,3 @@ class TestFaqForm(TestCase):
         """
         form = FaqForm()
         self.assertEqual(form.Meta.fields, '__all__')
-        
