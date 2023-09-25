@@ -24,7 +24,8 @@ def manage(request):
         return redirect(reverse('home'))
 
     # Gets unapproved Reviews from DB
-    unapproved_reviews = Review.objects.filter(is_approved=False)
+    unapproved_reviews = Review.objects.filter(
+        is_approved=False).order_by('-created_on')
 
     # Gets messages from DB
     customer_messages = Message.objects.all().order_by('-created_on')
