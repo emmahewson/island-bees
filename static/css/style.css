@@ -558,8 +558,8 @@ select:focus-visible,
     border: var(--success) 2px solid !important;
 }
 
-.form-check-input.form-check-message:focus,
-.form-check-input.form-check-message:focus-visible {
+.form-check-input.form-check-ib:focus,
+.form-check-input.form-check-ib:focus-visible {
     border: none !important;
 }
 
@@ -622,11 +622,11 @@ legend {
     background-color: var(--warning);
 }
 
-.form-check-message {
+.form-check-ib {
     background-color: var(--warning);
 }
 
-.form-check-message:checked {
+.form-check-ib:checked {
     background-color: var(--success);
 }
 
@@ -634,7 +634,7 @@ legend {
     box-shadow: none;
 }
 
-.form-switch .form-check-input.form-check-message {
+.form-switch .form-check-input.form-check-ib {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
 }
 
@@ -1547,6 +1547,11 @@ label[for="id_price"] {
     height: 100%;
 }
 
+.fit-content {
+    width: fit-content;
+    height: fit-content;
+}
+
 
 /* Error Pages */
 
@@ -1562,6 +1567,12 @@ label[for="id_price"] {
 .error-bee {
     width: 80px;
     height: auto;
+}
+
+#manage-messages,
+#manage-reviews {
+    max-height: 400px;
+    overflow: scroll;
 }
 
 

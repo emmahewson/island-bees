@@ -13,7 +13,10 @@ class ReviewAdmin(admin.ModelAdmin):
         'title',
         'rating',
         'created_on',
+        'is_approved',
     )
+
+    list_editable = ('is_approved',)
 
 
 admin.site.register(Review, ReviewAdmin)

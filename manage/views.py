@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+
 from profiles.models import UserProfile
+from reviews.models import Review
 
 from .models import Message
 from .forms import MessageForm
@@ -20,6 +22,9 @@ def manage(request):
         messages.error(
             request, 'Sorry, only store owners can access that page.')
         return redirect(reverse('home'))
+
+    # Gets unapproved Reviews from DB
+    unapproved_reviews = Review.objects.all()
 
     # Gets messages from DB
     customer_messages = Message.objects.all().order_by('-created_on')
@@ -43,6 +48,7 @@ def manage(request):
     context = {
         'customer_messages': customer_messages,
         'current_filter': current_filter,
+        'reviews': unapproved_reviews
     }
 
     return render(request, 'manage/manage.html', context)
