@@ -247,6 +247,8 @@ This meant additional changes had to be made to the site to ensure smooth runnin
 
 ### Online resources
 
+CHATGPT to produce the text for the products & reviews. It was not used for any code production or problem solving, just as a quick way to produce text content to populate the site.
+
 - - -
 
 ### Code

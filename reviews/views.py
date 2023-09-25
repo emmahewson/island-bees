@@ -36,9 +36,8 @@ def add_review(request, product_id):
             # Updates product rating on product object
             if product.reviews.filter(is_approved=True).count() > 0:
                 product.rating = round(
-                    product.reviews.filter(
-                        is_approved=True).aggregate(
-                            Avg('rating'))['rating__avg'])
+                    product.reviews.filter(is_approved=True).aggregate(
+                        Avg('rating'))['rating__avg'])
             else:
                 product.rating = 0
             product.save()
