@@ -104,6 +104,15 @@ Reviews - superuser cannot edit, only delete
 
 ### Future Features
 
+In Original Design
+- Blog
+
+Review approval by admin with reviews appearing on site management page
+Admin notification when a review / message is submitted 
+A more comprehensive system for messages with admins able to review chain of communication and reply on the site
+A booking system for courses with a calendar and tracking of availability on courses
+A stock control system for products
+
 - - -
 [Go to Top](#island-bees---e-commerce-site)
 - - -

@@ -45,6 +45,10 @@ class Review(models.Model):
         null=False
     )
 
+    is_approved = models.BooleanField(
+        default=False
+    )
+
     def __str__(self):
         """ String representation of Review title """
         return self.title
