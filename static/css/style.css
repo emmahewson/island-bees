@@ -1095,10 +1095,6 @@ label[for="id_price"] {
     float: right;
     margin-right: calc(var(--hex-margin-right) * var(--hex-size));
     margin-bottom: calc(var(--hex-margin-bottom) * var(--hex-size));
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
 }
 
 .hex .left {
@@ -1126,6 +1122,15 @@ label[for="id_price"] {
 
 .hex.even {
     margin-top: calc(var(--hex-margin-top) * var(--hex-size));
+}
+
+#hex-hero-button-left,
+#hex-hero-button-middle,
+#hex-hero-button-right {
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
 }
 
 #hex-hero-button-left {
