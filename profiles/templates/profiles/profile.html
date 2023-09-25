@@ -28,9 +28,9 @@
                 <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p>
 
                 <!-- Form -->
-                <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                <form action="{% url 'profile' %}" method="POST" id="profile-update-form" class="form-as-p">
                     {% csrf_token %}
-                    {{ user_form }}
+                    {{ user_form.as_p }}
 
                     <div class="weight-semibold d-flex justify-content-end">
 
@@ -43,7 +43,7 @@
 
                     <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
 
-                    {{ profile_form }}
+                    {{ profile_form.as_p }}
 
                     <!-- Update Button -->
                     <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">
@@ -181,12 +181,12 @@
                                             {% endif %}
 
                                             <!-- Delete Review - Review Author or Superuser Only -->
-                                            <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                            <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</button>
                                         </div>
                                     </div>
             
                                     <!-- Confirm Delete Modal - Defensive Programming -->
-                                    <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header justify-content-between bg-dark-grey py-3">
@@ -224,5 +224,5 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+    <script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

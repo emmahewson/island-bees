@@ -44,11 +44,11 @@
                             <!-- FAQ EDIT / DELETE Buttons -->
                             <div class="edit-del-faq-wrapper">
                                 <a href="{% url 'edit_faq' faq.id %}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                                <button type="button" data-toggle="modal" data-target="#modal-{{ faq.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                <button type="button" data-toggle="modal" data-target="#modal-{{ faq.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</button>
                             </div>
 
                             <!-- Confirm Delete Modal - Defensive Programming -->
-                            <div class="modal fade" id="modal-{{ faq.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-{{ faq.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header justify-content-between bg-dark-grey py-3">

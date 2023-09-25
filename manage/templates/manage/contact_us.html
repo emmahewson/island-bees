@@ -25,9 +25,9 @@
         <!-- Contact Us Form -->
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-1 mt-2 font-body text-dark-grey">
             <p class="mb-3 weight-semibold">Send us a message using the form below.</p>
-            <form action="{% url 'contact_us' %}" method="POST" id="message-form">
+            <form action="{% url 'contact_us' %}" method="POST" id="message-form" class="form-as-p">
                 {% csrf_token %}
-                {{ form }}
+                {{ form.as_p }}
 
                 <!-- Send Button -->
                 <div class="text-end">

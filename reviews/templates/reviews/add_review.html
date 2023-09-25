@@ -29,9 +29,9 @@
             </div>
 
             <!-- Review Form -->
-            <form class="px-3 px-md-4 py-4" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
+            <form class="px-3 px-md-4 py-4 form-as-p" method="POST" action="{% url 'add_review' product.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
+                {{ form.as_p }}
     
                 <!-- Rating Select - populates hidden rating input using JS -->
                 <div class="rating-form-div" aria-hidden="true">

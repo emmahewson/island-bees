@@ -18,9 +18,9 @@
                 <hr>
 
                 <!-- Faq Form -->
-                <form method="POST" action="{% url 'edit_faq' faq.id %}" class="form mt-4" id="faq-form">
+                <form method="POST" action="{% url 'edit_faq' faq.id %}" class="form mt-4 form-as-p" id="faq-form">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ form.as_p }}
 
                     <!-- Buttons -->
                     <div class="button-group mt-5 d-flex justify-content-end">
@@ -39,5 +39,6 @@
                 </form>
             </div>
         </div>
+    </div>
 {% endblock %}
 

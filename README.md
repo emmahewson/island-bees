@@ -143,6 +143,15 @@ Linting Errors
 - checkout/webhooks.py - local variable e is assigned to but never used - have investigated this and it appears to be an industry standard way of assigning this particular error checking. I also passed this code through the CI Python Linter and it didn't raise an issue. https://pep8ci.herokuapp.com/
 - remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py
 
+
+- HTML validation Errors
+Some minor relating to stray tags which I cleaned up
+One thing I did discover was that Django forms renders its form inputs as a table and there were multiple errors about stray `<tr>` tags in the code, which I couldn't access as the form was added by using just `{{form}}`. I got around this based on a [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1548669436265400) I found on the CI Slack Channel suggesting rendering them as `<p>` elements instead using `{{form.as_p}}`.
+
+- Image selection in the custom_clearable_file_input on the product form was throwing an error as it had 2 ID attributes, one that I had set which was used in the JavaScript to display the filename and another that was added by the `{% include "django/forms/widgets/attrs.html" %}` tag. I solved this problem by changing the JavaScript to get an element using a class name rather than ID.
+
+- The shopping bag was throwing an error about duplicate IDs, this came down to the 2 versions of the shopping bag, one for large screens one for mobile, which used the same include template from quantity-form.html, effectively putting 2 versions of the same code on the page. I solved this by changing the ID attribute to a data-id attribute, and adjusting the relevant JavaScript code.
+
 ### Bugs
 
 Bug - attempted to move the js for the remove item from bag in to separate JS file - update worked ok but remove didn't. Put back in to HTML as a script tag.

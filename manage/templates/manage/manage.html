@@ -56,7 +56,7 @@
                     <h2 class="subtitle weight-semibold text-ib-dark mb-0 me-2 me-sm-0 mb-sm-1">CUSTOMER MESSAGES</h2>
                     
                     <!-- Messages Current Filter & Count -->
-                    <p class="small weight-regular text-ib-dark">{% if current_filter %}<span class="text-uppercase">{{current_filter}}{% else %}ALL</span>{% endif %} MESSAGES ({{ customer_messages|length }})</p>
+                    <p class="small weight-regular text-ib-dark">{% if current_filter %}<span class="text-uppercase">{{current_filter}}{% else %}ALL{% endif %} MESSAGES ({{ customer_messages|length }})</p>
 
                 </div>
 
@@ -125,7 +125,7 @@
 
 
     <!-- Reviews Section -->
-    <div class="row" id="manage-reviews">
+    <div class="row">
         <div class="col-12 col-lg-10 offset-lg-1 px-0">
             <hr class="mt-4 mb-4">
         </div>
@@ -166,7 +166,7 @@
                                     <!-- Product Name -->
                                     <div class="row font-body review-header">
                                         <div class="col-12 col-sm-8">
-                                            <h2 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
+                                            <h2 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h2>
                                         </div>
 
                                         <!-- Review Rating -->
@@ -210,7 +210,7 @@
                                                 {% endif %}
 
                                                 <!-- Delete Review - Review Author or Superuser Only -->
-                                                <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                                <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</button>
                                             </div>
                                             <div class="col-12 col-sm-7 fit-content d-flex justify-content-end align-items-end">
                                                 <p class="me-3 ib-lh-1">APPROVE REVIEW<span class="weight-semibold"></span></p>
@@ -230,7 +230,7 @@
                                         </div>
                 
                                         <!-- Confirm Delete Modal - Defensive Programming -->
-                                        <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header justify-content-between bg-dark-grey py-3">

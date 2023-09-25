@@ -68,10 +68,12 @@
                     {% endfor %}
 
                     <!-- Image Selection -->
-                    {{ form.image.label_tag }}
-                    <em class="d-inline ms-2">Images should be in a 16:9 aspect ratio</em>
-                    {{ form.image }}
-
+                    <div class="mt-4 mb-2">
+                        <p class="p-label-replace d-inline">Product Image:</p>
+                        <em class="d-inline ms-2">Images should be in a 16:9 aspect ratio</em>
+                        {{ form.image }}
+                    </div>
+                    
                     <!-- Discontinue? -->
                     <hr class="mt-5 mb-2">
                     <span class="d-flex mt-3 mb-2 text-ib-warning">
@@ -101,6 +103,7 @@
                 </form>
             </div>
         </div>
+    </div>
 {% endblock %}
 
 {% block extra_js_end %}

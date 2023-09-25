@@ -6,7 +6,7 @@
         <div class="d-flex align-items-end">
             <!-- Image Thumbnail with clickable link to open full-size image -->
             <a href="{{ widget.value.url }}">
-                <img class="thumbnail-image me-3" src="{{ widget.value.url }}">
+                <img class="thumbnail-image me-3" src="{{ widget.value.url }}" alt="image-thumbnail">
             </a>
             {% if not widget.required %}
                 <!-- Remove Image Checkbox -->
@@ -23,7 +23,7 @@
 
     <!-- Select Image Button -->
     <span class="btn-file ib-button ib-button-light-blue text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
-        SELECT IMAGE <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+        SELECT IMAGE <input class="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
     </span>
     <p class="weight-semibold text-ib-warning mt-3" id="filename"></p>
 </div>

@@ -505,6 +505,11 @@ input.qty-input-sm {
 
 /* Forms Styling */
 
+.form-as-p p {
+    padding: 0;
+    margin:0;
+}
+
 input.ib-form-field,
 textarea.ib-form-field,
 select.ib-form-field {
@@ -654,6 +659,11 @@ select:invalid {
 
 #product-form label[for='id_image'] {
     margin-bottom: 0.2rem;
+}
+
+.p-label-replace {
+    margin-top: 2rem;
+    font-weight: 600;
 }
 
 .checkbox-label label {
