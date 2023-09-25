@@ -152,7 +152,7 @@
                             <div class="row text-ib-dark w-100 m-auto mb-3 shadow-sm bg-ib-light">
                                 <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0">
                                     <!-- Product Image -->
-                                    <a href="{% url 'products' %}">
+                                    <a href="{% url 'product_detail' review.product.id %}">
                                         {% if review.product.image %}
                                             <img class="img-fluid image-ratio" src="{{ review.product.image.url }}" alt="{{ review.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                                         {% else %}
