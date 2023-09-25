@@ -1272,10 +1272,9 @@ label[for="id_price"] {
     background: var(--light);
 }
 
-#products-div,
-#error-container {
+#products-div {
     background: url('/media/hex-bg-tran.svg'), var(--light-grey) 50% no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .product-card div.card-body h5 {
