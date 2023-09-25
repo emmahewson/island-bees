@@ -18,7 +18,8 @@ class ProductAdmin(admin.ModelAdmin):
         'delivery_charge',
         'discontinued',
     )
-    list_editable = ('is_featured', 'delivery_charge', 'discontinued')
+    list_editable = (
+        'is_featured', 'delivery_charge', 'discontinued', 'category')
 
     ordering = ('name',)
 
