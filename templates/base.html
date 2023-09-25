@@ -147,18 +147,10 @@
                     </div>
                 </div>
             </div>
-        </header>
 
-        <!-- Header to push content below nav -->
-        <div class="container header-container">
-            <div class="row">
-                <div class="col"></div>
-            </div>
-        </div>
-        
-        {% if messages %}
+            {% if messages %}
+            <!-- Messages -->
             <div class="position-relative">
-                <!-- Messages -->
                 <div class="message-container">
                     {% for message in messages %}
                         {% with message.level as level %}
@@ -176,7 +168,15 @@
                 </div>
             </div>
         {% endif %}
+        </header>
 
+        <!-- Header to push content below nav -->
+        <div class="container header-container">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+        
         {% block content %}
         {% endblock %}
 

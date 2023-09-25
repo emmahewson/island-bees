@@ -20,11 +20,11 @@ def manage(request):
     # redirects to home if not
     if not request.user.is_superuser:
         messages.error(
-            request, 'Sorry, only store owners can access that page.')
+            request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
     # Gets unapproved Reviews from DB
-    unapproved_reviews = Review.objects.all()
+    unapproved_reviews = Review.objects.filter(is_approved=False)
 
     # Gets messages from DB
     customer_messages = Message.objects.all().order_by('-created_on')
@@ -67,20 +67,44 @@ def toggle_message(request, message_id):
             request, 'Sorry, only store owners can access that page.')
         return redirect(reverse('home'))
 
-    # Gets the message from DB
-    message = get_object_or_404(Message, id=message_id)
+    try:
+        # Gets the message from DB
+        message = get_object_or_404(Message, id=message_id)
 
-    # Gets value of hidden input
-    message_open = request.POST.get('is_open')
+        # Gets value of hidden input
+        message_open = request.POST.get('is_open')
 
-    # Sets value of is_open field on DB
-    if message_open == "True":
-        message.is_open = True
-    else:
-        message.is_open = False
-    message.save()
+        # Sets value of is_open field on DB
+        if message_open == "True":
+            message.is_open = True
+        else:
+            message.is_open = False
+        message.save()
+        messages.success(request, "Message status updated successfully")
 
-    return redirect('manage')
+        # Gets current filter value
+        current_filter = request.POST.get('current_filter')
+
+        # Redirects to 'manage' view with query if current_filter set
+        # Maintains current filtering
+        if current_filter == "None":
+            return redirect(reverse('manage'))
+        else:
+            if current_filter == "Closed":
+                query = "?open=False"
+            elif current_filter == "Open":
+                query = "?open=True"
+
+            return redirect(reverse('manage') + query)
+
+    # Handles errors
+    except Exception as e:
+        messages.error(
+            request,
+            'Sorry, the message status could not be updated. ' +
+            'Please try again later.'
+        )
+        return HttpResponse(content=e, status=400)
 
 
 def contact_us(request):

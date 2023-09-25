@@ -78,39 +78,48 @@
             </div>
              
             <div class="" id="manage-messages">
-                {% for message in customer_messages %}
-                <!-- Message -->
-                <div class="row text-ib-dark {% if message.is_open %}bg-message-open{% else %}bg-message-closed{% endif %} w-100 m-auto mb-3 py-3 shadow-sm {% if message.is_open %}border-open{% else%}border-closed{%endif%}">
-                    <div class="col-12 d-flex small-para-text">
-                        <p class="me-3">{{message.created_on|date:"d/m/Y"}}</p>
-                        <a class="text-blue text-link-blue weight-semibold" href="mailto:{{message.email}}">
-                            <p>{{message.email}}</p>
-                        </a>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <p class="weight-semibold">{{message.subject}}</p>
-                    </div>
-                    <div class="col-12 mt-1">
-                        <p>{{message.content}}</p>
-                    </div>
-                    <div class="col-12 d-flex justify-content-end align-items-end mt-2">
-                        <p class="me-3">STATUS: <span class="weight-semibold">{% if message.is_open %}OPEN{% else %}CLOSED{%endif%}</span></p>
-
-                        <!-- Form to change message is_open status -->
-                        <form method="POST" action="{% url 'toggle_message' message.id %}" id="message-form-{{message.id}}">
-                            {% csrf_token %}
-                            <div class="form-check form-switch">
-                                <input class="message-toggle form-check-input form-check-ib" type="checkbox" role="switch" name="toggle-open" id="{{message.id}}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
+                {% if customer_messages|length > 0 %}
+                    {% for message in customer_messages %}
+                        <!-- Message -->
+                        <div class="row text-ib-dark {% if message.is_open %}bg-message-open{% else %}bg-message-closed{% endif %} w-100 m-auto mb-3 py-3 shadow-sm {% if message.is_open %}border-open{% else%}border-closed{%endif%}">
+                            <div class="col-12 d-flex small-para-text">
+                                <p class="me-3">{{message.created_on|date:"d/m/Y"}}</p>
+                                <a class="text-blue text-link-blue weight-semibold" href="mailto:{{message.email}}">
+                                    <p>{{message.email}}</p>
+                                </a>
                             </div>
-    
-                            <!-- Hidden input to submit value of toggle -->
-                            <input type="hidden" id="message-{{message.id}}-input" name="is_open" value="{{ message.is_open }}">
-                        </form>   
-                    </div>
-                </div>
-            {% endfor %}
-            </div>
+                            <div class="col-12 mt-2">
+                                <p class="weight-semibold">{{message.subject}}</p>
+                            </div>
+                            <div class="col-12 mt-1">
+                                <p>{{message.content}}</p>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end align-items-end mt-2">
+                                <p class="me-3">STATUS: <span class="weight-semibold">{% if message.is_open %}OPEN{% else %}CLOSED{%endif%}</span></p>
+
+                                <!-- Form to change message is_open status -->
+                                <form method="POST" action="{% url 'toggle_message' message.id %}" id="message-form-{{message.id}}">
+                                    {% csrf_token %}
+                                    <div class="form-check form-switch">
+                                        <input class="message-toggle form-check-input form-check-ib" type="checkbox" role="switch" name="toggle-open" id="{{message.id}}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
+                                    </div>
             
+                                    <!-- Hidden input to submit value of toggle -->
+                                    <input type="hidden" id="message-{{message.id}}-input" name="is_open" value="{{ message.is_open }}">
+
+                                    <!-- Hidden input to submit current_filter -->
+                                    <input type="hidden" id="current-filter-input-{{message.id}}" name="current_filter" value="{{current_filter}}">
+                                </form>   
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <!-- No Messages Text -->
+                    <div class="col-12 text-center bg-ib-light py-3">
+                        <p class="font-body weight-semibold text-dark-grey">No Messages</p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 
@@ -137,114 +146,121 @@
             
             <div class="" id="manage-reviews">
                 {% if reviews|length > 0 %}
-                {% for review in reviews %}
-                    {% if not review.is_approved %}
-                        <!-- Review -->
-                        <div class="row text-ib-dark w-100 m-auto mb-3 shadow-sm bg-ib-light">
-                            <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0">
-                                <!-- Product Image -->
-                                <a href="{% url 'products' %}">
-                                    {% if review.product.image %}
-                                        <img class="img-fluid image-ratio" src="{{ review.product.image.url }}" alt="{{ review.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
-                                    {% else %}
-                                        <img class="img-fluid image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
-                                    {% endif %}
-                                </a>
-                            </div>
+                    {% for review in reviews %}
 
-                            <div class="col-12 col-sm-9 col-md-10 p-3">
-
-                                <!-- Product Name -->
-                                <div class="row font-body review-header">
-                                    <div class="col-12 col-sm-8">
-                                        <h2 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
-                                    </div>
-
-                                    <!-- Review Rating -->
-                                    <div class="col-12 col-sm-4 text-start text-sm-end mt-2 mt-sm-0">
-                                        <div class="rating-div review-rating ib-lh-1 pe-0">
-                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                            <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
-                                        </div>
-                                    </div>
+                            <!-- Review -->
+                            <div class="row text-ib-dark w-100 m-auto mb-3 shadow-sm bg-ib-light">
+                                <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0">
+                                    <!-- Product Image -->
+                                    <a href="{% url 'products' %}">
+                                        {% if review.product.image %}
+                                            <img class="img-fluid image-ratio" src="{{ review.product.image.url }}" alt="{{ review.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
+                                        {% else %}
+                                            <img class="img-fluid image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ review.product.name }}">
+                                        {% endif %}
+                                    </a>
                                 </div>
 
-                                <!-- Review Title & Date -->
-                                <div class="row font-body text-dark-grey my-2">
-                                    <div class="col-12 d-block d-flex flex-wrap align-items-baseline">
-                                        <p class="profile-review-title me-3">{{ review.title }}</p>
-                                        <p class="weight-light m-0">{{ review.created_on|date:"d/m/Y" }}</p>
-                                    </div>
-                                </div>
+                                <div class="col-12 col-sm-9 col-md-10 p-3">
 
-                                <!-- Review Content -->
-                                <div class="row font-body review-content text-dark-grey">
-                                    <p>{{ review.content }}</p>
-                                </div>
-
-                                <!-- Review EDIT / DELETE Buttons -->
-                                {% if request.user.is_superuser %}
-                                    <div class="row d-flex justify-content-between align-items-end">
-                                        <div class="col mt-3">
-                                            {% if request.user == review.user %}
-                                                <!-- Edit Review - Review Author Only -->
-                                                <a href="{% url 'edit_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
-                                            {% endif %}
-
-                                            <!-- Delete Review - Review Author or Superuser Only -->
-                                            <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
-                                        </div>
-                                        <div class="col fit-content d-flex justify-content-end align-items-end">
-                                            <p class="me-3 ib-lh-1">APPROVE REVIEW<span class="weight-semibold"></span></p>
-                                            <!-- Form to change message is_open status -->
-                                            <form method="POST" action="" id="review-toggle-form-{{review.id}}">
-                                                {% csrf_token %}
-                                                <div class="form-check form-switch p-0">
-                                                    <input class="message-toggle form-check-input form-check-ib m-0 mt-3" type="checkbox" role="switch" name="toggle-open" id="{{message.id}}" {% if message.is_open is False %}Checked{% endif %} aria-label="Toggle message status">
-                                                </div>
-                        
-                                                <!-- Hidden input to submit value of toggle -->
-                                                <input type="hidden" id="message-{{message.id}}-input" name="is_open" value="{{ message.is_open }}">
-                                            </form>   
+                                    <!-- Product Name -->
+                                    <div class="row font-body review-header">
+                                        <div class="col-12 col-sm-8">
+                                            <h2 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
                                         </div>
 
-                                    </div>
-            
-                                    <!-- Confirm Delete Modal - Defensive Programming -->
-                                    <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                                    <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
-                                                    <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true" class="ib-lh-1">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body pb-2 font-body">
-                                                    <p>Are you sure you want to the delete the review...
-                                                    <strong>"{{ review.title }}"</strong></p>
-                                                </div>
-                                                <div class="modal-footer pt-0">
-                                                    <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
-                                                    <a href="{% url 'delete_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
-                                                </div>
+                                        <!-- Review Rating -->
+                                        <div class="col-12 col-sm-4 text-start text-sm-end mt-2 mt-sm-0">
+                                            <div class="rating-div review-rating ib-lh-1 pe-0">
+                                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 1 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 2 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
+                                                <span class="ib-lh-1 rating-hex-small rating-hex-{% if review.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                             </div>
                                         </div>
                                     </div>
-                                {% endif %}
+
+                                    <!-- Review Title & Date -->
+                                    <div class="row font-body text-dark-grey my-2">
+                                        <div class="col-12 d-block d-flex flex-wrap align-items-center">
+                                            <p class="profile-review-title me-3">{{ review.title }}</p>
+                                            <div class="text-blue me-2 d-flex align-items-center ib-lh-1">
+                                                <div class="category-icon-circle-sm bg-blue me-1">
+                                                    <i class="fas fa-user text-ib-light text-center"></i>
+                                                </div>
+                                                <p class="d-inline me-2">{% if review.user != None %}{{ review.user }}{% else %}Anonymous{% endif %}</p>
+                                            </div>
+                                            <p class="weight-light m-0">{{ review.created_on|date:"d/m/Y" }}</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Review Content -->
+                                    <div class="row font-body review-content text-dark-grey">
+                                        <p>{{ review.content }}</p>
+                                    </div>
+
+                                    <!-- Review EDIT / DELETE Buttons -->
+                                    {% if request.user.is_superuser %}
+                                        <div class="row d-flex justify-content-between align-items-end">
+                                            <div class="col-12 col-sm-5 mt-3">
+                                                {% if request.user == review.user %}
+                                                    <!-- Edit Review - Review Author Only -->
+                                                    <a href="{% url 'edit_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn edit-btn font-title text-decoration-none weight-bold align-middle me-2">EDIT</a>
+                                                {% endif %}
+
+                                                <!-- Delete Review - Review Author or Superuser Only -->
+                                                <button type="button" data-toggle="modal" data-target="#modal-{{ review.id }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                            </div>
+                                            <div class="col-12 col-sm-7 fit-content d-flex justify-content-end align-items-end">
+                                                <p class="me-3 ib-lh-1">APPROVE REVIEW<span class="weight-semibold"></span></p>
+
+                                                <!-- Form to change review is_approved status -->
+                                                <form method="POST" action="{% url 'toggle_review' review.id %}" id="review-toggle-form-{{review.id}}">
+                                                    {% csrf_token %}
+                                                    <div class="form-check form-switch p-0">
+                                                        <input class="review-toggle form-check-input form-check-ib m-0 mt-3" type="checkbox" role="switch" name="toggle-open" id="{{review.id}}" {% if review.is_approved is True %}Checked{% endif %} aria-label="Toggle review status">
+                                                    </div>
+                            
+                                                    <!-- Hidden input to submit value of toggle -->
+                                                    <input type="hidden" id="review-{{review.id}}-input" name="is_approved" value="{{ review.is_approved }}">
+
+                                                </form>   
+                                            </div>
+                                        </div>
+                
+                                        <!-- Confirm Delete Modal - Defensive Programming -->
+                                        <div class="modal fade" id="modal-{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header justify-content-between bg-dark-grey py-3">
+                                                        <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
+                                                        <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true" class="ib-lh-1">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body pb-2 font-body">
+                                                        <p>Are you sure you want to the delete the review...
+                                                        <strong>"{{ review.title }}"</strong></p>
+                                                    </div>
+                                                    <div class="modal-footer pt-0">
+                                                        <button type="button" class="edit-del-btn dismiss-btn font-title text-decoration-none weight-regular align-middle me-2" data-dismiss="modal">CLOSE</button>
+                                                        <a href="{% url 'delete_review' review.id %}?next={{ request.path|urlencode }}" class="edit-del-btn del-btn font-title text-decoration-none weight-bold align-middle">DELETE</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <!-- No Reviews Text -->
-                <div class="col-12 text-center">
-                    <p class="font-body">No Reviews to Approve</p>
-                </div>
-            {% endif %}
+                        
+                    {% endfor %}
+                {% else %}
+                    <!-- No Reviews Text -->
+                    <div class="col-12 text-center bg-ib-light py-3">
+                        <p class="font-body weight-semibold text-dark-grey">No Reviews to Approve. You're up to date!</p>
+                    </div>
+                {% endif %}
 
             </div>
             
@@ -255,8 +271,10 @@
 {% endblock %}
 
 {% block extra_js_end %}
-<!-- Sends Toggle Value to View & Submits Form -->
+<!-- Sends Message Toggle Value to View & Submits Form -->
 <script src="{% static 'manage/js/message_toggle.js' %}"></script>
+<!-- Sends Review Toggle Value to View & Submits Form -->
+<script src="{% static 'manage/js/review_toggle.js' %}"></script>
 <!-- Scroll To Previous Location on Reload JS -->
 <script src="{% static 'manage/js/scroll_messages.js' %}"></script>
 {% endblock %}

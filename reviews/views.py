@@ -34,12 +34,24 @@ def add_review(request, product_id):
             review.save()
 
             # Updates product rating on product object
-            product.rating = round(
-                product.reviews.aggregate(Avg('rating'))['rating__avg'])
+            if product.reviews.filter(is_approved=True).count() > 0:
+                product.rating = round(
+                    product.reviews.filter(
+                        is_approved=True).aggregate(
+                            Avg('rating'))['rating__avg'])
+            else:
+                product.rating = 0
             product.save()
 
             request.session['show_bag_summary'] = False
-            messages.success(request, "New product review added.")
+            messages.success(
+                request,
+                "Your review has been created. " +
+                "It will appear on the site once it has been approved. " +
+                "We value your feedback and only " +
+                "reject reviews with inappropriate content."
+            )
+
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, "Form invalid, please try again.")
@@ -82,18 +94,31 @@ def edit_review(request, review_id):
         form = ReviewForm(request.POST, request.FILES, instance=review)
 
         if form.is_valid():
-            form.save()
+            review = form.save()
+            review.is_approved = False
+            review.save()
 
             # Gets URL to redirect user back to previous page
             redirect_url = request.POST.get('redirect_url')
 
             # Updates product rating on product object
-            product.rating = round(
-                product.reviews.aggregate(Avg('rating'))['rating__avg'])
+            if product.reviews.filter(is_approved=True).count() > 0:
+                product.rating = round(
+                    product.reviews.filter(
+                        is_approved=True).aggregate(
+                            Avg('rating'))['rating__avg'])
+            else:
+                product.rating = 0
             product.save()
 
             request.session['show_bag_summary'] = False
-            messages.success(request, "Your review has been updated.")
+            messages.success(
+                request,
+                "Your review has been updated. " +
+                "It will appear on the site once it has been approved. " +
+                "We value your feedback and only " +
+                "reject reviews with inappropriate content."
+            )
             return redirect(redirect_url)
         else:
             messages.error(request, "Form invalid, please try again.")
@@ -137,14 +162,71 @@ def delete_review(request, review_id):
     review.delete()
 
     # Updates product rating on product object
-    if product.reviews.count() != 0:
+
+    if product.reviews.filter(is_approved=True).count() > 0:
         product.rating = round(
-            product.reviews.aggregate(Avg('rating'))['rating__avg'])
+            product.reviews.filter(
+                is_approved=True).aggregate(Avg('rating'))['rating__avg'])
     else:
         product.rating = 0
-
     product.save()
 
     request.session['show_bag_summary'] = False
     messages.success(request, 'Review successfully deleted!')
     return redirect(next)
+
+
+@login_required
+def toggle_review(request, review_id):
+    """
+    A View to toggle the approved status of the review
+    """
+
+    # Checks user is superuser
+    # redirects to home if not
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    try:
+        # Gets the review from DB
+        review = get_object_or_404(Review, id=review_id)
+
+        # Gets value of hidden input
+        review_approved = request.POST.get('is_approved')
+
+        # Sets value of is_approved field on DB
+        if review_approved == "True":
+            review.is_approved = True
+        else:
+            review.is_approved = False
+        review.save()
+
+        # Updates product rating on product object
+
+        product = Product.objects.filter(reviews=review)[0]
+
+        if product.reviews.filter(is_approved=True).count() > 0:
+            product.rating = round(
+                product.reviews.filter(
+                    is_approved=True).aggregate(Avg('rating'))['rating__avg'])
+        else:
+            product.rating = 0
+        product.save()
+
+        messages.success(
+            request,
+            "Review approved successfully." +
+            "The review will now appear on the site!"
+        )
+        return redirect(reverse('manage'))
+
+    # Handles errors
+    except Exception as e:
+        messages.error(
+            request,
+            'Sorry, the review status could not be updated. ' +
+            'Please try again later.'
+        )
+        return HttpResponse(content=e, status=400)

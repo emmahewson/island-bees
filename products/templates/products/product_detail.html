@@ -32,7 +32,7 @@
                     <span class="rating-hex-small rating-hex-{% if product.rating >= 3 %}true{% else %}false{% endif %}">&#x2B22;</span>
                     <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
                     <span class="rating-hex-small rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %} me-2">&#x2B22;</span>
-                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.review_count }} REVIEW{% if product.review_count != 1 %}S{% endif %}</p>
+                    <p class=" d-inline font-body mt-n2 text-nowrap">{{ product.approved_review_count }} REVIEW{% if product.approved_review_count != 1 %}S{% endif %}</p>
                 </div>
             </a>
         </div>

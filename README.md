@@ -99,6 +99,8 @@ using widget-tweak to add style classes to the form inputs in the auth templates
 The delivery charge calculations when no delivery is chargeable
 Additional titles and description meta tags on each page
 Reviews - superuser cannot edit, only delete
+Reviews - approval
+Product rating only takes in to account approved reviews & is updated upon add, edit, delete & toggle
 
 - - -
 
@@ -107,7 +109,6 @@ Reviews - superuser cannot edit, only delete
 In Original Design
 - Blog
 
-Review approval by admin with reviews appearing on site management page
 Admin notification when a review / message is submitted 
 A more comprehensive system for messages with admins able to review chain of communication and reply on the site
 A booking system for courses with a calendar and tracking of availability on courses
@@ -218,6 +219,7 @@ This meant additional changes had to be made to the site to ensure smooth runnin
 - - -
 
 #### Remaining Bugs
+
 
 - - -
 [Go to Top](#island-bees---e-commerce-site)

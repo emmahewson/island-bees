@@ -78,7 +78,7 @@ class Product(models.Model):
         return self.name
 
     @property
-    def review_count(self):
-        """ Returns total number of reviews """
+    def approved_review_count(self):
+        """ Returns total number of approved reviews """
 
-        return self.reviews.count()
+        return self.reviews.filter(is_approved=True).count()

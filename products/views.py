@@ -87,7 +87,8 @@ def product_detail(request, product_id):
 
     else:
         # Gets product reviews from DB
-        reviews = product.reviews.all().order_by('-rating', '-created_on')
+        reviews = product.reviews.filter(
+            is_approved=True).order_by('-rating', '-created_on')
 
         # Check if product has ever been ordered
         # protects it from deletion to preserve order history
