@@ -39,8 +39,8 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% csrf_token %}
 
   <!-- Form Inputs -->
-  {{ form.login|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
-  {{ form.password|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.login|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Email or Username"|attr:"autocomplete:email" }}
+  {{ form.password|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Password"|attr:"autocomplete:current-password" }}
 
   <div class="d-flex align-items-end justify-content-end mt-2">
     <label class="form-check-label ib-lh-1" for="id_remember">Remember me:</label>

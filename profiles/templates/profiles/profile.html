@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block extra_title %}- Profile{% endblock %}
 
@@ -30,7 +31,18 @@
                 <!-- Form -->
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form" class="form-as-p">
                     {% csrf_token %}
-                    {{ user_form.as_p }}
+
+                    <!-- {{ user_form.as_p }} -->
+
+                    {{ user_form.first_name|attr:"aria-label:First Name" }}
+                    {% for error in order_form.first_name.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ user_form.last_name|attr:"aria-label:Last Name" }}
+                    {% for error in order_form.last_name.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
                     <div class="weight-semibold d-flex justify-content-end">
 
@@ -43,7 +55,42 @@
 
                     <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
 
-                    {{ profile_form.as_p }}
+                    <!-- {{ profile_form.as_p }} -->
+
+                    {{ profile_form.default_street_address1|attr:"aria-label:Street Address 1" }}
+                    {% for error in order_form.default_street_address1.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ profile_form.default_street_address2|attr:"aria-label:Street Address 2" }}
+                    {% for error in order_form.default_street_address2.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ profile_form.default_town_or_city|attr:"aria-label:Town or City" }}
+                    {% for error in order_form.default_town_or_city.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+                    
+                    {{ profile_form.default_county|attr:"aria-label:County" }}
+                    {% for error in order_form.default_county.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ profile_form.default_postcode|attr:"aria-label:Postcode" }}
+                    {% for error in order_form.default_postcode.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ profile_form.default_country|attr:"aria-label:Country" }}
+                    {% for error in order_form.default_country.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
+
+                    {{ profile_form.default_phone_number|attr:"aria-label:Phone Number" }}
+                    {% for error in order_form.default_phone_number.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
                     <!-- Update Button -->
                     <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">
@@ -143,7 +190,7 @@
                                 <!-- Product Name -->
                                 <div class="row font-body review-header">
                                     <div class="col-12 col-sm-8">
-                                        <h3 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h3>
+                                        <h2 class="profile-review-product text-uppercase weight-semibold ib-lh-1">{{ review.product }}</h2>
                                     </div>
 
                                     <!-- Review Rating -->
@@ -190,7 +237,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                                    <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
+                                                    <h3 class="font-body text-ib-light">DELETE REVIEW</h3>
                                                     <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true" class="ib-lh-1">&times;</span>
                                                     </button>

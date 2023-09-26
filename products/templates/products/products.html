@@ -41,7 +41,7 @@
                 <!-- Sort-dropdown -->
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-1 mt-md-3 mt-md-0">
                     <div class="sort-select-wrapper w-50 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
-                        <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body">
+                        <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body" aria-label="Sort products - choose a sort type">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -85,8 +85,7 @@
                                 <!-- Product Image -->
                                 {% if product.image %}
                                     <a href="{% url 'product_detail' product.id %}">
-                                        <img class="image-ratio img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}"
-                                        onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
+                                        <img class="image-ratio img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                                     </a>
                                 {% else %}
                                     <a href="{% url 'product_detail' product.id %}">
@@ -96,7 +95,7 @@
 
                                 <!-- Product Name -->
                                 <div class="card-body bg-ib-white pb-2">
-                                    <h5 class="text-uppercase text-center font-body weight-semibold text-ib-dark">{{ product.name }}</h5>
+                                    <h1 class="text-uppercase text-center font-body weight-semibold text-ib-dark">{{ product.name }}</h1>
                                 </div>
 
                                 <!-- Card Footer - Rating, Price & Edit/Delete -->
@@ -113,10 +112,10 @@
                                                     <span class="rating-hex-small rating-hex-{% if product.rating >= 4 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                     <span class="rating-hex-small me-1 rating-hex-{% if product.rating >= 5 %}true{% else %}false{% endif %}">&#x2B22;</span>
                                                 </div>
-                                        </div>
-                                
-                                        <div class="col-6 ps-0 mt-auto d-flex justify-content-end">
 
+                                        </div>
+
+                                        <div class="col-6 ps-0 mt-auto d-flex justify-content-end">
                                             <!-- Product Price -->
                                             <div class=""><p class="card-price weight-semibold ib-lh-1 text-ib-dark">£{{ product.price }}</p></div>
                                         </div>

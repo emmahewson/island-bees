@@ -21,11 +21,11 @@
   {% csrf_token %}
 
   <!-- Form Inputs -->
-  {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
-  {{ form.email2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
-  {{ form.username|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
-  {{ form.password1|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
-  {{ form.password2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+  {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Email"|attr:"autocomplete:email" }}
+  {{ form.email2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Repeat Email"|attr:"autocomplete:email" }}
+  {{ form.username|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Username"|attr:"autocomplete:username" }}
+  {{ form.password1|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Password"|attr:"autocomplete:new-password" }}
+  {{ form.password2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Repeat Password"|attr:"autocomplete:new-password" }}
 
   <div class="button-group mt-4 d-flex justify-content-end">
     <!-- Home Button -->

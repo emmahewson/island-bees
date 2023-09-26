@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
+{% load widget_tweaks %}
 
 {% block extra_title %}- Checkout{% endblock %}
 
@@ -42,9 +43,9 @@
                         <div class="col-2 pe-0">
                             <a href="{% url 'product_detail' item.product.id %}">
                                 {% if item.product.image %}
-                                    <img class="w-100 image-ratio" src="{{ item.product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
+                                    <img class="w-100 image-ratio" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                                 {% else %}
-                                    <img class="w-100 image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                                    <img class="w-100 image-ratio" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ item.product.name }}">
                                 {% endif %}
                             </a>
                         </div>
@@ -77,12 +78,12 @@
                     <fieldset class="mb-2">
                         <legend class="w-100">Details</legend>
 
-                        {{ order_form.full_name }}
+                        {{ order_form.full_name|attr:"aria-label:Full Name" }}
                         {% for error in order_form.full_name.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.email }}
+                        {{ order_form.email|attr:"aria-label:Email" }}
                         {% for error in order_form.email.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
@@ -90,37 +91,37 @@
                     </fieldset>
                     <fieldset class="mb-3">
                         <legend class="w-100">Delivery</legend>
-                        {{ order_form.street_address1 }}
+                        {{ order_form.street_address1|attr:"aria-label:Street Address 1" }}
                         {% for error in order_form.street_address1.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.street_address2 }}
+                        {{ order_form.street_address2|attr:"aria-label:Street Address 2" }}
                         {% for error in order_form.street_address2.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.town_or_city }}
+                        {{ order_form.town_or_city|attr:"aria-label:Town or City" }}
                         {% for error in order_form.town_or_city.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
                         
-                        {{ order_form.county }}
+                        {{ order_form.county|attr:"aria-label:County" }}
                         {% for error in order_form.county.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.postcode }}
+                        {{ order_form.postcode|attr:"aria-label:Postcode" }}
                         {% for error in order_form.postcode.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.country }}
+                        {{ order_form.country|attr:"aria-label:Country" }}
                         {% for error in order_form.country.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
-                        {{ order_form.phone_number }}
+                        {{ order_form.phone_number|attr:"aria-label:Phone Number" }}
                         {% for error in order_form.phone_number.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}

@@ -1,10 +1,10 @@
 <!-- Product Image -->
 {% if item.product.image %}
     <a href="{% url 'product_detail' item.product.id %}">
-        <img class="image-ratio img-fluid" src="{{ item.product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
+        <img class="image-ratio img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
     </a>
 {% else %}
     <a href="{% url 'product_detail' item.product.id %}">
-        <img class="image-ratio img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+        <img class="image-ratio img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ item.product.name }}">
     </a>
 {% endif %}

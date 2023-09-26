@@ -26,23 +26,23 @@ html {
     --light-grey-hov: #cccccc;
     --mid-grey: #959595;
     --dark-grey: #4d4d4d;
-    --hex-grey: #c2c2c2;
-    --hex-grey-hov: #9c9c9c;
+    --hex-grey: #909090;
+    --hex-grey-hov: #6d6d6d;
     --yellow: #FFCD85;
     --yellow-hov: #feb247;
-    --hex-yellow: #feb247;
-    --hex-yellow-hov: #fda529;
+    --hex-yellow: #EB7100;
+    --hex-yellow-hov: #cf5600;
     --yellow-light: #FFE7C6;
     --blue: #0f748a;
     --blue-hov: #005163;
     --blue-light: #BCE1E9;
     --blue-light-hov: #92d7e6;
-    --warning: #B25B76;
+    --warning: rgb(164, 63, 95);
     --warning-hov: #6b102d;
     --warning-light: #e9c2cf;
     --warning-light-hov: #e59bb4;
-    --success: #419759;
-    --success-hov: #00601b;
+    --success: #1e6633;
+    --success-hov: #034116;
     --success-light: #b5dec1;
     --success-light-hov: #8cc29c;
     --message-closed: #e2fbea;
@@ -419,6 +419,11 @@ input.qty-input-sm {
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
+}
+
+.modal-header h2,
+.modal-header h3 {
+    font-size: 23px;
 }
 
 .modal-close-cross {
@@ -918,7 +923,7 @@ label[for="id_price"] {
     align-items: center;
 }
 
-#delivery-banner h5 {
+#delivery-banner p {
     font-size: 18px;
     letter-spacing: 1.8px;
 }
@@ -931,7 +936,7 @@ label[for="id_price"] {
     margin-right: 0 !important;
 }
 
-.upper-footer-section h3 {
+.upper-footer-section h1 {
     font-size: 18px;
 }
 
@@ -1259,7 +1264,7 @@ label[for="id_price"] {
     background-size: contain;
 }
 
-.product-card div.card-body h5 {
+.product-card div.card-body h1 {
     font-size: 20px;
 }
 
@@ -1268,7 +1273,7 @@ label[for="id_price"] {
 }
 
 .rating-hex-small {
-    font-size: 20px;
+    font-size: 24px;
     margin-right: -3px;
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -1651,7 +1656,7 @@ label[for="id_price"] {
         height: 97px;
     }
 
-    #delivery-banner h5 {
+    #delivery-banner p {
         font-size: 14px;
         letter-spacing: 0.9px;
     }

@@ -62,9 +62,10 @@
                 <div class="col-12 col-lg-4 my-auto">
                     <form method="GET" action="{% url 'products' %}">
                         <div class="ib-search-box">
-                            <input type="text" name="q" placeholder="Search our products">
+                            <input type="text" name="q" placeholder="Search our products" aria-label="Search our products">
                             <button type="submit">
                                 <i class="fas fa-search text-ib-light"></i>
+                                <span class="sr-only">Submit your search</span>
                             </button>
                         </div>
                     </form>
@@ -128,7 +129,7 @@
             <!-- Delivery Banner -->
             <div id="delivery-banner" class="row text-center">
                 <div class="col bg-dark-grey text-ib-light">
-                    <h5 class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</h5>
+                    <p class="font-body my-1">FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}!</p>
                 </div>
             </div>
 
@@ -138,9 +139,10 @@
                     <div class="col-12 px-3 py-2">
                         <form method="GET" action="{% url 'products' %}">
                             <div class="ib-search-box">
-                                <input type="text" name="q" placeholder="Search our products">
+                                <input type="text" name="q" placeholder="Search our products" aria-label="Search our products">
                                 <button type="submit">
                                     <i class="fas fa-search text-ib-light"></i>
+                                    <span class="sr-only">Submit your search</span>
                                 </button>
                             </div>
                         </form>
@@ -196,7 +198,7 @@
 
                     <!-- Social Links -->
                     <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
-                        <h3 class="text-yellow weight-semibold mb-2">THE BUZZ</h3>
+                        <h1 class="text-yellow weight-semibold mb-2">THE BUZZ</h1>
                         <a class="d-block text-decoration-none mb-2" href="https://www.facebook.com/" target="_blank" aria-label="Facebook - Opens in a new tab">
                             <i class="fa-brands fa-facebook text-yellow text-center d-inline"></i>
                             <p class="text-ib-light d-inline footer-link-text">Facebook</p>
@@ -217,7 +219,7 @@
         
                     <!-- More Info -->
                     <div class="upper-footer-section col-6 col-sm-3 col-md-2 mb-3">
-                        <h3 class="text-yellow weight-semibold mb-2">MORE INFO</h3>
+                        <h1 class="text-yellow weight-semibold mb-2">MORE INFO</h1>
                         <a class="d-block text-decoration-none" href="{% url 'faqs' %}">
                             <p class="text-ib-light mb-2 footer-link-text">FAQs</p>
                         </a>
@@ -228,7 +230,7 @@
         
                     <!-- About Us -->
                     <div class="upper-footer-section col-12 col-sm-6 col-md-8">
-                        <h3 class="text-yellow weight-semibold mb-2">ABOUT US</h3>
+                        <h1 class="text-yellow weight-semibold mb-2">ABOUT US</h1>
                         <p class="text-ib-light">Island Bees was founded in 2012 by 2 Anglesey beekeepers with more honey and bees than they knew what to do with.  We stock a range of honey & bee-based products as well as beekeeping kit, you can also order bees from us if you live locally. Our award-winning courses run throughout the summer if you're keen to learn more about bees and beekeeping.</p>
                         <p class="text-ib-light"><em>Site is built for educational purposes and all products are entirely fictional. Transactions are made using Stripe's test mode and no money or products will be sent or received.</em></p>
                     </div>

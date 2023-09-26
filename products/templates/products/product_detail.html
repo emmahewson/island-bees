@@ -70,7 +70,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                <h5 class="font-body text-ib-light">{% if protected_product %}REMOVE{% else %}DELETE{% endif %} PRODUCT</h5>
+                                <h2 class="font-body text-ib-light">{% if protected_product %}REMOVE{% else %}DELETE{% endif %} PRODUCT</h2>
                                 <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" class="ib-lh-1">&times;</span>
                                 </button>
@@ -106,6 +106,7 @@
                             <div class="input-group-prepend">
                                 <button class="decrement-qty bg-blue text-ib-light weight-bold btn rounded-0 decrement-qty_{{ product.id }}" data-item_id="{{ product.id }}">
                                     <i class="fas fa-minus"></i>
+                                    <span class="sr-only">Decrease Quantity</span>
                                 </button>
                             </div>
                             <input class="form-control qty_input ib-form-field font-body weight-semibold id_qty_{{ product.id }}" type="number"
@@ -113,11 +114,13 @@
                                 value="1"
                                 min="1"
                                 max="99"
-                                data-item_id="{{ product.id }}">
+                                data-item_id="{{ product.id }}"
+                                aria-label="Quantity">
                             <div class="input-group-append">
                                 <button class="increment-qty bg-blue text-ib-light weight-bold btn rounded-0 increment-qty_{{ product.id }}"
                                     data-item_id="{{ product.id }}">
                                     <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Increase Quantity</span>
                                 </button>
                             </div>
                         </div>
@@ -218,7 +221,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header justify-content-between bg-dark-grey py-3">
-                                        <h5 class="font-body text-ib-light">DELETE REVIEW</h5>
+                                        <h2 class="font-body text-ib-light">DELETE REVIEW</h2>
                                         <button type="button" class="close modal-close-cross text-ib-light" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true" class="ib-lh-1">&times;</span>
                                         </button>

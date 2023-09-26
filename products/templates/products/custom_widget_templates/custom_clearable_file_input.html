@@ -23,7 +23,7 @@
 
     <!-- Select Image Button -->
     <span class="btn-file ib-button ib-button-light-blue text-decoration-none text-dark-grey font-title weight-bold shadow-sm">
-        SELECT IMAGE <input class="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+        SELECT IMAGE <input class="new-image" aria-label="Select Image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
     </span>
     <p class="weight-semibold text-ib-warning mt-3" id="filename"></p>
 </div>

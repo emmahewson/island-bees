@@ -58,7 +58,7 @@
         {% csrf_token %}
 
         <!-- Form Input -->
-        {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey" }}
+        {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Email"|attr:"autocomplete:email" }}
 
         <div class="button-group mt-2">
           <!-- Submit Button -->
