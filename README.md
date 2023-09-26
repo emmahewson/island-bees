@@ -144,13 +144,27 @@ Linting Errors
 - remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py
 
 
-- HTML validation Errors
-Some minor relating to stray tags which I cleaned up
-One thing I did discover was that Django forms renders its form inputs as a table and there were multiple errors about stray `<tr>` tags in the code, which I couldn't access as the form was added by using just `{{form}}`. I got around this based on a [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1548669436265400) I found on the CI Slack Channel suggesting rendering them as `<p>` elements instead using `{{form.as_p}}`.
+#### HTML Validation
 
-- Image selection in the custom_clearable_file_input on the product form was throwing an error as it had 2 ID attributes, one that I had set which was used in the JavaScript to display the filename and another that was added by the `{% include "django/forms/widgets/attrs.html" %}` tag. I solved this problem by changing the JavaScript to get an element using a class name rather than ID.
+I tested every page using the [W3 HTML Validator](https://validator.w3.org/nu/). There were some minor issues such as removing stray tags and generally tidying up. There were a few bigger stumbling points which I have detailed below.
+
+- Django forms renders its form inputs as a table and there were multiple errors about stray `<tr>` tags in the code, which I couldn't access as the form was added by using just `{{form}}`. I got around this based on a [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1548669436265400) I found on the CI Slack Channel suggesting rendering them as `<p>` elements instead using `{{form.as_p}}` and amending the styling as necessary.
+
+- Image selection in the custom_clearable_file_input on the product form was throwing an error as it had 2 ID attributes, one that I had set which was used in the JavaScript to display the filename and another that was added by the `{% include "django/forms/widgets/attrs.html" %}` tag. I solved this problem by changing the JavaScript to get an element using a class name rather than ID and removing the class.
 
 - The shopping bag was throwing an error about duplicate IDs, this came down to the 2 versions of the shopping bag, one for large screens one for mobile, which used the same include template from quantity-form.html, effectively putting 2 versions of the same code on the page. I solved this by changing the ID attribute to a data-id attribute, and adjusting the relevant JavaScript code.
+
+- adding url tag to allauth email templates threw an error when these templates were rendered as they had `{% blocktrans %}` tags in which don't allow tags inside the translated area. I solved this issue by removing the contact us links.
+
+
+#### CSS Validation
+
+I tested the CSS using the [W3 CSS Validator](https://jigsaw.w3.org/css-validator/). There were some issues as detailed below. All have been rectified and the CSS now passes with no errors.
+
+
+#### Lighthouse Testing & Google Dev Tools
+
+- There were some Google console warnings about a lack of autocomplete on the allauth form fields. I have looked in to a way to add autocomplete to a Django form field using Django Widget Tweaks add on but it doesn't seem to work within the allauth forms. However as this was a warning rather than an error I decided to leave it
 
 ### Bugs
 
@@ -222,6 +236,7 @@ This meant additional changes had to be made to the site to ensure smooth runnin
 
 - Broken image links showing when image is missing, rather than the 'no-image' backup. This meant that if there was an error getting the product image the product cards were hard to click on to link to the product detail page as the image is the link element. In order to fix this I added an 'onerror' to the image tags to show the no-image if there was an error displaying the image.
 `onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'"`
+
 
 #### Fixed Bugs
 
