@@ -115,7 +115,7 @@
 
 
 <!-- Welcome & Intro Info div -->
-<div class="container-fluid ib-container bg-blue-light text-dark-grey text-center px-3 px-md-4 py-3 py-md-5">
+<div class="container-fluid ib-container bg-blue-light text-dark-grey text-center px-3 px-md-4 py-4 py-md-5">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1 class="font-title weight-bold section-title mb-2">WELCOME TO ISLAND BEES</h1>
@@ -127,42 +127,38 @@
 </div>
 
 <!-- Shop By Category div w/ category buttons -->
-<div class="container-fluid ib-container bg-ib-light text-dark-grey px-3 px-md-4 py-3 py-md-5">
+<div class="container-fluid ib-container bg-ib-light text-dark-grey px-3 px-md-4 py-4 py-md-5">
     <div class="row text-center">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <h1 class="font-title weight-bold section-title mb-2">SHOP BY CATEGORY</h1>
-        </div>
-    </div>
 
-    <!-- Category Buttons -->
-    <!-- Responsive Hexagon Grid: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 -->
-    <div class="mt-3 pb-5 hex-categories-wrapper">
-        <div class="main">
-            <div class="container-hex-grid">
-                <div class="py-5">
-                    <a class="text-decoration-none text-yellow" href="{% url 'products' %}?category=the_bees">
-                        <i class="fas fa-bug text-center w-100 category-icon-lg mt-1 mb-2"></i>
-                        <p class="text-center">THE BEES</p>
-                    </a>
-                </div>
-                <div class="py-5">
-                    <a class="text-decoration-none text-yellow" href="{% url 'products' %}?category=the_kit">
-                        <i class="fas fa-box text-center w-100 category-icon-lg mt-1 mb-2"></i>
-                        <p class="text-center">THE KIT</p>
-                    </a>
-                </div>
-                <div class="py-5">
-                    <a class="text-decoration-none text-yellow" href="{% url 'products' %}?category=courses">
-                        <i class="fas fa-graduation-cap text-center w-100 category-icon-lg mt-1 mb-2"></i>
-                        <p class="text-center">COURSES</p>
-                    </a>
-                </div>
-                <div class="py-5">
-                    <a class="text-decoration-none text-yellow" href="{% url 'products' %}?category=produce">
-                        <i class="fas fa-jar text-center w-100 category-icon-lg mt-1 mb-2"></i>
-                        <p class="text-center">PRODUCE</p>
-                    </a>
-                </div>
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mb-3">
+            <h1 class="font-title weight-bold section-title">SHOP BY CATEGORY</h1>
+        </div>
+
+        <!-- Category Buttons -->
+        <div class="col-12 d-flex flex-wrap justify-content-center" id="category-links">
+            <div class="m-1">
+                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=the_bees">
+                    <i class="fas fa-bug w-100 mt-3"></i>
+                    <p class="mb-3">THE BEES</p>
+                </a>
+            </div>
+            <div class="m-1">
+                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=the_kit">
+                    <i class="fas fa-box w-100 mt-3"></i>
+                    <p class="mb-3">THE KIT</p>
+                </a>
+            </div>
+            <div class="m-1">
+                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=courses">
+                    <i class="fas fa-graduation-cap w-100 mt-3"></i>
+                    <p class="mb-3">COURSES</p>
+                </a>
+            </div>
+            <div class="m-1">
+                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=produce">
+                    <i class="fas fa-jar w-100 mt-3"></i>
+                    <p class="mb-3">PRODUCE</p>
+                </a>
             </div>
         </div>
     </div>

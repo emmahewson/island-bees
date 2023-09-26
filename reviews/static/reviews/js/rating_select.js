@@ -1,7 +1,7 @@
 // Hex rating functionality for review form
 // Adapted from https://medium.com/geekculture/how-to-build-a-simple-star-rating-system-abcbb5117365 by Simon Ugorji
 
-let hexes = document.getElementsByClassName("rating-hex")
+let hexes = document.getElementsByClassName("rating-hex");
 
 // loop through hexes
 for (let i = 0; i < hexes.length; i++) {
@@ -14,11 +14,11 @@ for (let i = 0; i < hexes.length; i++) {
         document.getElementsByClassName("rating-field")[0].value = selectedHex;
 
         // add selected styling to hexes up to selected
-        let pre = selectedHex
+        let pre = selectedHex;
         while(1 <= pre) {
 
             if(!document.querySelector('.hex-'+pre).classList.contains('rating-hex-selected')) {
-                document.querySelector('.hex-'+pre).classList.add('rating-hex-selected')
+                document.querySelector('.hex-'+pre).classList.add('rating-hex-selected');
             }
             --pre;
         }
@@ -28,10 +28,10 @@ for (let i = 0; i < hexes.length; i++) {
         while(5 >= succ) {
 
             if(document.querySelector('.hex-'+succ).classList.contains('rating-hex-selected')) {
-                document.querySelector('.hex-'+succ).classList.remove('rating-hex-selected')
+                document.querySelector('.hex-'+succ).classList.remove('rating-hex-selected');
             }
             ++succ;
         }
         
-    })
+    });
 }

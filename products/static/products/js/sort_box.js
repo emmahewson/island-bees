@@ -18,4 +18,4 @@ $('#sort-selector').change(function(){
         currentUrl.searchParams.delete("sort");
         currentUrl.searchParams.delete("direction");
     }
-})
+});

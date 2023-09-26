@@ -2,10 +2,10 @@
 // Adapted from Code Institute's Boutique Ado Walkthrough
 
 let countrySelected = $('#id_default_country').val();
-
 if(!countrySelected) {
     $('#id_default_country').css('color', '#959595');
-};
+}
+
 $('#id_default_country').change(function() {
     countrySelected = $(this).val();
     if(!countrySelected) {

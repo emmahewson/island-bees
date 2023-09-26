@@ -865,20 +865,22 @@ label[for="id_price"] {
 }
 
 
-.hex-nav-link:hover {
-    .icon-hex {
-        background-color: var(--dark);
-    }
-    .icon-hex:before {
-        border-right: 9px solid var(--dark);
-    }
-    .icon-hex:after {
-        border-left: 9px solid var(--dark);
-    }
-    .bag-total {
-        color: var(--dark);
-    }
+.hex-nav-link:hover .icon-hex {
+    background-color: var(--dark);
 }
+
+.hex-nav-link:hover .icon-hex:before {
+    border-right: 9px solid var(--dark);
+}
+
+.hex-nav-link:hover .icon-hex:after {
+    border-left: 9px solid var(--dark);
+}
+
+.hex-nav-link:hover .bag-total {
+    color: var(--dark);
+}
+
 
 /* Lower Nav */
 
@@ -901,12 +903,11 @@ label[for="id_price"] {
     -o-transition: all .3s ease-in-out;
 }
 
-.lower-nav-link:hover {
-    .lower-nav-link-text {
+.lower-nav-link:hover .lower-nav-link-text {
         -webkit-text-decoration-color: rgba(20, 12, 0, 0);
         text-decoration-color: rgba(20, 12, 0, 1);
-    }
 }
+
 
 .dropdown-item:hover {
     background: none !important;
@@ -958,11 +959,9 @@ label[for="id_price"] {
     font-size: 14px;
 }
 
-.upper-footer-section a:hover {
-    .footer-link-text {
+.upper-footer-section a:hover .footer-link-text {
         -webkit-text-decoration-color: rgba(255, 254, 251, 1);
         text-decoration-color: rgba(255, 254, 251, 1);
-    }
 }
 
 
@@ -1136,7 +1135,8 @@ label[for="id_price"] {
 
 #hex-hero-button-left,
 #hex-hero-button-middle,
-#hex-hero-button-right {
+#hex-hero-button-right,
+.hex {
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -1172,68 +1172,37 @@ label[for="id_price"] {
     border-left-color: var(--blue-hov);
 }
 
-.hex-categories-wrapper {
-    margin: 0 auto;
-    width: fit-content;
+
+/* Home Page Category Links */
+
+#category-links div {
+    background-color: var(--dark-grey);
+    border-radius: 20%;
+    width: 100px;
+    height: 100px; 
 }
 
-.category-icon-lg {
-    font-size: 36px;
+#category-links i {
+    font-size: 24px; 
 }
 
-.container-hex-grid p {
-    font-size: 16px;
-    margin: 0 auto;
-    padding: 0 10px;
+#category-links {
+    overflow: hidden;
 }
 
-.container-hex-grid a {
-    padding: 70px 0 86px;
+#category-links a {
+    width: 100%;
+    height: 100%;
+    border-radius: 20%;
 }
 
-.container-hex-grid a:hover {
+#category-links a:hover {
     background-color: var(--yellow);
     color: var(--dark-grey);
     transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
-}
-
-/* Responsive Hexagon Grid for homepage categories: Taken from Temani Afif https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7 */
-.main {
-    display:flex;
-    width: 632px;
-    --s: 150px;  /* size  */
-    --m: 4px;    /* margin */
-    --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
-}
-  
-.container-hex-grid {
-    font-size: 0; /*disable white space between inline block element */
-}
-
-.container-hex-grid div {
-    width: var(--s);
-    margin: var(--m);
-    height: calc(var(--s)*1.1547); 
-    display: inline-block;
-    font-size:initial;
-    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    background: var(--dark-grey);
-    margin-bottom: calc(var(--m) - var(--s)*0.2885); 
-}
-
-.container-hex-grid div:nth-child(odd) {
-    background: var(--dark-grey);
-}
-
-.container-hex-grid::before {
-    content: "";
-    width: calc(var(--s)/2 + var(--m));
-    float: left;
-    height: 120%;
-    shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
 }
 
 
@@ -1328,17 +1297,17 @@ label[for="id_price"] {
     -o-transition: all .2s ease-in-out;
 }
 
-.product-rating-link:hover {
-    .rating-div p {
+.product-rating-link:hover .rating-div p {
         -webkit-text-decoration-color: rgba(15, 116, 138, 1) !important;
         text-decoration-color: rgba(15, 116, 138, 1) !important;
-    }
-    .rating-hex-true {
+}
+
+.product-rating-link:hover .rating-hex-true {
         color: var(--hex-yellow-hov);
-    }
-    .rating-hex-false {
+}
+
+.product-rating-link:hover .rating-hex-false {
         color: var(--hex-grey-hov);
-    } 
 }
 
 .card-price {
@@ -1371,17 +1340,18 @@ label[for="id_price"] {
 
 .card-category-label a:hover,
 .product-page-category a:hover {
-
     background-color: var(--blue);
     color: white;
+}
 
-    .category-icon-circle-sm {
+.card-category-label a:hover .category-icon-circle-sm,
+.product-page-category a:hover .category-icon-circle-sm {
         background-color: white;
-    } 
+}
 
-    .category-icon-circle-sm i {
+.card-category-label a:hover .category-icon-circle-sm i,
+.product-page-category a:hover .category-icon-circle-sm i {
         color: var(--blue);
-    }
 }
 
 .category-icon-circle-sm i,
@@ -1650,10 +1620,6 @@ label[for="id_price"] {
         font-size: 20px;
     }
 
-    .main {
-        width: 474px;
-    }
-
     /* Forms */
 
     .ib-form {
@@ -1674,7 +1640,6 @@ label[for="id_price"] {
     .bag-grand-total {
         font-size: 20px;
     }
-
 }
 
 /* XS Screens Only */
@@ -1698,6 +1663,7 @@ label[for="id_price"] {
     }
 
     /* Home Hero Hex Grid */
+    
     :root {
         --hex-size: 0.5;
         --hex-pos-right: -80px;
@@ -1715,25 +1681,6 @@ label[for="id_price"] {
 
     .section-title-lrg {
         font-size: 24px;
-    }
-
-    .main {
-        width: 354px;
-        --s: 110px;  /* size  */
-    }
-
-    .container-hex-grid div.py-5 {
-        padding-top: 1.8rem !important;
-    }
-
-    /* Category Icons */
-
-    .category-icon-lg {
-        font-size: 30px;
-    }
-
-    .category-icon-lg + p {
-        font-size: 14px;
     }
 
     /* Add Review Form */
@@ -1771,34 +1718,10 @@ label[for="id_price"] {
     .message-container {
         top: -27px;
     }
-  
 }
 
 /* Bespoke Smaller Screens Sizes */
 @media (max-width: 434px) {
-    .main {
-        width: 316px;
-        --s: 110px;
-    }
-}
-
-@media (max-width: 351px) {
-
-    .main {
-        width: 250px;
-        --s: 90px;
-    }
-    .container-hex-grid div.py-5 {
-        padding-top: 1.5rem !important;
-    }
-
-    .category-icon-lg {
-        font-size: 24px;
-    }
-
-    .category-icon-lg + p {
-        font-size: 12px;
-    }
 
     /* Product Details Page */
 
