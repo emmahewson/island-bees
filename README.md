@@ -53,6 +53,9 @@ This is the documentation for my e-commerce web application: Island Bees. It has
 
 ## User Experience
 
+The design of the site was a complex process, it is the biggest most expansive project I have made so far and from the beginning I wanted to approach it with the principles of User Experience Design at the heart of the process. This was the best way to break down the design in to key stages of strategy, scope, structure, skeleton & surface and to make sure the project remained on course, on time and the best it could be whilst meeting all its initial aims. I have followed those 5 stages during the design process and the results of that are detailed below.
+
+
 ### Project Aims
 
 The initial aims of the project were to create an e-commerce website for an imaginary company called Island Bees, a North Wales based apiary and merchants, who stock a variety of good relating to bee-keeping as well as running courses for bee keepers. The website's main purpose was to allow customers to browse the company's products and make purchases, tell the customers about Island Bees and information about their online shop and allow user interactions through reviews and messages.
@@ -102,13 +105,25 @@ The initial aims of the project were to create an e-commerce website for an imag
 
 ### Design
 
+#### Flow Diagram
+
+I created a flow diagram for the structure of the site. This was an important step in the user experience design process, working out the structure and skeleton of the site, to provide the best user experience, thinking through the paths of users through the site, what would need to link to where and to make sure the site functioned as expected and everything was easy to find. It was also a vital tool to manage the scope of the project during the design and development stages, a blueprint to keep everything on track.
+
+![Website Colour Scheme](media/docs/design_flow.png)
+
+- - -
+
+#### Database Schema
+
+- - -
+
 #### Wireframes
 
 - - -
 
 #### Colour
 
-![Website Colour Scheme](media/docs/color-pallette.jpg)
+![Website Colour Scheme](media/docs/design_color.jpg)
 
 I used a colour palette of yellows and greys with a blue highlight colour to create contrast. I also added additional colours for all success/edit/info features and delete/warning/error features as well as to help categorise different statuses of messages & reviews on the profile & manage pages. I used a number of shades of the colours to help create contrast, to make the site legible and got give more flexibility in the design. The colours changed slightly during the validation stage as the yellow & grey on the rating hexagons were causing some contrast errors, so I introduced an orange tone to replace the yellow and darkened the grey hexagons to make sure the site was fully accessible.
 
@@ -134,13 +149,6 @@ The website uses 2 typefaces that I felt worked well together and complemented e
 
 - - -
 
-#### Database Schema
-
-- - -
-
-#### Flow Diagram
-
-- - -
 
 #### Design Changes
 
