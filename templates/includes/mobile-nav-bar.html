@@ -50,10 +50,10 @@
                     <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
                     {% endif %}
                     <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Sign Out</a>
                     {% else %}
                     <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item">Sign In</a>
                     {% endif %}
                 </div>
             </li>

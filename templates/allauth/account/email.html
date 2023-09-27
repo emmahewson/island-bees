@@ -75,6 +75,12 @@
     <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
   {% endfor %}
 
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
+        <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+    {% endfor %}
+  {% endif %}
+
   <div class="button-group mt-2">
     <!-- Submit Button -->
     <button

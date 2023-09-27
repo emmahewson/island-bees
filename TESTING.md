@@ -728,6 +728,16 @@ if save_info == "true:
 {% endfor %}
 ```
 
+**Additional Fix:** For the login form I discovered that the error messages weren't showing as the errors were linked to the whole form rather than the individual fields, I found the answer to this problem [here](https://stackoverflow.com/questions/39183479/django-all-auth-form-errors-not-displaying) and added code to display the whole form errors. I added this to the other forms too to make sure that all errors were displayed.
+
+```
+{% if form.errors %}
+    {% for error in form.non_field_errors %}
+        <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+    {% endfor %}
+{% endif %}
+```
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)

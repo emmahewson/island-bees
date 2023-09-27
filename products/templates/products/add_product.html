@@ -86,6 +86,12 @@
                         <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                     {% endfor %}
 
+                    {% if form.errors %}
+                        {% for error in form.non_field_errors %}
+                            <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+                        {% endfor %}
+                    {% endif %}
+
                     <!-- Buttons -->
                     <div class="button-group mt-5 d-flex justify-content-end">
 

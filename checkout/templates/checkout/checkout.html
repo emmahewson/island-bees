@@ -126,6 +126,12 @@
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
 
+                        {% if order_form.errors %}
+                            {% for error in order_form.non_field_errors %}
+                                <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+                            {% endfor %}
+                        {% endif %}
+
                         <div class="text-end d-flex align-items-end justify-content-end">
 							{% if user.is_authenticated %}
 								<label class="form-check-label ib-lh-1" for="id-save-info">Save this delivery information to my profile</label>

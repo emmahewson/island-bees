@@ -62,6 +62,12 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
     {% endfor %}
   </div>
 
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
+      <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+    {% endfor %}
+  {% endif %}
+
   <div class="button-group mt-4 d-flex justify-content-end">
     <!-- Home Button -->
     <a href="{% url 'view_bag' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">

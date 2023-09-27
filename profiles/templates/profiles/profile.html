@@ -44,6 +44,12 @@
                         <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                     {% endfor %}
 
+                    {% if user_form.errors %}
+                        {% for error in user_form.non_field_errors %}
+                            <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+                        {% endfor %}
+                    {% endif %}
+
                     <div class="weight-semibold d-flex justify-content-end">
 
                         <!-- Link to change password -->
@@ -91,6 +97,12 @@
                     {% for error in order_form.default_phone_number.errors  %}
                         <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                     {% endfor %}
+
+                    {% if profile_form.errors %}
+                        {% for error in profile_form.non_field_errors %}
+                            <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+                        {% endfor %}
+                    {% endif %}
 
                     <!-- Update Button -->
                     <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">

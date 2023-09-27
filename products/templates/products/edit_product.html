@@ -82,6 +82,13 @@
                         <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.discontinued.label_tag }}</span>
         
                     </span>
+
+                    {% if form.errors %}
+                        {% for error in form.non_field_errors %}
+                            <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+                        {% endfor %}
+                    {% endif %}
+                    
                     <em>Selecting this will mean the product does not appear on the site. It will only be accessible in the admin panel.</em>
                     {% for error in form.discontinued.errors  %}
                         <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
