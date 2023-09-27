@@ -420,7 +420,33 @@ I ran the site through Google Chrome Dev Tools' Lighthouse to check on its perfo
 <details><summary>Performance Results Table</summary>
 
 
-INSERT TABLE HERE!!
+| **Feature**                             | **Expected Outcome**                          | **Test Performed**                | **Change / Final Result**               | **Pass / Fail** |
+|-----------------------------------------|-----------------------------------------------|-----------------------------------|-----------------------------------------|-----------------|
+| **HOME**                                | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Tinified Hero image • All scores 90+    | PASS            |
+| **PRODUCTS**                            | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **PRODUCT DETAILS**                     | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **ADD PRODUCT**                         | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **EDIT PRODUCT**                        | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **ADD REVIEW**                          | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **EDIT REVIEW**                         | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **BAG**                                 | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **CHECKOUT**                            | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **CHECKOUT SUCCESS**                    | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **PROFILE**                             | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **FAQS**                                | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **ADD FAQ**                             | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **EDIT FAQ**                            | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **CONTACT US**                          | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **MANAGE**                              | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | All scores 90+                          | PASS            |
+| **SIGN IN (login)**                     | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **REGISTER (signup)**                   | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **MANAGE EMAIL (email)**                | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **CHANGE PASSWORD (password/change)**   | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **FORGOT PASSWORD (password/reset)**    | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **SIGN OUT (logout)**                   | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **VERFICATION SENT (confirm-email)**    | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+| **CONFIRM EMAIL (confirm-email/(key))** | All scores 90+ with no errors or major issues | Chrome Lighthouse Report for page | Added meta description • All scores 90+ | PASS            |
+
 
 </details>
 
@@ -428,87 +454,99 @@ INSERT TABLE HERE!!
 <details><summary>Performance Results Images</summary>
 
 <details><summary>HOME</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_1.jpg">
 </details>
 
 <details><summary>PRODUCTS</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_2.jpg">
 </details>
 
 <details><summary>PRODUCT DETAILS</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_3.jpg">
 </details>
 
 <details><summary>ADD PRODUCT</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_4.jpg">
 </details>
 
 <details><summary>EDIT PRODUCT</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_5.jpg">
 </details>
 
 <details><summary>ADD REVIEW</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_6.jpg">
 </details>
 
 <details><summary>EDIT REVIEW</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_7.jpg">
 </details>
 
 <details><summary>BAG</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_8.jpg">
 </details>
 
 <details><summary>CHECKOUT</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_9.jpg">
 </details>
 
 <details><summary>CHECKOUT SUCCESS</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_10.jpg">
 </details>
 
 <details><summary>PROFILE</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_11.jpg">
 </details>
 
 <details><summary>FAQS</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_12.jpg">
 </details>
 
 <details><summary>ADD FAQ</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_13.jpg">
 </details>
 
 <details><summary>EDIT FAQ</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_14.jpg">
 </details>
 
 <details><summary>CONTACT US</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_15.jpg">
 </details>
 
 <details><summary>MANAGE</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<img src="media/docs/docs_val_perf_16.jpg">
 </details>
 
-<details><summary>LOGIN</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<details><summary>SIGN IN (AllAuth Name - login)</summary>
+<img src="media/docs/docs_val_perf_17.jpg">
 </details>
 
-<details><summary>REGISTER</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<details><summary>REGISTER (AllAuth Name - signup)</summary>
+<img src="media/docs/docs_val_perf_18.jpg">
 </details>
 
-<details><summary>MANAGE EMAIL</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<details><summary>MANAGE EMAIL (AllAuth name - email)</summary>
+<img src="media/docs/docs_val_perf_19.jpg">
 </details>
 
-<details><summary>CHANGE PASSWORD</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<details><summary>CHANGE PASSWORD (AllAuth name - password/change)</summary>
+<img src="media/docs/docs_val_perf_20.jpg">
 </details>
 
-<details><summary>FORGOT PASSWORD</summary>
-<img src="media/docs/docs_val_perf_.jpg">
+<details><summary>FORGOT PASSWORD (AllAuth name - password/reset)</summary>
+<img src="media/docs/docs_val_perf_21.jpg">
+</details>
+
+<details><summary>SIGN OUT (AllAuth name - logout)</summary>
+<img src="media/docs/docs_val_perf_22.jpg">
+</details>
+
+<details><summary>VERFICATION SENT (AllAuth name - confirm-email)</summary>
+<img src="media/docs/docs_val_perf_23.jpg">
+</details>
+
+<details><summary>CONFIRM EMAIL (AllAuth name - confirm-email/(key))</summary>
+<img src="media/docs/docs_val_perf_2.jpg">
 </details>
 
 

@@ -17,6 +17,8 @@ class ReviewAdmin(admin.ModelAdmin):
     )
 
     list_editable = ('is_approved',)
+    readonly_fields = (
+        'title', 'content', 'rating', 'user', 'product')
 
 
 admin.site.register(Review, ReviewAdmin)
