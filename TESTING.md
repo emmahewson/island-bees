@@ -716,6 +716,17 @@ if save_info == "true:
 </details>
 
 
+#### Bug 10 - No feedback on AllAuth forms with error
+
+**Issue:** When using the AllAuth forms to login, register, change email etc there was no feedback to the user when the form failed verification e.g. if an email address already existed on another account, and the page would reset with no indication of whether it had worked or not. I had used the AllAuth forms as provided and had simply adapted the styling to make it look like the rest of the site.
+
+**Fix:** I added the error messages for each input as separate template tags with bespoke styling as I had done with the other forms using the following syntax:
+
+```
+{% for error in form.email.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+{% endfor %}
+```
 
 - - -
 
