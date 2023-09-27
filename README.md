@@ -64,7 +64,7 @@ The initial aims of the project were to create an e-commerce website for an imag
 1. As a general user:
   - 1.1: I want to understand the purpose of the site immediately upon entering
   - 1.2: I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive
-  - 1.3: I want to be able to view the site on any device and for it to be fully responsive
+  - 1.3: I want to be able to use all features on the site on any device and for it to be fully responsive
   - 1.4: I want to be able to find answers to common questions
   - 1.5: I want to be able to contact the company with any questions or queries
   - 1.6: I want to be able to find the company on social media to find out more
@@ -84,19 +84,19 @@ The initial aims of the project were to create an e-commerce website for an imag
 
 3. As a user with an account:
   - 3.1: I want my account to be secure & easy to set up
-  - 3.2: I want to be able to see my order history
+  - 3.2: I want to see my order history
   - 3.3: I want to be able to update & save my personal information
   - 3.4: I want to leave reviews of products I have purchased for the benefit of other customers
   - 3.5: I want to be able to edit my reviews
-  - 3.6: I don't want admins or other customers to be able to edit my reviews
+  - 3.6: I don't want admins or other customers to be able to change my reviews
 
 4. As an admin of the site:
   - 4.1: I want to be able to add & edit products
   - 4.2: I want to be able to remove products from sale
-  - 4.3: I want to see customer messages, reply easily and manage whether they need further action
+  - 4.3: I want to view & filter customer messages and manage whether they need further action
   - 4.4: I want to approve customer reviews before they go live & delete any with inappropriate content only
   - 4.5: I want to be able to update the site FAQs
-  - 4.6: 
+  - 4.6: I want all the admin controls to be quick and easy to find and use
 
 - - -
 
