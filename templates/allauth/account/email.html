@@ -3,7 +3,11 @@
 {% load i18n %}
 {% load widget_tweaks %}
 
-{% block head_title %}{% trans "Account" %}{% endblock %}
+{% block extra_title %}{% trans "Account" %}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Manage the email addresses on your Island Bees account.">
+{% endblock %}
 
 {% block inner_content %}
 

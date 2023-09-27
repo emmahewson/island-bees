@@ -2,7 +2,11 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+{% block extra_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Verify the email address for your Island Bees account.">
+{% endblock %}
 
 {% block inner_content %}
     <h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Verify Your E-mail Address" %}</h1>

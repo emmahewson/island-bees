@@ -3,7 +3,11 @@
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% block extra_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Confirm your email address to validate your Island Bees Account.">
+{% endblock %}
 
 
 {% block inner_content %}

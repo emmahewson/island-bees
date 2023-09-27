@@ -3,7 +3,11 @@
 {% load i18n %}
 {% load widget_tweaks %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block extra_title %}{% trans "Signup" %}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Register for an Island Bees account.">
+{% endblock %}
 
 {% block inner_content %}
 

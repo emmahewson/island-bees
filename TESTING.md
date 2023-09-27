@@ -345,9 +345,6 @@ I used the inbuilt linting in GitPod (Flake8) to check my code and keep it as cl
 - remaining linting errors are in files that are automatically created by Django such as migration files & vscode/arctictern.py
 
 
-#### Lighthouse Testing & Google Dev Tools
-
-
 ---
 
 
@@ -420,9 +417,114 @@ Warning about links to the same place next to each other. All were checked to ma
 
 I ran the site through Google Chrome Dev Tools' Lighthouse to check on its performance scores. All pages passed the validation tests. For full results see the dropdowns below.
 
+<details><summary>Performance Results Table</summary>
 
-<details><summary>Lighthouse Results Table</summary>
 
+INSERT TABLE HERE!!
+
+</details>
+
+
+<details><summary>Performance Results Images</summary>
+
+<details><summary>HOME</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>PRODUCTS</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>PRODUCT DETAILS</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>ADD PRODUCT</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>EDIT PRODUCT</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>ADD REVIEW</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>EDIT REVIEW</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>BAG</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>CHECKOUT</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>CHECKOUT SUCCESS</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>PROFILE</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>FAQS</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>ADD FAQ</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>EDIT FAQ</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>CONTACT US</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>MANAGE</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>LOGIN</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>REGISTER</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>MANAGE EMAIL</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>CHANGE PASSWORD</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+<details><summary>FORGOT PASSWORD</summary>
+<img src="media/docs/docs_val_perf_.jpg">
+</details>
+
+
+
+
+
+</details>
+
+
+#### Issues resolved during performance validation:
+
+- Console Error about one of the Favicon icons being missing returning a 404, the site appeared to be looking in the wrong location for the file. I fixed this by explicitly naming all the icons in the `<head>` element and removing the web manifest.
+
+<details><summary>Screenshot</summary>
+
+<img src="media/docs/docs_val_perf_issue_1.jpg">
 
 </details>
 

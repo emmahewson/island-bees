@@ -2,7 +2,12 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+{% block extra_title %}{% trans "Account Inactive" %}{% endblock %}
+
+
+{% block extra_meta %}
+    <meta name="description" content="Island Bees Account Inactive.">
+{% endblock %}
 
 {% block inner_content %}
 <h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Account Inactive" %}</h1>

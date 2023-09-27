@@ -2,7 +2,11 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block extra_title %}{% trans "Sign Up Closed" %}{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="The hive is full!">
+{% endblock %}
 
 {% block inner_content %}
 <h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign Up Closed" %}</h1>
