@@ -1,4 +1,4 @@
-# Island Bees - E-Commerce Site
+# Island Bees - E-Commerce Site - Testing
 
 ![Mock-up]()
 
@@ -149,6 +149,16 @@ I solved this by refactoring all of them to the below syntax:
 ```
 
 - This code uses some advanced mathematical and CSS skills. I have been unable to come up with a way of avoiding this error. It works perfectly in the browser and creates an elegant responsive hexagon grid but due to the need to resolve all errors I have removed this hexagon grid section and replaced it with a simpler layout. I am including a video of the hexagon grid in action below as I was disappointed to have to remove it.
+
+
+#### CSS Warnings
+
+There were some warnings thrown up by the CSS Validator.
+
+- Vendor extension warnings: refer to browser specific CSS classes such as `-webkit-transition`. These classes are best practice to make sure that certain CSS elements perform correctly in different browsers and so I have disregarded these warnings.
+- Imported style sheets: This refers to Google's font import, again this is a standard way to import fonts directly in to the CSS.
+- CSS Variables are not checked: This refers to the :root directory of colours and is just a warning that it cannot check these. They all performed as expected during testing and so I'm happy with this CSS code.
+- Border and Background Colour are the same: whilst this is a legitimate warning about what could be an oversight in the code, in this case it was intentional as I was using it to restyle some Bootstrap elements, which often requires some fiddly CSS hacks, in this case I needed to specify the border colour rather than get rid of the border to make the button look the way I wanted.
 
 ##################################### INSERT VIDEO OF GRID
 

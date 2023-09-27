@@ -216,8 +216,10 @@ def toggle_review(request, review_id):
 
         messages.success(
             request,
-            "Review approved successfully." +
-            "The review will now appear on the site!"
+            "Review approved successfully. " +
+            "The review will now appear on the product page. " +
+            "You can update the approval status " +
+            "of the review in the admin area if required."
         )
         return redirect(reverse('manage'))
 

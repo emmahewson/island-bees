@@ -23,7 +23,7 @@
         <div class="row gx-5 font-body">
 
             <!-- Profile Info Form -->
-            <div class="col-12 col-lg-6 mt-5 mt-lg-0 font-body">
+            <div class="col-12 col-lg-6 mt-2 mt-lg-0 mb-4 font-body">
 
                 <!-- Section Title -->
                 <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p>
@@ -53,7 +53,7 @@
                          <a class="weight-semibold text-blue text-decoration-none text-link-blue float-end d-inline" href="{% url 'account_change_password' %}">Change Password</a>
                      </div>
 
-                    <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
+                    <p class="mt-0 mb-3 mt-4 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
 
                     <!-- {{ profile_form.as_p }} -->
 
@@ -155,7 +155,7 @@
     </div>
 
     <!-- User Reviews -->
-    <div class="container-fluid ib-container bg-light-grey text-ib-dark py-5 px-md-4" id="review-div">
+    <div class="container-fluid ib-container bg-yellow-light text-ib-dark pt-5 pb-4" id="review-div">
         <div class="row text-center px-3 px-sm-5">
             <div class="col-12">
                 <h2 class="font-title weight-bold section-title mb-2 text-uppercase text-break">MY REVIEWS</h2>
@@ -164,17 +164,30 @@
                 <p class="font-body">These are all the reviews you've left for our products (thank you!) View, edit & delete them below.</p>
             </div>
         </div>
+    </div>
     
+    <div class="container-fluid ib-container bg-light-grey text-ib-dark" id="profile-review-div">
         <!-- Review Container -->
-        <div class="row mt-3 px-3 review-container">
+        <div class="row pt-4 pt-md-5 pb-4 profile-review-container px-3 px-md-4 px-lg-5 ">
             <div class="col">
                 {% if reviews|length > 0 %}
                     {% for review in reviews %}
 
                         <!-- Review -->
-                        <div class="row mb-3 text-ib-dark">
 
-                            <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0 bg-ib-white">
+                        {% if not review.is_approved %}
+                        <!-- Unapproved Flag -->
+                        <div class="row approval-container">
+                            <div class="bg-ib-warning-light py-1 px-3">
+                                <p class="font-body weight-semibold text-ib-dark">APPROVAL PENDING</p>
+
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="row mb-3 text-ib-dark bg-ib-white shadow {% if not review.is_approved %}unapproved{% endif %}">
+
+                            <div class="col-3 col-md-2 d-none d-sm-flex py-3 ps-3 pe-0">
                                 <!-- Product Image -->
                                 <a href="{% url 'product_detail' review.product.id %}">
                                     {% if review.product.image %}
@@ -185,7 +198,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-12 col-sm-9 col-md-10 bg-ib-white p-3">
+                            <div class="col-12 col-sm-9 col-md-10 p-3">
 
                                 <!-- Product Name -->
                                 <div class="row font-body review-header">
@@ -266,6 +279,9 @@
                 {% endif %}
             </div>
         </div>
+    </div>
+    <div class="container-fluid bg-dark-grey footer-buffer">
+
     </div>
 {% endblock %}
 
