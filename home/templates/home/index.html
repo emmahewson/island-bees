@@ -127,39 +127,42 @@
 </div>
 
 <!-- Shop By Category div w/ category buttons -->
-<div class="container-fluid ib-container bg-ib-light text-dark-grey px-3 px-md-4 py-4 py-md-5">
+<div class="container-fluid ib-container bg-ib-light px-3 px-md-4 py-4 py-md-5">
     <div class="row text-center">
 
         <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mb-3">
-            <h1 class="font-title weight-bold section-title">SHOP BY CATEGORY</h1>
+            <h1 class="font-title weight-bold section-title text-dark-grey">SHOP BY CATEGORY</h1>
         </div>
+
+        
+        
 
         <!-- Category Buttons -->
         <div class="col-12 d-flex flex-wrap justify-content-center" id="category-links">
-            <div class="m-1">
-                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=the_bees">
+            <a class="text-decoration-none m-1" href="{% url 'products' %}?category=the_bees">
+                <div class="bg-dark-grey category-button text-yellow d-flex flex-wrap align-items-center justify-content-center">
                     <i class="fas fa-bug w-100 mt-3"></i>
                     <p class="mb-3">THE BEES</p>
-                </a>
-            </div>
-            <div class="m-1">
-                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=the_kit">
+                </div>
+            </a>
+            <a class="text-decoration-none m-1" href="{% url 'products' %}?category=the_bees">
+                <div class="bg-dark-grey category-button text-yellow d-flex flex-wrap align-items-center justify-content-center">
                     <i class="fas fa-box w-100 mt-3"></i>
                     <p class="mb-3">THE KIT</p>
-                </a>
-            </div>
-            <div class="m-1">
-                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=courses">
+                </div>
+            </a>
+            <a class="text-decoration-none m-1" href="{% url 'products' %}?category=the_bees">
+                <div class="bg-dark-grey category-button text-yellow d-flex flex-wrap align-items-center justify-content-center">
                     <i class="fas fa-graduation-cap w-100 mt-3"></i>
                     <p class="mb-3">COURSES</p>
-                </a>
-            </div>
-            <div class="m-1">
-                <a class="text-decoration-none text-yellow d-flex flex-wrap align-items-center justify-content-center" href="{% url 'products' %}?category=produce">
+                </div>
+            </a>
+            <a class="text-decoration-none m-1" href="{% url 'products' %}?category=the_bees">
+                <div class="bg-dark-grey category-button text-yellow d-flex flex-wrap align-items-center justify-content-center">
                     <i class="fas fa-jar w-100 mt-3"></i>
                     <p class="mb-3">PRODUCE</p>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>
