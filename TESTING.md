@@ -61,7 +61,7 @@ I found it to be a challenging but useful process, a number of times during deve
 
 ### HTML Validation
 
-I ran the code for all the pages through the [W3C HTML Validator](https://validator.w3.org/nu/). All code passed the validation tests. Results below.
+I ran the code for all the pages through the [W3C HTML Validator](https://validator.w3.org/nu/) using the textarea input by generating the source code from the deployed site (right click and select 'View Page Source' in Chrome) and pasting it in to allow me to check all pages whether requiring log in or not. All code passed the validation tests. Results below.
 
 
 <details><summary>HTML Validation Results Table</summary>
@@ -94,6 +94,8 @@ I ran the code for all the pages through the [W3C HTML Validator](https://valida
 </details>
 
 
+
+
 #### Issues resolved during validation:
 
 - Django forms renders its form inputs as a table and there were multiple errors about stray `<tr>` tags in the code, which I couldn't access as the form was added by using just `{{form}}`. I got around this based on a [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1548669436265400) I found on the CI Slack Channel suggesting rendering them as `<p>` elements instead using `{{form.as_p}}` and amending the styling as necessary.
@@ -104,11 +106,21 @@ I ran the code for all the pages through the [W3C HTML Validator](https://valida
 
 - adding url tag to allauth email templates threw an error when these templates were rendered as they had `{% blocktrans %}` tags in which don't allow tags inside the translated area. I solved this issue by removing the contact us links.
 
+
+<details><summary>Validation Final Results Screenshot</summary>
+
+<img src="media/docs/docs_val_html.jpg">
+
+</details>
+
+*I have only included 1 screenshot of the results as an example because they are identical for every page and give no indication of which page is being checked.*
+
 ---
 
 ### CSS Validation
 
 I ran the CSS code through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input). All code passed the validation tests. Results below.
+
 
 <details><summary>CSS Validation Results Table</summary>
 
@@ -162,6 +174,13 @@ There were some warnings thrown up by the CSS Validator.
 
 ##################################### INSERT VIDEO OF GRID
 
+
+<details><summary>Validation Final Results Screenshot</summary>
+
+<img src="media/docs/docs_val_css.jpg">
+
+</details>
+
 ---
 
 ### JavaScript Linting
@@ -184,6 +203,59 @@ I ran the JavaScript code through [JSHint](https://jshint.com/). For full result
 | **rating_select.js** | Page passes validation with no errors | Ran JavaScript through https://jshint.com/ | Missing semi-colons. All fixed. No errors remaining | PASS |
 | **scroll_top.js** | Page passes validation with no errors | Ran JavaScript through https://jshint.com/ | Missing semi-colons. All fixed. No errors remaining | PASS |
 | **Script tag - bag.html** | Page passes validation with no errors | Ran JavaScript through https://jshint.com/ | Missing semi-colons. All fixed. No errors remaining | PASS |
+
+
+</details>
+
+<details><summary>JavaScript Results Images</summary>
+
+<details><summary>quantity_input.js (Bag)</summary>
+<img src="media/docs/docs_val_js_1.jpg">
+</details>
+
+<details><summary>stripe_element.js</summary>
+<img src="media/docs/docs_val_js_2.jpg">
+</details>
+
+<details><summary>message_toggle.js</summary>
+<img src="media/docs/docs_val_js_3.jpg">
+</details>
+
+<details><summary>review_toggle.js</summary>
+<img src="media/docs/docs_val_js_4.jpg">
+</details>
+
+<details><summary>scroll_message.js</summary>
+<img src="media/docs/docs_val_js_5.jpg">
+</details>
+
+<details><summary>form-image.js</summary>
+<img src="media/docs/docs_val_js_6.jpg">
+</details>
+
+<details><summary>quantity_input.js (Products)</summary>
+<img src="media/docs/docs_val_js_7.jpg">
+</details>
+
+<details><summary>sort_box.js</summary>
+<img src="media/docs/docs_val_js_8.jpg">
+</details>
+
+<details><summary>countryfield.js</summary>
+<img src="media/docs/docs_val_js_9.jpg">
+</details>
+
+<details><summary>rating_select.js</summary>
+<img src="media/docs/docs_val_js_10.jpg">
+</details>
+
+<details><summary>scroll_top.js</summary>
+<img src="media/docs/docs_val_js_11.jpg">
+</details>
+
+<details><summary>Script Tag in bag.html</summary>
+<img src="media/docs/docs_val_js_12.jpg">
+</details>
 
 
 </details>
@@ -332,6 +404,13 @@ One of the hover effects I have used on the nav bar involves an underline on any
 
 Warning about links to the same place next to each other. All were checked to make sure that the site layout and links made sense in terms of user experience and to make sure that they couldn’t cause any confusion.
 
+<details><summary>Accessibility Sample Screenshot</summary>
+
+<img src="media/docs/docs_val_acc.jpg">
+
+</details>
+
+*As the alerts are repeated across many of the pages (they are generally on elements in the nav bar) I have just included a single screenshot as an example.*
 
 
 - - -
