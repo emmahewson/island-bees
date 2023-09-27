@@ -34,7 +34,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% else %}
 <!-- Intro text & link to signup -->
 <p class="text-ib-dark">{% blocktrans %}Don't have an account yet?
-<a href="{{ signup_url }}" class="weight-semibold text-blue text-decoration-none text-link-blue">Sign up here.</a>{% endblocktrans %}</p>
+<a href="{{ signup_url }}" class="weight-semibold text-blue text-decoration-none text-link-blue">Register here.</a>{% endblocktrans %}</p>
 {% endif %}
 <hr class="mt-4 mb-5 mb-sm-4">
 
@@ -45,11 +45,21 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
   <!-- Form Inputs -->
   {{ form.login|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Email or Username"|attr:"autocomplete:email" }}
+  {% for error in form.login.errors  %}
+    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+  {% endfor %}
+
   {{ form.password|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Password"|attr:"autocomplete:current-password" }}
+  {% for error in form.password.errors  %}
+  <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+  {% endfor %}
 
   <div class="d-flex align-items-end justify-content-end mt-2">
     <label class="form-check-label ib-lh-1" for="id_remember">Remember me:</label>
     {{ form.remember|add_class:"form-check-input auth-form-check-input m-0 ms-2" }}
+    {% for error in form.remember.errors  %}
+      <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+    {% endfor %}
   </div>
 
   <div class="button-group mt-4 d-flex justify-content-end">

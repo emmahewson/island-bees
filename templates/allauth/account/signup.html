@@ -12,7 +12,7 @@
 {% block inner_content %}
 
 <!-- Page Title -->
-<h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Sign Up" %}</h1>
+<h1 class="font-title weight-bold section-title-lrg text-uppercase mb-2">{% trans "Register" %}</h1>
 
 <!-- Intro text & link to sign in -->
 <p class="text-ib-dark">{% blocktrans %}Already have an account? Then please 
@@ -26,10 +26,29 @@
 
   <!-- Form Inputs -->
   {{ form.email|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Email"|attr:"autocomplete:email"|attr:"autofocus" }}
+  {% for error in form.email.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+  {% endfor %}
+  
   {{ form.email2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Repeat Email"|attr:"autocomplete:email" }}
+  {% for error in form.email2.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+  {% endfor %}
+  
   {{ form.username|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Username"|attr:"autocomplete:username"|remove_attr:"autofocus" }}
+  {% for error in form.username.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+  {% endfor %}
+  
   {{ form.password1|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Password"|attr:"autocomplete:new-password" }}
+  {% for error in form.password1.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+  {% endfor %}
+  
   {{ form.password2|add_class:"ib-form-field mb-3 px-2 py-2 font-body text-dark-grey"|attr:"aria-label:Repeat Password"|attr:"autocomplete:new-password" }}
+  {% for error in form.password2.errors  %}
+    <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
+  {% endfor %}
 
   <div class="button-group mt-4 d-flex justify-content-end">
     <!-- Home Button -->
