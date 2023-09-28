@@ -312,7 +312,7 @@ For more details and information go to GitHub's useful guide to [cloning reposit
 
 ### Deploying Your App
 
-Deployment allows you to transfer your project from your local environment or IDE to hosting it publicly for other people to view and enjoy. There are certain steps you will need to take to do this and they are detailed below. These instructions are based on using an IDE like GitPod and having followed the instructions for Forking the repository above, especially installing the requirements. For users wishing to deploy from a local clone different steps may be required which will depend on your local development environment.
+Deployment allows you to transfer your project from your local environment or IDE to hosting it publicly for other people to view and enjoy. There are certain steps you will need to take to do this and they are detailed below. **These instructions are based on using an IDE like GitPod and having followed the instructions for Forking the repository above, especially installing the requirements.** For users wishing to deploy from a local clone different steps may be required which will depend on your local development environment.
 
 #### Setting up a Database
 
@@ -518,6 +518,18 @@ MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 34. Finally to add your media files (images & video) simply go back to AWS, create a new folder called 'media' in the same place as the new 'static' folder, click on the folder and drag and drop all your media files in to the browser window.
 35. Click next and under manage public permissions select 'grant public access to these objects' and click upload
 35. Your site should now contain all your images, videos, styling and JavaScript! Well done!
+
+
+#### Setting up Stripe Payments on your deployed site
+
+1. Log in to Stripe, click on the developers tab and API keys copy the API key and set them in Heroku as config variables in the following:
+
+- STRIPE_PUBLIC_KEY: Stripe publishable key goes here
+- STRIPE_SECRET_KEY: Stripe secret key goes here
+
+2. Back in Stripe set up a new webhook for your deployed site by clicking on webhooks, click on 'add endpoint' and paste in your deployed site's URL setting it to listen for all events.
+3. Click on your newly set up webhook and click on 'Signing Secret' at the top to reveal the secret value. Copy it and set it as a new config variable in Heroku:
+- STRIPE_WH_SECRET: Signing secret from new webhook.
 
 
 - - -
