@@ -12,18 +12,13 @@ This is the documentation for my e-commerce web application: Island Bees. It has
 - - -
 ## Table of Contents
 
-1. [User Experience](#)
-  * [Project Aims](#)
-  * [User Stories](#)
-  * [Design](#)
-    * [Wireframes](#)
-    * [Colour](#)
-    * [Typography](#)
-    * [Images & Graphics](#)
-    * [Database Schema](#)
-    * [Flow Diagram](#)
-    * [Design Changes](#)
-2. [Features](#)
+1. [User Experience](#planning-design--user-experience)
+  * [Strategy](#strategy)
+  * [Scope](#scope)
+  * [Structure](#structure)
+  * [Skeleton](#skeleton)
+  * [Surface](#surface)
+2. [Features](#features)
   * [Site Features](#)
   * [Future Features](#)
 3. [Technologies Used](#technologies-used)
@@ -32,37 +27,45 @@ This is the documentation for my e-commerce web application: Island Bees. It has
   * [Backend Modules / Packages & Frameworks](#backend-modules--packages--frameworks)
   * [Other Tools](#other-tools)
   * [External Sites / Resources / Software](#external-sites--resources--software)
-4. [Testing](#)
-  * [Bugs](#)
-    * [Fixed Bugs](#)
-    * [Remaining Bugs](#)
+4. [Testing & Bugs](#testing--bugs)
 5. [Deployment](#deployment)
-  * [Forking the GitHub Repository]()
-  * [Making a Local Clone]()
-  * [Deploying with Heroku]()
-6. [Credits]()
-  * [Online resources]()
-  * [Code]()
-  * [Media]()
-  * [Acknowledgments]()
+  * [Forking the GitHub Repository](#forking-the-github-repository)
+  * [Making a Local Clone](#making-a-local-clone)
+  * [Deploying Your App](#deploying-your-app)
+6. [Credits](#credits)
+  * [Code](#code)
+  * [Content](#content)
+  * [Acknowledgments](#acknowledgments)
 
 
 
 
 - - -
 
-## User Experience
+## Planning, Design & User Experience
 
-The design of the site was a complex process, it is the biggest most expansive project I have made so far and from the beginning I wanted to approach it with the principles of User Experience Design at the heart of the process. This was the best way to break down the design in to key stages of strategy, scope, structure, skeleton & surface and to make sure the project remained on course, on time and the best it could be whilst meeting all its initial aims. I have followed those 5 stages during the design process and the results of that are detailed below.
+I approached the planning & design of this project using the principles of User Experience and the 5 stages of strategy, scope, structure, skeleton & surface. This is a large, complex project and I wanted to make sure it remained on course, on time and the best it could be whilst meeting all its initial aims. 
 
+### Strategy
 
-### Project Aims
+#### Project Aims
 
 The initial aims of the project were to create an e-commerce website for an imaginary company called Island Bees, a North Wales based apiary and merchants, who stock a variety of good relating to bee-keeping as well as running courses for bee keepers. The website's main purpose was to allow customers to browse the company's products and make purchases, tell the customers about Island Bees and information about their online shop and allow user interactions through reviews and messages.
 
-- - -
+#### Research
 
-###  User Stories
+I did some research in to other similar websites as well as in the wider e-commerce world. I wanted to make sure that Island Bee's website conformed to the expectations that users have for an e-commerce site, this is extra important because it involves financial transactions and I wanted to create a feel of trustworthiness and professionalism in order to encourage users to make purchases. I also gathered design ideas for the look of this site including colour, layout and typography.
+
+Websites visited for research:
+- [BS Honey Bees](https://www.bshoneybees.co.uk/)
+- [Anglesey Bees](https://www.angleseybees.co.uk/)
+- [Local Honey Man](https://localhoneyman.co.uk/)
+- [Bee Equipment](https://bee-equipment.co.uk/)
+
+
+####  User Stories
+
+Based on my research and the project aims I created a set of user stories that would inform all the choices made in designing and developing the site.
 
 1. As a general user:
   - 1.1: I want to understand the purpose of the site immediately upon entering
@@ -103,29 +106,144 @@ The initial aims of the project were to create an e-commerce website for an imag
 
 - - -
 
-### Design
+### Scope
+
+I then created a list of all the features I would like to add to the site in order to meet all these user stories, as well as some extras that I'd like to include should time allow. I rated these in terms of difficulty and importance and this would help inform the decisions throughout the next stages of planning.
+
+| Feature                                                                 | Difficulty | Importance |
+|-------------------------------------------------------------------------|------------|------------|
+| Responsive Design                                                       | 1          | 5          |
+| Navigation - all page links                                             | 1          | 5          |
+| Navigation - search facility                                            | 3          | 3          |
+| Navigation - Shopping bag & current total                               | 3          | 4          |
+| Footer - company info                                                   | 1          | 3          |
+| Footer - social links                                                   | 1          | 3          |
+| Home Page - branding & explanatory text                                 | 1          | 4          |
+| Home Page - Featured Products                                           | 2          | 2          |
+| Products - Product cards with summary info                              | 2          | 5          |
+| Products - Sorting/searching/filtering                                  | 5          | 4          |
+| Products - Detail Page with more info                                   | 2          | 5          |
+| Products - Detail Page add to bag & quantity select                     | 4          | 5          |
+| Products - CRUD functionality for admins                                | 3          | 5          |
+| User Reviews of products                                                | 3          | 3          |
+| User Reviews - update product average ratings                           | 5          | 3          |
+| User Reviews - CRUD functionality (user only)                           | 3          | 3          |
+| User Reviews - Admin approval system                                    | 4          | 2          |
+| Bag - Users can store items in a bag for purchase                       | 4          | 5          |
+| Checkout - Page with bag summary and delivery info                      | 4          | 5          |
+| Checkout - Secure payment system                                        | 5          | 5          |
+| Checkout - Page to show order summary on successful checkout            | 3          | 3          |
+| User accounts - all standard login/out/register functionality           | 4          | 5          |
+| User accounts - secure & reliable                                       | 4          | 5          |
+| Profile - User profile page showing order history & reviews             | 3          | 4          |
+| Profile - Page to show historical order information                     | 2          | 3          |
+| Profile - Users can save & update their personal info for future orders | 4          | 4          |
+| Frequently Asked Questions Page - company info                          | 1          | 4          |
+| FAQs - CRUD functionality for admins                                    | 3          | 2          |
+| Contact Us Page                                                         | 1          | 4          |
+| Contact Us - Creates message in DB                                      | 3          | 2          |
+| Contact Us - Admins can toggle status open/closed                       | 4          | 2          |
+| Blog - Company insights & stories                                       | 3          | 1          |
+| Site Management - useful links to admin jobs                            | 2          | 4          |
+| Site Management - Customer Messages                                     | 3          | 2          |
+| Site Management - Reviews for approval                                  | 3          | 2          |
+
+
+---
+
+### Structure
 
 #### Flow Diagram
 
-I created a flow diagram for the structure of the site. This was an important step in the user experience design process, working out the structure and skeleton of the site, to provide the best user experience, thinking through the paths of users through the site, what would need to link to where and to make sure the site functioned as expected and everything was easy to find. It was also a vital tool to manage the scope of the project during the design and development stages, a blueprint to keep everything on track.
+I created a flow diagram using [Lucidchart](https://www.lucidchart.com/pages/) to map out the structure of the site. This was an important step in the user experience design process, working out the structure and skeleton of the site, to provide the best user experience whilst keeping the user stories at the heart of the decision-making process. It allowed me to think through the paths of users through the site and what would need to link to where based on the different user stories and. It would also allowe me to make sure the site functioned as expected and everything was easy to find. It was also a vital tool to manage the scope of the project during the design and development stages, a blueprint to keep everything on track.
 
-![Website Colour Scheme](media/docs/design_flow.png)
+![Website Flow Diagram](media/docs/design_flow.png)
+
 
 - - -
+
+### Skeleton
 
 #### Database Schema
 
-- - -
+An important stage in the planning was building a database schema, planning my data clearly, from the beginning, to make the development process as easy as possible. This database schema was informed by my work in the previous planes, the user stories, my scope chart and my flow diagram. I used [DrawSQL](https://drawsql.app/) to create a visual representation of the database, which I used throughout the development process to keep track of what my database looked like, updating it and amending it as the project grew and adapted as I learned. The original schema I created also included a blog, which I ended up rejecting from the final site due to time constraints as I wanted to focus my efforts on doing the project well rather than making it bigger and bigger. I have left it in the schema to demonstrate the work I did towards this and how it would connect to the rest of the database should I add it in in the future.
+
+![Island Bees Database Schema](media/docs/design_schema.png)
+
+Whilst traditionally wireframes are included in the Skeleton section I have included mine in the Surface section below. I have developed a way of working where I flesh out the full design of the site in [Figma](https://www.figma.com/), including making all colour, typography and layout decisions at this stage, to make sure that during development I am free to focus on the nuts and bolts of how to build the site, rather than getting distracted by design decisions at that stage. It has been successful for me in the past and so I have chosen to develop the site in this way again. 
+
+---
+
+### Surface
 
 #### Wireframes
 
+At this point I was able to bring together all the work I had done in creating the flow diagram (which included a lot of page content and structure decisions), my user stories, my scope chart and my database schema to create full visual designs for my site. This was more than just making colour and font choices however. Every design decision creates questions about what goes where, what colour should it be, does it even need to be there or would it be better somewhere else. I was able to ask informed questions at each stage to make sure the design reflected the user stories and site aims. E.g. What does a user need to see when they arrive on a page? What is the most important thing on a page and how can the design emphasise that? etc.
+
+I created the designs below, making sure that all pages would work just as well on mobile and tablet as on desktop devices.
+
+**View the Wireframes/Site Designs in the Dropdowns Below**
+
+<details><summary>HOME</summary>
+<img src="media/docs/design_wireframes_home.png">
+</details>
+<details><summary>PRODUCTS</summary>
+<img src="media/docs/design_wireframes_products.png">
+*All Products*
+<img src="media/docs/design_wireframes_products_filtered.png">
+*Filtered Products*
+</details>
+<details><summary>PRODUCT DETAILS</summary>
+<img src="media/docs/design_wireframes_product_details.png">
+</details>
+<details><summary>ADD/EDIT PRODUCT</summary>
+<img src="media/docs/design_wireframes_product_add.png">
+</details>
+<details><summary>ADD/EDIT REVIEW</summary>
+<img src="media/docs/design_wireframes_review_add.png">
+</details>
+<details><summary>BAG</summary>
+<img src="media/docs/design_wireframes_bag.png">
+</details>
+<details><summary>CHECKOUT</summary>
+<img src="media/docs/design_wireframes_checkout.png">
+</details>
+<details><summary>CHECKOUT SUCCESS</summary>
+<img src="media/docs/design_wireframes_checkout_success.png">
+</details>
+<details><summary>PROFILE</summary>
+<img src="media/docs/design_wireframes_profile.png">
+</details>
+<details><summary>ORDER DETAILS</summary>
+<img src="media/docs/design_wireframes_profile_order_history.png">
+</details>
+<details><summary>FAQS</summary>
+<img src="media/docs/design_wireframes_faqs.png">
+</details>
+<details><summary>ADD/EDIT FAQ</summary>
+<img src="media/docs/design_wireframes_faq_add.png">
+</details>
+<details><summary>CONTACT US</summary>
+<img src="media/docs/design_wireframes_contact.png">
+</details>
+<details><summary>SITE MANAGEMENT</summary>
+<img src="media/docs/design_wireframes_manage.png">
+</details>
+<details><summary>SIGN IN</summary>
+<img src="media/docs/design_wireframes_accounts_signin.png">
+</details>
+<details><summary>REGISTER</summary>
+<img src="media/docs/design_wireframes_accounts_register.png">
+</details>
+
+*Please note - designs for all authorisation pages will be replicated across all AllAuth templates. Sign In and Register have been created as a template for the others.*
 - - -
 
 #### Colour
 
 ![Website Colour Scheme](media/docs/design_color.jpg)
 
-I used a colour palette of yellows and greys with a blue highlight colour to create contrast. I also added additional colours for all success/edit/info features and delete/warning/error features as well as to help categorise different statuses of messages & reviews on the profile & manage pages. I used a number of shades of the colours to help create contrast, to make the site legible and got give more flexibility in the design. The colours changed slightly during the validation stage as the yellow & grey on the rating hexagons were causing some contrast errors, so I introduced an orange tone to replace the yellow and darkened the grey hexagons to make sure the site was fully accessible.
+I used a colour palette of yellows and greys with a blue highlight colour to create contrast. I also added additional colours for all success/edit/info features and delete/warning/error features as well as to help categorise different statuses of messages & reviews on the profile & manage pages. I used a number of shades of the colours to help create contrast, to make the site legible and got give more flexibility in the design. The colours changed slightly during the validation stage as the yellow & grey on the rating hexagons were causing some contrast errors, so I introduced an orange tone to replace the yellow and darkened the grey hexagons to make sure the site was fully accessible. [See design changes.](#design-changes)
 
 - - -
 
@@ -139,18 +257,63 @@ The website uses 2 typefaces that I felt worked well together and complemented e
 
 #### Images & Graphics
 
-- **Logo:** I created a logo for the site in the shape of a simplified bee as it is a strong iconic image and gives an immediate sense of the purpose of the site and a strong brand image. I created 2 versions, one with text for larger screens and another without which works as an icon. I also created a Favicon with a yellow background using the same logo.
+All images are fully credited in the [here](#credits).
 
-- **Hexagons:** There are recurring hexagon shapes and background patterns throughout the site, on the Hero image on the home page, on the bag icon in the nav bar, in the products div as a background pattern and as a rating 'star' on the products. The hexagon continues the bee theme and creates a unique graphic element that runs through the site.
+##### Logo
+I created a logo for the site in the shape of a simplified bee as it is a strong iconic image and gives an immediate sense of the purpose of the site and a strong brand image. I created 2 versions, one with text for larger screens and another without which works as an icon. I also created a Favicon with a yellow background using the same logo.
 
-- **Error Bee:** The error pages contain a bee cartoon from Freepik (see credits section) to make these pages tie in with the rest of the site.
+<details><summary>Island Bees Logo - Favicon Version</summary>
+<img src="media/android-chrome-192x192.png">
+</details>
 
-- **No Image Graphic:** I also created a 'no-image' graphic to be used whenever a product doesn't have an image using the site logo.
+##### Hexagons
+There are recurring hexagon shapes and background patterns throughout the site, on the Hero image on the home page, on the bag icon in the nav bar, in the products div as a background pattern and as a rating 'star' on the products. The hexagon continues the bee theme and creates a unique graphic element that runs through the site.
+
+<details><summary>Hex Background</summary>
+<img src="media/hex-bg-tran.svg">
+</details>
+
+##### Error Bee
+The error pages contain a bee cartoon from Freepik (see credits section) to make these pages tie in with the rest of the site.
+
+<details><summary>Error Bee</summary>
+<img src="media/bee-2.png">
+</details>
+
+##### No Image Graphic
+I also created a 'no-image' graphic to be used whenever a product doesn't have an image using the site logo.
+
+<details><summary>No Image</summary>
+<img src="media/no_image.jpg">
+</details>
 
 - - -
 
 
 #### Design Changes
+
+During development there were a number of changes that mean the final site has deviated from the above designs slightly. These came about for a number of reasons but were usually related to technical problems during the development process which could be solved through small design changes, or to improve the User Experience, accessibility or general feel of the site once it was up and running. It is important to make a plan and stick to it, however it is also important to be flexible enough to adapt when a new and better idea comes along. All of these decisions were taken keeping the user stories and user experience in mind at all times.
+
+##### Review / FAQ form
+I had planned to make these forms appear as modals, rather than separate pages, I thought it would improve user experience to give users the sense of staying in the same area whilst filling in the form. However, I quickly realised that this would present some technical challenges, mostly relating to having multiple modals on a page, and having a modal trigger another modal. I felt that the difficultly and time that this would add to the project was not worth it, so these pages became separate pages, with a form that looks more like the other forms. In the case of the review form I kept a slightly more unique styling as this is a form for users, rather than admins and I felt it would add a nice design touch to the site.
+
+##### Colour changes
+There were a number of changes to the colour scheme during the development process. In the wireframes you can see the original colours, however the colour palette above reflects the final colours used in the site. These changes happened during the accessibility testing stage, where it flagged up a number of issues with the yellow in particular, against the white background. The biggest change that most people would notice is on the rating hexagons, which are a bright orange on the final site, rather than a soft yellow.
+
+##### Home Page Category Hexagons
+Whilst developing the site I found that using a hexagon shape in CSS is somewhat challenging, particularly when it comes to stacking, moving and repeating them in rows, they are a difficult shape to work with. However, I persevered and managed to include them in a number of different places using a variety of techniques. On the home page I created a lovely stacking set of 4 hexagons which was fully responsive, based on this excellent piece of CSS work by [Temani Afif](https://dev.to/afif/responsive-hexagon-grid-without-media-query-57g7). Sadly, during CSS Validation, it threw up an error, despite working perfectly, and I couldn't find a way around it without my project failing CSS validation, so the hexagons had to go. I replaced them with squares which do the same job. For more information and a look at the original hexagon grid in action go to CSS Validation in [TESTING.md](TESTING.md)
+
+##### Edit / Delete Product Buttons on Cards
+I made the decision to remove the CRUD functionality buttons from the product cards. This came about when I discovered there was an issue with deleting products which had previously been ordered by a customer, it caused huge problems to delete them and was not good practice as all of the orders would then be incorrect as the product and its cost would be removed from them. This led to a number of changes on the site, one of which was making delete only accessible from the product details page. I felt that it provided a better user experience to remove both buttons from the cards and provide a single point of access to site admins.
+
+##### Discontinued Tick Box on Product Forms
+Following on from the above changes I also added a 'discontinued' field to the product forms to allow admins to mark a product as 'discontinued' rather than delete it, which solved the problem of deleting products which were connected with past orders.
+
+##### Review approval
+This is a feature that I added later in the process, which gives admins the ability to approve a review before it goes live, it also removed the admin's access to editing reviews as I felt this was poor business logic and would undermine customer trust in the reviews. This led to a couple of design changes; the addition of a 'PENDING APPROVAL' flag to the reviews on the user profile page so that users could see the status of their review & adding the unapproved reviews to the site management page with a toggle switch for admins to approve them.
+
+##### Other minor changes
+There were also other small tweaks to the site in terms of layout, margins, sizing and style, which are part of the natural course of development. As with all these changes they were made whilst keeping the User Stories in mind at all times.
 
 - - -
 [Go to Top](#island-bees---e-commerce-site)
@@ -175,11 +338,23 @@ Product rating only takes in to account approved reviews & is updated upon add, 
 In Original Design
 - Blog
 
+<details><summary>BLOG</summary>
+<img src="media/docs/design_wireframes_blog.png">
+</details>
+<details><summary>BLOG POST</summary>
+<img src="media/docs/design_wireframes_blog_post.png">
+</details>
+<details><summary>ADD/EDIT BLOG POST</summary>
+<img src="media/docs/design_wireframes_blog_post_add.png">
+</details>
+
 Admin notification when a review / message is submitted 
 A more comprehensive system for messages with admins able to review chain of communication and reply on the site
 A booking system for courses with a calendar and tracking of availability on courses
 A stock control system for products
 An order tracking system for admins
+
+
 
 - - -
 [Go to Top](#island-bees---e-commerce-site)
@@ -248,6 +423,8 @@ An order tracking system for admins
 
 - [Figma:](https://www.figma.com/) Used to develop the wireframes in to a full site design including colours, fonts, proportions etc
 - [Google Fonts:](https://fonts.google.com/) Used to select & import the fonts to the project (Oxygen & Source Sans 3)
+- [Lucidchart](https://www.lucidchart.com/pages/) To create the flow diagram of the website
+- [DrawSQL](https://drawsql.app/) Used to visually design the database schema
 - [ChatGPT:](https://chat.openai.com/auth/login) Used to generate copy to populate site (not used for any code)
 - [Adobe Illustrator:](https://www.adobe.com/uk/products/illustrator.html) Used to create the site logo
 - [Adobe Photoshop:](https://www.adobe.com/uk/products/photoshop.html) Used to crop, adjust and resize the photos to optimise them for the site
@@ -266,9 +443,9 @@ An order tracking system for admins
 - - -
 
 
-### Test Results & Bugs
+### Testing & Bugs
 
-The full test results and details of any bugs and their fixes can be found in the [TESTING document](TESTING.md)
+The full test results and details of bugs and their fixes can be found in the [TESTING document](TESTING.md)
 
 
 - - -
