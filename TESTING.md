@@ -1,6 +1,6 @@
 # Island Bees - E-Commerce Site - Testing
 
-![Mock-up]()
+![Mock-up](media/docs/mp4_mockup.jpg)
 
 #### **By Emma Hewson**
 [Click here to view the live web application](https://island-bees-5e7b15194c83.herokuapp.com/)

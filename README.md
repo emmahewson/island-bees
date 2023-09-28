@@ -1,6 +1,6 @@
 # Island Bees - E-Commerce Site
 
-![Mock-up]()
+![Mock-up](media/docs/mp4_mockup.jpg)
 
 #### **By Emma Hewson**
 [Click here to view the live web application](https://island-bees-5e7b15194c83.herokuapp.com/)
@@ -335,8 +335,10 @@ Product rating only takes in to account approved reviews & is updated upon add, 
 
 ### Future Features
 
-In Original Design
-- Blog
+There are a number of features I would like to implement in the future, particularly if I were adapting this in to a real live site for an online shop as there is some functionality I feel it would really benefit from.
+
+#### Blog
+This was something I had actually planned for in my original designs but I soon discovered that the development would be a time consuming process and I made the decision, based on my original [project scope planning document](#scope) that the blog's low importance and the difficulty of creating the responsive hexagon grid for the blog post summaries made it the best thing to put aside for later. However it would be a great tool for a company to have to build their brand and engage their users, and I'm very keen to build the hexagon grid when time allows! I have included the original designs for a taste of what it might look like.
 
 <details><summary>BLOG</summary>
 <img src="media/docs/design_wireframes_blog.png">
@@ -348,12 +350,17 @@ In Original Design
 <img src="media/docs/design_wireframes_blog_post_add.png">
 </details>
 
-Admin notification when a review / message is submitted 
-A more comprehensive system for messages with admins able to review chain of communication and reply on the site
-A booking system for courses with a calendar and tracking of availability on courses
-A stock control system for products
-An order tracking system for admins
+#### Admin Messaging System - Expand
+I would like to build on the messaging system that I included in the Site Management page, giving the site admins the ability to reply directly from the site, to be able to view the historic chain of communication, to have multiple statuses for messages e.g. in-process, and to connect messaging to the user so that users could also reply from within the site rather than via email. I would also like to add notifications to both admins and users when they receive a message, with an icon appearing in the navbar to alert them.
 
+#### Booking and Scheduling system for Beekeeping courses
+I would also like to add a live calendar for beekeeping courses where users can book a place on a course with a specific date & check availability for courses.
+
+#### Order Tracking
+I feel that an e-commerce site would also benefit from an order-tracking system which notifies admins when an order is placed and then can be tracked from within the site management area, with its status changing depending on what stage the order is at e.g. 'out for delivery' 'cancelled' etc.
+
+#### Stock Control
+I also think some sort of stock control would be useful for an e-commerce site, with products having stock supply levels and logic to hide items that are out of stock as well as notify admins when things need to be re-supplied. This would also need to be integrated with any physical shop that the owners might have and so would be a significant project.
 
 
 - - -
