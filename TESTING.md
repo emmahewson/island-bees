@@ -549,10 +549,6 @@ I ran the site through Google Chrome Dev Tools' Lighthouse to check on its perfo
 <img src="media/docs/docs_val_perf_2.jpg">
 </details>
 
-
-
-
-
 </details>
 
 
@@ -591,8 +587,6 @@ The site was tested on the following browsers.
 * Google Chrome
 * Mozilla Firefox
 * Apple Safari
-
-#### **Links to Bugs found specific to device & browser testing**
 
 
 __ __
