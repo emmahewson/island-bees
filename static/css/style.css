@@ -969,6 +969,10 @@ label[for="id_price"] {
         text-decoration-color: rgba(255, 254, 251, 1);
 }
 
+#footer-padding {
+    height: 60px;
+}
+
 
 /* Toasts */
 
