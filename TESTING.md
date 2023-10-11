@@ -39,15 +39,58 @@ In my testing I developed a comprehensive testing plan to make sure that the sit
 
 During development I tried to maintain a test driven development approach. This was my first experience of using automated testing on a project so I kept things simple and wrote and ran tests appropriate to my experience level (backed up by rigorous manual testing both during the development process and at the end - see [feature testing](#feature-testing)) This allowed me to try my hand at automated testing and build my knowledge within the scope and time restraints of the project and course requirements. As part of the TDD (test driven development) approach; all automated tests were written either alongside or immediately after each stage of development and were run at regular intervals to make sure that subsequent features had not affected earlier ones.
 
+I managed to achieve 83% coverage with my tests. I would have liked to reach 100% but as this was my first time doing any automated testing in a project, and with limitations on my time and experience, I was happy with this result, especially as the automated testing is backed up with comprehensive manual testing.
+
 I found it to be a challenging but useful process, a number of times during development automated tests were able to flag up issues much earlier than I would have noticed them with manual testing alone. With large, complex project with inter-woven features and dependencies I can completely see the benefit of this approach and I look forward to expanding my knowledge and delving more in to the world of automated testing in the future.
 
 ### Automated testing coverage and results
 
+**Automated Testing - Test Results**
+
+<img src="media/docs/test_auto_results.jpg">
+
+**Coverage Report - Total Coverage**
+
+<img src="media/docs/test_auto_all.jpg">
 
 
+**Coverage For Individual Apps**
 
+<details><summary>Home App</summary>
+<img src="media/docs/test_auto_home.jpg">
+</details>
 
+<details><summary>Bag App</summary>
+<img src="media/docs/test_auto_bag.jpg">
+</details>
 
+<details><summary>Checkout App</summary>
+<img src="media/docs/test_auto_checkout.jpg">
+</details>
+
+<details><summary>FAQs App</summary>
+<img src="media/docs/test_auto_faqs.jpg">
+</details>
+
+<details><summary>Island Bees App</summary>
+<img src="media/docs/test_auto_ib.jpg">
+</details>
+
+<details><summary>Manage App</summary>
+<img src="media/docs/test_auto_manage.jpg">
+</details>
+
+<details><summary>Products App</summary>
+<img src="media/docs/test_auto_products.jpg">
+</details>
+
+<details><summary>Profiles App</summary>
+<img src="media/docs/test_auto_profiles.jpg">
+</details>
+
+<details><summary>Reviews App</summary>
+<img src="media/docs/test_auto_reviews.jpg">
+</details>
 
 
 

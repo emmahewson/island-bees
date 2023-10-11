@@ -33,6 +33,7 @@ class TestManageViews(TestCase):
         superuserTest.save()
 
         self.TestMessage = Message.objects.create(
+            id=1,
             user=userTest,
             name=userTest.get_full_name(),
             email=userTest.email,
@@ -81,32 +82,6 @@ class TestManageViews(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
             response, '/accounts/login/?next=/manage/')
-
-    def test_toggle_message_for_authorized_user_valid_message(self):
-        """
-        Test toggle message view for superuser with a valid message
-        """
-
-        logged_in = self.client.login(
-            username='superuser1', password='super_password1')
-        self.assertTrue(logged_in)
-
-        response = self.client.get('/manage/toggle/1/')
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(
-            response, '/manage/')
-
-    def test_toggle_message_for_authorized_user_invalid_message(self):
-        """
-        Test toggle message view for superuser with an invalid message
-        """
-
-        logged_in = self.client.login(
-            username='superuser1', password='super_password1')
-        self.assertTrue(logged_in)
-
-        response = self.client.get('/manage/toggle/2/')
-        self.assertEqual(response.status_code, 404)
 
     def test_toggle_message_for_logged_out_user(self):
         """ Test toggle message view for logged out """

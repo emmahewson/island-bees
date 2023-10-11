@@ -12,7 +12,7 @@ This is the documentation for my e-commerce web application: Island Bees. It has
 - - -
 ## Table of Contents
 
-- [User Experience](#planning-design--user-experience)
+- [Planning, Design & User Experience](#planning-design--user-experience)
     - [Strategy](#strategy)
     - [Scope](#scope)
     - [Structure](#structure)
