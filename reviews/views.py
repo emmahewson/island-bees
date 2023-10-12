@@ -48,6 +48,7 @@ def add_review(request, product_id):
                 request,
                 "Your review has been created. " +
                 "It will appear on the site once it has been approved. " +
+                "You can see your review on your profile page until then. " +
                 "We value your feedback and only " +
                 "reject reviews with inappropriate content."
             )
@@ -116,6 +117,7 @@ def edit_review(request, review_id):
                 request,
                 "Your review has been updated. " +
                 "It will appear on the site once it has been approved. " +
+                "You can see your review on your profile page until then. " +
                 "We value your feedback and only " +
                 "reject reviews with inappropriate content."
             )
