@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -65,7 +65,12 @@ def profile(request):
 @login_required
 def order_history(request, order_number):
     """ Displays the order history using the checkout_success template """
+
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user != order.user_profile.user:
+        messages.error(request, 'You can only view your own orders.')
+        return redirect(reverse('profile'))
 
     template = 'checkout/checkout_success.html'
     context = {
