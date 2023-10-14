@@ -637,10 +637,71 @@ __ __
 ### **Feature Testing Results**
 
 
-<details><summary>WHOLE SITE (base.html)</summary>
+<details><summary>All Pages</summary>
 
 
 </details>
+
+<details><summary>Home</summary>
+
+
+</details>
+
+<details><summary>Products</summary>
+
+
+</details>
+
+<details><summary>Product Details</summary>
+
+
+</details>
+
+<details><summary>Add / Edit / Delete Products</summary>
+
+
+</details>
+
+<details><summary>Add / Edit / Delete Reviews</summary>
+
+
+</details>
+
+<details><summary>Bag</summary>
+
+
+</details>
+
+<details><summary>Checkout & Checkout Success</summary>
+
+
+</details>
+
+<details><summary>Profile & Order History</summary>
+
+
+</details>
+
+<details><summary>FAQs</summary>
+
+
+</details>
+
+<details><summary>Contact</summary>
+
+
+</details>
+
+<details><summary>Site Management</summary>
+
+
+</details>
+
+<details><summary>Authentication</summary>
+
+
+</details>
+
 
 
 
@@ -660,10 +721,151 @@ The site was built from the outset with user stories at its core. The site was t
 <details><summary>User Story 1.1</summary>
 
 
-INSERT VIDEOS HERE IN GITHUB
+</details>
+
+
+<details><summary>User Story 1.2</summary>
 
 
 </details>
+
+<details><summary>User Story 1.3</summary>
+
+
+</details>
+
+<details><summary>User Story 1.4</summary>
+
+
+</details>
+
+<details><summary>User Story 1.5</summary>
+
+
+</details>
+
+<details><summary>User Story 1.6</summary>
+
+
+</details>
+
+<details><summary>User Story 1.7</summary>
+
+
+</details>
+
+<details><summary>User Story 1.8</summary>
+
+
+</details>
+
+<details><summary>User Story 2.1</summary>
+
+
+</details>
+
+<details><summary>User Story 2.2</summary>
+
+
+</details>
+
+<details><summary>User Story 2.3</summary>
+
+
+</details>
+
+
+<details><summary>User Story 2.4</summary>
+
+
+</details>
+
+<details><summary>User Story 2.5</summary>
+
+
+</details>
+
+<details><summary>User Story 2.6</summary>
+
+
+</details>
+
+<details><summary>User Story 2.7</summary>
+
+
+</details>
+
+<details><summary>User Story 2.8</summary>
+
+
+</details>
+
+<details><summary>User Story 2.9</summary>
+
+
+</details>
+
+<details><summary>User Story 3.1</summary>
+
+
+</details>
+
+<details><summary>User Story 3.2</summary>
+
+
+</details>
+
+<details><summary>User Story 3.3</summary>
+
+
+</details>
+
+<details><summary>User Story 3.4</summary>
+
+
+</details>
+
+
+<details><summary>User Story 3.5</summary>
+
+
+</details>
+
+<details><summary>User Story 3.6</summary>
+
+
+</details>
+
+<details><summary>User Story 4.1</summary>
+
+
+</details>
+
+<details><summary>User Story 4.2</summary>
+
+
+</details>
+
+<details><summary>User Story 4.3</summary>
+
+
+</details>
+
+<details><summary>User Story 4.4</summary>
+
+
+</details>
+
+<details><summary>User Story 4.5</summary>
+
+
+</details>
+
+<details><summary>User Story 4.6</summary>
+
+
+</details>
+
 
 
 

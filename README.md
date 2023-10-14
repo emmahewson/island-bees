@@ -74,8 +74,8 @@ Based on my research and the project aims I created a set of user stories that w
   - 1.4: I want to be able to find answers to common questions
   - 1.5: I want to be able to contact the company with any questions or queries
   - 1.6: I want to be able to find the company on social media to find out more
-  - 1.6: I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page
-  - 1.7: I want to get feedback when interacting with the site to know if my actions have been successful
+  - 1.7: I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page
+  - 1.8: I want to get feedback when interacting with the site to know if my actions have been successful
 
 2. As a shopper:
   - 2.1: I want to be able to browse products easily, with options to filter & search to find what I need
@@ -169,6 +169,142 @@ I created a flow diagram using [Lucidchart](https://www.lucidchart.com/pages/) t
 An important stage in the planning was building a database schema, planning my data clearly, from the beginning, to make the development process as easy as possible. This database schema was informed by my work in the previous planes, the user stories, my scope chart and my flow diagram. I used [DrawSQL](https://drawsql.app/) to create a visual representation of the database, which I used throughout the development process to keep track of what my database looked like, updating it and amending it as the project grew and adapted as I learned. The original schema I created also included a blog, which I ended up rejecting from the final site due to time constraints as I wanted to focus my efforts on doing the project well rather than making it bigger and bigger. I have left it in the schema to demonstrate the work I did towards this and how it would connect to the rest of the database should I add it in in the future.
 
 ![Island Bees Database Schema](media/docs/design_schema.png)
+
+#### Models
+
+Below is a breakdown of all the models included in the final app. The site uses a relational database model using Postgres (SQLite & Elephant SQL). The app uses a number of models adapted from the Boutique Ado walkthrough (User, Email, UserProfile, Category, Product) as well as 3 original models (Faq, Review, Message).
+
+<details><summary>User / Email Models (Created by Django allauth)</summary>
+
+The User model is created by Django allauth and connects to a separate Email Address Model. I have created relationships to these models throughout the project but as I have not created them myself I have not included a breakdown of the fields. More information about Django allauth can be found [here](https://docs.allauth.org/en/latest/index.html).
+
+</details>
+
+<details><summary>UserProfile Model</summary>
+
+| **Field**                   | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|-----------------------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **user**                    | ForeignKey     | n/a            | FALSE    | FALSE     | n/a         | CASCADE       | TRUE         | n/a              |
+| **default_street_address1** | Char           | max_length=80  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_street_address2** | Char           | max_length=80  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_town_or_city**    | Char           | max_length=40  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_county**          | Char           | max_length=80  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_postcode**        | Char           | max_length=20  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_country**         | Country        | n/a            | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **default_phone_number**    | Char           | max_length=20  | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Category Model</summary>
+
+| **Field**         | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|-------------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **Name**          | Char           | max_length=254 | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Friendly Name** | Char           | max_length=254 | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Product Model</summary>
+
+| **Field**           | **Field Type** | **Validation**                   | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|---------------------|----------------|----------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **category**        | ForeignKey     | n/a                              | TRUE     | TRUE      | n/a         | SET_NULL      | TRUE         | n/a              |
+| **name**            | Char           | max_length=50                    | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **description**     | Text           | n/a                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **price**           | Decimal        | "max_digits=6, decimal_places=2" | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **is_featured**     | Boolean        | n/a                              | FALSE    | FALSE     | FALSE       | n/a           | TRUE         | n/a              |
+| **delivery_charge** | Boolean        | n/a                              | FALSE    | FALSE     | TRUE        | n/a           | TRUE         | n/a              |
+| **discontinued**    | Boolean        | n/a                              | FALSE    | FALSE     | FALSE       | n/a           | TRUE         | n/a              |
+| **image**           | Image          | n/a                              | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **rating**          | Integer        | "Min=0, Max=5"                   | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Order Model</summary>
+
+| **Field**           | **Field Type** | **Validation**                    | **null** | **blank** | **default**    | **on_delete** | **editable** | **related_name** |
+|---------------------|----------------|-----------------------------------|----------|-----------|----------------|---------------|--------------|------------------|
+| **order_number**    | Char           | max_length=32                     | FALSE    | FALSE     | n/a            | n/a           | FALSE        | n/a              |
+| **user_profile**    | ForeignKey     | n/a                               | TRUE     | TRUE      | n/a            | SET_NULL      | TRUE         | orders           |
+| **full_name**       | Char           | max_length=50                     | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **email**           | Email          | max_length=254                    | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **phone_number**    | Char           | max_length=20                     | TRUE     | TRUE      | n/a            | n/a           | TRUE         | n/a              |
+| **street_address1** | Char           | max_length=80                     | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **street_address2** | Char           | max_length=80                     | TRUE     | TRUE      | n/a            | n/a           | TRUE         | n/a              |
+| **town_or_city**    | Char           | max_length=40                     | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **county**          | Char           | max_length=80                     | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **postcode**        | Char           | max_length=20                     | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **country**         | Country        | n/a                               | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **date**            | DateTime       | n/a                               | FALSE    | FALSE     | n/a            | n/a           | TRUE         | n/a              |
+| **order_total**     | Decimal        | "max_digits=10, decimal_places=2" | FALSE    | FALSE     | 0              | n/a           | TRUE         | n/a              |
+| **delivery_cost**   | Decimal        | "max_digits=6, decimal_places=2"  | FALSE    | FALSE     | 0              | n/a           | TRUE         | n/a              |
+| **grand_total**     | Decimal        | "max_digits=10, decimal_places=2" | FALSE    | FALSE     | 0              | n/a           | TRUE         | n/a              |
+| **original_bag**    | Text           |                                   | FALSE    | FALSE     | [empty string] | n/a           | TRUE         | n/a              |
+| **stripe_pid**      | Char           | max_length=254                    | FALSE    | FALSE     | [empty string] | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>OrderLineItem Model</summary>
+
+| **Field**          | **Field Type** | **Validation**                   | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|--------------------|----------------|----------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **order**          | ForeignKey     | n/a                              | FALSE    | FALSE     | n/a         | CASCADE       | TRUE         | lineitems        |
+| **product**        | ForeignKey     | n/a                              | FALSE    | FALSE     | n/a         | PROTECT       | TRUE         | lineitems        |
+| **quantity**       | Integer        | n/a                              | FALSE    | FALSE     | 0           | n/a           | TRUE         | n/a              |
+| **lineitem_total** | Decimal        | "max_digits=6, decimal_places=2" | FALSE    | FALSE     | n/a         | n/a           | FALSE        | n/a              |
+
+
+</details>
+
+<details><summary>Faq Model</summary>
+
+| **Field**    | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|--------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **question** | Char           | max_length=100 | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **answer**   | Char           | n/a            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Message Model</summary>
+
+| **Field**      | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|----------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **user**       | ForeignKey     | n/a            | TRUE     | TRUE      | n/a         | SET_NULL      | TRUE         | messages         |
+| **name**       | Char           | max_length=50  | TRUE     | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **email**      | Email          | max_length=254 | TRUE     | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **subject**    | Char           | max_length=40  | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **content**    | Text           | max_length=500 | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **created_on** | Date           | n/a            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **is_open**    | Boolean        | n/a            | FALSE    | FALSE     | TRUE        | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+
+
+<details><summary>Review Model</summary>
+
+| **Field**       | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|-----------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **product**     | ForeignKey     | n/a            | TRUE     | TRUE      | n/a         | CASCADE       | n/a          | reviews          |
+| **user**        | ForeignKey     | n/a            | TRUE     | TRUE      | n/a         | SET_NULL      | n/a          | reviews          |
+| **created_on**  | Date           | n/a            | FALSE    | FALSE     | n/a         | n/a           | n/a          | n/a              |
+| **title**       | Char           | max_length=40  | FALSE    | FALSE     | n/a         | n/a           | n/a          | n/a              |
+| **content**     | Text           | max_length=500 | FALSE    | FALSE     | n/a         | n/a           | n/a          | n/a              |
+| **rating**      | Integer        | "Min=0, Max=5" | FALSE    | FALSE     | 0           | n/a           | n/a          | n/a              |
+| **is_approved** | Boolean        | n/a            | FALSE    | FALSE     | FALSE       | n/a           | n/a          | n/a              |
+
+
+</details>
+
+
+
+#### Wireframes (see below)
 
 Whilst traditionally wireframes are included in the Skeleton section I have included mine in the Surface section below. I have developed a way of working where I flesh out the full design of the site in [Figma](https://www.figma.com/), including making all colour, typography and layout decisions at this stage, to make sure that during development I am free to focus on the nuts and bolts of how to build the site, rather than getting distracted by design decisions at that stage. It has been successful for me in the past and so I have chosen to develop the site in this way again. 
 
@@ -321,17 +457,496 @@ There were also other small tweaks to the site in terms of layout, margins, sizi
 
 ## Features
 
-### Site Features
+### Whole Site
 
-Mention
-using widget-tweak to add style classes to the form inputs in the auth templates
-The delivery charge calculations when no delivery is chargeable
+![]()
+
 Additional titles and description meta tags on each page
-Reviews - superuser cannot edit, only delete
-Reviews - approval
-Product rating only takes in to account approved reviews & is updated upon add, edit, delete & toggle
+
+<details><summary>Layout</summary>
+
+- 
+
+</details>
+
+<details><summary>General Responsiveness</summary>
+
+- 
+
+</details>
+
+<details><summary>Favicon</summary>
+
+- 
+
+</details>
+
+<details><summary>Nav Bar</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Delivery Banner</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Back To Top Button</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Main Buttons</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Footer</summary>
+
+- 
+
+</details>
+
+
+
+<details><summary>Messages & User Feedback</summary>
+
+- 
+
+</details>
+
+<details><summary>Authentication & Security - Whole App Summary Table</summary>
+
+Throughout the site I have implemented security & authentication which restricts certain pages & actions to specific users. I have summarised this information for all features in the table below.
+
+| **Feature / Page**   | **Page Visible To**                       | **Front End Authentication**                                                                                       | **Backend Authentication**                                                                        | **Other**                                                                                                                     |
+|----------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| **HOME**             | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **PRODUCTS**         | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **PRODUCT DETAILS**  | All Users                                 | Edit/Delete Products Buttons - Admin only / Edit Review Button - creator only / Delete Review - creator/admin only | None                                                                                              |                                                                                                                               |
+| **ADD PRODUCT**      | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to home.                              |                                                                                                                               |
+| **EDIT PRODUCT**     | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to home.                              |                                                                                                                               |
+| **DELETE PRODUCT**   | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to home.                              | Only products which aren’t associated with line items on orders can be deleted                                                |
+| **ADD REVIEW**       | Logged In Only                            | None                                                                                                               | Logged out users redirected to log in.                                                            | New reviews need to be approved by an admin before appearing on site.                                                         |
+| **EDIT REVIEW**      | Logged In creator of review only          | None                                                                                                               | Logged out users redirected to log in. Non-creator redirected to product detail page.             | Edited reviews need to be approved by an admin before appearing on site.                                                      |
+| **DELETE REVIEW**    | Logged In creator of review or superusers | None                                                                                                               | Logged out users redirected to log in. Non-creator / superuser redirected to product detail page. |                                                                                                                               |
+| **BAG**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **CHECKOUT**         | All Users - must have bag contents        | None                                                                                                               | If bag empty user redirected to products page.                                                    | Stripe Security & validation for payments. Logged in users - form populates with user details. Order is associated with user. |
+| **CHECKOUT SUCCESS** | All Users                                 | Checks if user is visiting page as checkout success or order history & changes contents accordingly.               | None                                                                                              |                                                                                                                               |
+| **PROFILE**          | Logged In Only                            | Edit Review Button - creator only / Delete Review - creator/admin only                                             | "Logged out users redirected to log in. Only current user orders, reviews & data visible."        |                                                                                                                               |
+| **ORDER HISTORY**    | Logged in creator of order only.          | Checks if user is visiting page as checkout success or order history & changes contents accordingly.               | Logged out users redirected to log in. Non-creator redirected to profile page.                    |                                                                                                                               |
+| **FAQS**             | All users                                 | Add/Edit/Delete FAQ Buttons - Admin only                                                                           | None                                                                                              |                                                                                                                               |
+| **ADD FAQ**          | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to faqs.                              |                                                                                                                               |
+| **EDIT FAQ**         | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to faqs.                              |                                                                                                                               |
+| **DELETE FAQ**       | Admin Only                                | None                                                                                                               | Logged out users redirected to log in. Non-admin redirected to faqs.                              |                                                                                                                               |
+| **CONTACT US**       | All Users                                 | None                                                                                                               | None                                                                                              | Logged in users - form populates with name & email. Message is associated with user.                                          |
+| **SITE MANAGEMENT**  | Admin Only                                | Edit Review Button - creator only / Delete Review - creator/admin only                                             | Logged out users redirected to log in. Non-admin redirected to home.                              |                                                                                                                               |
+| **SIGN IN**          | Logged Out Users Only                     | None                                                                                                               | Logged in users - redirect to home                                                                |                                                                                                                               |
+| **REGISTER**         | Logged Out Users Only                     | None                                                                                                               | Logged in users - redirect to home                                                                |                                                                                                                               |
+| **SIGN OUT**         | Logged In Users Only                      | None                                                                                                               | Logged out users - redirect to home                                                               |                                                                                                                               |
+| **MANAGE EMAIL**     | Logged In Users Only                      | None                                                                                                               | Logged out users redirected to log in.                                                            |                                                                                                                               |
+| **CHANGE PASSWORD**  | Logged In Users Only                      | None                                                                                                               | Logged out users redirected to log in.                                                            |                                                                                                                               |
+| **FORGOT PASSWORD**  | All Users                                 | Logged in users - message telling them they’re logged in                                                           | None                                                                                              |                                                                                                                               |
+| **400**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **403**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **404**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+| **500**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
+
+
+</details>
+
+
 
 - - -
+
+
+
+### Home Page
+
+![]()
+
+<details><summary>Hero & Intro Sections</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Shop By Category</summary>
+
+- 
+
+</details>
+
+<details><summary>Featured Products</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### Products
+
+![]()
+
+<details><summary>Products</summary>
+
+- Talk about discontinued
+- Talk about no image
+
+</details>
+
+
+<details><summary>Product Cards</summary>
+
+
+
+</details>
+
+<details><summary>Products Page</summary>
+
+- 
+
+</details>
+
+<details><summary>Product Details Page</summary>
+
+- 
+
+</details>
+
+<details><summary>Add Product</summary>
+
+- Discontinued (include info here)
+
+</details>
+
+<details><summary>Edit Product</summary>
+
+- 
+
+</details>
+
+<details><summary>Delete Product</summary>
+
+- 
+
+</details>
+
+
+
+#### Value To User
+
+- - -
+
+
+
+### Reviews
+
+![]()
+
+<details><summary>Product Reviews</summary>
+
+- List where appear
+- Talk about ratings calculations
+
+
+</details>
+
+
+<details><summary>Add Review</summary>
+
+
+
+</details>
+
+
+<details><summary>Edit Review</summary>
+
+
+
+</details>
+
+
+<details><summary>Delete Review</summary>
+
+
+
+</details>
+
+
+<details><summary>Review Approval</summary>
+
+
+
+</details>
+
+
+
+#### Value To User
+
+- - -
+
+
+
+### Shopping Bag
+
+![]()
+
+<details><summary>Shopping Bag</summary>
+
+- Talk about session & authentication
+- The delivery charge calculations when no delivery is chargeable
+
+</details>
+
+
+<details><summary>Summary Message</summary>
+
+- 
+
+</details>
+
+<details><summary>Nav Shopping Bag</summary>
+
+- 
+
+</details>
+
+<details><summary>Bag Page</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### Checkout
+
+![]()
+
+<details><summary>Checkout Page</summary>
+
+- User profile form update & pre-populate
+- Stripe payments & webhooks
+- Summary
+- Validation & Security
+- Logged in / Logged out options
+- Orders linked with user
+
+</details>
+
+
+<details><summary>Checkout Process</summary>
+
+- Step by step process of checking out
+- Include email
+
+</details>
+
+
+<details><summary>Checkout Success Page</summary>
+
+- 
+
+</details>
+
+
+
+#### Value To User
+
+- - -
+
+
+
+### Profile
+
+![]()
+
+<details><summary>Profile Page - User Details Forms</summary>
+
+- 
+
+</details>
+
+
+<details><summary>Profile Page - Order History</summary>
+
+- 
+
+</details>
+
+<details><summary>Profile Page - User Reviews</summary>
+
+- 
+
+</details>
+
+<details><summary>Order History Info Page</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### FAQs
+
+![]()
+
+<details><summary>FAQs Page</summary>
+
+- 
+
+</details>
+
+<details><summary>Add FAQ</summary>
+
+- 
+
+</details>
+
+<details><summary>Edit FAQ</summary>
+
+- 
+
+</details>
+
+<details><summary>Delete FAQ</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### Contact / Messages
+
+![]()
+
+<details><summary>Contact Us Page</summary>
+
+- 
+
+</details>
+
+<details><summary>Messages</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### Site Management
+
+![]()
+
+<details><summary>Site Management Page - Useful Links</summary>
+
+- 
+
+</details>
+
+<details><summary>Site Management Page - Messages</summary>
+
+- 
+
+</details>
+
+<details><summary>Site Management Page - Unapproved Reviews</summary>
+
+- 
+
+</details>
+
+
+#### Value To User
+
+- - -
+
+
+
+### Authentication
+
+![]()
+
+Include: using widget-tweak to add style classes to the form inputs in the auth templates
+
+<details><summary>Register</summary>
+
+- Email verification
+
+</details>
+
+<details><summary>Sign In</summary>
+
+- 
+
+</details>
+
+<details><summary>Sign Out</summary>
+
+- 
+
+</details>
+
+<details><summary>Manage Email</summary>
+
+- 
+
+</details>
+
+<details><summary>Change Password</summary>
+
+- 
+
+</details>
+
+<details><summary>Forgot Password</summary>
+
+- 
+
+</details>
+
+#### Value To User
+
+- - -
+
 
 ### Future Features
 
@@ -416,7 +1031,11 @@ I also think some sort of stock control would be useful for an e-commerce site, 
 - [python3-openid:](https://pypi.org/project/python3-openid/) Set of python packages to support the use of teh OpenID decentralised identity system
 - [sqlparse:](https://pypi.org/project/sqlparse/) SQL parser for Python
 - [urllib3:](https://pypi.org/project/urllib3/) HTTP client for Python
- 
+
+
+### Databases 
+- [SQLITE:](https://docs.djangoproject.com/en/4.1/ref/databases/#sqlite-notes) Used as the built in Django database for development
+- [Elephant SQL:](https://www.elephantsql.com/) Postgres-based database host. Used to host the database for the live production app.
 
 ### Other Tools
 
@@ -424,6 +1043,8 @@ I also think some sort of stock control would be useful for an e-commerce site, 
 - [GitHub:](https://github.com/) Used to store the project code
 - [Gitpod:](https://www.gitpod.io/) Used to create, edit & preview the project's code
 - [Heroku:](https://dashboard.heroku.com/apps) Used to deploy the live site
+- [Amazon Web Services:](https://aws.amazon.com/) Used to host the static files and images for the live production site.
+- [Google Chrome Dev Tools:](https://www.google.com/intl/en_uk/chrome/) Used to test and debug the production and live apps
 
 
 ### External Sites / Resources / Software
@@ -452,7 +1073,7 @@ I also think some sort of stock control would be useful for an e-commerce site, 
 
 ### Testing & Bugs
 
-The full test results and details of bugs and their fixes can be found in the [TESTING document](TESTING.md)
+The site has been thoroughly tested using both automated and manual testing as well as validation for code, performance & accessibility full test results and details of bugs and their fixes can be found in the [TESTING document](TESTING.md)
 
 
 - - -
