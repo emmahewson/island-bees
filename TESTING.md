@@ -813,6 +813,22 @@ if save_info == "true:
 {% endif %}
 ```
 
+#### Bug 11 - Non logged in user placing order with invalid payment info - failure in validation
+
+**Issue:** During testing I discovered that if a non-logged in user attempted to place an order with incomplete or incorrect card details that the form validation didn't work properly, the loading animation appeared but the user wasn't being sent back to the checkout with an error message about the form and so they were stuck on the loading page with no indication of whether their order had gone through.
+
+**Fix:** I realised that this issue must stem from something that was unique to logged-out users as it was working correctly for logged-in users. Using logic and the console I narrowed it down to an error in getting the value of the 'saveInfo' box which, for logged out users, had been hidden and the stripe_elements.js was unable to progress to the stage of returning the user to the form to correct the error. I fixed this by putting the code in a try/catch block which set the value explicitly to false if the attempt to find the value failed.
+
+```
+var saveInfo;
+try {
+    saveInfo = document.getElementById('id-save-info').checked;
+}
+catch(err) {
+    saveInfo = false
+}
+```
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)

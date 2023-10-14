@@ -69,8 +69,14 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     // Gets the value of the checkbox from the form (save user info)
-    // var saveInfo = Boolean($('#id-save-info').attr('checked'));
-    var saveInfo = document.getElementById('id-save-info').checked;
+    var saveInfo;
+    try {
+        saveInfo = document.getElementById('id-save-info').checked;
+    }
+    catch(err) {
+        saveInfo = false
+    }
+
 
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
