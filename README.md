@@ -875,7 +875,7 @@ This gives admins the ability to create edit or update a product and set all its
         - This is only possible if the product has never been ordered. Once it has been ordered deleting it causes errors in the order history as it is associated with an OrderLineItem object. It would change the total of historic orders which would mean the business' records were incorrect. It can also cause errors in the functionality of the site.
     - By setting the product to 'discontinued'
         - This keeps the product in the database but removes it from appearing on the site. This avoids the issues listed above.
-        
+
 - When an admin clicks on 'delete' they are presented with a modal which is dynamically populated based on whether a product has associated OrderLineItem objects. If it is possible to delete it (ie no associated OrderLineItem objects) then they have the option to delete, if it isn't they can mark it as discontinued.
 - Admins are also able to mark an object as discontinued by using the edit product form.
 
@@ -1663,7 +1663,25 @@ The ability to reset a password is very important to users who have forgotten th
 
 </details>
 
+- - -
 
+### Error Pages
+
+![Reviews](media/docs/feat_404.jpg)
+
+
+#### Feature Information
+
+<details><summary>Error Pages</summary>
+
+- The site has bespoke error pages for the main errors that the site might throw up (400, 403, 404 & 500)
+- They feature 2 fun cartoon bees and a link to the home page so users can navigate back to a page that exists and works without using the nav or browser back button.
+
+**Value to User**
+
+This creates a positive user experience when taking an action that results in an error. It means they don't feel like they have left the site entirely and are quickly able to get back home again.
+
+</details>
 - - -
 
 
