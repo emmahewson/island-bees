@@ -1031,6 +1031,13 @@ catch(err) {
 }
 ```
 
+#### Bug 12 - Search bar dropdown on medium and smaller screens has glitch in animation
+
+**Issue:** When the searchbar dropdown is triggered there is a glitch in the styling, the bar has grey padding at the sides initially which then disappears.
+
+**Fix:** I attempted to resolve this issue using various CSS techniques but as it has been built using a combination of Bootstrap styling and bespoke CSS I have been unable to find the cause of the glitch. As this is purely an aesthetic issue and not a problem with functionality I have left it as it is, so this is a remaining bug.
+
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)

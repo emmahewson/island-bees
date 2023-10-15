@@ -19,7 +19,6 @@ This is the documentation for my e-commerce web application: Island Bees. It has
     - [Skeleton](#skeleton)
     - [Surface](#surface)
 - [Features](#features)
-    - [Site Features](#)
     - [Future Features](#)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
@@ -457,69 +456,159 @@ There were also other small tweaks to the site in terms of layout, margins, sizi
 
 ## Features
 
+Details of all features on the site including details of their value to the user.
+
 ### Whole Site
 
-![]()
+![Mock-up](media/docs/mp4_mockup.jpg)
 
-Additional titles and description meta tags on each page
+
+<details><summary>Meta Tags</summary>
+
+- All pages have title & description meta tags to improve their SEO performance
+
+**Value To User**
+Allows the site to be found easily by shoppers when searching online. Gives clarity to the site's purpose and content.
+
+</details>
 
 <details><summary>Layout</summary>
 
-- 
+- Site width is restricted to 1400px so that the contents display correctly on wider screens as well as limiting the width of the hero image on the home page to maintain the quality. The area around the site has been set to a grey that fits with the site branding.
+
+**Value To User**
+Makes the site look good & be easy to use and navigate no matter what device a user is on. Enhances user experience and creates a positive emotional response.
 
 </details>
 
 <details><summary>General Responsiveness</summary>
 
-- 
+- The site is fully responsive across all pages to help all features appear correctly and look their best on all devices. This includes:
+    - Changes to font size
+    - Changes to padding & margins
+    - Changes to the height of divs/sections
+    - Layout changes including stacking elements on smaller screens
+- Details of more specific changes can be found in the feature sections below.
+
+**Value To User**
+Makes the site look good & be easy to use and navigate no matter what device a user is on. Enhances user experience and creates a positive emotional response.
 
 </details>
 
 <details><summary>Favicon</summary>
 
-- 
+- The site has a Favicon using the brand's bee icon.
+
+**Value To User**
+Builds the brand & creates brand consistency, continues the site design in the user's browser tab, makes the site feel professional the trustworthy.
 
 </details>
 
 <details><summary>Nav Bar</summary>
 
-- 
+- Fully responsive nav bar
+- Nav changes based on screen size, with completely bespoke layout & content for each
+- Large & XL screens:
+    - Clickable logo which takes the user back to the home page
+    - Search box (permanently visible) which allows users to search for products. Site searches based on product name & description.
+    - Account Menu - links to account based pages including authentication pages (sign in, sign out, register), profile page and site management. These links vary based on whether a user is logged in and whether they are an admin.
+    - Shopping bag current contents icon - this icon's styling dynamically changes based on whether the current user has contents in their bag. It also tells the user the current total of all products in their bag.
+    - Home page link
+    - Products dropdown - links to the products page with a number of options to view products by category or all products.
+- Medium screen & smaller:
+    - Dropdown burger icon with links to:
+        - Home Page
+        - Products dropdown - links to the products page with a number of options to view products by category or all products.
+    - Clickable logo which takes the user back to the home page (Medium Screens Only)
+    - Search icon which triggers a search bar dropdown which allows users to search for products. Site searches based on product name & description.
+    - Account Menu - links to account based pages including authentication pages (sign in, sign out, register), profile page and site management. These links vary based on whether a user is logged in and whether they are an admin.
+    - Shopping bag current contents icon - this icon's styling dynamically changes based on whether the current user has contents in their bag. It also tells the user the current total of all products in their bag.
+- Nav links have hover effects with smooth transitions. For the text-based links this is an underline which fades in. For icons it is a smooth colour transition.
+- The navbar sticks to the top of the screen to aid navigation on longer pages
+
+**Value To User**
+Makes the site easy to navigate no matter where a user is on the site. Allows users to navigate on any device. Adds search and filter functionality allowing users to find the products they need very smoothly and intuitively. Provides feedback on bag contents so users can keep track of their shopping.
+
 
 </details>
 
 
 <details><summary>Delivery Banner</summary>
 
-- 
+- Banner which is visible on all pages and extends the nav, telling users the free delivery threshold.
+
+**Value to User**
+This encourages users to spend more to reach this amount, as well as informing them of the offer of free delivery, which helps to push up sales.
 
 </details>
 
 
 <details><summary>Back To Top Button</summary>
 
-- 
+- Fixed position button which scrolls the page back up to the top with a smooth scroll
+- The button only appears when the user has scrolled down the page slightly. This means it won't appear when a page is very short and doesn't require scrolling e.g. 404 page.
+- Uses JavaScript to implement functionality.
+- I had originally only included this on the products page but I decided it was really useful and included in on all pages.
+
+**Value to User**
+Allows users to move around the site easily, particularly on longer pages and smaller screens where contents are stacked and pages are longer. This aids navigation and avoids users getting lost or frustrated, improving user experience.
 
 </details>
 
 
-<details><summary>Main Buttons</summary>
+<details><summary>Buttons & Links</summary>
 
-- 
+- There are buttons and links across the site for a variety of purposes. They have consistent styling and specific colours have been used to manage the UI and lead users smoothly and intuitively through the site.
+    - Main action buttons
+        - Yellow is used for actions which don't relate to purchases e.g. adding a review, sending a message
+        - Blue is used for purchasing items e.g. bag, checkout
+        - Grey is used for secondary buttons e.g. 'back to shop' or 'cancel'
+        - The only exceptions to the above colour system is in the Site Management page where blue is used to indicate admin actions and to differentiate the useful link buttons.
+    - CRUD buttons - used for edit / delete functionality
+        - These are styled differently to make it clear that they have a very different purpose, helping to avoid confusion and to enhance user experience
+        - Green (success) is used for positive actions e.g. 'EDIT'
+        - Red (warning / error) is used for riskier actions e.g. 'DELETE'
+- There are also text-based links around the site
+    - Nav & Footer links use an underline on hover styling
+    - The rest of the site uses a bold blue colour with a colour transition hover to differentiate the text from the non-link text around it.
+
+**Value to User**
+Buttons allow users to take actions on the site such as purchasing, adding reviews, CRUD functionality. The consistency in design means that the site has an intuitive UI and users feel confident when taking actions. The colour system improves user experience and helps to avoid mistakes.
 
 </details>
-
 
 <details><summary>Footer</summary>
 
-- 
+- Visible on all pages of the site, separated in to 2 sections
+    - Upper footer
+        - Social links - include both the social icon & name with a hover underline effect. All external links open in a new tab.
+        - More Info - Links to FAQs & Contact Us pages. Have the same underline hover styling as the nav links.
+        - About Us - Description of the company including a disclaimer that the site is fictional and payments will not be taken, nor items dispatched.
+    - Lower Footer (Separated out as this is information is separate to the main site and relates to the reasons for it being created)
+        - Disclaimer about site being for educational purposes
+        - Site creator's name and social links (open in a separate tab)
+
+**Value to User**
+Provides additional links to aid site navigation. Links in the footer are for secondary features such as FAQs & Contact and so are separated from the main site links to keep the navigation simple. Allows users to connect with the company on social media. Provides context to the purpose of the site with the company info. Explains that the site is fictional to add context and clarity for users.
 
 </details>
-
 
 
 <details><summary>Messages & User Feedback</summary>
 
-- 
+- Throughout the site I have used the Django messaging framework along with Bootstrap's Toast element to communicate with users as they take actions on the site. These appear as a popup message in the corner of the site which lets the user know if their action has been successful or not. It offers reassurance for the user, provides a good user experience and helps make the site seem robust and secure. The messages use conditional colours based on the type of message (success - green / error or warning - red / info - blue )
+- Examples of usage
+    - Adding an item to bag (success message and bag summary)
+    - Updating or changing bag contents (success message)
+    - Placing an order (info message including email details)
+    - Adding / Editing / Deleting a review, product, FAQ etc (success message)
+    - Attempting to visit a restricted page (Info message)
+    - Failed payment (error message)
+    - Successful log in/out (success message)
+    - Registration - email sent for verification (info message)
+
+**Value to User**
+Provides user feedback at all stages so that users know if their actions have been successful. Avoids confusion and provide a positive user experience. Creates confidence in the site for users when making purchases.
 
 </details>
 
@@ -561,6 +650,9 @@ Throughout the site I have implemented security & authentication which restricts
 | **500**              | All Users                                 | None                                                                                                               | None                                                                                              |                                                                                                                               |
 
 
+**Value to User**
+Allows certain actions to be taken by certain users to protect parts of the site from malicious activity. Allows admins to have additional privileges, giving them the ability to manage the site. Stops admins editing reviews which promotes trust for users leaving reviews. Allows admins to approve reviews to avoid inappropriate content appearing on site.
+
 </details>
 
 
@@ -575,25 +667,38 @@ Throughout the site I have implemented security & authentication which restricts
 
 <details><summary>Hero & Intro Sections</summary>
 
-- 
+- A visually impactful, colourful image of bees on comb to grab the user's attention and make the site's purpose clear on first arrival
+- A hexagon grid to represent the theme of the site with a 'SHOP NOW' button with smooth hover effect which leads to the products page
+- Text on a pale blue background to create separation and hierarchy in the design with info about the company to help expand on the site's purpose and what users can expect to find there.
+
+**Value to User**
+Makes the site's purpose and brand identity clear upon first arrival. Encourages users to head to the products section and start shopping.
 
 </details>
 
 
 <details><summary>Shop By Category</summary>
 
-- 
+- A section with 4 buttons, 1 for each category, allowing users to navigate directly to the products page showing only products in that category.
+- The buttons have friendly icons to represent each category as well as text to make them accessible.
+- The buttons have a smooth hover effect where the text and background colours swap.
+
+**Value to User**
+This is useful to users as they might have a very specific product in mind e.g. a new bee hive, and they can easily navigate to the 'kit' category and find what they need. Allows purchases to be made quickly and easily with intuitive user journeys through the site and a number of different ways to navigate to the products section.
 
 </details>
 
 <details><summary>Featured Products</summary>
 
-- 
+- This section shows product cards for products that have their 'is_featured' field set to true. 
+- The section has a hexagon background graphic to fit with the company and site style. This graphic is used consistently in the background for product cards across the site.
+- The product cards contain summary info about the product including image (with clickable link to product details page), name, price, cateogory (with clickable link to products page filtered by category) & rating represented by hexagons. For more information on product cards go to [Products](#products) below.
+
+**Value to User**
+This allows admins of the site to promote certain products to shoppers and gives them more control over what users are finding and buying.
 
 </details>
 
-
-#### Value To User
 
 - - -
 
