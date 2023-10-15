@@ -667,7 +667,7 @@ Allows certain actions to be taken by certain users to protect parts of the site
 
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/a77a93ca-dd41-4eee-9218-d90a43d05849
 
 
@@ -716,7 +716,7 @@ This allows admins of the site to promote certain products to shoppers and gives
 ![Products Page](media/docs/feat_products.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/cb442525-da78-488d-bd22-a9ac8107e23d
 
 
@@ -855,7 +855,7 @@ This gives admins the ability to control their product catalogue and which produ
 ![Reviews](media/docs/feat_reviews.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/bfea9a7a-fe3d-428e-a9e4-967a73b6dbf6
 
 
@@ -965,7 +965,7 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 ![Shopping Bag](media/docs/feat_bag.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/970dfafb-88ec-42ef-80f5-984ea73d9612
 
 
@@ -1071,7 +1071,7 @@ The bag page provides users with a comprehensive breakdown of the items they hav
 
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/0b585ae8-1ab1-49ac-a92e-e47693a430fc
 
 
@@ -1156,7 +1156,7 @@ This page gives the user a clear indication that their purchase has been success
 ![Profile Page](media/docs/feat_profile.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/fe7fc7b2-b029-4694-9e79-61f0883ace78
 
 
@@ -1257,7 +1257,7 @@ Gives users ability to dig deeper in to the details of historic orders to see wh
 ![FAQs Page](media/docs/feat_faqs.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/fbf3d04c-d4e9-410a-9d7c-36dabf9cb3f6
 
 
@@ -1330,7 +1330,7 @@ Provides admins with a quick, easy way to remove FAQs from the site. This allows
 
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/a8851e43-b005-474a-a34a-c1542a8a5f23
 
 
@@ -1384,7 +1384,7 @@ The message model is a valuable tool for the site admins to access all their use
 ![Site Management Page](media/docs/feat_sitemanage.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/2fe0145d-aea7-4a7b-a1a1-bd0c9eed63c7
 
 
@@ -1469,7 +1469,7 @@ This allows admins to have a quick, easy way of checking reviews before they go 
 ![Sign In Page](media/docs/feat_auth.jpg)
 
 
-
+#### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/2de47043-e038-4a19-a8a1-addb43e149b8
 
 
