@@ -1478,6 +1478,7 @@ The ability to sign out is an important security measure to stop other users on 
 <details><summary>Manage Email</summary>
 
 - The manage email page is accessible via the user profile page
+- Only logged in users can access this page & users can only view their own emails
 - Page is in the standard site bespoke styling with a yellow button to add an email address
 - There are 3 additional buttons for managing email actions which are styled using the site colours but are smaller to signify that they are less important actions.
 - From here users can view their associated email addresses, change their primary email, re-send verification for emails and remove email addresses. They can also add additional email addresses.
@@ -1485,22 +1486,37 @@ The ability to sign out is an important security measure to stop other users on 
 - There is a button to take users back to their profile page using the secondary grey styling.
 
 **Value to User**
+This page allows users to add or change their email as well as defining which email is used as their primary form of contact. This is a useful bonus tool for users to manage their account and improve their user experience.
 
 </details>
 
 <details><summary>Change Password</summary>
 
-- 
+- The change password is accessible via the user profile page
+- Only logged in users can access this page & users can change their own password
+- Page is in the standard site bespoke styling with a yellow button to submit form
+- There is a button to take users back to their profile page using the secondary grey styling.
+- Users must submit their current password and their new password twice to check for accuracy
+- The new password is checked for common or insecure passwords, the form will not submit if these are used and the users are shown an error message.
+- This page is only for users who know their current password and wish to change it. The forgot password page is available for users who have forgotten their password and cannot sign in. (See below).
 
 **Value to User**
+This page allows users to change their current password if they are concerned about security and password management. This improves their trust in the site, the site's security and their user experience.
+
 
 </details>
 
 <details><summary>Forgot Password</summary>
 
-- 
+- The forgot password page is accessible via the sign in page for users who attempt to sign in but cannot remember their password.
+- The user is prompted to enter their email address
+- If a user enters an email address that is not in the database they will be notified in an error message
+- If the user enters a correct email they will be sent an email with a link to the password reset page
+- Once on the password reset page the user is able to reset their password and sign in to the site with the new password but submitting another form.
+- All pages are in the standard site bespoke styling with a yellow button to submit forms, a grey home button to return to the home page and colours and fonts that reflect the rest of the site. 
 
 **Value to User**
+The ability to reset a password is very important to users who have forgotten their password, it allows them to gain access to their account data including their order history and reviews which would otherwise be inaccessible to them. It is a vital part of site authentication.
 
 </details>
 
