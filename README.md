@@ -665,6 +665,8 @@ Allows certain actions to be taken by certain users to protect parts of the site
 
 ![Home Page](media/docs/feat_home.jpg)
 
+
+
 <details><summary>Hero & Intro Sections</summary>
 
 - A visually impactful, colourful image of bees on comb to grab the user's attention and make the site's purpose clear on first arrival
