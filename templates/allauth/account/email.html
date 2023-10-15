@@ -81,12 +81,21 @@
     {% endfor %}
   {% endif %}
 
-  <div class="button-group mt-2">
+  <!-- Buttons -->
+  <div class="button-group mt-3 d-flex justify-content-end">
+
+    <!-- Back To Profile -->
+    <a href="{% url 'profile' %}" class="ib-button ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
+        <i class="fas fa-chevron-left d-inline me-1"></i>
+        <p class="d-inline">BACK TO PROFILE</p>
+    </a>
+
     <!-- Submit Button -->
-    <button
-      class="primaryAction ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm text-uppercase float-end"
-      name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+    <button class="primaryAction ib-button ib-button-yellow text-decoration-none text-ib-dark font-title weight-bold shadow-sm text-uppercase ms-3" name="action_add" type="submit">
+        {% trans "Add E-mail" %}
+    </button>
   </div>
+
 </form>
 
 {% endblock %}

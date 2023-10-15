@@ -764,7 +764,10 @@ A well-designed, user-friendly place for users to search, filter and compare pro
     - Product description text
     - Number of product reviews (with a clickable link to the reviews section below)
     - Product reviews
-        - All reviews of the product that have been approved by an admin are visible here with their full text and rating. This allows users to get a balanced view of the product. For more information about reviews see [Features - Reviews](#reviews)
+        - All reviews of the product that have been approved by an admin are visible here with their full text and rating. This allows users to get a balanced view of the product.
+        - The reviews contain the review title, contents, username, date & rating.
+        - If a review is a user's own they will see EDIT/DELETE buttons for it. Superusers will see DELETE buttons only.
+        - For more information about reviews see [Features - Reviews](#reviews)
 - The page also allows users to add the product to their shopping bag, with the option to add multiples of the product.
     - The quantity input box allows users to either type in an number (from 1-99) or use the +/- buttons to increment the quantity. These buttons are controlled by JavaScript and dynamically enable/disable when the number is at the min/max. This creates a positive user experience.
     - Once a quantity has been selected users can add the product to the bag using the 'add to bag' button which is styled blue for purchasing actions. [See Whole Site Features](#whole-site)
@@ -944,32 +947,89 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 <details><summary>Shopping Bag</summary>
 
-- Talk about session & authentication
-- The delivery charge calculations when no delivery is chargeable
+- The shopping bag is an important part of purchasing process for a user. It allows them to store products as they navigate the site, then purchase them all at once when they are finished shopping.
+- The items in the bag can be removed or the quantities amended on the shopping bag page.
+- Users can add additional items to the bag. If the product is already in the bag its quantity will be adjusted.
+- The shopping bag is stored in the session data, that means that it is kept until the user signs out or the session cookies reset.
+- Users do not have to be signed in to store items in their bag or make purchases.
+- The bag contains information about the total cost of all the items as well as the delivery charge and grand total. It also tells the user how much more they need to spend to get free delivery.
+- The shopping bag information appears in a number of places on the site
+    - On the shopping bag page
+    - In the nav bar bag icon (includes the bag total)
+    - In the success message toast - which includes a bag summary and link to the bag page.
+
+**Value to User**
+The bag is a vital tool for an e-commerce site. It allows users to gather multiple products to purchase at once, storing them in the session cookie so that they can browse the site without losing their shopping information. It provides a smooth user experience and encourages users to buy more items.
 
 </details>
 
 
 <details><summary>Summary Message</summary>
 
-- 
+- When adding, removing or updating an item in their bag users are presented with a success message which includes a shopping bag summary.
+- This summary only appears when taking these actions - if the success message contains other information the summary is hidden e.g. signing in, editing a review, editing a product.
+- This bag summary message toast appears on any page where a user had updated their bag from.
+- It includes:
+    - The number of items in the bag
+    - Image / name / quantity for each item in the bag
+    - The total excluding delivery
+        - I made the decision to exclude delivery so that how close they were to the free delivery threshold was clear to users
+    - If the total is less than the free delivery threshold users are told how much more they need to spend for free delivery.
+    - A link to the checkout page if a user is ready to make their purchase (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) with a lock icon to show that the checkout is secure.
+
+**Value to User**
+The bag summary gives users instant feedback on what is in their bag every time they adjust its contents. It allows them to keep track of their purchases and totals, creating a positive user experience and clear information. By providing a link directly to the checkout users who are in a hurry can quickly complete their shopping, rather than having to navigate to the bag page first.
 
 </details>
 
 <details><summary>Nav Shopping Bag</summary>
 
-- 
+- The nav bar contains a shopping bag icon with updates dynamically based on the contents of a user's shopping bag
+- The bag icon appears within a grey hexagon to continue the brand styling & site theme
+- The styling of the bag changes based on whether the bag is empty or not
+    - The bag icon turns white when there are contents or yellow (the same colour as the nav behind) if the bag is empty to appear empty
+    - The total is bold if the bag has contents, or regular weight if it doesn't.
+- The icon is a clickable link to the bag page with a colour change hover effect
+
+**Value to User**
+This provides users with a constant point of information about the contents of their shopping bag. In a similar way to the bag summary it provides immediate feedback about how much they are spending and whether their actions of adding products to the bag have been successful. This creates a great user experience and smooth shopping journey.
+
 
 </details>
 
 <details><summary>Bag Page</summary>
 
-- 
+- The bag page expands on the summary and nav icon to provide users with all the information they need about their shopping bag and purchases.
+- It contains
+    - A table with a summary of all items, each item is a row containing the following info:
+        - Image
+        - Product name
+        - Price
+        - Editable quantity
+            - Number input to manually input values (min 1 / max 99)
+            - +/- buttons to increment/decrement the value
+                - These buttons are handled using JavaScript & are disabled/enabled and dynamically change styling based on the min/max value in the input
+            - update link to update the bag after changing the quantity
+            - remove link to remove the item from the bag
+        - Subtotal (quantity x price)
+    - Bag total (total without delivery)
+    - Delivery cost
+    - Grand total (Bag total + delivery)
+    - If the bag total is less than the free delivery threshold users see a message telling them how much more they need to spend to get free delivery
+    - Checkout button (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) with a lock icon to show that the checkout is secure.
+    - Keep Shopping button to return users to products page (button styled using secondary action grey [See Whole Site Features](#whole-site))
+- Delivery is calculated as follows:
+    - Some items are not subject to delivery charges e.g. courses [See products](#products)
+    - The delivery charge is 10% of the total amount spent on items that are subject to delivery
+    - If a user has spent over £100 (including on products that are not subject to delivery) then delivery is free.
+- If the bag is empty users see a message telling them that the bag has no contents with a link back to products to encourage them to shop.
+
+
+**Value to User**
+The bag page provides users with a comprehensive breakdown of the items they have chosen so far. From here they have controls to remove & update items in their bag and can see what their total cost will be with breakdown values for delivery. They can also see if they are close to the free delivery threshold which may encourage them to buy more. It gives users a great user experience with a clear responsive layout and user friendly interface.
 
 </details>
 
-
-#### Value To User
 
 - - -
 
@@ -981,33 +1041,74 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 <details><summary>Checkout Page</summary>
 
-- User profile form update & pre-populate
-- Stripe payments & webhooks
-- Summary
-- Validation & Security
-- Logged in / Logged out options
-- Orders linked with user
+
+- The checkout page is where users can check everything in their bag, set their delivery information, and finalise their purchase and payment information then finally make their purchase.
+- It contains:
+    - A summary of the bag contents and totals, similar to the bag page but without the option to adjust the contents.
+    - A form to add delivery information
+        - All fields are required apart from street_address2 & phone_number
+    - If a user is logged in:
+        - The form will be pre-populated with their profile information if previously provided
+        - They can elect to update their profile information based on the form using a simple checkbox
+        - The order will be saved in their profile and associated with their User object
+    - If a user is not logged in they are directed to register/sign in if they wish to save their information
+    - A secure payment form using Stripe as a simple, single input for card number, expiry and CVC.
+        - The form comes built in with Stripe's comprehensive security and validation functionality
+        - Site admins cannot access this information, it is sent to Stripe securely and the site is only notified if the payment has been successful or not.
+        - Error messages below card input field
+        - More information in "Checkout Process" below.
+    - A Place Order button (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) with a lock icon to show that the checkout is secure.
+    - A Back to Bag button which takes users back to their bag to amend the contents
+    - A warning message that the user's card will be charged with the bag total.
+- The site uses webhooks to manage the functionality, listening for activity from Stripe to make sure that certain actions happen at the right times, that orders are created correctly in the database for a successful payment or not created if a payment fails. This ensures the site functions correctly, that users orders are fulfilled correctly and that payments work.
+
+**Value to User**
+A functioning checkout is a key part of an e-commerce site. This allows users to make purchases using secure payments, this is a vital aspect of the site for users who value security and want to protect their data. The use of webhooks and Stripe allows the site to function correctly, to make sure that orders are being stored correctly so that they can be fulfilled and tracked correctly by the company. The correct functioning of the company and the website relies on this working properly and it is of vital importance to both shoppers and site admins.
 
 </details>
 
 
 <details><summary>Checkout Process</summary>
 
-- Step by step process of checking out
-- Include email
+- The checkout process is as follows:
+    1. The user fills in their details and delivery information
+    2. If any required fields are left blank attempted submission has front end validation that stops the form submitted and points out the field which has a problem
+    3. The user fills in their card information
+    4. If there is an error in the card details the user is notified in a message under the Stripe input either in realtime using JavaScript.
+    5. The user clicks 'Place Order'
+    6. The form is disabled and a loading animation appears
+    7. If there is an error at this stage with the form or payment information the user is returned to the form to amend the error with an error message to tell them what the problem is.
+    8. Once the order has gone through successfully the user is directed to the Checkout Success page (see below)
+    9. The user sees a success message containing their order number and information about email confirmation
+    10. The site sends the user a confirmation email to the email address provided
+    11. An order is created in the database.
+
 
 </details>
 
 
 <details><summary>Checkout Success Page</summary>
 
-- 
+- Once a successful purchase has been made the user is directed to the checkout success page.
+- This page contains:
+    - Order information:
+        - Order number
+        - Order date
+        - Delivery Details
+    - Order summary:
+        - Product name
+        - Quantity purchased
+        - Total
+        - Delivery charge
+        - Grand total
+    - Back to Shop button (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) whilst this is not strictly a purchasing action it is the button colour that the user has been following to make their purchases, styling it blue subtly encourages them back to the store to continue that path to browse more products.
+
+
+**Value to User**
+This page gives the user a clear indication that their purchase has been successful, and summarises what they have bought and how much they have spent. It gives them a sense of security and that everything has functioned correctly, which is a vital part of the user experience for e-commerce sites. It also allows users to see what the next step is and to know that an email confirmation is on the way.
 
 </details>
 
-
-
-#### Value To User
 
 - - -
 
@@ -1017,33 +1118,92 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 ![]()
 
+<details><summary>Profile</summary>
+
+- The User Profile gives users a way to store their information and site actions
+- In connects them to their personal information, their order history & their reviews
+- The profile page gives them access to viewing, updating and amending this information in a single location
+- The page is only visible to logged in users and users can only view their own information, not that of other users.
+- More details below
+
+**Value to User**
+The profile page gives users a single point to access all of their information. It allows them to update their info, see their order and view, edit & delete their reviews without having to search around the site for them. It provides a quick, efficient way to manage their data.
+
+</details>
+
 <details><summary>Profile Page - User Details Forms</summary>
 
-- 
+- The profile form contains the information about the user that they have saved on the site, either on this page or during checkout
+- It is pre-populated with any information they have previous stored
+- When a user is created they have no information other than email address, username and password
+- The form gives them a way to add extra information for use in future purchases
+- The first and last names connect to the User model
+- The default delivery info is stored in the UserProfile model
+- Model models are updated using a single update button located at the bottom of the form (button styled using 'non-purchasing' action yellow [See Whole Site Features](#whole-site))
+- None of the form inputs are required, users can choose to add their data each time they place an order, rather than store it on their profile
+- The form also contains links to 2 authentication pages which control other fields in their User model - both handled by allauth [see below](#authentication)
+    - Manage Email (allows them to change, add and remove their email addresses)
+    - Change Password (allows them to change their User password)
+- On submission the form updates their data and refreshes the page
+
+**Value to User**
+This form allows users to store their information to make future purchases quicker and easier without the need to enter their data every time. It also provides them convenient links to manage their email and password, providing easy navigation and good user experience.
 
 </details>
 
 
 <details><summary>Profile Page - Order History</summary>
 
-- 
+- The order history section of the profile page gives users a quick summary of all their historic orders to browse and click through to see more details
+- It contains:
+    - Order number
+    - Date
+    - Items purchased with quantity
+    - Total order cost
+- The list is contained in a fixed-height box to stop it getting too long and affecting the site design and contents lower down the page, the contents of the container are scrollable.
+
+**Value to User**
+This allows users to view their orders, to find out information about what they have previously purchased or to find out information about an order that has a problem or hasn't turned up so they can follow it up with the site.
 
 </details>
 
 <details><summary>Profile Page - User Reviews</summary>
 
-- 
+- The user reviews section shows all reviews created by the current user.
+- It also contains unapproved reviews, so offers a place for users to view, edit or delete reviews that they have recently submitted but have not yet been approved (these do not appear on the rest of the site until they have been approved.)
+- If a review is unapproved it has a 'Approval pending' label on it to make its status clear.
+- Reviews contain EDIT/DELETE links - as all reviews are the user's own they will all have these links.
+- The review contains product name & image (clickable link to the product details page), review title, date, content & rating
+- The review doesn't contain the username as they all belong to the same user (this is different to the reviews on the product details page which contain the username but not the product image/name.)
+- For more information about reviews see [Features - Reviews](#reviews)
+
+**Value to User**
+This section gives users a single point to view, edit & delete their reviews as well as seeing which reviews have not yet been approved. If these were not on the profile page a user would have to navigate to each product that they had reviewed to edit them which would provide a poor user experience.
 
 </details>
 
 <details><summary>Order History Info Page</summary>
 
-- 
+- When a user clicks on an order number on their profile page they arrive on the order history page, which uses the same template as the checkout success page, with dynamically amended text to reflect that this is a past order.
+- This page contains:
+    - Order information:
+        - Order number
+        - Order date
+        - Delivery Details
+    - Order summary:
+        - Product name
+        - Quantity purchased
+        - Total
+        - Delivery charge
+        - Grand total
+    - Back to Profile button - takes the user back to their profile and order history. (Button styled using 'purchasing' action blue [See Whole Site Features](#whole-site))
+
+**Value to User**
+Gives users ability to dig deeper in to the details of historic orders to see what they have previously purchased, to track their spending and to find out order details if any questions or problems arise. It is an important part of their purchasing journey after the purchase is complete.
 
 </details>
 
 
-#### Value To User
 
 - - -
 
@@ -1055,30 +1215,61 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 <details><summary>FAQs Page</summary>
 
-- 
+- The FAQs (Frequently Asked Questions) Page provides users with answers to common questions that users might have about the site.
+- Each question is clickable to reveal the answer, this keeps the page short and manageable and provides a good user experience
+- The intro text also contains a link to the Contact page if users have a question that is not covered in the FAQs as well as text to explain how to reveal the answers.
+- Admins of the site will also see an 'Add FAQ' button to add additional FAQs and EDIT/DELETE options on each FAQ to amend or remove them.
+
+
+**Value to User**
+Provides a quick reference for common questions that users might have, giving them an instant answer. This provides them with good customer service and user experience. It also avoids the business having to answer the same question all the time which save them time and effort. The contact us link allows users who don't find their answer here to navigate easily and find what they need.
+
 
 </details>
 
 <details><summary>Add FAQ</summary>
 
-- 
+- The Add FAQ form is a simple to add FAQs to the site
+- It uses the branded form formatting seen across the site
+- It has 2 fields, question & answer, both of which are required
+- Attempting to submit the form with empty fields will indicate to the user that they must fill these in in order to submit
+- The question has a maximum limit to avoid them getting too long, which improves user experience and site layout
+- The answer has no limit, giving the site admin the ability to answer more complex, longer questions
+- Users are presented with 2 buttons (Buttons styled using standard site button colours [See Whole Site Features](#whole-site)):
+    - Cancel - to go back to the FAQs page 
+    - Add FAQ to submit the form and take user back to the FAQs page.
+- On submission the admin will see the FAQ appear on the FAQs page.
+
+
+**Value to User**
+Provides admins with a quick, easy way to add FAQs to the site which will appear on the FAQ page immediately with the site styling. This allows them to adjust their FAQs as they develop the site.
 
 </details>
 
 <details><summary>Edit FAQ</summary>
 
-- 
+- The Edit FAQ form has all the same functionality as the Add FAQ form (see above)
+- The form is pre-populated with the FAQ content
+- On submission the admin is returned to the FAQ page and sees the changes to the FAQ reflected on the page immediately.
+
+**Value to User**
+Provides admins with a quick, easy way to edit FAQs on the site. This allows them to adjust their FAQs as they develop the site.
 
 </details>
 
 <details><summary>Delete FAQ</summary>
 
-- 
+- Accessible from the FAQs page this allows admins to delete an FAQ if it is no longer relevant
+- Clicking on delete triggers a modal pop up confirming whether the user wants to delete, this avoids accidental deletion
+- Clicking cancel closes the modal and doesn't delete the FAQ
+- Clicking delete on the modal deletes the FAQ and returns the user to the FAQs page
+- The FAQ is immediately removed from the site and the database.
+
+**Value to User**
+Provides admins with a quick, easy way to remove FAQs from the site. This allows them to adjust their FAQs as they develop the site.
 
 </details>
 
-
-#### Value To User
 
 - - -
 
@@ -1090,18 +1281,42 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 <details><summary>Contact Us Page</summary>
 
-- 
+- Provides the ability to contact the company using either a contact form or with their contact details
+- Contact form
+    - If the user is logged in the Name & email will pre-populate with their information
+    - A non-logged in user can still fill in the form by providing their name & email as well as message subject & content
+    - All fields are required - attempting to submit the form with empty fields will indicate to the user that they must fill these in in order to submit
+    - The form has a bespoke styled button to submit using the non-purchasing themed yellow button [See Whole Site Features](#whole-site)
+    - On submission the user sees a success message (as a Bootstrap Toast) telling them that their message has successfully sent. The page is reloaded and the form resets to its original state (either empty, or pre-populated with the user's name / email if the user is logged in).
+- Contact Details
+    - Includes the company name, address, phone and email
+    - Phone and Email are clickable to allow users to email or phone using a single click
+
+**Value to User**
+Getting in touch with the company gives users access to customer service, to ask questions about products or the company in general and improves user experience as users are able to communicate with the company. The form is easy to use and pre-populating it allows logged in users to get in touch without repeating their information. For users who don't like contact forms or prefer phone or email details are provided. All of these things enhance user experience and provide multiple options for getting in touch.
 
 </details>
 
 <details><summary>Messages</summary>
 
-- 
+- Once a message has been submitted the site creates a Message object on the database which then appears on the site management page
+- This gives admins the ability to track customer communication from within the site, including which messages need further action
+- The message model contains the following fields:
+    - user - connects to the User model, set to whoever was logged in when the message was sent. If the user wasn't logged in then this is set to Null
+    - Name - populated by the User model by combining first_name and last_name or by the contact form if the user is not logged in
+    - Email - populated by the User model or by the contact form if the user is not logged in
+    - Subject - populated by the contact form
+    - Content - populated by the contact form
+    - created_on - automatically populated when the message is created
+    - is_open -  a boolean field which states whether the message is open or closed. Set to open on creation
+- Admins are able to toggle the 'is_open' status on the site management page [see below](#site-management)
+
+**Value to User**
+The message model is a valuable tool for the site admins to access all their user communication in a single place and to track the status of messages and toggle them once they are dealt with, rather than having all the messages as separate email chains in their inbox. This is a feature that I would like to extend in the future to allow the admins to then reply from within the site management page, rather than having to reply in a separate email. [See future features - admin messaging](#admin-messaging-system---expand)
 
 </details>
 
 
-#### Value To User
 
 - - -
 
@@ -1111,26 +1326,76 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 ![]()
 
+<details><summary>Site Management</summary>
+
+- This page provides a single point for a site admin to manage different aspects of site management without having to visit multiple places to achieve the same thing.
+- This page is only visible to site admins
+- It contains:
+    - Useful links - links to admin actions & areas they're likely to need to access regularly
+    - Customer messages - dashboard for viewing, filtering and toggling the status of customer messages
+    - Review approval - dashboard for viewing and approving / deleting unapproved product reviews
+
+**Value to User**
+This made administering the site more efficient and provides a good user experience to site admins.
+
+</details>
+
 <details><summary>Site Management Page - Useful Links</summary>
 
-- 
+- The useful links section provides a set of useful links that the admin may need to regularly visit.
+- Includes:
+    - Add product - for adding new products to the site
+    - FAQs - a link to the FAQs page for viewing, adding, editing & deleting FAQs
+    - Admin Area - a link to the Django admin panel for more complex administrative tasks
+
+**Value to User**
+Brings together all the useful links that an admin might regularly need. Saves admins time and effort in their site administration.
 
 </details>
 
 <details><summary>Site Management Page - Messages</summary>
 
-- 
+- The messages panel displays all messages received by users from the Contact Us form
+- The messages are stored in a container which has a fixed height, it is internally scrollable to view all the messages. This avoids the page getting too long and affecting content further down.
+- The section contains
+    - Message count and current filter info
+    - Filter buttons (open / closed / all)
+        - These can be clicked to show only open / closed or all messages
+        - Allows admins to easily filter messages to find what they need
+        - On click the page refreshes and the messages are filtered with the filter info text on the left reflecting the change
+        - This filter information is retained on subsequent page loads - this means that when the toggles are used the current filter is preserved.
+    - Messages - styled according to their status (pink for open, green for closed)
+        - Date sent
+        - Email address - clickable to open an email client and email the sender.
+        - Subject
+        - Content
+        - Toggle switch - set to current message status (open / closed)
+- Admins can toggle the switch on each message to change the status
+    - This will change the message to the opposite state (closed -> open, open -> closed) and adjusts the message styling accordingly
+    - Toggling a message refreshes the page, stores the current page scroll position and reload it at that point
+        - If 'All' messages are visible the scroll position of the messages container is also preserved, so that, on page relaod, the messages stays in the same place in the viewport and simply appears to change colour. This makes it very clear that the toggle has worked and avoids the user having to scroll back to find the message again. This is achieved using JavaScript.
+            - This is not implemented if the messages are filtered by open/closed as toggling the message means it will disappear from the current filtered messages and so scrolling to it is pointless as it won't be there.
 
+**Value to User**
+This is a great tool for site admins to manage their user communication in a single place and to track the status of messages and toggle them once they are dealt with. This is a feature that I would like to extend in the future to allow the admins to then reply from within the site management page, rather than having to reply in a separate email. [See future features - admin messaging](#admin-messaging-system---expand)
 </details>
 
 <details><summary>Site Management Page - Unapproved Reviews</summary>
 
-- 
+- The unapproved reviews creates a quick and easy way for admins to approve newly added or edited reviews
+- The review contains product name & image (clickable link to the product details page), review title, user, date, content & rating
+- Reviews contains EDIT/DELETE buttons with limited visibility
+    - EDIT is only visible to the review creator (in this case the admin would have to be the review author)
+    - DELETE is always visible to admins
+- Reviews also contain a toggle switch to approve the review and make it visible on the site
+- Only unapproved reviews appear here, I did consider making all reviews visible but I felt that it would get too long and hard to find. There is explanatory text telling the admins that to unapprove an approved review they can go to the admin panel. This I felt provided the best balance of user experience and control.
+- For more information about reviews see [Features - reviews](#reviews)
+
+
+**Value to User**
+This allows admins to have a quick, easy way of checking reviews before they go live, to avoid having inappropriate content appearing on the site without their knowledge. This section of the site management page means they can access all these reviews in 1 place without having to search the site for new content. It saves them time, effort and provides a great user experience for admins.
 
 </details>
-
-
-#### Value To User
 
 - - -
 
@@ -1140,29 +1405,86 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 ![]()
 
-Include: using widget-tweak to add style classes to the form inputs in the auth templates
+<details><summary>Authentication Pages (AllAuth)</summary>
+
+- The project uses AllAuth to implement User login and authentication functionality. AllAuth comes with a whole load of backend functionality and front end templates that make the user, registration, sign in/out and user management easy and quick to create.
+- AllAuth provides a series of templates for all the actions required to implement authentication. The site uses these with its own bespoke styling to make them feel part of the site.
+- All the form have been styled using the [widget-tweak](https://pypi.org/project/django-widget-tweaks/) package to add styling classes to inputs, labels and error messages from within the form templates
+
+**Value to User**
+A strong authentication system is vital to an e-commerce site, allowing users to log in, register, manage their profile, see their order history and store their data for the next time they want to make a purchase. It improves user experience and make the process of visiting the site and making purchases quicker and smoother. The styling of the forms matches the rest of site making it feel like it belongs and building confidence and trust in the site.
+
+</details>
+
 
 <details><summary>Register</summary>
 
-- Email verification
+- The register page allows users to set up an account
+- Accessible via the account menu to logged out users
+- A link to 'sign-in' is provided if a user already has an account
+- Form is in the standard site bespoke form styling
+- Users provide an email address (repeated to check accuracy) which is used to send a verification email
+- User also provide a username and password to access the site
+- AllAuth provides built in verification to check the password and username to make sure they are strong and not commonly used
+- Passwords are protected and site admins cannot view them (they are hashed in the admin panel).
+- If a user attempts to register with an email that is already in use the form will throw an error
+- (Buttons styled using standard site button colours [See Whole Site Features](#whole-site))
+    - Home button in grey - takes user back to home page without registering
+    - Sign Up in yellow - submits the form
+- On successful form submission users will receive a verification email in which they must click a link to verify their email in order to sign in to their account, visiting a couple of additional pages in the process (both of which have been styled with the bespoke site styling). This provides additional security and makes sure that user emails are correct.
+- Once verified users can sign in using the Sign In form with their new details.
+
+
+**Value to User**
+Setting up an account allows users to access benefits such as storing their information & order history for future use & creating reviews. The verification and security provided by allauth makes this a secure process for users which improves their user experience and trust in the site.
 
 </details>
 
 <details><summary>Sign In</summary>
 
-- 
+- Allows users to sign in to their account
+- Accessible via the account menu to logged out users
+- A link to 'register' is provided if a user doesn't yet have an account
+- Form is in the standard site bespoke form styling
+- Users can sign in using their email or username
+- Users provide their account password (not visible to admins)
+- There is a checkbox to tell the site to remember the user (using standard site checkbox styling).
+- If an incorrect username/email & password are entered users the form fails to submit and users are shown an error message
+- (Buttons styled using standard site button colours [See Whole Site Features](#whole-site))
+    - Home button in grey - takes user back to home page without registering
+    - Sign Up in yellow - submits the form
+- The page contains a 'forgot password' link if a user cannot log in
+- On successful log in users are redirected to the home page, or, if they had previously attempted to visit a page that only logged in users could visit, they will be redirected there instead.
+
+**Value to User**
+This allows users to access their account to use their default information for purchases as well as accessing their past orders and reviews. This improves their user experience and speeds up the process of making purchases.
 
 </details>
 
 <details><summary>Sign Out</summary>
 
-- 
+- Allows users to sign out of their account
+- Accessible via the account menu to logged in users
+- Users are taken to a page to confirm they to sign out
+- Page is in the standard site bespoke styling with a yellow button to confirm sign out
+- On sign out users and their bag contents are removed from the session and they are redirected to the home page
+
+
+**Value to User**
+The ability to sign out is an important security measure to stop other users on the same computer being able to view the user's data. This makes the site more secure and promotes trust and confidence in the site.
 
 </details>
 
 <details><summary>Manage Email</summary>
 
-- 
+- The manage email page is accessible via the user profile page
+- Page is in the standard site bespoke styling with a yellow button to add an email address
+- There are 3 additional buttons for managing email actions which are styled using the site colours but are smaller to signify that they are less important actions.
+- From here users can view their associated email addresses, change their primary email, re-send verification for emails and remove email addresses. They can also add additional email addresses.
+- Adding a new email sends a verification to that address.
+- There is a button to take users back to their profile page using the secondary grey styling.
+
+**Value to User**
 
 </details>
 
@@ -1170,15 +1492,18 @@ Include: using widget-tweak to add style classes to the form inputs in the auth 
 
 - 
 
+**Value to User**
+
 </details>
 
 <details><summary>Forgot Password</summary>
 
 - 
 
+**Value to User**
+
 </details>
 
-#### Value To User
 
 - - -
 
