@@ -19,7 +19,7 @@ This is the documentation for my e-commerce web application: Island Bees. It has
     - [Skeleton](#skeleton)
     - [Surface](#surface)
 - [Features](#features)
-    - [Future Features](#)
+    - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Frontend Frameworks / Libraries](#frontend-frameworks--libraries)
@@ -468,6 +468,7 @@ Details of all features on the site including details of their value to the user
 - All pages have title & description meta tags to improve their SEO performance
 
 **Value To User**
+
 Allows the site to be found easily by shoppers when searching online. Gives clarity to the site's purpose and content.
 
 </details>
@@ -477,6 +478,7 @@ Allows the site to be found easily by shoppers when searching online. Gives clar
 - Site width is restricted to 1400px so that the contents display correctly on wider screens as well as limiting the width of the hero image on the home page to maintain the quality. The area around the site has been set to a grey that fits with the site branding.
 
 **Value To User**
+
 Makes the site look good & be easy to use and navigate no matter what device a user is on. Enhances user experience and creates a positive emotional response.
 
 </details>
@@ -491,6 +493,7 @@ Makes the site look good & be easy to use and navigate no matter what device a u
 - Details of more specific changes can be found in the feature sections below.
 
 **Value To User**
+
 Makes the site look good & be easy to use and navigate no matter what device a user is on. Enhances user experience and creates a positive emotional response.
 
 </details>
@@ -500,6 +503,7 @@ Makes the site look good & be easy to use and navigate no matter what device a u
 - The site has a Favicon using the brand's bee icon.
 
 **Value To User**
+
 Builds the brand & creates brand consistency, continues the site design in the user's browser tab, makes the site feel professional the trustworthy.
 
 </details>
@@ -527,6 +531,7 @@ Builds the brand & creates brand consistency, continues the site design in the u
 - The navbar sticks to the top of the screen to aid navigation on longer pages
 
 **Value To User**
+
 Makes the site easy to navigate no matter where a user is on the site. Allows users to navigate on any device. Adds search and filter functionality allowing users to find the products they need very smoothly and intuitively. Provides feedback on bag contents so users can keep track of their shopping.
 
 
@@ -538,6 +543,7 @@ Makes the site easy to navigate no matter where a user is on the site. Allows us
 - Banner which is visible on all pages and extends the nav, telling users the free delivery threshold.
 
 **Value to User**
+
 This encourages users to spend more to reach this amount, as well as informing them of the offer of free delivery, which helps to push up sales.
 
 </details>
@@ -551,6 +557,7 @@ This encourages users to spend more to reach this amount, as well as informing t
 - I had originally only included this on the products page but I decided it was really useful and included in on all pages.
 
 **Value to User**
+
 Allows users to move around the site easily, particularly on longer pages and smaller screens where contents are stacked and pages are longer. This aids navigation and avoids users getting lost or frustrated, improving user experience.
 
 </details>
@@ -568,16 +575,19 @@ Allows users to move around the site easily, particularly on longer pages and sm
         - These are styled differently to make it clear that they have a very different purpose, helping to avoid confusion and to enhance user experience
         - Green (success) is used for positive actions e.g. 'EDIT'
         - Red (warning / error) is used for riskier actions e.g. 'DELETE'
+
 - There are also text-based links around the site
     - Nav & Footer links use an underline on hover styling
     - The rest of the site uses a bold blue colour with a colour transition hover to differentiate the text from the non-link text around it.
 
 **Value to User**
+
 Buttons allow users to take actions on the site such as purchasing, adding reviews, CRUD functionality. The consistency in design means that the site has an intuitive UI and users feel confident when taking actions. The colour system improves user experience and helps to avoid mistakes.
 
 </details>
 
 <details><summary>Footer</summary>
+
 
 - Visible on all pages of the site, separated in to 2 sections
     - Upper footer
@@ -588,7 +598,9 @@ Buttons allow users to take actions on the site such as purchasing, adding revie
         - Disclaimer about site being for educational purposes
         - Site creator's name and social links (open in a separate tab)
 
+
 **Value to User**
+
 Provides additional links to aid site navigation. Links in the footer are for secondary features such as FAQs & Contact and so are separated from the main site links to keep the navigation simple. Allows users to connect with the company on social media. Provides context to the purpose of the site with the company info. Explains that the site is fictional to add context and clarity for users.
 
 </details>
@@ -597,6 +609,7 @@ Provides additional links to aid site navigation. Links in the footer are for se
 <details><summary>Messages & User Feedback</summary>
 
 - Throughout the site I have used the Django messaging framework along with Bootstrap's Toast element to communicate with users as they take actions on the site. These appear as a popup message in the corner of the site which lets the user know if their action has been successful or not. It offers reassurance for the user, provides a good user experience and helps make the site seem robust and secure. The messages use conditional colours based on the type of message (success - green / error or warning - red / info - blue )
+
 - Examples of usage
     - Adding an item to bag (success message and bag summary)
     - Updating or changing bag contents (success message)
@@ -608,6 +621,7 @@ Provides additional links to aid site navigation. Links in the footer are for se
     - Registration - email sent for verification (info message)
 
 **Value to User**
+
 Provides user feedback at all stages so that users know if their actions have been successful. Avoids confusion and provide a positive user experience. Creates confidence in the site for users when making purchases.
 
 </details>
@@ -651,6 +665,7 @@ Throughout the site I have implemented security & authentication which restricts
 
 
 **Value to User**
+
 Allows certain actions to be taken by certain users to protect parts of the site from malicious activity. Allows admins to have additional privileges, giving them the ability to manage the site. Stops admins editing reviews which promotes trust for users leaving reviews. Allows admins to approve reviews to avoid inappropriate content appearing on site.
 
 </details>
@@ -671,6 +686,7 @@ Allows certain actions to be taken by certain users to protect parts of the site
 https://github.com/emmahewson/island-bees/assets/116887840/a77a93ca-dd41-4eee-9218-d90a43d05849
 
 
+#### Feature Information
 
 <details><summary>Hero & Intro Sections</summary>
 
@@ -679,6 +695,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/a77a93ca-dd41-4eee-92
 - Text on a pale blue background to create separation and hierarchy in the design with info about the company to help expand on the site's purpose and what users can expect to find there.
 
 **Value to User**
+
 Makes the site's purpose and brand identity clear upon first arrival. Encourages users to head to the products section and start shopping.
 
 </details>
@@ -691,6 +708,7 @@ Makes the site's purpose and brand identity clear upon first arrival. Encourages
 - The buttons have a smooth hover effect where the text and background colours swap.
 
 **Value to User**
+
 This is useful to users as they might have a very specific product in mind e.g. a new bee hive, and they can easily navigate to the 'kit' category and find what they need. Allows purchases to be made quickly and easily with intuitive user journeys through the site and a number of different ways to navigate to the products section.
 
 </details>
@@ -702,6 +720,7 @@ This is useful to users as they might have a very specific product in mind e.g. 
 - The product cards contain summary info about the product including image (with clickable link to product details page), name, price, cateogory (with clickable link to products page filtered by category) & rating represented by hexagons. For more information on product cards go to [Products](#products) below.
 
 **Value to User**
+
 This allows admins of the site to promote certain products to shoppers and gives them more control over what users are finding and buying.
 
 </details>
@@ -720,8 +739,10 @@ This allows admins of the site to promote certain products to shoppers and gives
 https://github.com/emmahewson/island-bees/assets/116887840/cb442525-da78-488d-bd22-a9ac8107e23d
 
 
+#### Feature Information
 
 <details><summary>Products</summary>
+
 
 - Products appear across the site. They have a number of fields which provide information about the product and give the site admins functionality for site management.
     - Product Image - an image to show users what they are buying. Admins can add an image of the product, or if no image is uploaded or an image fails to load a placeholder image will appear with site branding. This improves the site's design and the sense of professionalism and trustworthiness of the site which builds user confidence.
@@ -734,7 +755,9 @@ https://github.com/emmahewson/island-bees/assets/116887840/cb442525-da78-488d-bd
     - delivery_charge field allows products which don't involve physical objects (e.g. courses) to be exempted from the delivery calculations
     - discontinued field allows admins to remove items from sale without deleting them as this can cause issues if the product has previously been ordered due to the relational database models and would change historic data which could cause problems for the business.
 
+
 **Value to User**
+
 Products are the heart of the site functionality and purpose - the ability to buy/sell goods. The variety of fields add functionality to products, information for users and site management tools to admins.
 
 </details>
@@ -753,11 +776,13 @@ Products are the heart of the site functionality and purpose - the ability to bu
 - Cards stack on smaller screens and are clear and easy to read on any device.
 
 **Value to User**
+
 These summary cards allow users to quickly browse products and find basic information about them. The ability to sort, search and filter products goes hand in hand with the product cards as users can see multiple products at once.
 
 </details>
 
 <details><summary>Products Page</summary>
+
 
 - The products page is the main product browsing area. This is where a user is able to see product cards, filter them by category or search term, sort them by price, rating, name or category as well as clicking through to view more information about them.
 - Aside from the featured products section on the home page all user interaction with product cards takes place on the products page. If a user clicks on a category they are taken here and see filtered results.
@@ -765,14 +790,17 @@ These summary cards allow users to quickly browse products and find basic inform
 - Users are told if there are any category or search terms being used to filter the results, these are clearly marked at the top which improves user experience. Whenever a filter is active a link appears to show all products, making navigation easy.
 
 **Value to User**
+
 A well-designed, user-friendly place for users to search, filter and compare products. The first step in the purchasing journey. Allows users to easily find what they need. Helps site owners to increase sales by showing shoppers other products that they might be encouraged to buy.
 
 </details>
 
 <details><summary>Product Details Page</summary>
 
+
 - This is the 2nd step in a buyer's purchasing journey. Once they have selected a product from the product cards they can click through to here to find more information about the product.
 - The page includes all the information about the product. It also includes a clickable category link which takes them back to the products page with products filtered by that category. This allows easy navigation, filtering and improves user experience.
+
 - In addition to the information which the user will have already seen on the product cards they can also see additional information to help them decide whether to purchase it:
     - Product description text
     - Number of product reviews (with a clickable link to the reviews section below)
@@ -781,15 +809,19 @@ A well-designed, user-friendly place for users to search, filter and compare pro
         - The reviews contain the review title, contents, username, date & rating.
         - If a review is a user's own they will see EDIT/DELETE buttons for it. Superusers will see DELETE buttons only.
         - For more information about reviews see [Features - Reviews](#reviews)
+
 - The page also allows users to add the product to their shopping bag, with the option to add multiples of the product.
     - The quantity input box allows users to either type in an number (from 1-99) or use the +/- buttons to increment the quantity. These buttons are controlled by JavaScript and dynamically enable/disable when the number is at the min/max. This creates a positive user experience.
     - Once a quantity has been selected users can add the product to the bag using the 'add to bag' button which is styled blue for purchasing actions. [See Whole Site Features](#whole-site)
+
 - Users can also return to the products page using the 'keep shopping' button which is styled in secondary action grey. [See Whole Site Features](#whole-site)
+
 - Users can also add a review of a product from this page using the 'add review' button. This allows users to provide feedback on products and help share information with other users. This button is styled in the non-purchasing yellow colour [See Whole Site Features](#whole-site)
 - Admins of the site will also see 'EDIT' and 'DELETE' links which allow CRUD functionality for products. (More information below.)
 
 
 **Value to User**
+
 This is the page which helps users decide if they are going to buy the product, as well as the ability to add it to their bag. This is an essential part of the purchasing journey with lots of useful information for a shopper. The reviews help users to decide if the product is for them as well as giving users the opportunity to provide feedback. This is also the the access point for EDIT/DELETE functionality for a product for admins.
 
 </details>
@@ -801,6 +833,7 @@ This is the page which helps users decide if they are going to buy the product, 
 - The category field is pre-populated by the categories listed in the database
 - The text fields (name & description) have maximum limits to avoid overly long information being added which could have a negative impact on the site design.
 - The price is restricted to being numbers only and has a fixed 2 decimal place to avoid errors.
+
 - Admins can upload an image of the product.
     - There is a button with bespoke styling to open the upload window
     - Admins can see information about best practice for photos
@@ -811,10 +844,14 @@ This is the page which helps users decide if they are going to buy the product, 
         - This information is used in the bag & checkout stage to work out the grand total
     - The discontinue product checkbox is separated from the rest of the form with explanatory text as it removes the product from sale on the site, as well as using the 'warning' red styling. This makes it clear to admins that selecting it has important consequences and they need to make their choice carefully.
         - This checkbox allows admins to add a product to the site but not put it on sale (e.g. to delay its launch) or to remove it from sale (e.g. if it is no longer available) without deleting it due to being associated with historic orders. See products dropdown above for more info.
+
 - The form then has an 'add product' button using the site admin blue styling, or a cancel button in secondary grey. [See Whole Site Features](#whole-site).
+
 - Once submitted users are directed to the product details page for that product so they can see their newly added product immediately appearing on the site. The only exception for this is if the product has been set to discontinued, in which case they are sent to the products page and an info message appears. However in the form there is text to explain that discontinued are accessible in the admin panel.
 
+
 **Value to User**
+
 This gives admins the ability to create a new product and set all its information in a simple to use form with bespoke site styling. It is an essential part of the site management for admins.
 
 </details>
@@ -826,6 +863,7 @@ This gives admins the ability to create a new product and set all its informatio
 - Once submitted users are directed back to the product details page for that product so they can see their changes immediately reflected on the page. The only exception for this is if the product has been set to discontinued, in which case they are sent to the products page and an info message appears. However in the form there is text to explain that discontinued are accessible in the admin panel.
 
 **Value to User**
+
 This gives admins the ability to create edit or update a product and set all its information in a simple to use form with bespoke site styling. It is an essential part of the site management for admins.
 
 </details>
@@ -837,10 +875,12 @@ This gives admins the ability to create edit or update a product and set all its
         - This is only possible if the product has never been ordered. Once it has been ordered deleting it causes errors in the order history as it is associated with an OrderLineItem object. It would change the total of historic orders which would mean the business' records were incorrect. It can also cause errors in the functionality of the site.
     - By setting the product to 'discontinued'
         - This keeps the product in the database but removes it from appearing on the site. This avoids the issues listed above.
+        
 - When an admin clicks on 'delete' they are presented with a modal which is dynamically populated based on whether a product has associated OrderLineItem objects. If it is possible to delete it (ie no associated OrderLineItem objects) then they have the option to delete, if it isn't they can mark it as discontinued.
 - Admins are also able to mark an object as discontinued by using the edit product form.
 
 **Value to User**
+
 This gives admins the ability to control their product catalogue and which products are available for sale. It means shoppers will only see products which are currently for sale.
 
 </details>
@@ -858,7 +898,7 @@ This gives admins the ability to control their product catalogue and which produ
 #### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/bfea9a7a-fe3d-428e-a9e4-967a73b6dbf6
 
-
+#### Feature Information
 
 <details><summary>Product Reviews</summary>
 
@@ -890,6 +930,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/bfea9a7a-fe3d-428e-a9
 
 
 **Value to User**
+
 The Reviews model allows users to find out more information about a product, as well as the opinion of other users, to help them to decide whether to purchase a product. The ability to leave a review allows users to provide feedback and feel like their opinion matters. The ability to edit or delete a review is a way for users to adjust their opinion over time or change their mind. Editing being restricted to the review creator only creates trust in the company and makes people feel like their opinion is important. The ability to approve reviews for admins avoids inappropriate content on the site.
 
 </details>
@@ -909,6 +950,7 @@ The Reviews model allows users to find out more information about a product, as 
 - On submission the review is set to 'unapproved' with an explanatory message that an admin will need to approve it and information about where to find the review in the mean time (profile page). It also reassures users that reviews are only rejected for inappropriate content, not for bad reviews, which helps build trust.
 
 **Value to User**
+
 The ability to add a review allows users to provide feedback and to feel that their opinion matters to the company. This builds trust in the company and the site. The form is easy to fill in and short, encouraging users to leave reviews.
 
 </details>
@@ -924,6 +966,7 @@ The ability to add a review allows users to provide feedback and to feel that th
 
 
 **Value to User**
+
 The ability to edit a review is a useful tool for users who have changed their mind about their opinion of a product, perhaps it started well but didn't last, or improved with time. The fact that only the review creator can edit it builds trust in the site and the company. Setting the approval to 'unapproved' means if users add inappropriate content by editing a review that it doesn't appear on the site without admin approval.
 
 </details>
@@ -937,6 +980,7 @@ The ability to edit a review is a useful tool for users who have changed their m
 
 
 **Value to User**
+
 The ability to delete a review gives regular users control of their reviews, if they submit one by accident or change their mind about posting it. It gives admins the ability to remove reviews which contain inappropriate content. Of course it could also give them the ability to hide bad reviews, but with the correct ethical policies in place this can be avoided.
 
 </details>
@@ -951,6 +995,7 @@ The ability to delete a review gives regular users control of their reviews, if 
 
 
 **Value to User**
+
 Putting in a layer of approval prior to a review appearing on the site allows admins a level of control over what people are posting on their site, without giving them full review editing privileges. It should stop inappropriate content appearing whilst not undermining customer trust. It of course requires the admins to use it appropriately and ethically and not as a way to hide bad reviews.
 
 </details>
@@ -969,7 +1014,7 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 https://github.com/emmahewson/island-bees/assets/116887840/970dfafb-88ec-42ef-80f5-984ea73d9612
 
 
-
+#### Feature Information
 
 <details><summary>Shopping Bag</summary>
 
@@ -985,6 +1030,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/970dfafb-88ec-42ef-80
     - In the success message toast - which includes a bag summary and link to the bag page.
 
 **Value to User**
+
 The bag is a vital tool for an e-commerce site. It allows users to gather multiple products to purchase at once, storing them in the session cookie so that they can browse the site without losing their shopping information. It provides a smooth user experience and encourages users to buy more items.
 
 </details>
@@ -1008,6 +1054,7 @@ The bag is a vital tool for an e-commerce site. It allows users to gather multip
         
 
 **Value to User**
+
 The bag summary gives users instant feedback on what is in their bag every time they adjust its contents. It allows them to keep track of their purchases and totals, creating a positive user experience and clear information. By providing a link directly to the checkout users who are in a hurry can quickly complete their shopping, rather than having to navigate to the bag page first.
 
 </details>
@@ -1022,6 +1069,7 @@ The bag summary gives users instant feedback on what is in their bag every time 
 - The icon is a clickable link to the bag page with a colour change hover effect
 
 **Value to User**
+
 This provides users with a constant point of information about the contents of their shopping bag. In a similar way to the bag summary it provides immediate feedback about how much they are spending and whether their actions of adding products to the bag have been successful. This creates a great user experience and smooth shopping journey.
 
 
@@ -1056,6 +1104,7 @@ This provides users with a constant point of information about the contents of t
 
 
 **Value to User**
+
 The bag page provides users with a comprehensive breakdown of the items they have chosen so far. From here they have controls to remove & update items in their bag and can see what their total cost will be with breakdown values for delivery. They can also see if they are close to the free delivery threshold which may encourage them to buy more. It gives users a great user experience with a clear responsive layout and user friendly interface.
 
 </details>
@@ -1074,7 +1123,7 @@ The bag page provides users with a comprehensive breakdown of the items they hav
 #### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/0b585ae8-1ab1-49ac-a92e-e47693a430fc
 
-
+#### Feature Information
 
 <details><summary>Checkout Page</summary>
 
@@ -1100,6 +1149,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/0b585ae8-1ab1-49ac-a9
 - The site uses webhooks to manage the functionality, listening for activity from Stripe to make sure that certain actions happen at the right times, that orders are created correctly in the database for a successful payment or not created if a payment fails. This ensures the site functions correctly, that users orders are fulfilled correctly and that payments work.
 
 **Value to User**
+
 A functioning checkout is a key part of an e-commerce site. This allows users to make purchases using secure payments, this is a vital aspect of the site for users who value security and want to protect their data. The use of webhooks and Stripe allows the site to function correctly, to make sure that orders are being stored correctly so that they can be fulfilled and tracked correctly by the company. The correct functioning of the company and the website relies on this working properly and it is of vital importance to both shoppers and site admins.
 
 </details>
@@ -1142,6 +1192,7 @@ A functioning checkout is a key part of an e-commerce site. This allows users to
 
 
 **Value to User**
+
 This page gives the user a clear indication that their purchase has been successful, and summarises what they have bought and how much they have spent. It gives them a sense of security and that everything has functioned correctly, which is a vital part of the user experience for e-commerce sites. It also allows users to see what the next step is and to know that an email confirmation is on the way.
 
 </details>
@@ -1159,7 +1210,7 @@ This page gives the user a clear indication that their purchase has been success
 #### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/fe7fc7b2-b029-4694-9e79-61f0883ace78
 
-
+#### Feature Information
 
 <details><summary>Profile</summary>
 
@@ -1170,6 +1221,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/fe7fc7b2-b029-4694-9e
 - More details below
 
 **Value to User**
+
 The profile page gives users a single point to access all of their information. It allows them to update their info, see their order and view, edit & delete their reviews without having to search around the site for them. It provides a quick, efficient way to manage their data.
 
 </details>
@@ -1190,6 +1242,7 @@ The profile page gives users a single point to access all of their information. 
 - On submission the form updates their data and refreshes the page
 
 **Value to User**
+
 This form allows users to store their information to make future purchases quicker and easier without the need to enter their data every time. It also provides them convenient links to manage their email and password, providing easy navigation and good user experience.
 
 </details>
@@ -1206,6 +1259,7 @@ This form allows users to store their information to make future purchases quick
 - The list is contained in a fixed-height box to stop it getting too long and affecting the site design and contents lower down the page, the contents of the container are scrollable.
 
 **Value to User**
+
 This allows users to view their orders, to find out information about what they have previously purchased or to find out information about an order that has a problem or hasn't turned up so they can follow it up with the site.
 
 </details>
@@ -1221,6 +1275,7 @@ This allows users to view their orders, to find out information about what they 
 - For more information about reviews see [Features - Reviews](#reviews)
 
 **Value to User**
+
 This section gives users a single point to view, edit & delete their reviews as well as seeing which reviews have not yet been approved. If these were not on the profile page a user would have to navigate to each product that they had reviewed to edit them which would provide a poor user experience.
 
 </details>
@@ -1242,6 +1297,7 @@ This section gives users a single point to view, edit & delete their reviews as 
     - Back to Profile button - takes the user back to their profile and order history. (Button styled using 'purchasing' action blue [See Whole Site Features](#whole-site))
 
 **Value to User**
+
 Gives users ability to dig deeper in to the details of historic orders to see what they have previously purchased, to track their spending and to find out order details if any questions or problems arise. It is an important part of their purchasing journey after the purchase is complete.
 
 </details>
@@ -1260,7 +1316,7 @@ Gives users ability to dig deeper in to the details of historic orders to see wh
 #### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/fbf3d04c-d4e9-410a-9d7c-36dabf9cb3f6
 
-
+#### Feature Information
 
 <details><summary>FAQs Page</summary>
 
@@ -1271,6 +1327,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/fbf3d04c-d4e9-410a-9d
 
 
 **Value to User**
+
 Provides a quick reference for common questions that users might have, giving them an instant answer. This provides them with good customer service and user experience. It also avoids the business having to answer the same question all the time which save them time and effort. The contact us link allows users who don't find their answer here to navigate easily and find what they need.
 
 
@@ -1291,6 +1348,7 @@ Provides a quick reference for common questions that users might have, giving th
 
 
 **Value to User**
+
 Provides admins with a quick, easy way to add FAQs to the site which will appear on the FAQ page immediately with the site styling. This allows them to adjust their FAQs as they develop the site.
 
 </details>
@@ -1302,6 +1360,7 @@ Provides admins with a quick, easy way to add FAQs to the site which will appear
 - On submission the admin is returned to the FAQ page and sees the changes to the FAQ reflected on the page immediately.
 
 **Value to User**
+
 Provides admins with a quick, easy way to edit FAQs on the site. This allows them to adjust their FAQs as they develop the site.
 
 </details>
@@ -1315,6 +1374,7 @@ Provides admins with a quick, easy way to edit FAQs on the site. This allows the
 - The FAQ is immediately removed from the site and the database.
 
 **Value to User**
+
 Provides admins with a quick, easy way to remove FAQs from the site. This allows them to adjust their FAQs as they develop the site.
 
 </details>
@@ -1334,7 +1394,7 @@ Provides admins with a quick, easy way to remove FAQs from the site. This allows
 https://github.com/emmahewson/island-bees/assets/116887840/a8851e43-b005-474a-a34a-c1542a8a5f23
 
 
-
+#### Feature Information
 
 <details><summary>Contact Us Page</summary>
 
@@ -1350,6 +1410,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/a8851e43-b005-474a-a3
     - Phone and Email are clickable to allow users to email or phone using a single click
 
 **Value to User**
+
 Getting in touch with the company gives users access to customer service, to ask questions about products or the company in general and improves user experience as users are able to communicate with the company. The form is easy to use and pre-populating it allows logged in users to get in touch without repeating their information. For users who don't like contact forms or prefer phone or email details are provided. All of these things enhance user experience and provide multiple options for getting in touch.
 
 </details>
@@ -1369,6 +1430,7 @@ Getting in touch with the company gives users access to customer service, to ask
 - Admins are able to toggle the 'is_open' status on the site management page [see below](#site-management)
 
 **Value to User**
+
 The message model is a valuable tool for the site admins to access all their user communication in a single place and to track the status of messages and toggle them once they are dealt with, rather than having all the messages as separate email chains in their inbox. This is a feature that I would like to extend in the future to allow the admins to then reply from within the site management page, rather than having to reply in a separate email. [See future features - admin messaging](#admin-messaging-system---expand)
 
 </details>
@@ -1387,7 +1449,7 @@ The message model is a valuable tool for the site admins to access all their use
 #### Feature Video
 https://github.com/emmahewson/island-bees/assets/116887840/2fe0145d-aea7-4a7b-a1a1-bd0c9eed63c7
 
-
+#### Feature Information
 
 <details><summary>Site Management</summary>
 
@@ -1399,6 +1461,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/2fe0145d-aea7-4a7b-a1
     - Review approval - dashboard for viewing and approving / deleting unapproved product reviews
 
 **Value to User**
+
 This made administering the site more efficient and provides a good user experience to site admins.
 
 </details>
@@ -1412,6 +1475,7 @@ This made administering the site more efficient and provides a good user experie
     - Admin Area - a link to the Django admin panel for more complex administrative tasks
 
 **Value to User**
+
 Brings together all the useful links that an admin might regularly need. Saves admins time and effort in their site administration.
 
 </details>
@@ -1440,6 +1504,7 @@ Brings together all the useful links that an admin might regularly need. Saves a
             - This is not implemented if the messages are filtered by open/closed as toggling the message means it will disappear from the current filtered messages and so scrolling to it is pointless as it won't be there.
 
 **Value to User**
+
 This is a great tool for site admins to manage their user communication in a single place and to track the status of messages and toggle them once they are dealt with. This is a feature that I would like to extend in the future to allow the admins to then reply from within the site management page, rather than having to reply in a separate email. [See future features - admin messaging](#admin-messaging-system---expand)
 </details>
 
@@ -1456,6 +1521,7 @@ This is a great tool for site admins to manage their user communication in a sin
 
 
 **Value to User**
+
 This allows admins to have a quick, easy way of checking reviews before they go live, to avoid having inappropriate content appearing on the site without their knowledge. This section of the site management page means they can access all these reviews in 1 place without having to search the site for new content. It saves them time, effort and provides a great user experience for admins.
 
 </details>
@@ -1473,7 +1539,7 @@ This allows admins to have a quick, easy way of checking reviews before they go 
 https://github.com/emmahewson/island-bees/assets/116887840/2de47043-e038-4a19-a8a1-addb43e149b8
 
 
-
+#### Feature Information
 
 <details><summary>Authentication Pages (AllAuth)</summary>
 
@@ -1482,6 +1548,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/2de47043-e038-4a19-a8
 - All the form have been styled using the [widget-tweak](https://pypi.org/project/django-widget-tweaks/) package to add styling classes to inputs, labels and error messages from within the form templates
 
 **Value to User**
+
 A strong authentication system is vital to an e-commerce site, allowing users to log in, register, manage their profile, see their order history and store their data for the next time they want to make a purchase. It improves user experience and make the process of visiting the site and making purchases quicker and smoother. The styling of the forms matches the rest of site making it feel like it belongs and building confidence and trust in the site.
 
 </details>
@@ -1506,6 +1573,7 @@ A strong authentication system is vital to an e-commerce site, allowing users to
 
 
 **Value to User**
+
 Setting up an account allows users to access benefits such as storing their information & order history for future use & creating reviews. The verification and security provided by allauth makes this a secure process for users which improves their user experience and trust in the site.
 
 </details>
@@ -1527,6 +1595,7 @@ Setting up an account allows users to access benefits such as storing their info
 - On successful log in users are redirected to the home page, or, if they had previously attempted to visit a page that only logged in users could visit, they will be redirected there instead.
 
 **Value to User**
+
 This allows users to access their account to use their default information for purchases as well as accessing their past orders and reviews. This improves their user experience and speeds up the process of making purchases.
 
 </details>
@@ -1541,6 +1610,7 @@ This allows users to access their account to use their default information for p
 
 
 **Value to User**
+
 The ability to sign out is an important security measure to stop other users on the same computer being able to view the user's data. This makes the site more secure and promotes trust and confidence in the site.
 
 </details>
@@ -1556,6 +1626,7 @@ The ability to sign out is an important security measure to stop other users on 
 - There is a button to take users back to their profile page using the secondary grey styling.
 
 **Value to User**
+
 This page allows users to add or change their email as well as defining which email is used as their primary form of contact. This is a useful bonus tool for users to manage their account and improve their user experience.
 
 </details>
@@ -1571,6 +1642,7 @@ This page allows users to add or change their email as well as defining which em
 - This page is only for users who know their current password and wish to change it. The forgot password page is available for users who have forgotten their password and cannot sign in. (See below).
 
 **Value to User**
+
 This page allows users to change their current password if they are concerned about security and password management. This improves their trust in the site, the site's security and their user experience.
 
 
@@ -1586,6 +1658,7 @@ This page allows users to change their current password if they are concerned ab
 - All pages are in the standard site bespoke styling with a yellow button to submit forms, a grey home button to return to the home page and colours and fonts that reflect the rest of the site. 
 
 **Value to User**
+
 The ability to reset a password is very important to users who have forgotten their password, it allows them to gain access to their account data including their order history and reviews which would otherwise be inaccessible to them. It is a vital part of site authentication.
 
 </details>
