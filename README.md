@@ -710,51 +710,125 @@ This allows admins of the site to promote certain products to shoppers and gives
 
 <details><summary>Products</summary>
 
-- Talk about discontinued
-- Talk about no image
+- Products appear across the site. They have a number of fields which provide information about the product and give the site admins functionality for site management.
+    - Product Image - an image to show users what they are buying. Admins can add an image of the product, or if no image is uploaded or an image fails to load a placeholder image will appear with site branding. This improves the site's design and the sense of professionalism and trustworthiness of the site which builds user confidence.
+    - Product name - tells the user what they are buying
+    - Product description - gives more information about the product to users - allows them to see if its right for them.
+    - Product category - each product is linked to a category, this allows users to easily find the products they are looking for and helps them narrow down their search as well as encouraging users to look at other products they may not have planned on buying originally.
+    - Price - Tells the user how much the product will cost them
+    - Rating - Average rating of all approved reviews of the product. If no ratings them the product has a score of 0 to make it clear that it doesn't have a low rating, just that it hasn't been rated yet. The rating is represented by orange hexagons across the site, giving a quick, clear indication of what other users have thought of the product. Users are also able to order results by rating to help them find the most popular products.
+    - is_featured field allows admins to promote certain products and have them appear on the home page.
+    - delivery_charge field allows products which don't involve physical objects (e.g. courses) to be exempted from the delivery calculations
+    - discontinued field allows admins to remove items from sale without deleting them as this can cause issues if the product has previously been ordered due to the relational database models and would change historic data which could cause problems for the business.
+
+**Value to User**
+Products are the heart of the site functionality and purpose - the ability to buy/sell goods. The variety of fields add functionality to products, information for users and site management tools to admins.
 
 </details>
 
 
 <details><summary>Product Cards</summary>
 
+- Products are represented in summary cards on both the products and home pages.
+- Cards are clickable and link to the product details page
+- Cards feature a clickable category link which takes users to the products page with the results filtered by that category.
+- Cards feature a strong image or a no-image replacement (see 'products' dropdown above)
+- Cards feature the product name so users can quickly understand what a product is
+- Cards feature the product rating which can also be used to sort cards
+- Cards feature the product price so users can know if the cost is suitable for them.
+- Product cards sit in a section with a hexagonal background pattern, which extends the site's purpose and design.
+- Cards stack on smaller screens and are clear and easy to read on any device.
 
+**Value to User**
+These summary cards allow users to quickly browse products and find basic information about them. The ability to sort, search and filter products goes hand in hand with the product cards as users can see multiple products at once.
 
 </details>
 
 <details><summary>Products Page</summary>
 
-- 
+- The products page is the main product browsing area. This is where a user is able to see product cards, filter them by category or search term, sort them by price, rating, name or category as well as clicking through to view more information about them.
+- Aside from the featured products section on the home page all user interaction with product cards takes place on the products page. If a user clicks on a category they are taken here and see filtered results.
+- Users are given information about the number of products they are viewing, which is useful to know how many options they have to look through.
+- Users are told if there are any category or search terms being used to filter the results, these are clearly marked at the top which improves user experience. Whenever a filter is active a link appears to show all products, making navigation easy.
+
+**Value to User**
+A well-designed, user-friendly place for users to search, filter and compare products. The first step in the purchasing journey. Allows users to easily find what they need. Helps site owners to increase sales by showing shoppers other products that they might be encouraged to buy.
 
 </details>
 
 <details><summary>Product Details Page</summary>
 
-- 
+- This is the 2nd step in a buyer's purchasing journey. Once they have selected a product from the product cards they can click through to here to find more information about the product.
+- The page includes all the information about the product. It also includes a clickable category link which takes them back to the products page with products filtered by that category. This allows easy navigation, filtering and improves user experience.
+- In addition to the information which the user will have already seen on the product cards they can also see additional information to help them decide whether to purchase it:
+    - Product description text
+    - Number of product reviews (with a clickable link to the reviews section below)
+    - Product reviews
+        - All reviews of the product that have been approved by an admin are visible here with their full text and rating. This allows users to get a balanced view of the product. For more information about reviews see [Features - Reviews](#reviews)
+- The page also allows users to add the product to their shopping bag, with the option to add multiples of the product.
+    - The quantity input box allows users to either type in an number (from 1-99) or use the +/- buttons to increment the quantity. These buttons are controlled by JavaScript and dynamically enable/disable when the number is at the min/max. This creates a positive user experience.
+    - Once a quantity has been selected users can add the product to the bag using the 'add to bag' button which is styled blue for purchasing actions. [See Whole Site Features](#whole-site)
+- Users can also return to the products page using the 'keep shopping' button which is styled in secondary action grey. [See Whole Site Features](#whole-site)
+- Users can also add a review of a product from this page using the 'add review' button. This allows users to provide feedback on products and help share information with other users. This button is styled in the non-purchasing yellow colour [See Whole Site Features](#whole-site)
+- Admins of the site will also see 'EDIT' and 'DELETE' links which allow CRUD functionality for products. (More information below.)
+
+
+**Value to User**
+This is the page which helps users decide if they are going to buy the product, as well as the ability to add it to their bag. This is an essential part of the purchasing journey with lots of useful information for a shopper. The reviews help users to decide if the product is for them as well as giving users the opportunity to provide feedback. This is also the the access point for EDIT/DELETE functionality for a product for admins.
 
 </details>
 
 <details><summary>Add Product</summary>
 
-- Discontinued (include info here)
+- The add product page is accessible via the Site Management Page [see below](#site-management). This is restricted to site admins only. Admins can use this form to add a new product to the site and set all its information.
+- The form has built in validation to make sure that all required information is provided.
+- The category field is pre-populated by the categories listed in the database
+- The text fields (name & description) have maximum limits to avoid overly long information being added which could have a negative impact on the site design.
+- The price is restricted to being numbers only and has a fixed 2 decimal place to avoid errors.
+- Admins can upload an image of the product.
+    - There is a button with bespoke styling to open the upload window
+    - Admins can see information about best practice for photos
+    - Once an image has been selected admins see a message telling them that the image has been chosen - providing clear and positive feedback.
+- There are 3 checkbox inputs with bespoke themed styling which allow admins to quickly set information about the product as well as have control over where it appears on the site
+    - The 'featured' field allows admins to promote the product on the home page
+    - Delivery required allows admins to exempt the product from delivery charges (e.g. for courses)
+        - This information is used in the bag & checkout stage to work out the grand total
+    - The discontinue product checkbox is separated from the rest of the form with explanatory text as it removes the product from sale on the site, as well as using the 'warning' red styling. This makes it clear to admins that selecting it has important consequences and they need to make their choice carefully.
+        - This checkbox allows admins to add a product to the site but not put it on sale (e.g. to delay its launch) or to remove it from sale (e.g. if it is no longer available) without deleting it due to being associated with historic orders. See products dropdown above for more info.
+- The form then has an 'add product' button using the site admin blue styling, or a cancel button in secondary grey. [See Whole Site Features](#whole-site).
+- Once submitted users are directed to the product details page for that product so they can see their newly added product immediately appearing on the site. The only exception for this is if the product has been set to discontinued, in which case they are sent to the products page and an info message appears. However in the form there is text to explain that discontinued are accessible in the admin panel.
+
+**Value to User**
+This gives admins the ability to create a new product and set all its information in a simple to use form with bespoke site styling. It is an essential part of the site management for admins.
 
 </details>
 
 <details><summary>Edit Product</summary>
 
-- 
+- The edit product page includes all of the same functionality and value as the 'add product' form (see above)
+- In addition, in the image field, it includes a thumbnail of the current image (if one exists) and the ability to remove it or replace it.
+- Once submitted users are directed back to the product details page for that product so they can see their changes immediately reflected on the page. The only exception for this is if the product has been set to discontinued, in which case they are sent to the products page and an info message appears. However in the form there is text to explain that discontinued are accessible in the admin panel.
+
+**Value to User**
+This gives admins the ability to create edit or update a product and set all its information in a simple to use form with bespoke site styling. It is an essential part of the site management for admins.
 
 </details>
 
 <details><summary>Delete Product</summary>
 
-- 
+- Admins have the ability to remove a product from the site in one of 2 ways
+    - By deleting the product
+        - This is only possible if the product has never been ordered. Once it has been ordered deleting it causes errors in the order history as it is associated with an OrderLineItem object. It would change the total of historic orders which would mean the business' records were incorrect. It can also cause errors in the functionality of the site.
+    - By setting the product to 'discontinued'
+        - This keeps the product in the database but removes it from appearing on the site. This avoids the issues listed above.
+- When an admin clicks on 'delete' they are presented with a modal which is dynamically populated based on whether a product has associated OrderLineItem objects. If it is possible to delete it (ie no associated OrderLineItem objects) then they have the option to delete, if it isn't they can mark it as discontinued.
+- Admins are also able to mark an object as discontinued by using the edit product form.
+
+**Value to User**
+This gives admins the ability to control their product catalogue and which products are available for sale. It means shoppers will only see products which are currently for sale.
 
 </details>
 
-
-
-#### Value To User
 
 - - -
 
@@ -766,43 +840,99 @@ This allows admins of the site to promote certain products to shoppers and gives
 
 <details><summary>Product Reviews</summary>
 
-- List where appear
-- Talk about ratings calculations
+- The site includes product reviews so that users can find out what other users thought of products.
+- Reviews appear in 3 places:
+    - The product details page (reviews of that product only)
+    - The user profile page (user's own reviews)
+    - The site management page (unapproved reviews only - with a toggle to approve the review)
 
+- Review objects include the following field:
+    - Title (summary of review)
+    - Content (main review text)
+    - Rating (0-5)
+    - User (linked to User model)
+    - Product (linked to Product model)
+    - Created on date (automatically populated on creation)
+    - is_approved boolean field - set to false by default to allow admins to approve review before it appears on the site. This is reset to unapproved if the review is edited.
+
+- Reviews also contain EDIT/DELETE buttons which are only visible to certain users
+    - Logged in users can add, edit & delete their own reviews.
+    - Admins need to approve reviews before they appear on the site (to avoid inappropriate content)
+    - Admins cannot edit reviews (this would undermine trust in the site)
+    - Admins can delete reviews (but users are told that this is only for inappropriate content)
+
+- Product ratings are calculated based on review ratings:
+    - Once a review is approved the average of all review ratings is calculated and rounded to create the product rating.
+    - If a review is edited or deleted or 'un-approved' in the admin panel the product rating is re-calculated
+        - This means that the product rating always reflects the average of the product reviews that appear on the product details page.
+
+
+**Value to User**
+The Reviews model allows users to find out more information about a product, as well as the opinion of other users, to help them to decide whether to purchase a product. The ability to leave a review allows users to provide feedback and feel like their opinion matters. The ability to edit or delete a review is a way for users to adjust their opinion over time or change their mind. Editing being restricted to the review creator only creates trust in the company and makes people feel like their opinion is important. The ability to approve reviews for admins avoids inappropriate content on the site.
 
 </details>
 
 
 <details><summary>Add Review</summary>
 
+- The add review form is accessible from the product details page.
+- The form is an easy to use, user friendly page with bespoke branded styling.
+- The form has built in validation to make sure that all required fields are completed and contain valid content.
+- The form header has the name and image of the product to remind the user what they are reviewing.
+- The text fields (title & content) have max limits to avoid overly long reviews ruining the design of the site and to keep information easy to digest for users viewing reviews.
+- The rating select has a user-friendly clickable hexagon styling, which matches the styling of the ratings on the product pages. A user can click on a hexagon to set the rating, or change their mind and select another hexagon to revise their choice.
+- If no rating is selected it is set to 0
+- The rating selection is not appropriate for screen readers so to make the page accessible there is a hidden input which is visible to screen readers only where a user can input a numeric value.
+- The form has bespoke styled buttons to either submit the form using the non-purchasing themed yellow button or cancel using the button in secondary grey. [See Whole Site Features](#whole-site)
+- On submission the review is set to 'unapproved' with an explanatory message that an admin will need to approve it and information about where to find the review in the mean time (profile page). It also reassures users that reviews are only rejected for inappropriate content, not for bad reviews, which helps build trust.
 
+**Value to User**
+The ability to add a review allows users to provide feedback and to feel that their opinion matters to the company. This builds trust in the company and the site. The form is easy to fill in and short, encouraging users to leave reviews.
 
 </details>
 
 
 <details><summary>Edit Review</summary>
 
+- The edit review form contains the same content and value as the add review form (see above).
+- The form is reach by clicking on the EDIT button on a review, though the EDIT button is only visible to the review creator.
+- This form is only accessible to the creator of the review and not to site admins.
+- The form is pre-populated with the existing review content
+- On submission the review is reset to 'unapproved' with an explanatory message that an admin will need to approve it and information about where to find the review in the mean time (profile page). It also reassures users that reviews are only rejected for inappropriate content, not for bad reviews, which helps build trust.
 
+
+**Value to User**
+The ability to edit a review is a useful tool for users who have changed their mind about their opinion of a product, perhaps it started well but didn't last, or improved with time. The fact that only the review creator can edit it builds trust in the site and the company. Setting the approval to 'unapproved' means if users add inappropriate content by editing a review that it doesn't appear on the site without admin approval.
 
 </details>
 
 
 <details><summary>Delete Review</summary>
 
+- Reviews can be deleted by the review creator or by site admins.
+- The functionality is available by clicking on the DELETE button on a review, though the DELETE button is only visible to the review creator and site admins.
+- Clicking on delete launches a modal which warns the user that the review will be deleted, this adds a layer of protection against accidental deletion. Users can then click on cancel/cross to cancel the action, or delete to confirm they want to delete the review.
 
+
+**Value to User**
+The ability to delete a review gives regular users control of their reviews, if they submit one by accident or change their mind about posting it. It gives admins the ability to remove reviews which contain inappropriate content. Of course it could also give them the ability to hide bad reviews, but with the correct ethical policies in place this can be avoided.
 
 </details>
 
 
 <details><summary>Review Approval</summary>
 
+- All reviews that are added or edited require admin approval prior to appearing on the site
+- This functionality is available on the site management page
+- All reviews that are unapproved appear and have a toggle switch to easily toggle them to approved, or delete them if they contain inappropriate content.
+- If a review is approved but needs to be 'unapproved' by an admin this can be done in the admin panel. This is unlikely to occur. I made the decision not to include this functionality in the site management page to avoid populating the page with hundreds of reviews. Having a quick approval toggle was the best user experience for the situation.
 
+
+**Value to User**
+Putting in a layer of approval prior to a review appearing on the site allows admins a level of control over what people are posting on their site, without giving them full review editing privileges. It should stop inappropriate content appearing whilst not undermining customer trust. It of course requires the admins to use it appropriately and ethically and not as a way to hide bad reviews.
 
 </details>
 
-
-
-#### Value To User
 
 - - -
 
