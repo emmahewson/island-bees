@@ -663,7 +663,7 @@ Allows certain actions to be taken by certain users to protect parts of the site
 
 ### Home Page
 
-![]()
+![Home Page](media/docs/feat_home.jpg)
 
 <details><summary>Hero & Intro Sections</summary>
 
@@ -706,7 +706,7 @@ This allows admins of the site to promote certain products to shoppers and gives
 
 ### Products
 
-![]()
+![Products Page](media/docs/feat_products.jpg)
 
 <details><summary>Products</summary>
 
@@ -839,7 +839,7 @@ This gives admins the ability to control their product catalogue and which produ
 
 ### Reviews
 
-![]()
+![Reviews](media/docs/feat_reviews.jpg)
 
 <details><summary>Product Reviews</summary>
 
@@ -943,7 +943,7 @@ Putting in a layer of approval prior to a review appearing on the site allows ad
 
 ### Shopping Bag
 
-![]()
+![Shopping Bag](media/docs/feat_bag.jpg)
 
 <details><summary>Shopping Bag</summary>
 
@@ -975,7 +975,11 @@ The bag is a vital tool for an e-commerce site. It allows users to gather multip
     - The total excluding delivery
         - I made the decision to exclude delivery so that how close they were to the free delivery threshold was clear to users
     - If the total is less than the free delivery threshold users are told how much more they need to spend for free delivery.
-    - A link to the checkout page if a user is ready to make their purchase (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) with a lock icon to show that the checkout is secure.
+    - A link button (button styled using 'purchasing' action blue [See Whole Site Features](#whole-site)) with a lock icon to show that the checkout is secure.
+        - The content and link are set dynamically depending on what page the user is on:
+            - If the user is not on the bag page the button takes them to the bag page
+            - If the user is on the bag page already the button takes them to the checkout page 
+        
 
 **Value to User**
 The bag summary gives users instant feedback on what is in their bag every time they adjust its contents. It allows them to keep track of their purchases and totals, creating a positive user experience and clear information. By providing a link directly to the checkout users who are in a hurry can quickly complete their shopping, rather than having to navigate to the bag page first.
@@ -1037,7 +1041,7 @@ The bag page provides users with a comprehensive breakdown of the items they hav
 
 ### Checkout
 
-![]()
+![Checkout Page](media/docs/feat_checkout.jpg)
 
 <details><summary>Checkout Page</summary>
 
@@ -1116,7 +1120,7 @@ This page gives the user a clear indication that their purchase has been success
 
 ### Profile
 
-![]()
+![Profile Page](media/docs/feat_profile.jpg)
 
 <details><summary>Profile</summary>
 
@@ -1211,7 +1215,7 @@ Gives users ability to dig deeper in to the details of historic orders to see wh
 
 ### FAQs
 
-![]()
+![FAQs Page](media/docs/feat_faqs.jpg)
 
 <details><summary>FAQs Page</summary>
 
@@ -1277,7 +1281,7 @@ Provides admins with a quick, easy way to remove FAQs from the site. This allows
 
 ### Contact / Messages
 
-![]()
+![Contact Page](media/docs/feat_messages.jpg)
 
 <details><summary>Contact Us Page</summary>
 
@@ -1324,7 +1328,7 @@ The message model is a valuable tool for the site admins to access all their use
 
 ### Site Management
 
-![]()
+![Site Management Page](media/docs/feat_sitemanage.jpg)
 
 <details><summary>Site Management</summary>
 
@@ -1403,7 +1407,7 @@ This allows admins to have a quick, easy way of checking reviews before they go 
 
 ### Authentication
 
-![]()
+![Sign In Page](media/docs/feat_auth.jpg)
 
 <details><summary>Authentication Pages (AllAuth)</summary>
 
