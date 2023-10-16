@@ -1250,6 +1250,13 @@ else:
 
 ```
 
+
+#### Bug 14 - Various styling issues on mobile
+
+**Issue:** During testing on a mobile (rather than dev tools mobile emulator) I discovered that some of the site styling was being over-ridden by the mobile browers on both Safari and Chrome. This included form inputs (the inner shadow and the dropdowns had lost their styling), the FAQs accordian question styling & the products sort selector.
+
+**Fix:** I fixed these by adding explicit CSS styling to elements, including adding the -webkit-appearence to 'none' to over-ride the browser styling.
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)
