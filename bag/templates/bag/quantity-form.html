@@ -19,7 +19,10 @@
 
             <!-- Quantity Input -->
             <input class="form-control qty_input qty-input-sm ib-form-field font-body weight-semibold id_qty_{{ item.item_id }}" type="number"
-                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                name="quantity"
+                value="{{ item.quantity }}"
+                min="1"
+                max="99"
                 data-item_id="{{ item.item_id }}" aria-label="Quantity">
 
             <!-- Increment Button -->

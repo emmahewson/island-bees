@@ -1230,6 +1230,26 @@ catch(err) {
 **Fix:** I attempted to resolve this issue using various CSS techniques but as it has been built using a combination of Bootstrap styling and bespoke CSS I have been unable to find the cause of the glitch. As this is purely an aesthetic issue and not a problem with functionality I have left it as it is, so this is a remaining bug.
 
 
+#### Bug 13 - Bag quantity input doesn't validate max & min values
+
+**Issue:** During testing I noticed that whilst the product detail page input worked exactly as expected with the max/min values (0-99), on the bag page the user was able to enter a value higher than 99 and successfully update their bag. This could feasibly cause problems with large numbers in the order process as the totals on the orders are limited by the number of digits.
+
+**Fix:** I worked out that this was because the form submission was handled differently in the bag than with the product details input. Rather than being handled by a submit button it was being controlled with JavaScript, which meant the front end validation didn't work. I solved this by putting an if statement in to the 'adjust_bag' view to check if the value was over 99, or under 0 (to avoid negative numbers) and if so returning the user to the page with an error message and not updating the bag until the value was within the accepted range.
+
+```
+quantity = int(request.POST.get('quantity'))
+
+if quantity > 99 or quantity < 0:
+    messages.error(
+        request, "Please enter a value betweeen 0-99, " +
+        "quantity has not been updated.")
+    return redirect(reverse('view_bag'))
+
+else:
+# Code to update bag...
+
+```
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)

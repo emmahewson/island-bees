@@ -35,7 +35,7 @@
 
                         <!-- FAQ Question & Collapse Trigger -->
                         <p class="{% if request.user.is_superuser %}me-3{% endif %}">
-                            <button class="weight-semibold d-inline p-0" type="button" data-toggle="collapse" data-target="#collapse-{{faq.id}}" aria-expanded="false" aria-controls="collapse-{{faq.id}}">
+                            <button class="weight-semibold d-inline p-0 text-ib-dark" type="button" data-toggle="collapse" data-target="#collapse-{{faq.id}}" aria-expanded="false" aria-controls="collapse-{{faq.id}}">
                                 {{faq.question}}
                             </button>
                         </p>
