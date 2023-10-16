@@ -16,7 +16,7 @@ def all_products(request):
     """
 
     # Gets products from DB
-    products = Product.objects.all()
+    products = Product.objects.filter(discontinued=False)
 
     # Resets variables for sort/search
     query = None
