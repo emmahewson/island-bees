@@ -897,9 +897,13 @@ label[for="id_price"] {
     font-size: 16px;
     margin: 0;
     padding: 0;
+}
+
+.lower-nav-link-text,
+.dropdown-item {
     text-decoration: underline;
     text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 2px; 
     -webkit-text-decoration-color: rgba(20, 12, 0, 0);
     text-decoration-color: rgba(20, 12, 0, 0);
     transition: all .3s ease-in-out;
@@ -908,11 +912,15 @@ label[for="id_price"] {
     -o-transition: all .3s ease-in-out;
 }
 
-.lower-nav-link:hover .lower-nav-link-text {
-        -webkit-text-decoration-color: rgba(20, 12, 0, 0);
-        text-decoration-color: rgba(20, 12, 0, 1);
+.dropdown-item {
+    text-decoration-thickness: 1px;
 }
 
+.lower-nav-link:hover .lower-nav-link-text,
+.dropdown-item:hover {
+        -webkit-text-decoration-color: rgba(20, 12, 0, 1);
+        text-decoration-color: rgba(20, 12, 0, 1);
+}
 
 .dropdown-item:hover {
     background: none !important;

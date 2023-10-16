@@ -44,7 +44,7 @@
                         <p class="my-0 font-body">Account</p>
                     </div>
                 </a>
-                <div class="dropdown-menu text-end border-0 account-dropdown shadow bg-ib-light" aria-labelledby="user-options-mobile">
+                <div class="dropdown-menu text-end border-0 account-dropdown shadow bg-ib-light font-body" aria-labelledby="user-options-mobile">
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                     <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
