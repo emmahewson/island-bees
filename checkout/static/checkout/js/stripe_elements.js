@@ -74,7 +74,7 @@ form.addEventListener('submit', function(ev) {
         saveInfo = document.getElementById('id-save-info').checked;
     }
     catch(err) {
-        saveInfo = false
+        saveInfo = false;
     }
 
 

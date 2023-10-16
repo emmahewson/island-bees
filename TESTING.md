@@ -750,8 +750,11 @@ The site was built from the outset with user stories at its core. The site was t
 
 ### User Stories Testing Screen Recordings / Images
 
+#### As a General User...
 
-<details><summary>User Story 1.1</summary>
+
+<details><summary>1.1: I want to understand the purpose of the site immediately upon entering</summary>
+
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/b619ac4f-28eb-4cce-a394-2ba86ac13b9f
@@ -761,8 +764,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/b619ac4f-28eb-4cce-a3
 </details>
 
 
-<details><summary>User Story 1.2</summary>
-
+<details><summary>1.2: I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/a7c744bf-d28a-4b9d-9d4a-b38a6ee1ba7a
@@ -770,7 +773,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/a7c744bf-d28a-4b9d-9d
 
 </details>
 
-<details><summary>User Story 1.3</summary>
+<details><summary>1.3: I want to be able to use all features on the site on any device and for it to be fully responsive</summary>
 
 
 
@@ -779,7 +782,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/7d281cf6-b00a-4552-a3
 
 </details>
 
-<details><summary>User Story 1.4</summary>
+<details><summary>1.4: I want to be able to find answers to common questions
+</summary>
 
 
 
@@ -788,7 +792,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/ccae7869-2909-4656-ac
 
 </details>
 
-<details><summary>User Story 1.5</summary>
+<details><summary>1.5: I want to be able to contact the company with any questions or queries
+</summary>
 
 
 
@@ -797,7 +802,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/4af9daa6-1cfb-40f8-b5
 
 </details>
 
-<details><summary>User Story 1.6</summary>
+<details><summary>1.6: I want to be able to find the company on social media to find out more
+</summary>
 
 
 
@@ -806,7 +812,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/aedae15b-b638-4552-9f
 
 </details>
 
-<details><summary>User Story 1.7</summary>
+<details><summary>1.7: I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page
+</summary>
 
 
 
@@ -815,7 +822,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/b0cd0113-681f-4b97-9a
 
 </details>
 
-<details><summary>User Story 1.8</summary>
+<details><summary>1.8: I want to get feedback when interacting with the site to know if my actions have been successful
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/ee50dff5-43d2-428b-9ebb-99ad21eaabcc
@@ -824,7 +832,11 @@ https://github.com/emmahewson/island-bees/assets/116887840/ee50dff5-43d2-428b-9e
 
 </details>
 
-<details><summary>User Story 2.1</summary>
+#### As a Shopper...
+
+
+<details><summary>2.1: I want to be able to browse products easily, with options to filter & search to find what I need
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/690452d5-091f-4050-b54e-b6709dc698fa
@@ -833,7 +845,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/690452d5-091f-4050-b5
 
 </details>
 
-<details><summary>User Story 2.2</summary>
+<details><summary>2.2: I want to be able to find out information about products
+</summary>
 
 
 
@@ -842,7 +855,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/9e522065-e8ec-4ca5-8c
 
 </details>
 
-<details><summary>User Story 2.3</summary>
+<details><summary>2.3: I want to see ratings & reviews of a product to know more about the quality and whether it's right for me
+</summary>
 
 
 
@@ -852,7 +866,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/f9a4a14f-4fc6-46f8-a3
 </details>
 
 
-<details><summary>User Story 2.4</summary>
+<details><summary>2.4: I want to be able to shop for multiple items at once, from across the site
+</summary>
 
 
 
@@ -861,7 +876,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/a705c3d0-0656-45f4-a8
 
 </details>
 
-<details><summary>User Story 2.5</summary>
+<details><summary>2.5: I want to be able to add multiples of a single product to my bag at once
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/1f62c0d1-ec10-44ab-87fc-ded1997fd2ae
@@ -870,7 +886,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/1f62c0d1-ec10-44ab-87
 
 </details>
 
-<details><summary>User Story 2.6</summary>
+<details><summary>2.6: I want to be able to edit my shopping bag if I change my mind
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/5dd67ef6-1a9f-48a4-bc90-50b9613feca2
@@ -879,7 +896,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/5dd67ef6-1a9f-48a4-bc
 
 </details>
 
-<details><summary>User Story 2.7</summary>
+<details><summary>2.7: I want to know what I will be charged for delivery
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/94210b62-89d2-4d40-b54f-c6c4762a91c3
@@ -888,7 +906,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/94210b62-89d2-4d40-b5
 
 </details>
 
-<details><summary>User Story 2.8</summary>
+<details><summary>2.8: I want my payment and order to be fully secure and trustworthy
+</summary>
 
 
 
@@ -897,7 +916,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/9b659047-466d-4d64-97
 
 </details>
 
-<details><summary>User Story 2.9</summary>
+<details><summary>2.9: I want to be able to set up an account to save my order history
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/ce6923d5-0773-4d8e-b3fa-5283345cbc9c
@@ -906,7 +926,11 @@ https://github.com/emmahewson/island-bees/assets/116887840/ce6923d5-0773-4d8e-b3
 
 </details>
 
-<details><summary>User Story 3.1</summary>
+#### As a user with an account...
+
+
+<details><summary>3.1: I want my account to be secure & easy to set up
+</summary>
 
 
 
@@ -915,7 +939,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/822129d6-9a2c-4118-a1
 
 </details>
 
-<details><summary>User Story 3.2</summary>
+<details><summary>3.2: I want to see my order history
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/cd5b5659-b080-4c16-8bc3-e276217d2bba
@@ -924,7 +949,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/cd5b5659-b080-4c16-8b
 
 </details>
 
-<details><summary>User Story 3.3</summary>
+<details><summary>3.3: I want to be able to update & save my personal information
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/9e92fee7-bce8-4e6b-852b-cb1ce2e3257a
@@ -933,7 +959,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/9e92fee7-bce8-4e6b-85
 
 </details>
 
-<details><summary>User Story 3.4</summary>
+<details><summary>3.4: I want to leave reviews of products I have purchased for the benefit of other customers
+</summary>
 
 
 
@@ -943,7 +970,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/d45de283-3a92-448e-80
 </details>
 
 
-<details><summary>User Story 3.5</summary>
+<details><summary>3.5: I want to be able to edit my reviews
+</summary>
 
 
 
@@ -952,7 +980,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/c3e8f94e-7236-4d8b-a9
 
 </details>
 
-<details><summary>User Story 3.6</summary>
+<details><summary>3.6: I don't want admins or other customers to be able to change my reviews
+</summary>
 
 
 
@@ -961,7 +990,10 @@ https://github.com/emmahewson/island-bees/assets/116887840/685facb5-57ea-42e2-80
 
 </details>
 
-<details><summary>User Story 4.1</summary>
+#### As an admin of the site...
+
+<details><summary>4.1: I want to be able to add & edit products
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/3eb7c7d1-0ed3-46a5-9d8b-b30dad708191
@@ -970,7 +1002,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/3eb7c7d1-0ed3-46a5-9d
 
 </details>
 
-<details><summary>User Story 4.2</summary>
+<details><summary>4.2: I want to be able to remove products from sale
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/cd02ad3f-3ba1-4eca-9aef-23dba5f5fe1b
@@ -979,7 +1012,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/cd02ad3f-3ba1-4eca-9a
 
 </details>
 
-<details><summary>User Story 4.3</summary>
+<details><summary>4.3: I want to view & filter customer messages and manage whether they need further action
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/f1cab167-d25d-4ab5-9c97-08d86674c936
@@ -988,7 +1022,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/f1cab167-d25d-4ab5-9c
 
 </details>
 
-<details><summary>User Story 4.4</summary>
+<details><summary>4.4: I want to approve customer reviews before they go live & delete any with inappropriate content only
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/c5c6b38e-5c68-4f47-bf39-cbed611b8cb2
@@ -997,7 +1032,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/c5c6b38e-5c68-4f47-bf
 
 </details>
 
-<details><summary>User Story 4.5</summary>
+<details><summary>4.5: I want to be able to update the site FAQs
+</summary>
 
 
 https://github.com/emmahewson/island-bees/assets/116887840/80e3f530-6989-4d70-a4bf-1f865503efaa
@@ -1006,7 +1042,8 @@ https://github.com/emmahewson/island-bees/assets/116887840/80e3f530-6989-4d70-a4
 
 </details>
 
-<details><summary>User Story 4.6</summary>
+<details><summary>4.6: I want all the admin controls to be quick and easy to find and use
+</summary>
 
 
 
