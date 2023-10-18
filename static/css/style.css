@@ -731,16 +731,6 @@ label[for="id_price"] {
     color: var(--warning) !important;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 
 /* Nav */
 
