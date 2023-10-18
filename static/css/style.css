@@ -907,7 +907,7 @@ label[for="id_price"] {
 }
 
 .lower-nav-link-text,
-.dropdown-item {
+.upper-nav-link-text {
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 2px; 
@@ -919,14 +919,16 @@ label[for="id_price"] {
     -o-transition: all .3s ease-in-out;
 }
 
-.dropdown-item {
-    text-decoration-thickness: 1px;
+.upper-nav-link-text {
+    text-decoration-thickness: 2px;
 }
 
 .lower-nav-link:hover .lower-nav-link-text,
-.dropdown-item:hover {
-        -webkit-text-decoration-color: rgba(20, 12, 0, 1);
-        text-decoration-color: rgba(20, 12, 0, 1);
+.upper-nav-link-text:hover {
+        text-decoration-color: rgba(20, 12, 0, 1) !important;
+        -webkit-text-decoration-color: rgba(20, 12, 0, 1) !important;
+        -moz-text-decoration-color: rgba(20, 12, 0, 1) !important;
+        -o-text-decoration-color: rgba(20, 12, 0, 1) !important;
 }
 
 .dropdown-item:hover {
@@ -960,7 +962,7 @@ label[for="id_price"] {
 }
 
 #lower-footer-links i {
-    font-size: 22px
+    font-size: 30px
 }
 
 .footer-link-text {
@@ -1241,6 +1243,7 @@ label[for="id_price"] {
 .image-ratio {
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    width: 100%;
 }
 
 .box-border-deselected {
@@ -1266,6 +1269,11 @@ label[for="id_price"] {
     padding: 5px 10px;
     border: none !important;
     background: var(--light);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    color: var(--dark-grey)
 }
 
 #products-div {

@@ -40,7 +40,7 @@
             <div class="row mt-1 mb-2">
                 <!-- Sort-dropdown -->
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-1 mt-md-3 mt-md-0">
-                    <div class="sort-select-wrapper w-50 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
+                    <div class="sort-select-wrapper w-75 w-md-50 box-border-{% if current_sorting != 'None_None' %}deselected{% else %}selected{% endif %}">
                         <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body tex-dark-grey" aria-label="Sort products - choose a sort type">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>

@@ -92,13 +92,13 @@
                             <div class="dropdown-menu dropdown-menu-right border-0 account-dropdown shadow bg-ib-light text-end font-body" aria-labelledby="user-options">
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
+                                    <a href="{% url 'manage' %}" class="dropdown-item py-2 upper-nav-link-text">Site Management</a>
                                 {% endif %}
-                                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Sign Out</a>
+                                    <a href="{% url 'profile' %}" class="dropdown-item py-2 upper-nav-link-text">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item py-2 upper-nav-link-text">Sign Out</a>
                                 {% else %}
-                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                    <a href="{% url 'account_login' %}" class="dropdown-item">Sign In</a>
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item py-2 upper-nav-link-text">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item py-2 upper-nav-link-text">Sign In</a>
                                 {% endif %}
                             </div>
                         </li>
@@ -244,15 +244,15 @@
 
             <!-- Lower Footer -->
             <div class="container-fluid bg-ib-dark d-flex font-body text-ib-light px-4 py-3">
-                <div class="row w-100 ib-row">
-                    <p class="weight-light col-12 col-lg-9 col-xl-8 text-center lower-footer-text mb-2 mb-lg-0">ISLAND BEES IS A FULL STACK DJANGO E-COMMERCE SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
-                    <div class="col-12 col-lg-3 col-xl-4 text-center px-0" id="lower-footer-links">
-                        <p class="weight-semibold d-inline me-2 lower-footer-text mb-2 mb-lg-0">© EMMA HEWSON</p>
+                <div class="row w-100 ib-row d-flex align-items-end p-0">
+                    <p class="weight-light col-12 col-lg-8 col-xl-8 text-center text-lg-start lower-footer-text mb-2 mb-lg-0">ISLAND BEES IS A FULL STACK DJANGO SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
+                    <div class="col-12 col-lg-4 col-xl-4 text-center px-0" id="lower-footer-links">
+                        <p class="weight-semibold d-inline me-2 lower-footer-text me-3 mb-2 mb-lg-0">© EMMA HEWSON</p>
                         <div class="d-inline">
-                            <a class="text-decoration-none text-ib-light me-2" href="https://www.linkedin.com/in/emmajmhewson/" target="_blank" aria-label="Linked In - Opens in a new tab">
+                            <a class="text-decoration-none text-ib-light me-3" href="https://www.linkedin.com/in/emmajmhewson/" target="_blank" aria-label="Linked In - Opens in a new tab">
                                 <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                             </a>
-                            <a class="text-decoration-none text-ib-light me-2" href="https://github.com/emmahewson" target="_blank" aria-label="Git Hub - Opens in a new tab">
+                            <a class="text-decoration-none text-ib-light me-3" href="https://github.com/emmahewson" target="_blank" aria-label="Git Hub - Opens in a new tab">
                                 <i class="fa-brands fa-github" aria-hidden="true"></i>
                             </a>
                             <a class="text-decoration-none text-ib-light" href="https://emmahewson.co.uk/" target="_blank" aria-label="My Portfolio - Opens in a new tab">
