@@ -47,13 +47,13 @@
                 <div class="dropdown-menu text-end border-0 account-dropdown shadow bg-ib-light font-body" aria-labelledby="user-options-mobile">
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                    <a href="{% url 'manage' %}" class="dropdown-item">Site Management</a>
+                    <a href="{% url 'manage' %}" class="dropdown-item py-2">Site Management</a>
                     {% endif %}
-                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                    <a href="{% url 'account_logout' %}" class="dropdown-item">Sign Out</a>
+                    <a href="{% url 'profile' %}" class="dropdown-item py-2">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item py-2">Sign Out</a>
                     {% else %}
-                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                    <a href="{% url 'account_login' %}" class="dropdown-item">Sign In</a>
+                    <a href="{% url 'account_signup' %}" class="dropdown-item py-2">Register</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item py-2">Sign In</a>
                     {% endif %}
                 </div>
             </li>

@@ -252,7 +252,7 @@ button {
 
 .ib-button-sm {
     font-size: 16px;
-    padding: 0 5px;
+    padding: 3px 6px;
     border-radius: 2px;
 }
 
@@ -896,7 +896,8 @@ label[for="id_price"] {
 /* Lower Nav */
 
 .lower-nav-dropdown p {
-    font-size: 14px;
+    font-size: 16px;
+    padding: .3rem 0;
 }
 
 .lower-nav-link-text {
@@ -1612,7 +1613,11 @@ label[for="id_price"] {
     }
 
     .lower-nav-link {
-        padding: 0.25rem;
+        padding: 0.3rem;
+    }
+
+    .lower-nav-link:first-of-type {
+        margin-top: .6rem;
     }
 
     .lower-nav-dropdown {
@@ -1737,6 +1742,7 @@ label[for="id_price"] {
     .button-group *,
     .btn-file {
         font-size: 14px;
+
     }
 
     /* Error Pages */

@@ -26,7 +26,7 @@
         <div class="bg-ib-light col-12 col-lg-10 offset-lg-1 pt-3 pb-3 px-3">
             <h2 class="subtitle weight-semibold text-ib-dark mb-3">USEFUL LINKS</h2>
 
-            <div class="d-flex flex-wrap button-group"> 
+            <div class="d-flex flex-wrap"> 
                 <a href="{% url 'add_product' %}" class="ib-button ib-button-blue text-decoration-none text-ib-light font-title weight-bold shadow-sm me-3 mb-3">
                     <p class="d-inline">ADD PRODUCT</p>
                 </a>
@@ -53,7 +53,7 @@
                 <div class="mb-3 d-flex flex-wrap align-items-end d-sm-block">
 
                     <!-- Messages Title -->
-                    <h2 class="subtitle weight-semibold text-ib-dark mb-0 me-2 me-sm-0 mb-sm-1">CUSTOMER MESSAGES</h2>
+                    <h2 class="subtitle weight-semibold text-ib-dark mb-0 me-2 mb-sm-1">CUSTOMER MESSAGES</h2>
                     
                     <!-- Messages Current Filter & Count -->
                     <p class="small weight-regular text-ib-dark">{% if current_filter %}<span class="text-uppercase">{{current_filter}}{% else %}ALL{% endif %} MESSAGES ({{ customer_messages|length }})</p>
@@ -61,16 +61,16 @@
                 </div>
 
                 <!-- Messages Filter Buttons -->
-                <div class="d-flex justify-content-end align-items-end mb-4">
-                    <p class="ib-lh-1">FILTER BY:</p>
-                    <div class="d-flex button-group">
-                        <a href="{% url 'manage' %}?open=True" class="ib-button-sm ib-button-warning text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                <div class="d-sm-flex justify-content-end align-items-end mb-4">
+                    <p class="ib-lh-1 me-3 mb-2 mb-sm-0">FILTER BY:</p>
+                    <div class="d-flex">
+                        <a href="{% url 'manage' %}?open=True" class="ib-button-sm ib-button-warning text-decoration-none text-ib-dark font-title weight-bold shadow-sm me-3">
                             <p class="d-inline">OPEN</p>
                         </a>
-                        <a href="{% url 'manage' %}?open=False" class="ib-button-sm ib-button-success text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                        <a href="{% url 'manage' %}?open=False" class="ib-button-sm ib-button-success text-decoration-none text-ib-dark font-title weight-bold shadow-sm me-3">
                             <p class="d-inline">CLOSED</p>
                         </a>
-                        <a href="{% url 'manage' %}" class="ib-button-sm ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm ms-3">
+                        <a href="{% url 'manage' %}" class="ib-button-sm ib-button-grey text-decoration-none text-ib-dark font-title weight-bold shadow-sm">
                             <p class="d-inline">ALL</p>
                         </a>
                     </div>
