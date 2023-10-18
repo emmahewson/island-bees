@@ -1257,6 +1257,26 @@ else:
 
 **Fix:** I fixed these by adding explicit CSS styling to elements, including adding the -webkit-appearence to 'none' to over-ride the browser styling.
 
+
+#### Bug 15 - Site Management - messages scroll on mobile not working
+
+**Issue:** During device testing I discovered that the JavaScript I had written to save the scroll position on the site management page wasn't working on mobile. The page would scroll to the top on reload, either when clicking on a filter or on a message toggle. No console errors were logged and the page behaved correctly otherwise.
+
+**Fix:** I did some investigation in to this issue but I was unable to come up with a solution within the timeframe I had to complete the project, so this is a remaining bug.
+
+
+- - -
+
+
+### Known & Remaining Bugs
+
+All information about remaining bugs is included in the information above. Click on the links below to find out more details:
+
+[Bug 12: Search bar dropdown on medium and smaller screens has glitch in animation](#bug-12---search-bar-dropdown-on-medium-and-smaller-screens-has-glitch-in-animation)
+
+[Bug 15 - Site Management - messages scroll on mobile not working](#bug-15---site-management---messages-scroll-on-mobile-not-working)
+
+
 - - -
 
 [Go to Top](#island-bees---e-commerce-site)
