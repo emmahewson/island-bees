@@ -895,13 +895,14 @@ label[for="id_price"] {
 
 /* Lower Nav */
 
-.lower-nav-dropdown p {
-    font-size: 16px;
-    padding: .3rem 0;
+
+.lower-nav-link {
+    margin: .5rem 0;
+    padding: 0;
 }
 
 .lower-nav-link-text {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     padding: 0;
 }
@@ -921,6 +922,7 @@ label[for="id_price"] {
 
 .upper-nav-link-text {
     text-decoration-thickness: 2px;
+    font-size: 18px;
 }
 
 .lower-nav-link:hover .lower-nav-link-text,
@@ -931,6 +933,10 @@ label[for="id_price"] {
         -o-text-decoration-color: rgba(20, 12, 0, 1) !important;
 }
 
+.nav-link:focus-visible {
+    box-shadow: none !important;
+}
+
 .dropdown-item:hover {
     background: none !important;
 }
@@ -938,6 +944,7 @@ label[for="id_price"] {
 .lower-nav-link > div {
     display: flex;
     align-items: center;
+    padding: .5rem 0;
 }
 
 #delivery-banner p {
@@ -1620,12 +1627,8 @@ label[for="id_price"] {
         --hex-row-gap: -26px;
     }
 
-    .lower-nav-link {
-        padding: 0.3rem;
-    }
-
-    .lower-nav-link:first-of-type {
-        margin-top: .6rem;
+    .navbar-collapse {
+        margin-top: 1rem;
     }
 
     .lower-nav-dropdown {
