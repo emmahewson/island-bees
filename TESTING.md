@@ -1265,6 +1265,15 @@ else:
 **Fix:** I did some investigation in to this issue but I was unable to come up with a solution within the timeframe I had to complete the project, so this is a remaining bug.
 
 
+#### Bug 16 - 500.html - images not loading on error page
+
+**Issue:** During testing I discovered that if a 500 server error occurred and the user was routed to 500.html, that the site images on the page weren't loading and throwing a load of 404 errors on the console for all the images. That included both the logo, the favicon images and the cartoon bees. Investigating on dev tools it appeared that the site was attempting to load the image by just its filename and wasn't including the MEDIA_URL.
+
+**Fix:** This was a really challenging issue, I assumed that the 500 error was blocking the MEDIA_URL from being accessed, but I didn't have the experience to know why this might be, even stranger was that the 404 page was loading correctly with the images, it was unique to the 500 page. I wasn't able to fix this issue in the time I had, but I did my best to mitigate it firstly by fixing the issue that was causing the 500 error in the first place (attempting to add a review for a non-existent product - changing the routing to the 404 page using `get_object_or_404()` and adding an onerror to all the images on the 500 page, including the bees and the logos in the nav which routed directly to the aws URL, bypassing the MEDIA_URL value. I am guessing this is far from ideal as any change in location of the images would mean having to update this, but this was the best solution I could come up with in the time available.
+
+This issue is therefore a known bug and remains on the site.
+
+
 - - -
 
 
@@ -1275,6 +1284,8 @@ All information about remaining bugs is included in the information above. Click
 [Bug 12: Search bar dropdown on medium and smaller screens has glitch in animation](#bug-12---search-bar-dropdown-on-medium-and-smaller-screens-has-glitch-in-animation)
 
 [Bug 15 - Site Management - messages scroll on mobile not working](#bug-15---site-management---messages-scroll-on-mobile-not-working)
+
+[Bug 16 - 500.html - images not loading on error page](#bug-16---500html---images-not-loading-on-error-page)
 
 
 - - -
