@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}- 404! Page Doesn't Exist!{% endblock %}
+{% block extra_title %}- 500! Internal Server Error!{% endblock %}
 
 {% block extra_meta %}
-    <meta name="description" content="WELCOME TO ISLAND BEES - 404! Page doesn't exist!">
+    <meta name="description" content="WELCOME TO ISLAND BEES - 500! Internal Server Error!">
 {% endblock %}
 
 {% block content %}
@@ -13,9 +13,9 @@
 
     <!-- Error Page Content -->
     <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
-        <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="error-bee">
+        <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="error-bee" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/bee-2.png"'>
         <h1 class="font-title error-title text-center mx-3 ib-lh-1">500</h1>
-        <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="backwards error-bee">
+        <img src="{{ MEDIA_URL }}bee-2.png" alt="Cartoon Bee with Trail" class="backwards error-bee" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/bee-2.png"'>
     </div>
     <p>Uh oh... Internal Server Error... Sorry!</p>
     

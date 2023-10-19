@@ -21,11 +21,11 @@
         {% block corecss %}
         
         <!-- Favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ MEDIA_URL }}android-chrome-192x192.png">
-        <link rel="icon" type="image/png" sizes="512x512" href="{{ MEDIA_URL }}android-chrome-512x512.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/apple-touch-icon.png"'>
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/favicon-32x32.png"'>
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/favicon-16x16.png"'>
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ MEDIA_URL }}android-chrome-192x192.png" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/android-chrome-192x192.png"'>
+        <link rel="icon" type="image/png" sizes="512x512" href="{{ MEDIA_URL }}android-chrome-512x512.png" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/android-chrome-512x512.png"'>
 
         <!-- CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -55,7 +55,7 @@
                 <!-- Logo -->
                 <div class="logo-div font-title col-12 col-lg-4 my-auto">
                     <a href="{% url 'home' %}" class="nav-link">
-                        <img src="{{ MEDIA_URL }}logo.svg" alt="Island Bees Logo" class="logo-img me-2">
+                        <img src="{{ MEDIA_URL }}logo.svg" alt="Island Bees Logo" class="logo-img me-2" onerror='this.onerror=null;this.src="https://island-bees.s3.amazonaws.com/media/logo.svg"'>
                         <div class="logo-text my-auto">
                             <h2 class="font-title weight-bold">ISLAND BEES</h2>
                             <p class="weight-regular">FOR ALL YOUR BEES' NEEDS</p>
@@ -246,7 +246,7 @@
             <div class="container-fluid bg-ib-dark d-flex font-body text-ib-light px-4 py-3">
                 <div class="row w-100 ib-row d-flex align-items-end p-0">
                     <p class="weight-light col-12 col-lg-8 col-xl-8 text-center text-lg-start lower-footer-text mb-3 mb-lg-0 p-0">ISLAND BEES IS A FULL STACK DJANGO SITE BUILT FOR EDUCATIONAL PURPOSES ONLY</p>
-                    <div class="col-12 col-lg-4 col-xl-4 text-center px-0" id="lower-footer-links">
+                    <div class="col-12 col-lg-4 col-xl-4 text-center text-lg-end px-0" id="lower-footer-links">
                         <p class="weight-semibold d-inline me-2 lower-footer-text me-3 mb-2 mb-lg-0">© EMMA HEWSON</p>
                         <div class="d-inline">
                             <a class="text-decoration-none text-ib-light me-3" href="https://www.linkedin.com/in/emmajmhewson/" target="_blank" aria-label="Linked In - Opens in a new tab">

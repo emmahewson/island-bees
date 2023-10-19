@@ -20,6 +20,7 @@ def add_review(request, product_id):
 
     # Sets product based on product_id
     product = Product.objects.get(id=product_id)
+    # product = get_object_or_404(Product, pk=product_id)
 
     # Sets author based on current user
     author = User.objects.get(username=request.user)

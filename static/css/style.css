@@ -306,6 +306,7 @@ button {
 
 .ib-button-yellow:hover {
     background: var(--yellow-hov);
+    border: none !important;
 }
 
 .ib-button-warning:hover {
