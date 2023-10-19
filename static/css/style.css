@@ -901,14 +901,15 @@ label[for="id_price"] {
     padding: 0;
 }
 
+
 .lower-nav-link-text {
-    font-size: 18px;
     margin: 0;
     padding: 0;
 }
 
 .lower-nav-link-text,
 .upper-nav-link-text {
+    font-size: 20px;
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 2px; 
@@ -922,7 +923,6 @@ label[for="id_price"] {
 
 .upper-nav-link-text {
     text-decoration-thickness: 2px;
-    font-size: 18px;
 }
 
 .lower-nav-link:hover .lower-nav-link-text,
