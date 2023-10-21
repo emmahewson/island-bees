@@ -66,11 +66,14 @@ def profile(request):
 def order_history(request, order_number):
     """ Displays the order history using the checkout_success template """
 
+    # Get order from database
     order = get_object_or_404(Order, order_number=order_number)
 
-    if request.user != order.user_profile.user:
-        messages.error(request, 'You can only view your own orders.')
-        return redirect(reverse('profile'))
+    # Restrict page to order's associated user or superuser
+    if not request.user.is_superuser:
+        if request.user != order.user_profile.user:
+            messages.error(request, 'You can only view your own orders.')
+            return redirect(reverse('profile'))
 
     template = 'checkout/checkout_success.html'
     context = {
