@@ -49,7 +49,7 @@ def all_products(request):
         if 'category' in request.GET:
             category = request.GET['category']
             products = products.filter(category__name=category)
-            category = Category.objects.get(name=category)
+            category = get_object_or_404(Category, name=category)
 
         # Handles product search
         if 'q' in request.GET:
