@@ -1269,10 +1269,14 @@ else:
 
 **Issue:** During testing I discovered that if a 500 server error occurred and the user was routed to 500.html, that the site images on the page weren't loading and throwing a load of 404 errors on the console for all the images. That included both the logo, the favicon images and the cartoon bees. Investigating on dev tools it appeared that the site was attempting to load the image by just its filename and wasn't including the MEDIA_URL.
 
-**Fix:** This was a really challenging issue, I assumed that the 500 error was blocking the MEDIA_URL from being accessed, but I didn't have the experience to know why this might be, even stranger was that the 404 page was loading correctly with the images, it was unique to the 500 page. I wasn't able to fix this issue in the time I had, but I did my best to mitigate it firstly by fixing the issue that was causing the 500 error in the first place (attempting to add a review for a non-existent product - changing the routing to the 404 page using `get_object_or_404()`) and adding an onerror to all the images on the 500 page, including the bees and the logos in the nav which routed directly to the aws URL, bypassing the MEDIA_URL value. I am guessing this is far from ideal as any change in location of the images would mean having to update this, but this was the best solution I could come up with in the time available.
+**Fix:** This was a really challenging issue, I assumed that the 500 error was blocking the MEDIA_URL from being accessed, but I didn't have the experience to know why this might be, even stranger was that the 404 page was loading correctly with the images, it was unique to the 500 page. I wasn't able to fix the root cause of this issue in the time I had, but I was able to work around it by changing the MEDIA_URL value to the absolute URL for the images on AWS. I did this for all the images that would appeared on the 500 error page including the logo & favicons as well as the cartoon bees. I also did the same on the other error pages just in case this should happen on those. In an ideal world I would have liked to keep the MEDIA_URL value as this feels like it would be best practice, e.g. if a site's static storage was being moved and the URLs changed, but for the purposes of this project and for the time available it was the best solution.
 
-This issue is therefore a known bug and remains on the site.
 
+#### Bug 17 - Security Issue - Checkout Success page accessible to any user
+
+**Issue:** I realised during testing that any user would technically be able to navigate to the checkout success page for any order if they had the order number and entered the relevant URL. 
+
+**Fix:** I was unable to come up with a solution for this issue. I had put authentication in place for the same issue on the order history page, to check if the current user was the user connected with the order, but with checkout success an order could be placed by a logged out user so the page had to be accessible to both logged in and logged out users, and then it wouldn't be possible to check the current user in the session against anything as there may not be a user in the session. I didn't have the time to add in the logic to sort this problem, but it would definitely be something to think about in the planning of future projects as it could constitute a significant security risk in a real life e-commerce site.
 
 - - -
 
@@ -1284,8 +1288,6 @@ All information about remaining bugs is included in the information above. Click
 [Bug 12: Search bar dropdown on medium and smaller screens has glitch in animation](#bug-12---search-bar-dropdown-on-medium-and-smaller-screens-has-glitch-in-animation)
 
 [Bug 15 - Site Management - messages scroll on mobile not working](#bug-15---site-management---messages-scroll-on-mobile-not-working)
-
-[Bug 16 - 500.html - images not loading on error page](#bug-16---500html---images-not-loading-on-error-page)
 
 
 - - -
