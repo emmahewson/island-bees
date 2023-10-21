@@ -18,10 +18,10 @@
             <!-- Product Image -->
             {% if product.image %}
                 <a class="" href="{{ product.image.url }}" target="_blank">
-                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
+                    <img class="image-ratio img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ MEDIA_URL }}no_image.jpg'">
                 </a>
             {% else %}
-                <img class="img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                <img class="image-ratio img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
             {% endif %}
 
             <!-- Product Rating -->
