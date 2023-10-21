@@ -68,7 +68,7 @@ def adjust_bag(request, item_id):
 
     if quantity > 99 or quantity < 0:
         messages.error(
-            request, "Please enter a value betweeen 0-99, " +
+            request, "Please enter a value between 0-99, " +
             "quantity has not been updated.")
         return redirect(reverse('view_bag'))
 

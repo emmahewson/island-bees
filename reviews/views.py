@@ -164,7 +164,6 @@ def delete_review(request, review_id):
     review.delete()
 
     # Updates product rating on product object
-
     if product.reviews.filter(is_approved=True).count() > 0:
         product.rating = round(
             product.reviews.filter(
@@ -206,7 +205,6 @@ def toggle_review(request, review_id):
         review.save()
 
         # Updates product rating on product object
-
         product = Product.objects.filter(reviews=review)[0]
 
         if product.reviews.filter(is_approved=True).count() > 0:

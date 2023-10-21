@@ -1544,7 +1544,7 @@ catch(err) {
 
 #### Bug 12 - Search bar dropdown on medium and smaller screens has glitch in animation
 
-**Issue:** When the searchbar dropdown is triggered there is a glitch in the styling, the bar has grey padding at the sides initially which then disappears.
+**Issue:** When the search-bar dropdown is triggered there is a glitch in the styling, the bar has grey padding at the sides initially which then disappears.
 
 **Fix:** I attempted to resolve this issue using various CSS techniques but as it has been built using a combination of Bootstrap styling and bespoke CSS I have been unable to find the cause of the glitch. As this is purely an aesthetic issue and not a problem with functionality I have left it as it is, so this is a remaining bug.
 
@@ -1560,7 +1560,7 @@ quantity = int(request.POST.get('quantity'))
 
 if quantity > 99 or quantity < 0:
     messages.error(
-        request, "Please enter a value betweeen 0-99, " +
+        request, "Please enter a value between 0-99, " +
         "quantity has not been updated.")
     return redirect(reverse('view_bag'))
 
@@ -1572,9 +1572,9 @@ else:
 
 #### Bug 14 - Various styling issues on mobile
 
-**Issue:** During testing on a mobile (rather than dev tools mobile emulator) I discovered that some of the site styling was being over-ridden by the mobile browers on both Safari and Chrome. This included form inputs (the inner shadow and the dropdowns had lost their styling), the FAQs accordian question styling & the products sort selector.
+**Issue:** During testing on a mobile (rather than dev tools mobile emulator) I discovered that some of the site styling was being over-ridden by the mobile browsers on both Safari and Chrome. This included form inputs (the inner shadow and the dropdowns had lost their styling), the FAQs accordion question styling & the products sort selector.
 
-**Fix:** I fixed these by adding explicit CSS styling to elements, including adding the -webkit-appearence to 'none' to over-ride the browser styling.
+**Fix:** I fixed these by adding explicit CSS styling to elements, including adding the -webkit-appearance to 'none' to over-ride the browser styling.
 
 
 #### Bug 15 - Site Management - messages scroll on mobile not working
