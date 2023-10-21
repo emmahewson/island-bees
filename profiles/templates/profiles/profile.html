@@ -32,8 +32,6 @@
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form" class="form-as-p">
                     {% csrf_token %}
 
-                    <!-- {{ user_form.as_p }} -->
-
                     {{ user_form.first_name|attr:"aria-label:First Name" }}
                     {% for error in order_form.first_name.errors  %}
                         <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
@@ -60,8 +58,6 @@
                      </div>
 
                     <p class="mt-0 mb-3 mt-4 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
-
-                    <!-- {{ profile_form.as_p }} -->
 
                     {{ profile_form.default_street_address1|attr:"aria-label:Street Address 1" }}
                     {% for error in order_form.default_street_address1.errors  %}

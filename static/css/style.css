@@ -477,6 +477,7 @@ input.qty-input-sm {
     color: var(--blue-hov) !important;
 }
 
+
 /* Recurring Icon Styles */
 
 .category-icon-circle,
@@ -658,6 +659,7 @@ legend {
 select:invalid {
     color: var(--mid-grey);
 }
+
 
 /* Specific Form Styling */
 
@@ -895,7 +897,6 @@ label[for="id_price"] {
 
 
 /* Lower Nav */
-
 
 .lower-nav-link {
     margin: .5rem 0;

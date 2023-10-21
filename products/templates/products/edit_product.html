@@ -71,7 +71,7 @@
                     <!-- Image Selection -->
                     <div class="mt-4 mb-2">
                         <p class="p-label-replace d-inline">Product Image:</p>
-                        <em class="d-inline ms-2">Images should be in a 16:9 aspect ratio</em>
+                        <em class="d-inline ms-2">Images should ideally be in a 16:9 aspect ratio</em>
                         {{ form.image }}
                     </div>
 
@@ -80,20 +80,19 @@
                     <span class="d-flex mt-3 mb-2 text-ib-warning">
                         {{ form.discontinued }}
                         <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.discontinued.label_tag }}</span>
-        
                     </span>
+                    <em>Selecting this will mean the product does not appear on the site. It will only be accessible in the admin panel.</em>
+                    {% for error in form.discontinued.errors  %}
+                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                    {% endfor %}
 
+                    <!-- General Form Errors -->
                     {% if form.errors %}
                         {% for error in form.non_field_errors %}
                             <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
                         {% endfor %}
                     {% endif %}
                     
-                    <em>Selecting this will mean the product does not appear on the site. It will only be accessible in the admin panel.</em>
-                    {% for error in form.discontinued.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
                     <!-- Hidden input to redirect user back to previous page once submitted -->
                     <input type="hidden" name="redirect_url" value="{{ request.GET.next }}">
 
