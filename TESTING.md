@@ -20,7 +20,7 @@ This is the testing documentation for my e-commerce web application: Island Bees
     - [Accessibility Testing](#accessibility)
     - [Performance Testing](#performance)
 - [Feature Testing](#feature-testing)
-    - [Responsiveness/Device Testing](#responsiveness--device-testing)
+    - [Responsiveness/Device Testing](#responsiveness--devices)
     - [Browser Compatibility](#browser-compatibility)
     - [Feature Testing Results](#feature-testing-results)
 - [User Stories Testing](#user-stories-testing)
@@ -95,7 +95,7 @@ I found it to be a challenging but useful process, a number of times during deve
 
 
 - - -
-[Go to Top](#island-bees---e-commerce-site)
+[Go to Top](#island-bees---e-commerce-site---testing)
 - - -
 
 
@@ -613,14 +613,14 @@ I ran the site through Google Chrome Dev Tools' Lighthouse to check on its perfo
 
 
 - - -
-[Go to Top](#island-bees---e-commerce-site)
+[Go to Top](#island-bees---e-commerce-site---testing)
 - - -
 
 ## Feature Testing
 
 The whole site and all its features were tested manually thoroughly throughout the development process and at the end of development. This testing covered content, style, interactive feature functionality as well as making sure all backend processes worked as expected including testing of all CRUD functionality and routing. This was in addition to the automated testing described [above](#automated-testing-using-test-driven-development). The results of the final full manual test are below.
 
-### **Feature Testing - Responsiveness / Devices**
+### **Responsiveness / Devices**
 
 The manual testing was done on the following devices
 * Apple Macbook Pro 16inch
@@ -630,7 +630,7 @@ The manual testing was done on the following devices
 * Apple iPhone SE 2022
 * Google Chrome Developer Tools - simulator for all different device options as well as using the adjustable sizing options
 
-### **Feature Testing - Browser Compatibility**
+### **Browser Compatibility**
 
 The manual testing was done on the following browsers
 * Google Chrome
@@ -1031,7 +1031,7 @@ The manual testing was done on the following browsers
 
 
 - - -
-[Go to Top](#island-bees---e-commerce-site)
+[Go to Top](#island-bees---e-commerce-site---testing)
 - - -
 
 
@@ -1381,7 +1381,7 @@ https://github.com/emmahewson/island-bees/assets/116887840/d2503e0b-2ee0-449c-a2
 
 
 - - -
-[Go to Top](#island-bees---e-commerce-site)
+[Go to Top](#island-bees---e-commerce-site---testing)
 - - -
 
 
@@ -1608,9 +1608,9 @@ All information about remaining bugs is included in the information above. Click
 
 [Bug 15 - Site Management - messages scroll on mobile not working](#bug-15---site-management---messages-scroll-on-mobile-not-working)
 
-
+[Bug 17 - Security Issue - Checkout Success page accessible to any user](#bug-17---security-issue---checkout-success-page-accessible-to-any-user)
 - - -
 
-[Go to Top](#island-bees---e-commerce-site)
+[Go to Top](#island-bees---e-commerce-site---testing)
 
 - - -

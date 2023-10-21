@@ -392,7 +392,7 @@ The website uses 2 typefaces that I felt worked well together and complemented e
 
 #### Images & Graphics
 
-All images are fully credited in the [here](#credits).
+All images are fully credited [here](#credits).
 
 ##### Logo
 I created a logo for the site in the shape of a simplified bee as it is a strong iconic image and gives an immediate sense of the purpose of the site and a strong brand image. I created 2 versions, one with text for larger screens and another without which works as an icon. I also created a Favicon with a yellow background using the same logo.
@@ -1516,7 +1516,7 @@ This is a great tool for site admins to manage their user communication in a sin
     - EDIT is only visible to the review creator (in this case the admin would have to be the review author)
     - DELETE is always visible to admins
 - Reviews also contain a toggle switch to approve the review and make it visible on the site
-- Only unapproved reviews appear here, I did consider making all reviews visible but I felt that it would get too long and hard to find. There is explanatory text telling the admins that to unapprove an approved review they can go to the admin panel. This I felt provided the best balance of user experience and control.
+- Only unapproved reviews appear here, I did consider making all reviews visible but I felt that it would get too long and hard to navigate. There is explanatory text telling the admins that to disapprove an approved review they can go to the admin panel. This I felt provided the best balance of user experience and control.
 - For more information about reviews see [Features - reviews](#reviews)
 
 
@@ -1682,6 +1682,7 @@ The ability to reset a password is very important to users who have forgotten th
 This creates a positive user experience when taking an action that results in an error. It means they don't feel like they have left the site entirely and are quickly able to get back home again.
 
 </details>
+
 - - -
 
 
@@ -2083,7 +2084,7 @@ MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 ### Code
 
-I have found many useful sources in building this project, reliant on a lot of Googling and trawling through documentation and Slack channels. Any code that requires crediting has been mentioned within the code itself. However below are some projects which I have found useful for more general inspiration and to help me answer the more general questions about how to approach different aspects of the project.
+I have found many useful sources in building this project, as this has been my first Django project I have often been reliant on a lot of Googling and trawling through documentation and Slack channels. Any code that requires crediting has been mentioned within the code itself. However below are some projects which I have found useful for more general inspiration and to help me answer the more general questions about how to approach different aspects of the project.
 
 - [Joy Zadan's K-Beauty CI PP5 Project](https://github.com/JoyZadan/shop-kbeauty): I found this project to be really helpful in getting started with how to approach mine, in particular how to approach the rating & reviews. I also used her automated testing files as a skeleton for how to approach this part of mine. I am very grateful for her clear and well explained project. I also found her README deployment really clear and easy to follow and got inspiration for how to approach mine.
 - [NyxHexen's Game Box CI MS4 Project](https://github.com/NyxHexen/CI_MS4_GB): I also found this project's testing really useful in working out how to approach automated testing, the tests have clearly been written by a skilled and experienced automated tester and helped me as a complete beginner in automated testing to begin my learning and automated testing on my project.
